@@ -1,0 +1,151 @@
+/** 
+ * Auto generated code
+ */
+
+using PayPal.Authentication;
+
+namespace PayPal.Invoice {
+
+	using PayPal;
+	using PayPal.Util;
+	using PayPal.Manager;
+	using PayPal.Invoice.Model;
+
+	public partial class InvoiceService :BasePayPalService{
+
+		private static string serviceName = "Invoice";
+
+
+		 public InvoiceService() : base(serviceName)
+        {}
+		/**
+		 *
+		 */
+		public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new CreateInvoiceResponse(util.parseNVPString(resp), "");
+		}
+
+		public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest) 
+		{
+			return CreateInvoice(CreateInvoiceRequest, null);
+		}
+		/**
+		 *
+		 */
+		public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new SendInvoiceResponse(util.parseNVPString(resp), "");
+		}
+
+		public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest) 
+		{
+			return SendInvoice(SendInvoiceRequest, null);
+		}
+		/**
+		 *
+		 */
+		public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new CreateAndSendInvoiceResponse(util.parseNVPString(resp), "");
+		}
+
+		public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest) 
+		{
+			return CreateAndSendInvoice(CreateAndSendInvoiceRequest, null);
+		}
+		/**
+		 *
+		 */
+		public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new UpdateInvoiceResponse(util.parseNVPString(resp), "");
+		}
+
+		public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest) 
+		{
+			return UpdateInvoice(UpdateInvoiceRequest, null);
+		}
+		/**
+		 *
+		 */
+		public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new GetInvoiceDetailsResponse(util.parseNVPString(resp), "");
+		}
+
+		public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest) 
+		{
+			return GetInvoiceDetails(GetInvoiceDetailsRequest, null);
+		}
+		/**
+		 *
+		 */
+		public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new CancelInvoiceResponse(util.parseNVPString(resp), "");
+		}
+
+		public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest) 
+		{
+			return CancelInvoice(CancelInvoiceRequest, null);
+		}
+		/**
+		 *
+		 */
+		public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new SearchInvoicesResponse(util.parseNVPString(resp), "");
+		}
+
+		public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest) 
+		{
+			return SearchInvoices(SearchInvoicesRequest, null);
+		}
+		/**
+		 *
+		 */
+		public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername) 
+		{
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new MarkInvoiceAsPaidResponse(util.parseNVPString(resp), "");
+		}
+
+		public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest) 
+		{
+			return MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest, null);
+		}
+	}
+}
+

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\Unit_Testing\bin\Debug\UnitTest.dll" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-10-04" time="17:46:33">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.3623" os-version="Microsoft Windows NT 5.2.3790 Service Pack 2" platform="Win32NT" cwd="C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\Unit_Testing\bin\Debug" machine-name="SJD-VPPTS-022" user="lvairamani" user-domain="CORP" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\Unit_Testing\bin\Debug\UnitTest.dll" executed="True" result="Failure" success="False" time="0.047" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="PayPal" executed="True" result="Failure" success="False" time="0.047" asserts="0">
+        <results>
+          <test-suite type="SetUpFixture" name="UnitTest" executed="True" result="Failure" success="False" time="0.047" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="APIServiceTest" executed="True" result="Failure" success="False" time="0.031" asserts="0">
+                <results>
+                  <test-case name="PayPal.UnitTest.APIServiceTest.makeRequestWithInvalidServiceName" executed="True" result="Failure" success="False" time="0.016" asserts="0">
+                    <failure>
+                      <message><![CDATA[An unexpected exception type was thrown
+Expected: PayPal.Exception.ConnectionException
+ but was: PayPal.Exception.MissingCredentialException : Missing credentials for jb-us-seller_api1.paypal.com]]></message>
+                      <stack-trace><![CDATA[at PayPal.Manager.CredentialManager.GetCredentials(String apiUsername) in C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\Manager\CredentialManager.cs:line 68
+at PayPal.Manager.AuthenticationHandler.SetAuthenticationParams(HttpWebRequest httpRequest, String requestUri) in C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\Authentication\AuthenticationHandler.cs:line 63
+at PayPal.APIService.makeRequest(String method, String requestPayload, String apiUsername, String accessToken, String accessTokenSecret) in C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\APIService.cs:line 75
+at PayPal.UnitTest.APIServiceTest.makeRequestWithInvalidServiceName() in C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\Unit_Testing\UnitTest\APIServiceTest.cs:line 44
+]]></stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
