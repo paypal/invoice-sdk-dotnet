@@ -44,7 +44,7 @@ namespace PayPal.UnitTest
                 Assert.Contains(headerName, httpRequest.Headers);            
         }
 
-        [Test]
+       /* [Test]
         public void setAuthenticationParamsForCertificateAccount()
         {
             ConnectionManager connMgr = ConnectionManager.Instance;
@@ -65,7 +65,7 @@ namespace PayPal.UnitTest
             });
             foreach (string headerName in expectedHeaders)
                 Assert.Contains(headerName, httpRequest.Headers);
-        }
+        }*/
 
         [Test]
         public void testOAuthSignature()

@@ -549,95 +549,6 @@ return null;
 
 
 	/**
-	 * Details about the end user of the application
-	 * invoking this service.
-	 */
-	public partial class ClientDetailsType {
-
-		private string ipAddressField;
-		public string ipAddress {
-			get {
-				return this.ipAddressField;
-			}
-			set {
-				this.ipAddressField = value;
-			}
-		}
-
-		private string deviceIdField;
-		public string deviceId {
-			get {
-				return this.deviceIdField;
-			}
-			set {
-				this.deviceIdField = value;
-			}
-		}
-
-		private string applicationIdField;
-		public string applicationId {
-			get {
-				return this.applicationIdField;
-			}
-			set {
-				this.applicationIdField = value;
-			}
-		}
-
-		private string modelField;
-		public string model {
-			get {
-				return this.modelField;
-			}
-			set {
-				this.modelField = value;
-			}
-		}
-
-		private string geoLocationField;
-		public string geoLocation {
-			get {
-				return this.geoLocationField;
-			}
-			set {
-				this.geoLocationField = value;
-			}
-		}
-
-		private string customerTypeField;
-		public string customerType {
-			get {
-				return this.customerTypeField;
-			}
-			set {
-				this.customerTypeField = value;
-			}
-		}
-
-		private string partnerNameField;
-		public string partnerName {
-			get {
-				return this.partnerNameField;
-			}
-			set {
-				this.partnerNameField = value;
-			}
-		}
-
-		private string customerIdField;
-		public string customerId {
-			get {
-				return this.customerIdField;
-			}
-			set {
-				this.customerIdField = value;
-			}
-		}
-
-	}
-
-
-	/**
 	 * The request object for CreateAndSendInvoice.
 	 */
 	public partial class CreateAndSendInvoiceRequest {
@@ -922,33 +833,6 @@ return null;
 
 
 	/**
-	 */
-	public partial class CurrencyType {
-
-		private string codeField;
-		public string code {
-			get {
-				return this.codeField;
-			}
-			set {
-				this.codeField = value;
-			}
-		}
-
-		private decimal? amountField;
-		public decimal? amount {
-			get {
-				return this.amountField;
-			}
-			set {
-				this.amountField = value;
-			}
-		}
-
-	}
-
-
-	/**
 	 * Determines an inclusive date range.
 	 */
 	public partial class DateRangeType {
@@ -993,16 +877,6 @@ return null;
 	}
 
 
-	public enum DayOfWeek {
-[Description("NO_DAY_SPECIFIED")]NODAYSPECIFIED,
-[Description("SUNDAY")]SUNDAY,
-[Description("MONDAY")]MONDAY,
-[Description("TUESDAY")]TUESDAY,
-[Description("WEDNESDAY")]WEDNESDAY,
-[Description("THURSDAY")]THURSDAY,
-[Description("FRIDAY")]FRIDAY,
-[Description("SATURDAY")]SATURDAY,
-	}
 	public enum DetailLevelCode {
 [Description("ReturnAll")]RETURNALL,
 	}
@@ -1130,7 +1004,7 @@ return null;
 			}
 			for (int i = 0; i < 10; i++) {
 				key = prefix + "parameter" + '(' + i + ")";
-				if (map.ContainsKey(key + ".value")) {
+				if (map.ContainsKey(key + ".name")) {
 					this.parameter.Add( new ErrorParameter(map, key + '.')); 
 				}
 			}
@@ -1142,16 +1016,6 @@ return null;
 	 */
 	public partial class ErrorParameter {
 
-		private string valueField;
-		public string value {
-			get {
-				return this.valueField;
-			}
-			set {
-				this.valueField = value;
-			}
-		}
-
 		private string nameField;
 		public string name {
 			get {
@@ -1162,15 +1026,25 @@ return null;
 			}
 		}
 
+		private string valueField;
+		public string value {
+			get {
+				return this.valueField;
+			}
+			set {
+				this.valueField = value;
+			}
+		}
+
 	 public ErrorParameter(Dictionary<string, string> map, string prefix) {
 			string key = "";
-			key = prefix + "value";
-			if (map.ContainsKey(key)) {
-				this.value = map[key];
-			}
 			key = prefix + "name";
 			if (map.ContainsKey(key)) {
 				this.name = map[key];
+			}
+			key = prefix + "value";
+			if (map.ContainsKey(key)) {
+				this.value = map[key];
 			}
 		}
 	}
@@ -2818,16 +2692,6 @@ return null;
 	}
 
 
-	public enum OtherPaymentMethodType {
-[Description("Bank_transfer")]BANKTRANSFER,
-[Description("Cash")]CASH,
-[Description("Check")]CHECK,
-[Description("Credit_card")]CREDITCARD,
-[Description("Debit_card")]DEBITCARD,
-[Description("PayPal")]PAYPAL,
-[Description("Wire_transfer")]WIRETRANSFER,
-[Description("Other")]OTHER,
-	}
 	/**
 	 * PayPal payment details about the invoice.
 	 */
@@ -2953,43 +2817,6 @@ return null;
 [Description("Net30")]NET3,
 [Description("Net45")]NET4,
 	}
-	/**
-	 */
-	public partial class PhoneNumberType {
-
-		private string countryCodeField;
-		public string countryCode {
-			get {
-				return this.countryCodeField;
-			}
-			set {
-				this.countryCodeField = value;
-			}
-		}
-
-		private string phoneNumberField;
-		public string phoneNumber {
-			get {
-				return this.phoneNumberField;
-			}
-			set {
-				this.phoneNumberField = value;
-			}
-		}
-
-		private string extensionField;
-		public string extension {
-			get {
-				return this.extensionField;
-			}
-			set {
-				this.extensionField = value;
-			}
-		}
-
-	}
-
-
 	/**
 	 * This specifies the list of parameters with every
 	 * request to the service.

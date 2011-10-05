@@ -35,14 +35,7 @@ namespace PayPal.UnitTest
             //TODO
         }
 
-        [Test]
-        [ExpectedException( typeof(ConnectionException) )]
-        public void makeRequestWithInvalidServiceName()
-        {
-            APIService service = new APIService("NoSuchService");
-            string request = "requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY";
-            string response = service.makeRequest("SendInvoice", request, "jb-us-seller_api1.paypal.com", null, null);
-        }
+        
 
 
     }

@@ -33,16 +33,16 @@ namespace PayPal.UnitTest
             errorResponse.Add("error(0).severity", "Error");
             errorResponse.Add("error(0).category", "Application");
             errorResponse.Add("error(0).message", "Invalid+request+parameter%3A+shippingTaxName+cannot+be+null");
-            errorResponse.Add("error(0).parameter(0).value", "shippingTaxName");
-            errorResponse.Add("error(0).parameter(1).value", "null");
+            errorResponse.Add("error(0).parameter(0).name", "shippingTaxName");
+            errorResponse.Add("error(0).parameter(1).name", "null");
             errorResponse.Add("error(1).errorId", "580022");
             errorResponse.Add("error(1).domain", "PLATFORM");
             errorResponse.Add("error(1).subdomain", "Application");
             errorResponse.Add("error(1).severity", "Error");
             errorResponse.Add("error(1).category", "Application");
             errorResponse.Add("error(1).message", "Invalid+request+parameter%3A+taxName+cannot+be+null");
-            errorResponse.Add("error(1).parameter(0)", "taxName");
-            errorResponse.Add("error(1).parameter(1)", "null");
+            errorResponse.Add("error(1).parameter(0).name", "taxName");
+            errorResponse.Add("error(1).parameter(1).name", "null");
 
             validCreateInvoiceResponse = new Dictionary<string, string>();
             validCreateInvoiceResponse.Add("responseEnvelope.timestamp", "2011-05-30T03:31:18.988-07:00");
@@ -170,7 +170,7 @@ namespace PayPal.UnitTest
         public void errorParameterConstruction()
         {
             ErrorParameter errParam = new ErrorParameter(this.errorResponse, "error(0).parameter(0).");
-            Assert.AreEqual("shippingTaxName", errParam.value);
+            Assert.AreEqual("shippingTaxName", errParam.name);
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace PayPal.UnitTest
             Assert.AreEqual(ErrorSeverity.ERROR, err.severity);
             Assert.AreEqual(ErrorCategory.APPLICATION, err.category);
             Assert.AreEqual(2, err.parameter.Count);
-            Assert.AreEqual("shippingTaxName", err.parameter[0].value);
+            Assert.AreEqual("shippingTaxName", err.parameter[0].name);
             Console.WriteLine(err.severity);
             err = new ErrorData(this.errorResponse, "xyz");
             Assert.AreEqual(null, err.errorId);

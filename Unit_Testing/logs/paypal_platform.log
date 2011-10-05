@@ -2254,3 +2254,703 @@ PayPal.Exception.MissingCredentialException: Missing credentials for jb-us-selle
 2011-10-04 17:46:33,125 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://api-3t.sandbox.paypal.com/2.0
 2011-10-04 17:46:33,125 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for jb-us-seller_api1.paypal.com
 PayPal.Exception.MissingCredentialException: Missing credentials for jb-us-seller_api1.paypal.com
+2011-10-04 20:12:48,002 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/
+2011-10-04 20:12:48,268 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-04 20:12:48,268 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-04 20:12:48,268 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-04 20:12:48,268 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-04 20:12:48,424 [TestRunnerThread] DEBUG PayPal.APIService [(null)] <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ebay:api:PayPalAPI" xmlns:ebl="urn:ebay:apis:eBLBaseComponents" xmlns:cc="urn:ebay:apis:CoreComponentTypes" xmlns:ed="urn:ebay:apis:EnhancedDataTypes"><soapenv:Header><urn:RequesterCredentials><ebl:Credentials><ebl:Username>jb-us-seller_api1.paypal.com</ebl:Username><ebl:Password>WX4WTU3S8MY44S7F</ebl:Password><ebl:Signature>AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy</ebl:Signature></ebl:Credentials></urn:RequesterCredentials></soapenv:Header><soapenv:Body>requestEnvelope.errorLanguage=en_US&(scope)=INVOICING&callback=http%3a%2f%2flocalhost%3a2657%2fRequestPermissions.aspx&</soapenv:Body></soapenv:Envelope>
+2011-10-04 20:13:50,956 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Permissions/RequestPermissions
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-04 20:13:51,175 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-04 20:13:51,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.errorLanguage=en_US&(scope)=INVOICING&callback=http%3a%2f%2flocalhost%3a2657%2fRequestPermissions.aspx&
+2011-10-04 20:13:52,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-04 20:13:52,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T07%3A43%3A52.163-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=f83b36b740f3a&responseEnvelope.build=1860631&error(0).errorId=500000&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Internal+Error
+2011-10-04 20:15:57,176 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Permissions/RequestPermissions
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-04 20:15:57,364 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-04 20:15:57,489 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.errorLanguage=en_US&(scope)=INVOICING&callback=http%3a%2f%2flocalhost%3a2657%2fRequestPermissions.aspx&
+2011-10-04 20:15:58,380 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-04 20:15:58,380 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T07%3A45%3A58.227-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=9bd6afcc5f45c&responseEnvelope.build=1860631&error(0).errorId=500000&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Internal+Error
+2011-10-04 20:16:41,818 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Permissions/RequestPermissions
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-04 20:16:42,083 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-04 20:16:42,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.errorLanguage=en_US&(scope)=INVOICING&callback=http%3a%2f%2flocalhost%3a2657%2fRequestPermissions.aspx&
+2011-10-04 20:16:43,036 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-04 20:16:43,036 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T07%3A46%3A42.893-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=2bd2752d6acc1&responseEnvelope.build=1860631&error(0).errorId=500000&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Internal+Error
+2011-10-05 09:51:30,039 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:30,289 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:30,445 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A30.616-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=63cc19c909bc8&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/NoSuchService/SendInvoice
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:31,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:31,367 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:31,383 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:51:31,773 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:31,773 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A31.278-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=a00ee28e09e91&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:51:31,820 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,851 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,851 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 09:51:31,851 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: TKVqTBYeoWAwok9H/DVXrKEJBJ8=
+2011-10-05 09:51:31,851 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=TKVqTBYeoWAwok9H/DVXrKEJBJ8=,timestamp=1317788492
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:31,867 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:51:32,461 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:32,461 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A31.687-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=6ac7e9220a02f&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:51:32,523 [TestRunnerThread] DEBUG PayPal.Manager.ConnectionManager [(null)] Invalid URI: The format of the URI could not be determined.
+2011-10-05 09:51:32,523 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.ConfigException [(null)] Invalid URI Not a url
+PayPal.Exception.ConfigException: Invalid URI Not a url
+2011-10-05 09:51:32,523 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller2_api1.paypal.com
+2011-10-05 09:51:32,523 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for i-do-not-exist_api1.paypal.com
+PayPal.Exception.MissingCredentialException: Missing credentials for i-do-not-exist_api1.paypal.com
+2011-10-05 09:51:32,539 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateAndSendInvoice
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:32,695 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A33.827-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=369d17ea0a366&responseEnvelope.build=2119392&invoiceID=INV2-4F7L-JGZX-6954-VCZD&invoiceNumber=0567&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-4F7L-JGZX-6954-VCZD
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:34,320 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:51:34,742 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:34,742 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A34.258-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=c029d7dd0a9cd&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:34,758 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:51:35,898 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:35,898 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A35.419-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=5833f52c0ab7e&responseEnvelope.build=2119392&invoiceID=INV2-JTGL-GFHT-SHP3-GJEL&invoiceNumber=0568&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-JTGL-GFHT-SHP3-GJEL
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:35,914 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A36.526-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=5b41e3b10b008&responseEnvelope.build=2119392&invoiceID=INV2-FK6E-M5LL-HSXF-C752&invoiceNumber=0569&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-FK6E-M5LL-HSXF-C752
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:51:37,008 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-FK6E-M5LL-HSXF-C752&
+2011-10-05 09:51:37,852 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:51:37,852 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A21%3A37.357-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=681373910b44f&responseEnvelope.build=2119392&invoiceID=INV2-FK6E-M5LL-HSXF-C752&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-FK6E-M5LL-HSXF-C752
+2011-10-05 09:53:50,619 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:50,869 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:51,025 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:53:51,713 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:51,713 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A51.186-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=5e952fea2c0d9&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/NoSuchService/SendInvoice
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:51,728 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:51,947 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:51,963 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:53:52,385 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:52,385 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A51.889-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=7e8b293e2c3b2&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:53:52,478 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:52,494 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:52,494 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 09:53:52,510 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: 6aFzVx8CkZeGarHrK2U55dNJRgQ=
+2011-10-05 09:53:52,510 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=6aFzVx8CkZeGarHrK2U55dNJRgQ=,timestamp=1317788632
+2011-10-05 09:53:52,510 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:52,525 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 09:53:52,822 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:52,822 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A52.332-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=ce8a460b2c5a1&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 09:53:52,885 [TestRunnerThread] DEBUG PayPal.Manager.ConnectionManager [(null)] Invalid URI: The format of the URI could not be determined.
+2011-10-05 09:53:52,885 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.ConfigException [(null)] Invalid URI Not a url
+PayPal.Exception.ConfigException: Invalid URI Not a url
+2011-10-05 09:53:52,900 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller2_api1.paypal.com
+2011-10-05 09:53:52,916 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for i-do-not-exist_api1.paypal.com
+PayPal.Exception.MissingCredentialException: Missing credentials for i-do-not-exist_api1.paypal.com
+2011-10-05 09:53:52,916 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateAndSendInvoice
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:53,103 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A54.201-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=9a4d25df2c7f1&responseEnvelope.build=2119392&invoiceID=INV2-NJ5K-R7EH-84TU-JD9A&invoiceNumber=0570&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-NJ5K-R7EH-84TU-JD9A
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:54,697 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:53:55,119 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:55,119 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A54.629-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=df275cd62ce2c&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:55,150 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:53:56,275 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:56,275 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A55.789-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=eb26ac232cfe8&responseEnvelope.build=2119392&invoiceID=INV2-DR39-LXP5-LFEA-25A4&invoiceNumber=0571&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-DR39-LXP5-LFEA-25A4
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:56,291 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A56.971-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=829ad9e62d45d&responseEnvelope.build=2119392&invoiceID=INV2-PQBF-EAC2-CQYT-BARQ&invoiceNumber=0572&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-PQBF-EAC2-CQYT-BARQ
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 09:53:57,572 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PQBF-EAC2-CQYT-BARQ&
+2011-10-05 09:53:58,463 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 09:53:58,463 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A23%3A57.979-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=254d023d2d970&responseEnvelope.build=2119392&invoiceID=INV2-PQBF-EAC2-CQYT-BARQ&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-PQBF-EAC2-CQYT-BARQ
+2011-10-05 10:05:17,112 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:17,331 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:17,518 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:05:18,221 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:18,221 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A17.678-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=55bfac75d3a89&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/NoSuchService/SendInvoice
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:18,237 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:18,471 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:18,487 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:05:18,925 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:18,925 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A18.409-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=dbf595a5d3d54&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:05:18,971 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,987 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:18,987 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: Yh6cef5tzegqf5WsBfhaM/rAHIQ=
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=Yh6cef5tzegqf5WsBfhaM/rAHIQ=,timestamp=1317789319
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:19,003 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:05:19,362 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:19,362 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A18.856-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=8ede1279d3f1a&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:05:19,440 [TestRunnerThread] DEBUG PayPal.Manager.ConnectionManager [(null)] Invalid URI: The format of the URI could not be determined.
+2011-10-05 10:05:19,440 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.ConfigException [(null)] Invalid URI Not a url
+PayPal.Exception.ConfigException: Invalid URI Not a url
+2011-10-05 10:05:19,456 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller2_api1.paypal.com
+2011-10-05 10:05:19,471 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for i-do-not-exist_api1.paypal.com
+PayPal.Exception.MissingCredentialException: Missing credentials for i-do-not-exist_api1.paypal.com
+2011-10-05 10:05:19,471 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateAndSendInvoice
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:19,675 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:05:21,300 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:21,300 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A20.797-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=931f8dc6d41b0&responseEnvelope.build=2119392&invoiceID=INV2-H3WV-UY8H-T8D2-U73F&invoiceNumber=0573&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-H3WV-UY8H-T8D2-U73F
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:21,315 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:05:21,737 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:21,737 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A21.234-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=433d6eaad4822&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:21,753 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:05:22,831 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:22,831 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A22.325-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=10c05ffdd49db&responseEnvelope.build=2119392&invoiceID=INV2-DXRW-5G3E-7H8A-7KUB&invoiceNumber=0574&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-DXRW-5G3E-7H8A-7KUB
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:22,846 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A23.404-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=dcb8c8ecd4e16&responseEnvelope.build=2119392&invoiceID=INV2-EUAV-KVFM-6ED8-5CD4&invoiceNumber=0575&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-EUAV-KVFM-6ED8-5CD4
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:05:23,909 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-EUAV-KVFM-6ED8-5CD4&
+2011-10-05 10:05:24,784 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:05:24,784 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A35%3A24.273-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=cd3e723fd5244&responseEnvelope.build=2119392&invoiceID=INV2-EUAV-KVFM-6ED8-5CD4&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-EUAV-KVFM-6ED8-5CD4
+2011-10-05 10:07:53,895 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:07:53,927 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 10:07:53,942 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: /UeJ+xsedSucZprSJvusuTwfSd8=
+2011-10-05 10:07:53,942 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=/UeJ+xsedSucZprSJvusuTwfSd8=,timestamp=1317789474
+2011-10-05 10:09:34,537 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:34,787 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:34,959 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:09:35,615 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:35,615 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A35.057-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=0053888e12722&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/NoSuchService/SendInvoice
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:35,631 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:35,850 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:35,865 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:09:36,350 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:36,350 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A35.834-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=a7fe4101129d0&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:09:36,397 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:36,412 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:36,412 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: sKAiTRGvGvcnMavz5JvrTtYA7jw=
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=sKAiTRGvGvcnMavz5JvrTtYA7jw=,timestamp=1317789576
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:36,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:09:36,740 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:36,740 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A36.235-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=27ce912f12bc1&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:09:36,818 [TestRunnerThread] DEBUG PayPal.Manager.ConnectionManager [(null)] Invalid URI: The format of the URI could not be determined.
+2011-10-05 10:09:36,818 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.ConfigException [(null)] Invalid URI Not a url
+PayPal.Exception.ConfigException: Invalid URI Not a url
+2011-10-05 10:09:36,834 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for i-do-not-exist_api1.paypal.com
+PayPal.Exception.MissingCredentialException: Missing credentials for i-do-not-exist_api1.paypal.com
+2011-10-05 10:09:36,850 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateAndSendInvoice
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:37,053 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A38.133-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=87351a8a12e2a&responseEnvelope.build=2119392&invoiceID=INV2-GESE-YFN8-3NXC-P36X&invoiceNumber=0576&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-GESE-YFN8-3NXC-P36X
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:38,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:09:39,131 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:39,131 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A38.610-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=38b6d0241346f&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:39,147 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:09:40,225 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:40,225 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A39.719-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=523588421365f&responseEnvelope.build=2119392&invoiceID=INV2-8RDD-VCJY-YUMB-TUJ2&invoiceNumber=0577&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-8RDD-VCJY-YUMB-TUJ2
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:40,240 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A40.921-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=b130a13913aa8&responseEnvelope.build=2119392&invoiceID=INV2-QG3G-NDAM-PYUH-MN44&invoiceNumber=0578&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-QG3G-NDAM-PYUH-MN44
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:41,428 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-QG3G-NDAM-PYUH-MN44&
+2011-10-05 10:09:42,272 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:42,272 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A41.762-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=3cbb7b0b13f4e&responseEnvelope.build=2119392&invoiceID=INV2-QG3G-NDAM-PYUH-MN44&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-QG3G-NDAM-PYUH-MN44
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:45,647 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:09:46,069 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:46,069 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A45.561-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=b93daf3914fc8&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:54,381 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:54,412 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:09:54,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:09:54,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A39%3A54.326-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=4caf1a3b17240&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/NoSuchService/SendInvoice
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:09:55,834 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:10:58,007 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:10:58,241 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:10:58,366 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:10:59,070 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:10:59,070 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A40%3A58.521-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=3e07437926df9&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:10:59,101 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:10:59,460 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:10:59,460 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A40%3A58.945-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=9406bd9226fa4&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:10:59,491 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,523 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,523 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] token = token tokenSecret=tokenSecret uri=http://svcs.sandbox.paypal.com/Service
+2011-10-05 10:10:59,523 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Permissions signature: FvdjkzDFvh27x3+ZUR2T9puDuEQ=
+2011-10-05 10:10:59,523 [TestRunnerThread] DEBUG PayPal.Manager.AuthenticationHandler [(null)] Authorization string: token=token,signature=FvdjkzDFvh27x3+ZUR2T9puDuEQ=,timestamp=1317789660
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:10:59,538 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY
+2011-10-05 10:10:59,851 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:10:59,851 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A40%3A59.329-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=f0c5272a2715c&responseEnvelope.build=2119392&error(0).errorId=580047&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invoice+does+not+exist
+2011-10-05 10:10:59,913 [TestRunnerThread] DEBUG PayPal.Manager.ConnectionManager [(null)] Invalid URI: The format of the URI could not be determined.
+2011-10-05 10:10:59,913 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.ConfigException [(null)] Invalid URI Not a url
+PayPal.Exception.ConfigException: Invalid URI Not a url
+2011-10-05 10:10:59,929 [TestRunnerThread] ERROR com.paypal.sdk.exceptions.MissingCredentialException [(null)] Missing credentials for i-do-not-exist_api1.paypal.com
+PayPal.Exception.MissingCredentialException: Missing credentials for i-do-not-exist_api1.paypal.com
+2011-10-05 10:10:59,945 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateAndSendInvoice
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:11:00,085 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:11:01,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:11:01,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A41%3A01.202-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=30c66bad27389&responseEnvelope.build=2119392&invoiceID=INV2-5BWQ-LCL3-9TGQ-7FG4&invoiceNumber=0579&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-5BWQ-LCL3-9TGQ-7FG4
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:11:01,726 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller2%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:11:02,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:11:02,148 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A41%3A01.632-07%3A00&responseEnvelope.ack=Failure&responseEnvelope.correlationId=6c7e4a01279f0&responseEnvelope.build=2119392&error(0).errorId=570054&error(0).domain=PLATFORM&error(0).subdomain=Application&error(0).severity=Error&error(0).category=Application&error(0).message=Invalid+token
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:11:02,257 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:11:03,476 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:11:03,476 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A41%3A02.968-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=53fbe99427c07&responseEnvelope.build=2119392&invoiceID=INV2-LKA7-6VCY-X3PZ-53EB&invoiceNumber=0580&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-LKA7-6VCY-X3PZ-53EB
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/CreateInvoice
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:11:03,491 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoice.merchantEmail=jb-us-seller%40paypal.com&invoice.payerEmail=jbui-us-personal1%40paypal.com&invoice.itemList.item(0).name=product1&invoice.itemList.item(0).quantity=10&invoice.itemList.item(0).unitPrice=2&invoice.currencyCode=USD&invoice.paymentTerms=DueOnReceipt&
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A41%3A04.197-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=d6a16d13280d6&responseEnvelope.build=2119392&invoiceID=INV2-Z3PA-LHPR-XS6N-6EWS&invoiceNumber=0581&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-Z3PA-LHPR-XS6N-6EWS
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Connecting to https://svcs.sandbox.paypal.com/Invoice/SendInvoice
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.Manager.CredentialManager [(null)] Returning cached credentials for jb-us-seller_api1.paypal.com
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-USERID:jb-us-seller_api1.paypal.com
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-PASSWORD:WX4WTU3S8MY44S7F
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-SECURITY-SIGNATURE:AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-APPLICATION-ID:APP-80W284485P519543T
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-SOURCE:PayPal_Invoicing_Dotnet_SDK
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-REQUEST-DATA-FORMAT:NV
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-RESPONSE-DATA-FORMAT:NV
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] X-PAYPAL-DEVICE-IPADDRESS:127.0.0.1
+2011-10-05 10:11:04,710 [TestRunnerThread] DEBUG PayPal.APIService [(null)] requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-Z3PA-LHPR-XS6N-6EWS&
+2011-10-05 10:11:05,585 [TestRunnerThread] DEBUG PayPal.APIService [(null)] Service response
+2011-10-05 10:11:05,585 [TestRunnerThread] DEBUG PayPal.APIService [(null)] responseEnvelope.timestamp=2011-10-04T21%3A41%3A05.067-07%3A00&responseEnvelope.ack=Success&responseEnvelope.correlationId=5df318e72859b&responseEnvelope.build=2119392&invoiceID=INV2-Z3PA-LHPR-XS6N-6EWS&invoiceURL=https%3A%2F%2Fwww.sandbox3.paypal.com%2Fus%2Fcgi-bin%2F%3Fcmd%3D_inv-details%26id%3DINV2-Z3PA-LHPR-XS6N-6EWS

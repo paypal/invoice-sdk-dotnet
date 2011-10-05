@@ -726,7 +726,7 @@ return null;
 			}
 			for (int i = 0; i < this.scope.Count; i++) {
 				if (this.scope[i] != null) {
-					sb.Append(prefix).Append('(').Append("scope").Append(')').Append('=').Append(HttpUtility.UrlEncode(this.scope[i], BaseConstants.ENCODING_FORMAT)).Append('&');
+					sb.Append(prefix).Append("scope").Append('(').Append(i).Append(')').Append('=').Append(HttpUtility.UrlEncode(this.scope[i], BaseConstants.ENCODING_FORMAT)).Append('&');
 				}
 			}
 			if (this.callback != null) {

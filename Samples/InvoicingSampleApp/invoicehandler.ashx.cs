@@ -211,7 +211,7 @@ namespace InvoicingSampleApp
             string returnURL = url + "/RequestPermissions.aspx";
             //string returnURL = "http://localhost:2657/RequestPermissions.aspx";
             rp.callback = returnURL;
-            rp.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope("en_US");
+            //rp.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope("en_US");
             PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
 
             try

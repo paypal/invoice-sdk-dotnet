@@ -12,10 +12,10 @@ C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoici
 C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.dll
 C:\Documents and Settings\lvairamani\Desktop\invoicing-dotnet-sdk\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.pdb
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.dll
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.pdb
 C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\bin\Debug\PayPal_Invoicing_SDK.dll
 C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\bin\Debug\PayPal_Invoicing_SDK.pdb
 C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\bin\Debug\log4net.dll
 C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\bin\Debug\log4net.xml
+C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.dll
+C:\Documents and Settings\lvairamani\Desktop\SDKs\Invoicing\PayPal_Invoicing_SDK\obj\Debug\PayPal_Invoicing_SDK.pdb
