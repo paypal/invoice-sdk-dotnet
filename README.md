@@ -17,7 +17,7 @@ To use the SDK,
 
  * Copy the SDK DLL file into your project and add a reference.
  * Create a service wrapper object
- * Create a request object as per your project's needs. All the API request and response classes are available in InvoiceModel.cs
+ * Create a request object as per your project's needs. All the API request and response classes are available in InvoiceStubs.cs
  * Invoke the appropriate method on the request object.
 
 
