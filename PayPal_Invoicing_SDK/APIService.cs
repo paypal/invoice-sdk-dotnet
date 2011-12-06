@@ -77,7 +77,8 @@ namespace PayPal
                 requestPayload = authHandler.appendSoapHeaders(requestPayload, accessToken, accessTokenSecret);
             else
             {
-                httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE, BaseConstants.XPAYPALSOURCE);
+                httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE, 
+                    BaseConstants.SDK_NAME + "-" + BaseConstants.SDK_VERSION);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTDATAFORMAT, BaseConstants.RequestDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALRESPONSEDATAFORMAT, BaseConstants.ResponseDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALDEVICEIPADDRESS, configMgr.GetProperty("IPAddress"));
