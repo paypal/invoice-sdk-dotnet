@@ -4,18 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Send Invoice test page</title>
+    <title>PayPal Invoicing SDK - SendInvoice Sample page</title>
+    <link rel="stylesheet" href="sdk.css" type="text/css" />
+    <script type="text/javascript" src="sdk.js"></script>    
 </head>
 <body>
-
+    <h2>SendInvoice API Sample page</h2>
     <form id="form1" runat="server" action="InvoiceHandler.ashx">
-    <div>
-    <table>
-    <tr><td>Invoice Id :<input type="text" name="invoiceId" value="" /></td></tr>
-    <tr><td><input type="submit" name="InvoiceBtn" value="SendInvoice"/></td></tr>
-    </table>
-    </div>
+        <div class="params">
+            <div class="param_name">InvoiceID * (Get Invoice ID via <a href='createinvoice.aspx'>CreateInvoice</a>)</div>
+	        <div class="param_value"><input type="text" name="invoiceId" value=""/></div>
+	        <!--#include file="permissions.inc"-->
+        </div>
+		<div class="submit">
+			<input type="submit" name="invoiceBtn" value="SendInvoice" /> <br />
+		</div>	                    
     </form>
-
+    <a href="Default.aspx">Home</a>
 </body>
 </html>

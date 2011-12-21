@@ -29,6 +29,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -46,6 +47,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cancelinvoice.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>cancelinvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cancelinvoice.aspx.designer.cs">
+      <DependentUpon>cancelinvoice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="createinvoice.aspx.cs">
       <DependentUpon>createinvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -60,8 +68,25 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="getinvoicedetails.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>getinvoicedetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="getinvoicedetails.aspx.designer.cs">
+      <DependentUpon>getinvoicedetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="invoicehandler.ashx.cs">
       <DependentUpon>invoicehandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="markinvoiceaspaid.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>markinvoiceaspaid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="markinvoiceaspaid.aspx.designer.cs">
+      <DependentUpon>markinvoiceaspaid.aspx</DependentUpon>
     </Compile>
     <Compile Include="objectdumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +97,13 @@
     <Compile Include="RequestPermissions.aspx.designer.cs">
       <DependentUpon>RequestPermissions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="searchinvoices.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>searchinvoices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="searchinvoices.aspx.designer.cs">
+      <DependentUpon>searchinvoices.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sendinvoice.aspx.cs">
       <DependentUpon>sendinvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,10 +111,27 @@
     <Compile Include="sendinvoice.aspx.designer.cs">
       <DependentUpon>sendinvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="updateinvoice.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>updateinvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="updateinvoice.aspx.designer.cs">
+      <DependentUpon>updateinvoice.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cancelinvoice.aspx" />
+    <Content Include="getinvoicedetails.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="invoicehandler.ashx" />
+    <Content Include="lib\log4net.dll" />
+    <Content Include="markinvoiceaspaid.aspx" />
+    <Content Include="permissions.inc" />
     <Content Include="RequestPermissions.aspx" />
+    <Content Include="sdk.css" />
+    <Content Include="sdk.js" />
+    <Content Include="searchinvoices.aspx" />
+    <Content Include="updateinvoice.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PayPal_Invoicing_SDK\PayPal_Invoicing_SDK.csproj">

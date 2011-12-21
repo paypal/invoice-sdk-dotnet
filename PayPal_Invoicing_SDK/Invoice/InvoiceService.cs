@@ -11,7 +11,7 @@ namespace PayPal.Invoice {
 	using PayPal.Manager;
 	using PayPal.Invoice.Model;
 
-	public partial class InvoiceService :BasePayPalService{
+	public partial class InvoiceService : BasePayPalService {
 
 		private static string serviceName = "Invoice";
 
@@ -22,10 +22,8 @@ namespace PayPal.Invoice {
 		 *
 		 */
 		public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername) 
-		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
-
+		{			
+			string resp = call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new CreateInvoiceResponse(util.parseNVPString(resp), "");
 		}
@@ -39,9 +37,7 @@ namespace PayPal.Invoice {
 		 */
 		public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
-
+			string resp = call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new SendInvoiceResponse(util.parseNVPString(resp), "");
 		}
@@ -55,9 +51,7 @@ namespace PayPal.Invoice {
 		 */
 		public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
-
+			string resp = call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new CreateAndSendInvoiceResponse(util.parseNVPString(resp), "");
 		}
@@ -71,9 +65,7 @@ namespace PayPal.Invoice {
 		 */
 		public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
-
+			string resp = call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new UpdateInvoiceResponse(util.parseNVPString(resp), "");
 		}
@@ -87,9 +79,7 @@ namespace PayPal.Invoice {
 		 */
 		public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
-
+			string resp = call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new GetInvoiceDetailsResponse(util.parseNVPString(resp), "");
 		}
@@ -103,9 +93,7 @@ namespace PayPal.Invoice {
 		 */
 		public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
-
+			string resp = call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new CancelInvoiceResponse(util.parseNVPString(resp), "");
 		}
@@ -119,9 +107,7 @@ namespace PayPal.Invoice {
 		 */
 		public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
-
+			string resp = call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new SearchInvoicesResponse(util.parseNVPString(resp), "");
 		}
@@ -135,9 +121,7 @@ namespace PayPal.Invoice {
 		 */
 		public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
-
+			string resp = call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new MarkInvoiceAsPaidResponse(util.parseNVPString(resp), "");
 		}

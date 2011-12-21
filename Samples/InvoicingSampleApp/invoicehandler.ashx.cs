@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web;
 
-using PayPal.Util;
 using PayPal;
-using PayPal.Invoice;
-using PayPal.Invoice.Model;
-
 using PayPal.Authentication;
 using PayPal.Exception;
-using System.Configuration;
+using PayPal.Invoice;
+using PayPal.Invoice.Model;
+using PayPal.Util;
+
 namespace InvoicingSampleApp
 {
     /// <summary>
@@ -18,28 +18,56 @@ namespace InvoicingSampleApp
     public class InvoiceHandler : IHttpHandler
     {
 
+        private static string ERROR_LANGUAGE = "en_US";
+
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
+            context.Response.ContentType = "text/html";
 
             String strCall = context.Request.Params["InvoiceBtn"];
 
-            if(strCall.Equals("CreateInvoice")){
+            if(strCall.Equals("CreateInvoice")) 
+            {
                 CreateInvoice(context);
-            }else if(strCall.Equals("CreateAndSendInvoice")){
+            }
+            else if(strCall.Equals("CreateAndSendInvoice")) 
+            {
                 CreateAndSendInvoice(context);
-            }else if(strCall.Equals("SendInvoice")){
+            }
+            else if(strCall.Equals("SendInvoice")) 
+            {
                 SendInvoice(context);
-            }else if(strCall.Equals("RequestPermission")){
+            }
+            else if (strCall.Equals("GetInvoiceDetails")) 
+            {
+                GetInvoiceDetails(context);
+            }
+            else if (strCall.Equals("MarkInvoiceAsPaid"))
+            {
+                MarkInvoiceAsPaid(context);
+            }
+            else if (strCall.Equals("CancelInvoice"))
+            {
+                CancelInvoice(context);
+            }
+            else if (strCall.Equals("UpdateInvoice"))
+            {
+                UpdateInvoice(context);
+            }
+            else if (strCall.Equals("SearchInvoices"))
+            {
+                SearchInvoices(context);
+            }
+            else if (strCall.Equals("RequestPermission"))
+            {
                 RequestPermissions(context);
-            }else if(strCall.Equals("GetAccessToken")){
+            } 
+            else if(strCall.Equals("GetAccessToken")) 
+            {
                 GetAccessToken(context);
-            
-                                
             }
 
         }
-
         public bool IsReusable
         {
             get
@@ -48,6 +76,16 @@ namespace InvoicingSampleApp
             }
         }
 
+        private InvoiceService getService(HttpContext context)
+        {
+            InvoiceService service = new InvoiceService();
+            if (context.Request.Params["authentication"] != null)
+            {
+                service.setAccessToken(context.Request.Params["accessToken"]);
+                service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
+            }
+            return service;
+        }
 
         private void CreateAndSendInvoice(HttpContext context)
         {
@@ -64,7 +102,7 @@ namespace InvoicingSampleApp
             String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateAndSendInvoiceRequest cr = new CreateAndSendInvoiceRequest();
-            cr.requestEnvelope = new RequestEnvelope("en_US");
+            cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
 
             cr.invoice = new InvoiceType();
             cr.invoice.currencyCode = currencyCode;
@@ -87,14 +125,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                InvoiceService service = new InvoiceService();
-
-                if (context.Request.Params["authentication"] != null)
-                {
-                    service.setAccessToken(context.Request.Params["accessToken"]);
-                    service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
-
-                }
+                InvoiceService service = getService(context);
                 cir = service.CreateAndSendInvoice(cr);
                 context.Response.Write("<html><body><textarea rows=30 cols=80>");
                 ObjectDumper.Write(cir, 5, context.Response.Output);
@@ -113,20 +144,13 @@ namespace InvoicingSampleApp
             
             SendInvoiceRequest sr = new SendInvoiceRequest();
             sr.invoiceID = invoiceId;
-            sr.requestEnvelope = new RequestEnvelope("en_US");
+            sr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
             
             SendInvoiceResponse sir = null;
 
             try
             {
-                InvoiceService service = new InvoiceService();
-
-                if (context.Request.Params["authentication"] != null)
-                {
-                    service.setAccessToken(context.Request.Params["accessToken"]);
-                    service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
-
-                }
+                InvoiceService service = getService(context);
                 sir = service.SendInvoice(sr);
                 context.Response.Write("<html><body><textarea rows=30 cols=80>");
                 ObjectDumper.Write(sir, 5, context.Response.Output);
@@ -154,7 +178,7 @@ namespace InvoicingSampleApp
             String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateInvoiceRequest cr = new CreateInvoiceRequest();
-            cr.requestEnvelope = new RequestEnvelope("en_US");
+            cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
 
 
             cr.invoice = new InvoiceType();
@@ -165,31 +189,19 @@ namespace InvoicingSampleApp
 
             cr.invoice.itemList = new InvoiceItemListType();
             cr.invoice.itemList.item = new List<InvoiceItemType>();
-            cr.invoice.itemList.item.Add(new InvoiceItemType(
-                        item_name1,
-                        decimal.Parse(item_quantity1),
-                        decimal.Parse(item_unitPrice1)));
-            cr.invoice.itemList.item.Add(new InvoiceItemType(
-                        item_name2,
-                        decimal.Parse(item_quantity2),
-                        decimal.Parse(item_unitPrice2)));
+            cr.invoice.itemList.item.Add(
+                new InvoiceItemType(item_name1, decimal.Parse(item_quantity1), decimal.Parse(item_unitPrice1)));
+            cr.invoice.itemList.item.Add(
+                new InvoiceItemType(item_name2, decimal.Parse(item_quantity2), decimal.Parse(item_unitPrice2)));
             CreateInvoiceResponse cir = null;
 
             try
             {
-                InvoiceService service = new InvoiceService();
-                
-                if(context.Request.Params["authentication"]!=null)
-                {
-                    service.setAccessToken(context.Request.Params["accessToken"]);
-                    service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
-                    
-                }
+                InvoiceService service = getService(context);
                 cir = service.CreateInvoice(cr);
                 context.Response.Write("<html><body><textarea rows=30 cols=80>");
                 ObjectDumper.Write(cir, 5, context.Response.Output);
                 context.Response.Write("</textarea></body></html>");
-
             }
             catch (System.Exception e)
             {
@@ -197,7 +209,218 @@ namespace InvoicingSampleApp
             }
         }
 
+        /// <summary>
+        /// API call example for GetInvoiceDetails
+        /// </summary>
+        /// <param name="context"></param>
+        private void GetInvoiceDetails(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            GetInvoiceDetailsRequest request =
+                new GetInvoiceDetailsRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
+            // Create service object and make the API call
+            InvoiceService service = getService(context);
+            GetInvoiceDetailsResponse response = service.GetInvoiceDetails(request);
+
+            // Process response
+            context.Response.Write("<html><body><textarea rows=30 cols=80>");
+            ObjectDumper.Write(response, 5, context.Response.Output);
+            context.Response.Write("</textarea></body></html>");
+        }
+
+
+        /// <summary>
+        /// API call example for MarkInvoiceAsPaid
+        /// </summary>
+        /// <param name="context"></param>
+        private void MarkInvoiceAsPaid(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            String note = context.Request.Params["note"];
+            String paymentDate = context.Request.Params["paymentDate"];
+            String paymentMethod = context.Request.Params["paymentMethod"];
+            
+            OtherPaymentDetailsType paymentDetails = new OtherPaymentDetailsType();
+            if (note != "")
+            {
+                paymentDetails.note = note;
+            }
+            if (paymentDate != "")
+            {
+                paymentDetails.date = paymentDate;
+            }
+            if(paymentMethod != "") 
+            {
+                paymentDetails.method = 
+                    (PaymentMethodsType) Enum.Parse(typeof(PaymentMethodsType), paymentMethod);
+            }
+            MarkInvoiceAsPaidRequest request =
+                new MarkInvoiceAsPaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
+
+            // Create service object and make the API call
+            InvoiceService service = getService(context);
+            MarkInvoiceAsPaidResponse response = service.MarkInvoiceAsPaid(request);
+            
+            // Process response
+            context.Response.Write("<html><body><textarea rows=30 cols=80>");
+            ObjectDumper.Write(response, 5, context.Response.Output);
+            context.Response.Write("</textarea></body></html>");
+
+        }
+
+
+        /// <summary>
+        /// API call example for CancelInvoice
+        /// </summary>
+        /// <param name="context"></param>
+        private void CancelInvoice(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            CancelInvoiceRequest request = new CancelInvoiceRequest();
+            request.invoiceID = invoiceId;
+
+            // Create service object and make the API call
+            InvoiceService service = getService(context);
+            CancelInvoiceResponse response = service.CancelInvoice(request);
+
+            // Process response
+            context.Response.Write("<html><body><textarea rows=30 cols=80>");
+            ObjectDumper.Write(response, 5, context.Response.Output);
+            context.Response.Write("</textarea></body></html>");
+        }
+
+
+        /// <summary>
+        /// API call example for UpdateInvoice
+        /// </summary>
+        /// <param name="context"></param>
+        private void UpdateInvoice(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            UpdateInvoiceRequest request = new UpdateInvoiceRequest();
+
+            // Create service object and make the API call
+            InvoiceService service = getService(context);
+            UpdateInvoiceResponse response = service.UpdateInvoice(request);
+
+            // Process response
+            context.Response.Write("<html><body><textarea rows=30 cols=80>");
+            ObjectDumper.Write(response, 5, context.Response.Output);
+            context.Response.Write("</textarea></body></html>");
+        }
+
+
+        /// <summary>
+        /// API call example for SearchInvoices
+        /// </summary>
+        /// <param name="context"></param>
+        private void SearchInvoices(HttpContext context)
+        {
+            // Collect input params            
+            String merchantEmail = context.Request.Params["merchantEmail"];
+            int page = Int32.Parse(context.Request.Params["page"]);
+            int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
+            SearchParametersType searchParams = new SearchParametersType();
+            SearchInvoicesRequest request = new SearchInvoicesRequest(
+                new RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
+            if (context.Request.Params["email"] != "")
+            {
+                searchParams.email = context.Request.Params["email"];
+            }
+            if (context.Request.Params["recipientName"] != "")
+            {
+                searchParams.recipientName = context.Request.Params["recipientName"];
+            }
+            if (context.Request.Params["businessName"] != "")
+            {
+                searchParams.businessName = context.Request.Params["businessName"];
+            }
+            if (context.Request.Params["invoiceNumber"] != "")
+            {
+                searchParams.invoiceNumber = context.Request.Params["invoiceNumber"];
+            }
+            if (context.Request.Params["status0"] != "")
+            {
+                // You can add upto 10 status to do a 'OR' search on multiple status types
+                searchParams.status.Add(
+                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status0"]));
+            }
+            if (context.Request.Params["status1"] != "")
+            {
+                // You can add upto 10 status to do a 'OR' search on multiple status types
+                searchParams.status.Add(
+                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status1"]));
+            }
+            if (context.Request.Params["status2"] != "")
+            {
+                // You can add upto 10 status to do a 'OR' search on multiple status types
+                searchParams.status.Add(
+                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status2"]));
+            }
+            if (context.Request.Params["lowerAmount"] != "")
+            {
+                searchParams.lowerAmount = decimal.Parse(context.Request.Params["lowerAmount"]);
+            }
+            if (context.Request.Params["upperAmount"] != "")
+            {
+                searchParams.upperAmount = decimal.Parse(context.Request.Params["upperAmount"]);
+            }
+            if (context.Request.Params["memo"] != "")
+            {
+                searchParams.memo = context.Request.Params["memo"];
+            }
+            if (context.Request.Params["currencyCode"] != "")
+            {
+                searchParams.currencyCode = context.Request.Params["currencyCode"];
+            }
+            if (context.Request.Params["origin"] != "")
+            {
+                searchParams.origin = (OriginType)
+                     Enum.Parse( typeof(OriginType),  context.Request.Params["origin"]);
+            }
+            if (context.Request.Params["invoiceDateStart"] != "" || context.Request.Params["invoiceDateEnd"] != "")
+            {
+                DateRangeType dateRange = new DateRangeType();
+                dateRange.startDate = context.Request.Params["invoiceDateStart"];
+                dateRange.endDate = context.Request.Params["invoiceDateEnd"];
+                searchParams.invoiceDate = dateRange;
+            }
+            if (context.Request.Params["dueDateStart"] != "" || context.Request.Params["dueDateEnd"] != "")
+            {
+                DateRangeType dateRange = new DateRangeType();
+                dateRange.startDate = context.Request.Params["dueDateStart"];
+                dateRange.endDate = context.Request.Params["dueDateEnd"];
+                searchParams.dueDate = dateRange;
+            }
+            if (context.Request.Params["paymentDateStart"] != "" || context.Request.Params["paymentDateEnd"] != "")
+            {
+                DateRangeType dateRange = new DateRangeType();
+                dateRange.startDate = context.Request.Params["paymentDateStart"];
+                dateRange.endDate = context.Request.Params["paymentDateEnd"];
+                searchParams.paymentDate = dateRange;
+            }
+            if (context.Request.Params["creationDateStart"] != "" || context.Request.Params["creationDateEnd"] != "")
+            {
+                DateRangeType dateRange = new DateRangeType();
+                dateRange.startDate = context.Request.Params["creationDateStart"];
+                dateRange.endDate = context.Request.Params["creationDateEnd"];
+                searchParams.creationDate = dateRange;
+            }            
+
+            // Create service object and make the API call
+            InvoiceService service = getService(context);
+            SearchInvoicesResponse response = service.SearchInvoices(request);
+
+            // Process response
+            context.Response.Write("<html><body><textarea rows=30 cols=80>");
+            ObjectDumper.Write(response, 5, context.Response.Output);
+            context.Response.Write("</textarea></body></html>");
+        }
 
         private void RequestPermissions(HttpContext context)
         {
@@ -208,25 +431,25 @@ namespace InvoicingSampleApp
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
-            string returnURL = url + "/RequestPermissions.aspx";
-            //string returnURL = "http://localhost:2657/RequestPermissions.aspx";
-            rp.callback = returnURL;
-            //rp.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope("en_US");
+            string returnURL = url + "/RequestPermissions.aspx";            
+            rp.callback = returnURL;            
             PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
 
             try
             {
                 PayPal.Permissions.PermissionsService service = new PayPal.Permissions.PermissionsService();                
                 rpr = service.RequestPermissions(rp);
-                context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(rpr, 5, context.Response.Output);               
-                context.Response.Write("</textarea></body></html>");                
+
 
                 string red = "<br>";
                 red = red + "<a href=";
                 red = red + ConfigurationManager.AppSettings["PAYPAL_REDIRECT_URL"] + "_grant-permission&request_token=" + rpr.token;
                 red = red + ">Redirect URL (Click to redirect)</a><br>";
                 context.Response.Write(red);
+
+                context.Response.Write("<html><body><textarea rows=30 cols=80>");
+                ObjectDumper.Write(rpr, 5, context.Response.Output);               
+                context.Response.Write("</textarea></body></html>");                
             }
             catch (System.Exception e)
             {
@@ -247,7 +470,7 @@ namespace InvoicingSampleApp
             gat.verifier = verifier;
 
 
-            gat.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope("en_US");
+            gat.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope(ERROR_LANGUAGE);
             PayPal.Permissions.Model.GetAccessTokenResponse gats = null;
 
             try

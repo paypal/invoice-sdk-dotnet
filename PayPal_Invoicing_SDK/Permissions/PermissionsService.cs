@@ -22,10 +22,8 @@ namespace PayPal.Permissions {
 		 *
 		 */
 		public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest RequestPermissionsRequest, string apiUsername) 
-		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("RequestPermissions", RequestPermissionsRequest.toNVPString(""), apiUsername);
-
+		{	
+			string resp = call("RequestPermissions", RequestPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new RequestPermissionsResponse(util.parseNVPString(resp), "");
 		}
@@ -39,9 +37,7 @@ namespace PayPal.Permissions {
 		 */
 		public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest GetAccessTokenRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetAccessToken", GetAccessTokenRequest.toNVPString(""), apiUsername);
-
+			string resp = call("GetAccessToken", GetAccessTokenRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new GetAccessTokenResponse(util.parseNVPString(resp), "");
 		}
@@ -55,9 +51,7 @@ namespace PayPal.Permissions {
 		 */
 		public GetPermissionsResponse GetPermissions(GetPermissionsRequest GetPermissionsRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetPermissions", GetPermissionsRequest.toNVPString(""), apiUsername);
-
+			string resp = call("GetPermissions", GetPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new GetPermissionsResponse(util.parseNVPString(resp), "");
 		}
@@ -71,9 +65,7 @@ namespace PayPal.Permissions {
 		 */
 		public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest CancelPermissionsRequest, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CancelPermissions", CancelPermissionsRequest.toNVPString(""), apiUsername);
-
+			string resp = call("CancelPermissions", CancelPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new CancelPermissionsResponse(util.parseNVPString(resp), "");
 		}

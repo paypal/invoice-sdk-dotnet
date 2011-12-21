@@ -1,0 +1,16 @@
+body
+{
+}
+#permissions 
+{
+	margin-top: 20px;
+	display: none;
+}
+#permissions td
+{	
+	padding: 10px 20px;
+}
+#permissions td.left
+{
+	border-right: solid 1px gray;
+}

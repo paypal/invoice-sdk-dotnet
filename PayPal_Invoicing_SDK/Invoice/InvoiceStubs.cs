@@ -3379,7 +3379,7 @@ return null;
 			}
 			for (int i = 0; i < this.status.Count; i++) {
 				if (this.status[i] != null) {
-				sb.Append(prefix).Append("status").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
+				sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
 				sb.Append('&');
 				}
 			}

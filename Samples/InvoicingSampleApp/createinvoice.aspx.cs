@@ -10,10 +10,7 @@ namespace InvoicingSampleApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["token"]!=null)
-            accessToken.Value=Request.QueryString["token"];
-            if (Request.QueryString["tokensecret"] != null)
-                tokenSecret.Value = Request.QueryString["tokensecret"];
+            
         }
     }
 }
