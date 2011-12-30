@@ -12,12 +12,12 @@ namespace InvoicingSampleApp {
     
     
     /// <summary>
-    /// RequestPermissions class.
+    /// GetAccessToken class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class RequestPermissions {
+    public partial class GetAccessToken {
         
         /// <summary>
         /// form1 control.
@@ -45,5 +45,14 @@ namespace InvoicingSampleApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtverification_code;
+        
+        /// <summary>
+        /// source control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden source;
     }
 }

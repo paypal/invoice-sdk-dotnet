@@ -111,8 +111,8 @@ namespace InvoicingSampleApp
             cr.invoice.paymentTerms = PaymentTermsType.DUEONRECEIPT;            
 
            
-           cr.invoice.itemList= new InvoiceItemListType();
-           cr.invoice.itemList.item = new List<InvoiceItemType>();
+            cr.invoice.itemList = new InvoiceItemListType();
+            cr.invoice.itemList.item = new List<InvoiceItemType>();
             cr.invoice.itemList.item.Add(new InvoiceItemType(
                         item_name1,
                         decimal.Parse(item_quantity1),
@@ -185,7 +185,8 @@ namespace InvoicingSampleApp
             cr.invoice.currencyCode = currencyCode;
             cr.invoice.merchantEmail = merchantEmail;
             cr.invoice.payerEmail = payerEmail;
-            cr.invoice.paymentTerms = PaymentTermsType.DUEONRECEIPT;
+            cr.invoice.paymentTerms = (PaymentTermsType) 
+                Enum.Parse( typeof(PaymentTermsType), paymentTerms);
 
             cr.invoice.itemList = new InvoiceItemListType();
             cr.invoice.itemList.item = new List<InvoiceItemType>();
@@ -302,7 +303,32 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             String invoiceId = context.Request.Params["invoiceId"];
-            UpdateInvoiceRequest request = new UpdateInvoiceRequest();
+            String merchantEmail = context.Request.Params["merchantEmail"];
+            String payerEmail = context.Request.Params["payerEmail"];
+            PaymentTermsType paymentTerms = (PaymentTermsType) Enum.Parse( 
+                    typeof(PaymentTermsType), context.Request.Params["paymentTerms"]);
+            String item_name1 = context.Request.Params["item_name1"];
+            String item_quantity1 = context.Request.Params["item_quantity1"];
+            String item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+            String item_name2 = context.Request.Params["item_name2"];
+            String item_quantity2 = context.Request.Params["item_quantity2"];
+            String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
+            String currencyCode = context.Request.Params["currencyCode"];
+
+            InvoiceItemListType itemList = new InvoiceItemListType();
+            itemList.item = new List<InvoiceItemType>();
+            itemList.item.Add(new InvoiceItemType(
+                        item_name1,
+                        decimal.Parse(item_quantity1),
+                        decimal.Parse(item_unitPrice1)));
+            itemList.item.Add(new InvoiceItemType(
+                        item_name2,
+                        decimal.Parse(item_quantity2),
+                        decimal.Parse(item_unitPrice2)));            
+            InvoiceType invoice = new InvoiceType(merchantEmail, payerEmail, itemList, 
+                currencyCode, paymentTerms);
+            UpdateInvoiceRequest request = new UpdateInvoiceRequest(
+                new RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
 
             // Create service object and make the API call
             InvoiceService service = getService(context);
@@ -422,16 +448,24 @@ namespace InvoicingSampleApp
             context.Response.Write("</textarea></body></html>");
         }
 
+        /// <summary>
+        /// Invokes the GetAccessToken API that requests third party permissions
+        /// from another PayPal user for the API caller
+        /// </summary>
+        /// <param name="context"></param>
         private void RequestPermissions(HttpContext context)
         {
-
+            // Restrict permissioning scope to "INVOICING"
+            // This will allow the API caller to invoke any invoicing related API
+            // on behalf of the permission granter
             String requestperm = "INVOICING";
             PayPal.Permissions.Model.RequestPermissionsRequest rp = new PayPal.Permissions.Model.RequestPermissionsRequest();           
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
-            string returnURL = url + "/RequestPermissions.aspx";            
+            string returnURL = url + "/GetAccessToken.aspx?source=" 
+                + context.Request.UrlReferrer.LocalPath;
             rp.callback = returnURL;            
             PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
 
@@ -441,11 +475,12 @@ namespace InvoicingSampleApp
                 rpr = service.RequestPermissions(rp);
 
 
-                string red = "<br>";
-                red = red + "<a href=";
-                red = red + ConfigurationManager.AppSettings["PAYPAL_REDIRECT_URL"] + "_grant-permission&request_token=" + rpr.token;
-                red = red + ">Redirect URL (Click to redirect)</a><br>";
-                context.Response.Write(red);
+                string ret = "<div class='overview'>Step 1) Invoke the RequestPermissions API and redirect third party to "
+                + "PayPal so that he may login and grant permissions to the API caller<br/></div>";
+                ret = ret + "<a href=";
+                ret = ret + ConfigurationManager.AppSettings["PAYPAL_REDIRECT_URL"] + "_grant-permission&request_token=" + rpr.token;
+                ret = ret + "> Redirect URL (Click to redirect) </a><br/><br/>";
+                context.Response.Write(ret);
 
                 context.Response.Write("<html><body><textarea rows=30 cols=80>");
                 ObjectDumper.Write(rpr, 5, context.Response.Output);               
@@ -460,29 +495,22 @@ namespace InvoicingSampleApp
 
         private void GetAccessToken(HttpContext context)
         {
-            
-            PayPal.Permissions.Model.GetAccessTokenRequest gat = new PayPal.Permissions.Model.GetAccessTokenRequest();
-
             String token = context.Request.Params["txtrequest_token"];
             String verifier = context.Request.Params["txtverification_code"];
+            String source = context.Request.Params["source"];
 
+            PayPal.Permissions.Model.GetAccessTokenRequest gat = 
+                new PayPal.Permissions.Model.GetAccessTokenRequest();
             gat.token = token;
             gat.verifier = verifier;
-
-
             gat.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope(ERROR_LANGUAGE);
             PayPal.Permissions.Model.GetAccessTokenResponse gats = null;
 
             try
             {
                 PayPal.Permissions.PermissionsService service = new PayPal.Permissions.PermissionsService();
-                gats = service.GetAccessToken(gat);                
-                context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(gats, 5, context.Response.Output);
-                context.Response.Write("</textarea></body></html>");
-
-                context.Response.Redirect("createinvoice.aspx?token=" + gats.token + "&tokensecret="+gats.tokenSecret);
-       
+                gats = service.GetAccessToken(gat);
+                context.Response.Redirect( source + "?token=" + gats.token + "&tokensecret="+gats.tokenSecret);       
             }
             catch (System.Exception e)
             {

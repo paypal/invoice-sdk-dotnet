@@ -12,29 +12,47 @@ namespace InvoicingSampleApp {
     
     
     /// <summary>
-    /// markinvoiceaspaid class.
+    /// WebUserControl1 class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class markinvoiceaspaid {
+    public partial class WebUserControl1 {
         
         /// <summary>
-        /// form2 control.
+        /// authentication control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox authentication;
         
         /// <summary>
-        /// permission control.
+        /// permissions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::InvoicingSampleApp.WebUserControl1 permission;
+        protected global::System.Web.UI.WebControls.Panel permissions;
+        
+        /// <summary>
+        /// accessToken control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox accessToken;
+        
+        /// <summary>
+        /// tokenSecret control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tokenSecret;
     }
 }

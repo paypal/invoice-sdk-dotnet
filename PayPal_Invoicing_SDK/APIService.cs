@@ -68,12 +68,11 @@ namespace PayPal
             HttpWebRequest httpRequest = conn.getConnection(uri);
             httpRequest.Method = RequestMethod;
 
-            // Set up Headers
-            
+            // Set up Headers            
             if(accessToken != null && accessTokenSecret != null)
                 authHandler.SetOAuthToken(accessToken, accessTokenSecret);
             authHandler.SetAuthenticationParams(httpRequest, uri);
-            if (configMgr.GetProperty("binding") =="SOAP")
+            if (configMgr.GetProperty("binding") == "SOAP")
                 requestPayload = authHandler.appendSoapHeaders(requestPayload, accessToken, accessTokenSecret);
             else
             {

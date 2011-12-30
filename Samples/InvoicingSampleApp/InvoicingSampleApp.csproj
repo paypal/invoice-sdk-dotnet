@@ -90,12 +90,12 @@
     </Compile>
     <Compile Include="objectdumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestPermissions.aspx.cs">
+    <Compile Include="GetAccessToken.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>RequestPermissions.aspx</DependentUpon>
+      <DependentUpon>GetAccessToken.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RequestPermissions.aspx.designer.cs">
-      <DependentUpon>RequestPermissions.aspx</DependentUpon>
+    <Compile Include="GetAccessToken.aspx.designer.cs">
+      <DependentUpon>GetAccessToken.aspx</DependentUpon>
     </Compile>
     <Compile Include="searchinvoices.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +118,13 @@
     <Compile Include="updateinvoice.aspx.designer.cs">
       <DependentUpon>updateinvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="permissions.ascx.cs">
+      <DependentUpon>permissions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="permissions.ascx.designer.cs">
+      <DependentUpon>permissions.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="cancelinvoice.aspx" />
@@ -126,12 +133,12 @@
     <Content Include="invoicehandler.ashx" />
     <Content Include="lib\log4net.dll" />
     <Content Include="markinvoiceaspaid.aspx" />
-    <Content Include="permissions.inc" />
-    <Content Include="RequestPermissions.aspx" />
+    <Content Include="GetAccessToken.aspx" />
     <Content Include="sdk.css" />
     <Content Include="sdk.js" />
     <Content Include="searchinvoices.aspx" />
     <Content Include="updateinvoice.aspx" />
+    <Content Include="permissions.ascx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PayPal_Invoicing_SDK\PayPal_Invoicing_SDK.csproj">

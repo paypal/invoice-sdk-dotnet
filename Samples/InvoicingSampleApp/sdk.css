@@ -1,16 +1,21 @@
 body
 {
 }
-#permissions 
+#permissions1 
 {
 	margin-top: 20px;
-	display: none;
 }
-#permissions td
+#permissions1 td
 {	
 	padding: 10px 20px;
 }
-#permissions td.left
+#permissions1 td.left
 {
 	border-right: solid 1px gray;
+}
+
+.overview 
+{
+	padding: 10px 20px;
+	font-style: italic;
 }
