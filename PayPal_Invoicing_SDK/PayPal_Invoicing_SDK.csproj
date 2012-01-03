@@ -58,7 +58,6 @@
     <Compile Include="BaseConstants.cs" />
     <Compile Include="Authentication\CertificateCredential.cs" />
     <Compile Include="Authentication\ICredential.cs" />
-    <Compile Include="Manager\Test.cs" />
     <Compile Include="OAuth\OAuthGenerator.cs" />
     <Compile Include="OAuth\PayPalURLEncoder.cs" />
     <Compile Include="Permissions\PermissionsService.cs" />

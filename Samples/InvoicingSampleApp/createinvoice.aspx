@@ -13,6 +13,10 @@
 <h2>CreateInvoice API Sample Page</h2>
 
    <form id="form2" runat="server" action="InvoiceHandler.ashx">
+    <div id="apidetails">The CreateInvoice API operation is used to create a new "Draft" invoice. The call
+    includes merchant and payer information in addition to invoice detail. The response to the call 
+    contains a invoice ID and a URL where the invoice can be viewed on a browser. The CreateAndSendInvoice
+    API combines the functionality of CreateInvoice and SendInvoice.</div>
 	<div class="params">
 	    <div class="param_name">Merchant Email</div>
 	    <div class="param_value"><input type="text" name="merchantEmail" value="jb-us-seller@paypal.com" size="50" maxlength="260"/></div>

@@ -11,7 +11,7 @@
     <div class="overview">Step 2) Invoke the GetAccessToken API to obtain
      a token and token secret that represents the granted third party 
      permissions. The access token and secret returned by this API must 
-     be stored securely for future use<br/></div>
+     be stored securely for future use.<br/></div>
     <form id="form1" runat="server" action="InvoiceHandler.ashx">
     <div>
         <div class="param_name">request_token</div>

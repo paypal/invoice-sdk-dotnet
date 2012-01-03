@@ -476,7 +476,7 @@ namespace InvoicingSampleApp
 
 
                 string ret = "<div class='overview'>Step 1) Invoke the RequestPermissions API and redirect third party to "
-                + "PayPal so that he may login and grant permissions to the API caller<br/></div>";
+                + "PayPal so that the user may login and grant permissions to the API caller<br/></div>";
                 ret = ret + "<a href=";
                 ret = ret + ConfigurationManager.AppSettings["PAYPAL_REDIRECT_URL"] + "_grant-permission&request_token=" + rpr.token;
                 ret = ret + "> Redirect URL (Click to redirect) </a><br/><br/>";

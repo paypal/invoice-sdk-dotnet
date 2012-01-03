@@ -10,6 +10,8 @@
 </head>
 <body>
     <h2>SearchInvoices API Sample Page</h2>
+    <div id="apidetails">The SearchInvoice API operation is used to search for invoices that match given
+    search criteria.</div>
     <form id="form2" runat="server" action="InvoiceHandler.ashx">
         <div class="params">
 			<div class="param_name">Merchant Email *</div>

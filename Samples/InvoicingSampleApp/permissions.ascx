@@ -10,7 +10,7 @@
     (third party). The granted permission is represented by a access 
     token and token secret pair that you must store securely.
    </div>
-  <table id="permissions1">
+  <table id="permissionsdata">
     <tr>
       <td class="left">
         <div class="param_name">Access Token</div>

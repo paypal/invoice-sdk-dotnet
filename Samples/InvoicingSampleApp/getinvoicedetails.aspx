@@ -9,7 +9,9 @@
     <script type="text/javascript" src="sdk.js"></script>    
 </head>
 <body>
-    <h2>CreateInvoice API Sample Page</h2>
+    <h2>GetInvoiceDetails API Sample Page</h2>
+    <div id="apidetails">The GetInvoiceDetails API operation is used to get detailed information about 
+    an invoice.</div>
     <form id="form2" runat="server" action="InvoiceHandler.ashx">
     	<div class="params">
 	        <div class="param_name">InvoiceID * (Get Invoice ID via <a href='createinvoice.aspx'>CreateInvoice
@@ -21,5 +23,6 @@
 			<input type="submit" name="invoiceBtn" value="GetInvoiceDetails" /> <br />
 		</div>	    
     </form>
+    <a href="Default.aspx">Home</a>    
 </body>
 </html>

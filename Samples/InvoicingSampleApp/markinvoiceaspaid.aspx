@@ -5,9 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>PayPal Invoicing SDK - MarkInvoiceAsPaid Sample Page</title>
+    <link rel="stylesheet" href="sdk.css" type="text/css" />
+    <script type="text/javascript" src="sdk.js"></script>      
 </head>
 <body>
     <h2>MarkInvoiceAsPaid API Sample Page</h2>
+    <div id="apidetails">The MarkInvoiceAsPaid API operation is used to mark an invoice as paid.</div>
     <form id="form2" runat="server" action="InvoiceHandler.ashx">
 		<div id="request_form">
 			<div class="params">

@@ -10,6 +10,7 @@
 </head>
 <body>
     <h2>UpdateInvoice API Sample Page</h2>
+    <div id="apidetails">The UpdateInvoice API operation is used to update an invoice.</div>
     <form id="form2" runat="server" action="InvoiceHandler.ashx">
     	<div class="params">
 	        <div class="param_name">InvoiceID * (Get Invoice ID via <a href='createinvoice.aspx'>CreateInvoice

@@ -4,23 +4,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Invoicing Sample App</title>
+    <title>PayPal Invoicing SDK Samples Home</title>
     <link rel="stylesheet" href="sdk.css" type="text/css" />
     <script type="text/javascript" src="sdk.js"></script>    
 </head>
 <body>
-    <h2>Invoicing API samples</h2>
+    <h4>PayPal Invoicing SDK Samples Home</h4>
+    <h5>SDK v<asp:Label ID="sdkVersion" runat="server" /></h5>
     <form id="form1" runat="server">    
     <div>        
         <ul>
             <li><a href="createinvoice.aspx">Create Invoice</a> </li>
-            <li><a href="createinvoice.aspx">Create and Send Invoice</a></li>
-            <li><a href="sendinvoice.aspx">Send Invoice</a></li>
-            <li><a href="getinvoicedetails.aspx">Get Invoice Details</a></li>
-            <li><a href="markinvoiceaspaid.aspx">Mark Invoice As Paid</a></li>
-            <li><a href="cancelinvoice.aspx">Cancel Invoice</a></li>
+            <li><a href="sendinvoice.aspx">Send Invoice</a></li>            
+            <li><a href="createinvoice.aspx">Create and Send Invoice</a></li>            
             <li><a href="updateinvoice.aspx">Update Invoice</a></li>
+            <li><a href="getinvoicedetails.aspx">Get Invoice Details</a></li>            
+            <li><a href="cancelinvoice.aspx">Cancel Invoice</a></li>            
             <li><a href="searchinvoices.aspx">Search Invoices</a></li>
+            <li><a href="markinvoiceaspaid.aspx">Mark Invoice As Paid</a></li>
         </ul>
     </div>
     </form>

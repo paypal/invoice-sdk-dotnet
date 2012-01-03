@@ -10,6 +10,8 @@
 </head>
 <body>
     <h2>SendInvoice API Sample page</h2>
+    <div id="apidetails">SendInvoice API operation is used to send an invoice to a payer and notify the
+     payer of the pending invoice.</div>
     <form id="form1" runat="server" action="InvoiceHandler.ashx">
         <div class="params">
             <div class="param_name">InvoiceID * (Get Invoice ID via <a href='createinvoice.aspx'>CreateInvoice</a>)</div>
