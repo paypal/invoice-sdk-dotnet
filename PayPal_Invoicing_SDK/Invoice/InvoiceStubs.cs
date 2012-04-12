@@ -652,6 +652,19 @@ return null;
 			}
 		}
 
+		/**
+		 * The total amount of the invoice (cost of items, shipping and tax, less any discount).
+		 */
+		private int? totalAmountField;
+		public int? totalAmount {
+			get {
+				return this.totalAmountField;
+			}
+			set {
+				this.totalAmountField = value;
+			}
+		}
+
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error {
 			get {
@@ -679,6 +692,10 @@ return null;
 			key = prefix + "invoiceURL";
 			if (map.ContainsKey(key)) {
 				this.invoiceURL = map[key];
+			}
+			key = prefix + "totalAmount";
+			if (map.ContainsKey(key)) {
+				this.totalAmount = System.Convert.ToInt32( map[key] );
 			}
 			for (int i = 0; i < 10; i++) {
 				key = prefix + "error" + '(' + i + ")";
@@ -794,6 +811,19 @@ return null;
 			}
 		}
 
+		/**
+		 * The total amount of the invoice (cost of items, shipping and tax, less any discount).
+		 */
+		private int? totalAmountField;
+		public int? totalAmount {
+			get {
+				return this.totalAmountField;
+			}
+			set {
+				this.totalAmountField = value;
+			}
+		}
+
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error {
 			get {
@@ -821,6 +851,10 @@ return null;
 			key = prefix + "invoiceURL";
 			if (map.ContainsKey(key)) {
 				this.invoiceURL = map[key];
+			}
+			key = prefix + "totalAmount";
+			if (map.ContainsKey(key)) {
+				this.totalAmount = System.Convert.ToInt32( map[key] );
 			}
 			for (int i = 0; i < 10; i++) {
 				key = prefix + "error" + '(' + i + ")";
@@ -1950,6 +1984,19 @@ return null;
 			}
 		}
 
+		/**
+		 * BN code for tracking transactions with a particular partner. 
+		 */
+		private string referrerCodeField;
+		public string referrerCode {
+			get {
+				return this.referrerCodeField;
+			}
+			set {
+				this.referrerCodeField = value;
+			}
+		}
+
 	 public InvoiceSummaryType(Dictionary<string, string> map, string prefix) {
 			string key = "";
 			key = prefix + "invoiceID";
@@ -2015,6 +2062,10 @@ return null;
 			key = prefix + "origin";
 			if (map.ContainsKey(key)) {
 				this.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
+			}
+			key = prefix + "referrerCode";
+			if (map.ContainsKey(key)) {
+				this.referrerCode = map[key];
 			}
 		}
 	}
@@ -2285,6 +2336,19 @@ return null;
 			}
 		}
 
+		/**
+		 * BN code for tracking transactions with a particular partner. 
+		 */
+		private string referrerCodeField;
+		public string referrerCode {
+			get {
+				return this.referrerCodeField;
+			}
+			set {
+				this.referrerCodeField = value;
+			}
+		}
+
 		public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode, PaymentTermsType? paymentTerms) {
 			this.merchantEmail = merchantEmail;
 			this.payerEmail = payerEmail;
@@ -2360,6 +2424,9 @@ return null;
 			}
 			if (this.logoUrl != null) {
 				sb.Append(prefix).Append("logoUrl").Append('=').Append(HttpUtility.UrlEncode(this.logoUrl, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			if (this.referrerCode != null) {
+				sb.Append(prefix).Append("referrerCode").Append('=').Append(HttpUtility.UrlEncode(this.referrerCode, BaseConstants.ENCODING_FORMAT)).Append('&');
 			}
 			return sb.ToString();
 		}
@@ -2445,6 +2512,10 @@ return null;
 			key = prefix + "logoUrl";
 			if (map.ContainsKey(key)) {
 				this.logoUrl = map[key];
+			}
+			key = prefix + "referrerCode";
+			if (map.ContainsKey(key)) {
+				this.referrerCode = map[key];
 			}
 		}
 	}
@@ -3379,7 +3450,7 @@ return null;
 			}
 			for (int i = 0; i < this.status.Count; i++) {
 				if (this.status[i] != null) {
-				sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
+				sb.Append(prefix).Append("status").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
 				sb.Append('&');
 				}
 			}
@@ -3551,6 +3622,8 @@ return null;
 [Description("Paid")]PAID,
 [Description("MarkedAsPaid")]MARKEDASPAID,
 [Description("Canceled")]CANCELED,
+[Description("Refunded")]REFUNDED,
+[Description("PartiallyRefunded")]PARTIALLYREFUNDED,
 	}
 	/**
 	 * The request object for UpdateInvoice.
@@ -3673,6 +3746,19 @@ return null;
 			}
 		}
 
+		/**
+		 * The total amount of the invoice (cost of items, shipping and tax, less any discount).
+		 */
+		private int? totalAmountField;
+		public int? totalAmount {
+			get {
+				return this.totalAmountField;
+			}
+			set {
+				this.totalAmountField = value;
+			}
+		}
+
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error {
 			get {
@@ -3700,6 +3786,10 @@ return null;
 			key = prefix + "invoiceURL";
 			if (map.ContainsKey(key)) {
 				this.invoiceURL = map[key];
+			}
+			key = prefix + "totalAmount";
+			if (map.ContainsKey(key)) {
+				this.totalAmount = System.Convert.ToInt32( map[key] );
 			}
 			for (int i = 0; i < 10; i++) {
 				key = prefix + "error" + '(' + i + ")";
