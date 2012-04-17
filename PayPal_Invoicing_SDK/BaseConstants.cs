@@ -50,7 +50,7 @@ namespace PayPal
         // Encoding format to be used for API payloads
         public static readonly Encoding ENCODING_FORMAT = Encoding.UTF8;
         
-        public const string SDK_NAME = "invoicing-dotnet-sdk";
+        public const string SDK_NAME = "sdk-invoicing-dotnet";
         public const string SDK_VERSION = "1.1.84";
 
         public class ErrorMessages
