@@ -11,12 +11,12 @@ namespace PayPal.Permissions {
 	using PayPal.Manager;
 	using PayPal.Permissions.Model;
 
-	public partial class PermissionsService :BasePayPalService{
+	public partial class PermissionsService : BasePayPalService{
 
 		private static string serviceName = "Permissions";
+        private static string serviceVersion = "";
 
-
-		 public PermissionsService() : base(serviceName)
+		 public PermissionsService() : base(serviceName, serviceVersion)
         {}
 		/**
 		 *

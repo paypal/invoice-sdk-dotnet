@@ -33,10 +33,12 @@ namespace PayPal
                                                 });
 
         private string serviceName;
+        private string serviceVersion;
 
-        public APIService(string serviceName)
+        public APIService(string serviceName, string serviceVersion)
         {
             this.serviceName = serviceName;
+            this.serviceVersion = serviceVersion;
         }
 
         /// <summary>
@@ -54,12 +56,10 @@ namespace PayPal
             if (configMgr.GetProperty("binding") != "SOAP")
             {
                 uri = getAPIEndpoint(method);
-
             }
             else
             {
-                uri = configMgr.GetProperty("endpoint");
-               
+                uri = configMgr.GetProperty("endpoint");               
             }
             log.Debug("Connecting to " + uri);
 
@@ -75,14 +75,14 @@ namespace PayPal
             if (configMgr.GetProperty("binding") == "SOAP")
                 requestPayload = authHandler.appendSoapHeaders(requestPayload, accessToken, accessTokenSecret);
             else
-            {
-                httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE, 
-                    BaseConstants.SDK_NAME + "-" + BaseConstants.SDK_VERSION);
+            {                
                 httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTDATAFORMAT, BaseConstants.RequestDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALRESPONSEDATAFORMAT, BaseConstants.ResponseDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALDEVICEIPADDRESS, configMgr.GetProperty("IPAddress"));
             }
-            // This header is used to track the calls from PayPal SDKs            
+            // Add tracking header           
+            httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE,
+                        BaseConstants.SDK_NAME + "-" + BaseConstants.SDK_VERSION);
             
             if (log.IsDebugEnabled)
             {
