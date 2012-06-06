@@ -22,6 +22,8 @@
             <li><a href="cancelinvoice.aspx">Cancel Invoice</a></li>            
             <li><a href="searchinvoices.aspx">Search Invoices</a></li>
             <li><a href="markinvoiceaspaid.aspx">Mark Invoice As Paid</a></li>
+            <li><a href="markinvoiceasunpaid.aspx">Mark Invoice As Unpaid</a></li>
+            <li><a href="markinvoiceasrefunded.aspx">Mark Invoice As Refunded</a></li>
         </ul>
     </div>
     </form>

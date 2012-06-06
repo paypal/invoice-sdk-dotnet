@@ -1258,6 +1258,19 @@ namespace PayPal.Invoice.Model {
 		}
 
 		/**
+		 * The requested invoice refund details.
+		 */
+		private PaymentRefundDetailsType refundDetailsField;
+		public PaymentRefundDetailsType refundDetails {
+			get {
+				return this.refundDetailsField;
+			}
+			set {
+				this.refundDetailsField = value;
+			}
+		}
+
+		/**
 		 * The URL which lead merchant to view the invoice details on web.
 		 */
 		private string invoiceURLField;
@@ -1298,6 +1311,10 @@ namespace PayPal.Invoice.Model {
 			key = prefix + "paymentDetails";
 			if (map.ContainsKey(key + ".viaPayPal")) {
 				this.paymentDetails = new PaymentDetailsType(map, key + '.');
+			}
+			key = prefix + "refundDetails";
+			if (map.ContainsKey(key + ".viaPayPal")) {
+				this.refundDetails = new PaymentRefundDetailsType(map, key + '.');
 			}
 			key = prefix + "invoiceURL";
 			if (map.ContainsKey(key)) {
@@ -2388,6 +2405,34 @@ namespace PayPal.Invoice.Model {
 			}
 		}
 
+		/**
+		 * Label used to display custom amount value.
+		 * If a value is entered for customAmountLabel, then customAmountValue cannot be empty.
+		 */
+		private string customAmountLabelField;
+		public string customAmountLabel {
+			get {
+				return this.customAmountLabelField;
+			}
+			set {
+				this.customAmountLabelField = value;
+			}
+		}
+
+		/**
+		 * Value of custom amount.
+		 * If a value is entered for customAmountValue, then customAmountLabel cannot be empty.
+		 */
+		private decimal? customAmountValueField;
+		public decimal? customAmountValue {
+			get {
+				return this.customAmountValueField;
+			}
+			set {
+				this.customAmountValueField = value;
+			}
+		}
+
 		public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode, PaymentTermsType? paymentTerms) {
 			this.merchantEmail = merchantEmail;
 			this.payerEmail = payerEmail;
@@ -2466,6 +2511,12 @@ namespace PayPal.Invoice.Model {
 			}
 			if (this.referrerCode != null) {
 				sb.Append(prefix).Append("referrerCode").Append('=').Append(HttpUtility.UrlEncode(this.referrerCode, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			if (this.customAmountLabel != null) {
+				sb.Append(prefix).Append("customAmountLabel").Append('=').Append(HttpUtility.UrlEncode(this.customAmountLabel, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			if (this.customAmountValue != null) {
+				sb.Append(prefix).Append("customAmountValue").Append('=').Append(this.customAmountValue).Append('&');
 			}
 			return sb.ToString();
 		}
@@ -2556,6 +2607,14 @@ namespace PayPal.Invoice.Model {
 			key = prefix + "referrerCode";
 			if (map.ContainsKey(key)) {
 				this.referrerCode = map[key];
+			}
+			key = prefix + "customAmountLabel";
+			if (map.ContainsKey(key)) {
+				this.customAmountLabel = map[key];
+			}
+			key = prefix + "customAmountValue";
+			if (map.ContainsKey(key)) {
+				this.customAmountValue = System.Convert.ToDecimal( map[key] );
 			}
 		}
 	}
@@ -2724,6 +2783,314 @@ namespace PayPal.Invoice.Model {
 	}
 
 
+	/**
+	 * The request object for MarkInvoiceAsRefunded.
+	 */
+	public partial class MarkInvoiceAsRefundedRequest {
+
+		private RequestEnvelope requestEnvelopeField;
+		public RequestEnvelope requestEnvelope {
+			get {
+				return this.requestEnvelopeField;
+			}
+			set {
+				this.requestEnvelopeField = value;
+			}
+		}
+
+		/**
+		 * ID of the invoice to mark as refunded.
+		 */
+		private string invoiceIDField;
+		public string invoiceID {
+			get {
+				return this.invoiceIDField;
+			}
+			set {
+				this.invoiceIDField = value;
+			}
+		}
+
+		/**
+		 * Details of the refund made against this invoice.
+		 */
+		private OtherPaymentRefundDetailsType refundDetailField;
+		public OtherPaymentRefundDetailsType refundDetail {
+			get {
+				return this.refundDetailField;
+			}
+			set {
+				this.refundDetailField = value;
+			}
+		}
+
+		public MarkInvoiceAsRefundedRequest(RequestEnvelope requestEnvelope, string invoiceID, OtherPaymentRefundDetailsType refundDetail) {
+			this.requestEnvelope = requestEnvelope;
+			this.invoiceID = invoiceID;
+			this.refundDetail = refundDetail;
+		}
+		public MarkInvoiceAsRefundedRequest() {
+		}
+		public string toNVPString(string prefix) {
+			StringBuilder sb = new StringBuilder();
+			if (this.requestEnvelope != null) {
+				string newPrefix = prefix + "requestEnvelope" + '.';
+				sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+			}
+			if (this.invoiceID != null) {
+				sb.Append(prefix).Append("invoiceID").Append('=').Append(HttpUtility.UrlEncode(this.invoiceID, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			if (this.refundDetail != null) {
+				string newPrefix = prefix + "refundDetail" + '.';
+				sb.Append(this.refundDetailField.toNVPString(newPrefix));
+			}
+			return sb.ToString();
+		}
+
+	}
+
+
+	/**
+	 * The response object for MarkInvoiceAsRefunded.
+	 */
+	public partial class MarkInvoiceAsRefundedResponse {
+
+		private ResponseEnvelope responseEnvelopeField;
+		public ResponseEnvelope responseEnvelope {
+			get {
+				return this.responseEnvelopeField;
+			}
+			set {
+				this.responseEnvelopeField = value;
+			}
+		}
+
+		/**
+		 * The invoice ID of the invoice that was marked as refunded.
+		 */
+		private string invoiceIDField;
+		public string invoiceID {
+			get {
+				return this.invoiceIDField;
+			}
+			set {
+				this.invoiceIDField = value;
+			}
+		}
+
+		/**
+		 * The invoice number of the invoice that was marked as refunded.
+		 */
+		private string invoiceNumberField;
+		public string invoiceNumber {
+			get {
+				return this.invoiceNumberField;
+			}
+			set {
+				this.invoiceNumberField = value;
+			}
+		}
+
+		/**
+		 * The URL of the details page of the invoice that was marked as refunded.
+		 */
+		private string invoiceURLField;
+		public string invoiceURL {
+			get {
+				return this.invoiceURLField;
+			}
+			set {
+				this.invoiceURLField = value;
+			}
+		}
+
+		private List<ErrorData> errorField = new List<ErrorData>();
+		public List<ErrorData> error {
+			get {
+				return this.errorField;
+			}
+			set {
+				this.errorField = value;
+			}
+		}
+
+	 public MarkInvoiceAsRefundedResponse(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			int i;
+			key = prefix + "responseEnvelope";
+			if (map.ContainsKey(key + ".timestamp")) {
+				this.responseEnvelope = new ResponseEnvelope(map, key + '.');
+			}
+			key = prefix + "invoiceID";
+			if (map.ContainsKey(key)) {
+				this.invoiceID = map[key];
+			}
+			key = prefix + "invoiceNumber";
+			if (map.ContainsKey(key)) {
+				this.invoiceNumber = map[key];
+			}
+			key = prefix + "invoiceURL";
+			if (map.ContainsKey(key)) {
+				this.invoiceURL = map[key];
+			}
+			i = 0;
+			while(true) {
+				key = prefix + "error" + '(' + i + ")";
+				if (map.ContainsKey(key + ".errorId")) {
+					this.error.Add( new ErrorData(map, key + '.')); 
+				}
+				else break;
+				i++;
+			}
+		}
+	}
+
+
+	/**
+	 * The request object for MarkInvoiceAsUnpaid.
+	 */
+	public partial class MarkInvoiceAsUnpaidRequest {
+
+		private RequestEnvelope requestEnvelopeField;
+		public RequestEnvelope requestEnvelope {
+			get {
+				return this.requestEnvelopeField;
+			}
+			set {
+				this.requestEnvelopeField = value;
+			}
+		}
+
+		/**
+		 * ID of the invoice to mark as unpaid.
+		 */
+		private string invoiceIDField;
+		public string invoiceID {
+			get {
+				return this.invoiceIDField;
+			}
+			set {
+				this.invoiceIDField = value;
+			}
+		}
+
+		public MarkInvoiceAsUnpaidRequest(RequestEnvelope requestEnvelope, string invoiceID) {
+			this.requestEnvelope = requestEnvelope;
+			this.invoiceID = invoiceID;
+		}
+		public MarkInvoiceAsUnpaidRequest() {
+		}
+		public string toNVPString(string prefix) {
+			StringBuilder sb = new StringBuilder();
+			if (this.requestEnvelope != null) {
+				string newPrefix = prefix + "requestEnvelope" + '.';
+				sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+			}
+			if (this.invoiceID != null) {
+				sb.Append(prefix).Append("invoiceID").Append('=').Append(HttpUtility.UrlEncode(this.invoiceID, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			return sb.ToString();
+		}
+
+	}
+
+
+	/**
+	 * The response object for MarkInvoiceAsUnpaid.
+	 */
+	public partial class MarkInvoiceAsUnpaidResponse {
+
+		private ResponseEnvelope responseEnvelopeField;
+		public ResponseEnvelope responseEnvelope {
+			get {
+				return this.responseEnvelopeField;
+			}
+			set {
+				this.responseEnvelopeField = value;
+			}
+		}
+
+		/**
+		 * The invoice ID of the invoice that was marked as unpaid.
+		 */
+		private string invoiceIDField;
+		public string invoiceID {
+			get {
+				return this.invoiceIDField;
+			}
+			set {
+				this.invoiceIDField = value;
+			}
+		}
+
+		/**
+		 * The invoice number of the invoice that was marked as unpaid.
+		 */
+		private string invoiceNumberField;
+		public string invoiceNumber {
+			get {
+				return this.invoiceNumberField;
+			}
+			set {
+				this.invoiceNumberField = value;
+			}
+		}
+
+		/**
+		 * The URL of the details page of the invoice that was marked as unpaid.
+		 */
+		private string invoiceURLField;
+		public string invoiceURL {
+			get {
+				return this.invoiceURLField;
+			}
+			set {
+				this.invoiceURLField = value;
+			}
+		}
+
+		private List<ErrorData> errorField = new List<ErrorData>();
+		public List<ErrorData> error {
+			get {
+				return this.errorField;
+			}
+			set {
+				this.errorField = value;
+			}
+		}
+
+	 public MarkInvoiceAsUnpaidResponse(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			int i;
+			key = prefix + "responseEnvelope";
+			if (map.ContainsKey(key + ".timestamp")) {
+				this.responseEnvelope = new ResponseEnvelope(map, key + '.');
+			}
+			key = prefix + "invoiceID";
+			if (map.ContainsKey(key)) {
+				this.invoiceID = map[key];
+			}
+			key = prefix + "invoiceNumber";
+			if (map.ContainsKey(key)) {
+				this.invoiceNumber = map[key];
+			}
+			key = prefix + "invoiceURL";
+			if (map.ContainsKey(key)) {
+				this.invoiceURL = map[key];
+			}
+			i = 0;
+			while(true) {
+				key = prefix + "error" + '(' + i + ")";
+				if (map.ContainsKey(key + ".errorId")) {
+					this.error.Add( new ErrorData(map, key + '.')); 
+				}
+				else break;
+				i++;
+			}
+		}
+	}
+
+
 	public enum OriginType {
 [Description("Web")]WEB,
 [Description("API")]API,
@@ -2809,6 +3176,66 @@ namespace PayPal.Invoice.Model {
 
 
 	/**
+	 * Details of the refund made against this invoice.
+	 */
+	public partial class OtherPaymentRefundDetailsType {
+
+		/**
+		 * Optional note associated with the refund.
+		 */
+		private string noteField;
+		public string note {
+			get {
+				return this.noteField;
+			}
+			set {
+				this.noteField = value;
+			}
+		}
+
+		/**
+		 * Date when the invoice was marked as refunded. If the date is not specified, the current date and time is used as a default.
+		 * In addition, the date must be after the payment date of the invoice.
+		 */
+		private string dateField;
+		public string date {
+			get {
+				return this.dateField;
+			}
+			set {
+				this.dateField = value;
+			}
+		}
+
+		public OtherPaymentRefundDetailsType() {
+		}
+		public string toNVPString(string prefix) {
+			StringBuilder sb = new StringBuilder();
+			if (this.note != null) {
+				sb.Append(prefix).Append("note").Append('=').Append(HttpUtility.UrlEncode(this.note, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			if (this.date != null) {
+				sb.Append(prefix).Append("date").Append('=').Append(HttpUtility.UrlEncode(this.date, BaseConstants.ENCODING_FORMAT)).Append('&');
+			}
+			return sb.ToString();
+		}
+
+	 public OtherPaymentRefundDetailsType(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			int i;
+			key = prefix + "note";
+			if (map.ContainsKey(key)) {
+				this.note = map[key];
+			}
+			key = prefix + "date";
+			if (map.ContainsKey(key)) {
+				this.date = map[key];
+			}
+		}
+	}
+
+
+	/**
 	 * PayPal payment details about the invoice.
 	 */
 	public partial class PayPalPaymentDetailsType {
@@ -2855,6 +3282,33 @@ namespace PayPal.Invoice.Model {
 
 
 	/**
+	 * Details of the paypal refund made against this invoice.
+	 */
+	public partial class PayPalPaymentRefundDetailsType {
+
+		/**
+		 * Date when the invoice was marked as refunded by PayPal.
+		 */
+		private string dateField;
+		public string date {
+			get {
+				return this.dateField;
+			}
+			set {
+				this.dateField = value;
+			}
+		}
+
+	 public PayPalPaymentRefundDetailsType(Dictionary<string, string> map, string prefix) {
+				string key = prefix + "date" ;
+			if (map.ContainsKey(key)) {
+				this.date  = map[key];
+			}
+		}
+	}
+
+
+	/**
 	 * Payment details about the invoice.
 	 */
 	public partial class PaymentDetailsType {
@@ -2886,7 +3340,7 @@ namespace PayPal.Invoice.Model {
 		}
 
 		/**
-		 * PayPal payment details.
+		 * Other payment details.
 		 */
 		private OtherPaymentDetailsType otherPaymentField;
 		public OtherPaymentDetailsType otherPayment {
@@ -2927,6 +3381,69 @@ namespace PayPal.Invoice.Model {
 [Description("PayPal")]PAYPAL,
 [Description("WireTransfer")]WIRETRANSFER,
 	}
+	/**
+	 * Payment refund details about the invoice.
+	 */
+	public partial class PaymentRefundDetailsType {
+
+		/**
+		 * True if the invoice was refunded using PayPal.
+		 */
+		private bool? viaPayPalField;
+		public bool? viaPayPal {
+			get {
+				return this.viaPayPalField;
+			}
+			set {
+				this.viaPayPalField = value;
+			}
+		}
+
+		/**
+		 * Other payment refund details.
+		 */
+		private PayPalPaymentRefundDetailsType paypalPaymentField;
+		public PayPalPaymentRefundDetailsType paypalPayment {
+			get {
+				return this.paypalPaymentField;
+			}
+			set {
+				this.paypalPaymentField = value;
+			}
+		}
+
+		/**
+		 * details.
+		 */
+		private OtherPaymentRefundDetailsType otherPaymentField;
+		public OtherPaymentRefundDetailsType otherPayment {
+			get {
+				return this.otherPaymentField;
+			}
+			set {
+				this.otherPaymentField = value;
+			}
+		}
+
+	 public PaymentRefundDetailsType(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			int i;
+			key = prefix + "viaPayPal";
+			if (map.ContainsKey(key)) {
+				this.viaPayPal = System.Convert.ToBoolean( map[key] );
+			}
+			key = prefix + "paypalPayment";
+			if (map.ContainsKey(key)) {
+				this.paypalPayment = new PayPalPaymentRefundDetailsType(map, key);
+			}
+			key = prefix + "otherPayment";
+			if (map.ContainsKey(key + ".note")) {
+				this.otherPayment = new OtherPaymentRefundDetailsType(map, key + '.');
+			}
+		}
+	}
+
+
 	public enum PaymentTermsType {
 [Description("DueOnReceipt")]DUEONRECEIPT,
 [Description("DueOnDateSpecified")]DUEONDATESPECIFIED,
@@ -3680,6 +4197,7 @@ namespace PayPal.Invoice.Model {
 [Description("Canceled")]CANCELED,
 [Description("Refunded")]REFUNDED,
 [Description("PartiallyRefunded")]PARTIALLYREFUNDED,
+[Description("MarkedAsRefunded")]MARKEDASREFUNDED,
 	}
 	/**
 	 * The request object for UpdateInvoice.

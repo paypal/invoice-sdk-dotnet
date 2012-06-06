@@ -58,6 +58,14 @@ namespace InvoicingSampleApp
             {
                 SearchInvoices(context);
             }
+            else if (strCall.Equals("MarkInvoiceAsUnpaid"))
+            {
+                MarkInvoiceAsUnpaid(context);
+            }
+            else if (strCall.Equals("MarkInvoiceAsRefunded"))
+            {
+                MarkInvoiceAsRefunded(context);
+            }
             else if (strCall.Equals("RequestPermission"))
             {
                 RequestPermissions(context);
@@ -67,7 +75,8 @@ namespace InvoicingSampleApp
                 GetAccessToken(context);
             }
 
-        }
+        }        
+
         public bool IsReusable
         {
             get
@@ -121,20 +130,30 @@ namespace InvoicingSampleApp
                         item_name2,
                         decimal.Parse(item_quantity2),
                         decimal.Parse(item_unitPrice2)));
-            CreateAndSendInvoiceResponse cir = null;
 
+            InvoiceService service;
+            CreateAndSendInvoiceResponse cir = null;
             try
             {
-                InvoiceService service = getService(context);
-                cir = service.CreateAndSendInvoice(cr);
-                context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(cir, 5, context.Response.Output);
-                context.Response.Write("</textarea></body></html>");
+                service = getService(context);
+                cir = service.CreateAndSendInvoice(cr);                
             }
             catch (System.Exception e)
             {
                 context.Response.Write(e.Message);
+                return;
             }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", cir.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", cir.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", cir.invoiceID);
+            keyResponseParams.Add("invoiceNumber", cir.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
+            keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
+            displayResponse(context, "CreateAndSendInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), cir.error, null);
         }
 
         private void SendInvoice(HttpContext context)
@@ -145,22 +164,29 @@ namespace InvoicingSampleApp
             SendInvoiceRequest sr = new SendInvoiceRequest();
             sr.invoiceID = invoiceId;
             sr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
-            
+
+            InvoiceService service;
             SendInvoiceResponse sir = null;
 
             try
             {
-                InvoiceService service = getService(context);
+                service = getService(context);
                 sir = service.SendInvoice(sr);
-                context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(sir, 5, context.Response.Output);
-                context.Response.Write("</textarea></body></html>");
             }
             catch (System.Exception e)
             {
                 context.Response.Write(e.Message);
+                return;
             }
 
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", sir.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", sir.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", sir.invoiceID);            
+            keyResponseParams.Add("invoiceUrl", sir.invoiceURL);
+            displayResponse(context, "SendInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), sir.error, null);
         }
 
         private void CreateInvoice(HttpContext context)
@@ -194,20 +220,30 @@ namespace InvoicingSampleApp
                 new InvoiceItemType(item_name1, decimal.Parse(item_quantity1), decimal.Parse(item_unitPrice1)));
             cr.invoice.itemList.item.Add(
                 new InvoiceItemType(item_name2, decimal.Parse(item_quantity2), decimal.Parse(item_unitPrice2)));
-            CreateInvoiceResponse cir = null;
 
+            InvoiceService service = null;
+            CreateInvoiceResponse cir = null;
             try
             {
-                InvoiceService service = getService(context);
-                cir = service.CreateInvoice(cr);
-                context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(cir, 5, context.Response.Output);
-                context.Response.Write("</textarea></body></html>");
+                service = getService(context);
+                cir = service.CreateInvoice(cr);                
             }
             catch (System.Exception e)
             {
                 context.Response.Write(e.Message);
+                return;
             }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", cir.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", cir.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", cir.invoiceID);
+            keyResponseParams.Add("invoiceNumber", cir.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
+            keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
+            displayResponse(context, "CreateInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), cir.error, null);
         }
 
         /// <summary>
@@ -222,13 +258,36 @@ namespace InvoicingSampleApp
                 new GetInvoiceDetailsRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
             // Create service object and make the API call
-            InvoiceService service = getService(context);
-            GetInvoiceDetailsResponse response = service.GetInvoiceDetails(request);
+            InvoiceService service;
+            GetInvoiceDetailsResponse response;
+            try
+            {
+                service = getService(context);
+                response = service.GetInvoiceDetails(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
 
-            // Process response
-            context.Response.Write("<html><body><textarea rows=30 cols=80>");
-            ObjectDumper.Write(response, 5, context.Response.Output);
-            context.Response.Write("</textarea></body></html>");
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            if (response.invoice != null)
+            {
+                keyResponseParams.Add("invoice date", response.invoice.invoiceDate);
+                keyResponseParams.Add("due date", response.invoice.dueDate);
+                keyResponseParams.Add("merchant email", response.invoice.merchantEmail);
+                keyResponseParams.Add("payer email", response.invoice.payerEmail);
+            }
+            if (response.invoiceDetails != null)
+            {
+                keyResponseParams.Add("totalAmount", response.invoiceDetails.totalAmount.ToString());
+            }
+            displayResponse(context, "GetInvoiceDetails", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null);
         }
 
 
@@ -262,13 +321,29 @@ namespace InvoicingSampleApp
                 new MarkInvoiceAsPaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
 
             // Create service object and make the API call
-            InvoiceService service = getService(context);
-            MarkInvoiceAsPaidResponse response = service.MarkInvoiceAsPaid(request);
             
-            // Process response
-            context.Response.Write("<html><body><textarea rows=30 cols=80>");
-            ObjectDumper.Write(response, 5, context.Response.Output);
-            context.Response.Write("</textarea></body></html>");
+            MarkInvoiceAsPaidResponse response;
+            InvoiceService service;
+            try
+            {
+                service = getService(context);
+                response = service.MarkInvoiceAsPaid(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);            
+            keyResponseParams.Add("invoiceId", response.invoiceID);
+            keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+            displayResponse(context, "MarkInvoiceAsPaid", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null); 
 
         }
 
@@ -285,13 +360,30 @@ namespace InvoicingSampleApp
             request.invoiceID = invoiceId;
 
             // Create service object and make the API call
-            InvoiceService service = getService(context);
-            CancelInvoiceResponse response = service.CancelInvoice(request);
+            InvoiceService service;
+            CancelInvoiceResponse response;
 
-            // Process response
-            context.Response.Write("<html><body><textarea rows=30 cols=80>");
-            ObjectDumper.Write(response, 5, context.Response.Output);
-            context.Response.Write("</textarea></body></html>");
+            try
+            {
+                service = getService(context);
+                response = service.CancelInvoice(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", response.invoiceID);
+            keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+            displayResponse(context, "CancelInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null); 
+
         }
 
 
@@ -331,13 +423,30 @@ namespace InvoicingSampleApp
                 new RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
 
             // Create service object and make the API call
-            InvoiceService service = getService(context);
-            UpdateInvoiceResponse response = service.UpdateInvoice(request);
+            InvoiceService service;
+            UpdateInvoiceResponse response;
 
-            // Process response
-            context.Response.Write("<html><body><textarea rows=30 cols=80>");
-            ObjectDumper.Write(response, 5, context.Response.Output);
-            context.Response.Write("</textarea></body></html>");
+            try
+            {
+                service = getService(context);
+                response = service.UpdateInvoice(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", response.invoiceID);
+            keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+            keyResponseParams.Add("totalAmount", response.totalAmount.ToString());
+            displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null); 
         }
 
 
@@ -439,13 +548,122 @@ namespace InvoicingSampleApp
             }            
 
             // Create service object and make the API call
-            InvoiceService service = getService(context);
-            SearchInvoicesResponse response = service.SearchInvoices(request);
+            InvoiceService service;
+            SearchInvoicesResponse response;
 
-            // Process response
-            context.Response.Write("<html><body><textarea rows=30 cols=80>");
-            ObjectDumper.Write(response, 5, context.Response.Output);
-            context.Response.Write("</textarea></body></html>");
+            try
+            {
+                service = getService(context);
+                response = service.SearchInvoices(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoice count", response.count.ToString());
+            keyResponseParams.Add("hasNextPage", response.hasNextPage.ToString());
+            keyResponseParams.Add("hasPreviousPage", response.hasPreviousPage.ToString());
+
+            if (response.invoiceList != null && response.invoiceList.invoice != null)
+            {
+                int idx = 0;
+                foreach (InvoiceSummaryType invoice in response.invoiceList.invoice)
+                {
+                    keyResponseParams.Add(idx + " invoice Id", invoice.invoiceID);
+                    keyResponseParams.Add(idx + " invoice status", invoice.status.ToString());
+                    idx++;
+                }
+            }
+            displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null);
+        }
+
+        /// <summary>
+        /// API call example for MarkInvoiceAsRefunded
+        /// </summary>
+        /// <param name="context"></param>
+        private void MarkInvoiceAsRefunded(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            String refundNote = context.Request.Params["refundNote"];
+            String refundDate = context.Request.Params["refundDate"];
+
+            OtherPaymentRefundDetailsType refundDetails = new OtherPaymentRefundDetailsType();
+            if (refundNote != "")
+                refundDetails.note = refundNote;
+            if (refundDate != "")
+                refundDetails.date = refundDate;
+
+            MarkInvoiceAsRefundedRequest request =
+                new MarkInvoiceAsRefundedRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
+
+            // Create service object and make the API call
+            InvoiceService service;
+            MarkInvoiceAsRefundedResponse response;
+
+            try
+            {
+                service = getService(context);
+                response = service.MarkInvoiceAsRefunded(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", response.invoiceID);
+            keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),  
+                service.getLastResponse(), response.error, null);            
+        }
+
+        /// <summary>
+        /// API call example for MarkInvoiceAsUnpaid
+        /// </summary>
+        /// <param name="context"></param>
+        private void MarkInvoiceAsUnpaid(HttpContext context)
+        {
+            // Collect input params
+            String invoiceId = context.Request.Params["invoiceId"];
+            MarkInvoiceAsUnpaidRequest request =
+                new MarkInvoiceAsUnpaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+
+            // Create service object and make the API call
+            InvoiceService service;
+            MarkInvoiceAsUnpaidResponse response;
+
+            try {
+                service = getService(context);
+                response = service.MarkInvoiceAsUnpaid(request);
+            }
+            catch (Exception e)
+            {
+                context.Response.Write(e.Message);
+                return;
+            }
+
+            // Display response values. 
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+            keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+            keyResponseParams.Add("invoiceId", response.invoiceID);
+            keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+            keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+            displayResponse(context, "MarkInvoiceAsUnpaid", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null);
         }
 
         /// <summary>
@@ -489,8 +707,8 @@ namespace InvoicingSampleApp
             catch (System.Exception e)
             {
                 context.Response.Write(e.Message);
+                return;
             }
-
         }
 
         private void GetAccessToken(HttpContext context)
@@ -515,12 +733,62 @@ namespace InvoicingSampleApp
             catch (System.Exception e)
             {
                 context.Response.Write(e.Message);
+                return;
             }
 
         }
 
+        /// <summary>
+        /// Utility method for displaying API response
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="apiName"></param>
+        /// <param name="responseValues"></param>
+        /// <param name="requestPayload"></param>
+        /// <param name="responsePayload"></param>
+        /// <param name="errorMessages"></param>
+        /// <param name="redirectUrl"></param>
+        private void displayResponse(HttpContext context, string apiName, Dictionary<string, string> responseValues,
+            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl)
+        {
 
+            context.Response.Write("<html><head><title>");
+            context.Response.Write("PayPal Invoice - " + apiName);
+            context.Response.Write("</title><link rel='stylesheet' href='sdk.css' type='text/css'/></head><body>");
+            context.Response.Write("<h3>" + apiName + " response</h3>");
+            if (errorMessages != null && errorMessages.Count > 0)
+            {
+                context.Response.Write("<div class='section_header'>Error messages</div>");
+                context.Response.Write("<div class='note'>Investigate the response object for further error information</div><ul>");
+                foreach (ErrorData error in errorMessages)
+                {
+                    context.Response.Write("<li>" + error.message + "</li>");
+                }
+                context.Response.Write("</ul>");
+            }
+            if (redirectUrl != null)
+            {
+                string red = "<div>This API involves a web flow. You must now redirect your user to " + redirectUrl;
+                red = red + "<br />Please click <a href='" + redirectUrl + "' target='_blank'>here</a> to try the flow.</div><br/>";
+                context.Response.Write(red);
+            }
+            context.Response.Write("<div class='section_header'>Key values from response</div>");
+            context.Response.Write("<div class='note'>Consult response object and reference doc for complete list of response values.</div><table>");
+            foreach (KeyValuePair<String, String> entry in responseValues)
+            {
+                context.Response.Write("<tr><td class='label'>");
+                context.Response.Write(entry.Key);
+                context.Response.Write(": </td><td>");
+                context.Response.Write(entry.Value);
+                context.Response.Write("</td></tr>");
+            }
 
-        
+            context.Response.Write("</table><h4>Request:</h4><br/><textarea rows=15 cols=80 readonly>");
+            context.Response.Write(requestPayload);
+            context.Response.Write("</textarea><br/><h4>Response</h4><br/><textarea rows=15 cols=80 readonly>");
+            context.Response.Write(responsePayload);
+            context.Response.Write("</textarea>");
+            context.Response.Write("<br/><br/><a href='Default.aspx'>Home<a><br/><br/></body></html>");
+        }        
     }
 }

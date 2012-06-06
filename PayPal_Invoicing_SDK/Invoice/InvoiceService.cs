@@ -137,6 +137,36 @@ namespace PayPal.Invoice {
 		{
 			return MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest, null);
 		}
+		/**
+		 *
+		 */
+		public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest, string apiUsername) 
+		{
+			string resp = call("MarkInvoiceAsUnpaid", MarkInvoiceAsUnpaidRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new MarkInvoiceAsUnpaidResponse(util.parseNVPString(resp), "");
+		}
+
+		public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest) 
+		{
+			return MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest, null);
+		}
+		/**
+		 *
+		 */
+		public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest, string apiUsername) 
+		{
+			string resp = call("MarkInvoiceAsRefunded", MarkInvoiceAsRefundedRequest.toNVPString(""), apiUsername);
+
+			NVPUtil util = new NVPUtil();
+			return new MarkInvoiceAsRefundedResponse(util.parseNVPString(resp), "");
+		}
+
+		public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest) 
+		{
+			return MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest, null);
+		}
 	}
 }
 

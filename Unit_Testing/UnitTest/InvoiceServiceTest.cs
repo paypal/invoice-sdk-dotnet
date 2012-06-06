@@ -85,10 +85,10 @@ namespace PayPal.UnitTest
             try
             {
                 InvoiceService service = new InvoiceService();
-                service.setAccessToken("ih5acEwTvGxOGpvd4oSymRbHLvP4CccdqEvpEZmLO8uIk2C036.qqA");
-                service.setAccessTokenSecret("i2mh1RUEMEHW2RfmawBPWeBfVK8");
+                service.setAccessToken("MflQEeAERGJPxdFYxkH29I53S5Ahcsimnv7fwa14n8x985-ugCgTSA");
+                service.setAccessTokenSecret("kQE-WPNw2n6soaxftD-1I8Nm0Ss");
 
-                this.cr.invoice.merchantEmail = "jb-us-seller2@paypal.com";
+                this.cr.invoice.merchantEmail = "jb-us-thirdparty@paypal.com";
                 cir = service.CreateInvoice(this.cr);
                 Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
                 Assert.IsNotNull(cir.invoiceID);

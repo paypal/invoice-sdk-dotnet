@@ -1,17 +1,32 @@
 PayPal Invoicing SDK for .NET
 ----------------------------------------------------------------------------------------------------------------
+
+Version 1.2.90 - June 11, 2012
+
+	This release contains updates for wsdl version 90.0. Two new operations - MarkInvoiceAsRefunded and
+MarkInvoiceAsUnpaid have been added with this release.
+
+----------------------------------------------------------------------------------------------------------------
 Version 1.2.88 - April 11, 2012
+
 	This release contains wsdl update 88.0
 	Fix for incorrect Permissions header (X-PP-AUTHORIZATION)
+
 ----------------------------------------------------------------------------------------------------------------
 Version 1.1.84 - December 21, 2011
+
 	This release contains additional samples for the 5 new invoicing APIs - UpdateInvoice, GetInvoiceDetails,
 CancelInvoice, SearchInvoices & MarkInvoiceAsPaid. Log4net logging in the sample has also been fixed.
+
 ----------------------------------------------------------------------------------------------------------------
 Version 1.0.84 - September 23, 2011
+
 	This release contains wrappers for the 5 new invoicing APIs - UpdateInvoice, GetInvoiceDetails,
 CancelInvoice, SearchInvoices & MarkInvoiceAsPaid
+
 ----------------------------------------------------------------------------------------------------------------
 Version 0.6.82 - May 10, 2011
+
 	Initial beta release of the invoicing SDK
+
 ----------------------------------------------------------------------------------------------------------------
