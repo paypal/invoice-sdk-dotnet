@@ -48,7 +48,7 @@
     <Compile Include="Exception\MissingCredentialException.cs" />
     <Compile Include="Exception\OAuthException.cs" />
     <Compile Include="Invoice\InvoiceService.cs" />
-    <Compile Include="Invoice\InvoiceStubs.cs" />
+    <Compile Include="Invoice\PayPalInvoiceModel.cs" />
     <Compile Include="Manager\SDKConfigHandler.cs" />
     <Compile Include="Manager\ConfigManager.cs" />
     <Compile Include="Manager\ConnectionManager.cs" />
