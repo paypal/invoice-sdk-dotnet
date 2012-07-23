@@ -1,172 +1,220 @@
-/** 
- * Auto generated code
- */
-
+using PayPal;
 using PayPal.Authentication;
+using PayPal.Util;
+using PayPal.Manager;
+using PayPal.Invoice.Model;
 
 namespace PayPal.Invoice {
+	public partial class InvoiceService : BasePayPalService {
 
-	using PayPal;
-	using PayPal.Util;
-	using PayPal.Manager;
-	using PayPal.Invoice.Model;
+		// Service Version
+		private static string ServiceVersion = "1.6.0";
 
-	public partial class InvoiceService : BasePayPalService{
+		// Service Name
+		private static string ServiceName = "Invoice";
 
-		private static string serviceName = "Invoice";
-		private static string serviceVersion = "1.6.0";
-
-		public InvoiceService() : base(serviceName, serviceVersion) {}
-		/**
-		 *
-		 */
-		public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername) 
+		public InvoiceService() : base(ServiceName, ServiceVersion)
 		{
-			string resp = call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
+		}
 
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername)
+	 	{
+			string resp = call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
 			return new CreateInvoiceResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest)
+	 	{
+	 		return CreateInvoice(CreateInvoiceRequest, null);
+	 	}
 
-		public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest) 
-		{
-			return CreateInvoice(CreateInvoiceRequest, null);
-		}
-		/**
-		 *
-		 */
-		public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername)
+	 	{
 			string resp = call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new SendInvoiceResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest)
+	 	{
+	 		return SendInvoice(SendInvoiceRequest, null);
+	 	}
 
-		public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest) 
-		{
-			return SendInvoice(SendInvoiceRequest, null);
-		}
-		/**
-		 *
-		 */
-		public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername)
+	 	{
 			string resp = call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new CreateAndSendInvoiceResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest)
+	 	{
+	 		return CreateAndSendInvoice(CreateAndSendInvoiceRequest, null);
+	 	}
 
-		public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest) 
-		{
-			return CreateAndSendInvoice(CreateAndSendInvoiceRequest, null);
-		}
-		/**
-		 *
-		 */
-		public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername)
+	 	{
 			string resp = call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new UpdateInvoiceResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest)
+	 	{
+	 		return UpdateInvoice(UpdateInvoiceRequest, null);
+	 	}
 
-		public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest) 
-		{
-			return UpdateInvoice(UpdateInvoiceRequest, null);
-		}
-		/**
-		 *
-		 */
-		public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername)
+	 	{
 			string resp = call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new GetInvoiceDetailsResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest)
+	 	{
+	 		return GetInvoiceDetails(GetInvoiceDetailsRequest, null);
+	 	}
 
-		public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest) 
-		{
-			return GetInvoiceDetails(GetInvoiceDetailsRequest, null);
-		}
-		/**
-		 *
-		 */
-		public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername)
+	 	{
 			string resp = call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new CancelInvoiceResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest)
+	 	{
+	 		return CancelInvoice(CancelInvoiceRequest, null);
+	 	}
 
-		public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest) 
-		{
-			return CancelInvoice(CancelInvoiceRequest, null);
-		}
-		/**
-		 *
-		 */
-		public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername)
+	 	{
 			string resp = call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new SearchInvoicesResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest)
+	 	{
+	 		return SearchInvoices(SearchInvoicesRequest, null);
+	 	}
 
-		public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest) 
-		{
-			return SearchInvoices(SearchInvoicesRequest, null);
-		}
-		/**
-		 *
-		 */
-		public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername)
+	 	{
 			string resp = call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new MarkInvoiceAsPaidResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest)
+	 	{
+	 		return MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest, null);
+	 	}
 
-		public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest) 
-		{
-			return MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest, null);
-		}
-		/**
-		 *
-		 */
-		public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest, string apiUsername)
+	 	{
 			string resp = call("MarkInvoiceAsUnpaid", MarkInvoiceAsUnpaidRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new MarkInvoiceAsUnpaidResponse(util.parseNVPString(resp), "");
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest)
+	 	{
+	 		return MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest, null);
+	 	}
 
-		public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest) 
-		{
-			return MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest, null);
-		}
-		/**
-		 *
-		 */
-		public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest, string apiUsername) 
-		{
+		/**	
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest, string apiUsername)
+	 	{
 			string resp = call("MarkInvoiceAsRefunded", MarkInvoiceAsRefundedRequest.toNVPString(""), apiUsername);
-
 			NVPUtil util = new NVPUtil();
 			return new MarkInvoiceAsRefundedResponse(util.parseNVPString(resp), "");
-		}
-
-		public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest) 
-		{
-			return MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest, null);
-		}
+	 	}
+	 
+	 	/** 
+          *The Method does not have any comments, this is
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest)
+	 	{
+	 		return MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest, null);
+	 	}
 	}
 }
-
