@@ -93,6 +93,11 @@ namespace InvoicingSampleApp
                 service.setAccessToken(context.Request.Params["accessToken"]);
                 service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
             }
+            if (context.Request.Params["permission$authentication"] != null)
+            {
+                service.setAccessToken(context.Request.Params["permission$accessToken"]);
+                service.setAccessTokenSecret(context.Request.Params["permission$tokenSecret"]);
+            }
             return service;
         }
 
