@@ -18,7 +18,6 @@ namespace PayPal.Invoice {
 		}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername)
@@ -29,7 +28,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest)
@@ -38,7 +36,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername)
@@ -49,7 +46,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest)
@@ -58,7 +54,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername)
@@ -69,7 +64,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest)
@@ -78,7 +72,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername)
@@ -89,7 +82,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest)
@@ -98,7 +90,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername)
@@ -109,7 +100,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest)
@@ -118,7 +108,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername)
@@ -129,7 +118,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest)
@@ -138,7 +126,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername)
@@ -149,7 +136,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest)
@@ -158,7 +144,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername)
@@ -169,7 +154,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest)
@@ -178,7 +162,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest, string apiUsername)
@@ -189,7 +172,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest)
@@ -198,7 +180,6 @@ namespace PayPal.Invoice {
 	 	}
 
 		/**	
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest, string apiUsername)
@@ -209,7 +190,6 @@ namespace PayPal.Invoice {
 	 	}
 	 
 	 	/** 
-          *The Method does not have any comments, this is
           *AUTO_GENERATED
 	 	  */
 	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest)

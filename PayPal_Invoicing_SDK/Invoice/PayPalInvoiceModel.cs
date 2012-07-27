@@ -49,7 +49,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string line1Field;
 		public string line1
@@ -66,7 +66,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string line2Field;
 		public string line2
@@ -83,7 +83,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string cityField;
 		public string city
@@ -100,7 +100,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string stateField;
 		public string state
@@ -117,7 +117,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string postalCodeField;
 		public string postalCode
@@ -134,7 +134,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string countryCodeField;
 		public string countryCode
@@ -151,7 +151,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string typeField;
 		public string type
@@ -270,7 +270,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? errorIdField;
 		public int? errorId
@@ -287,7 +287,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string domainField;
 		public string domain
@@ -304,7 +304,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string subdomainField;
 		public string subdomain
@@ -321,7 +321,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ErrorSeverity? severityField;
 		public ErrorSeverity? severity
@@ -338,7 +338,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ErrorCategory? categoryField;
 		public ErrorCategory? category
@@ -355,7 +355,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string messageField;
 		public string message
@@ -372,7 +372,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string exceptionIdField;
 		public string exceptionId
@@ -389,7 +389,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorParameter> parameterField = new List<ErrorParameter>();
 		public List<ErrorParameter> parameter
@@ -477,7 +477,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string nameField;
 		public string name
@@ -494,7 +494,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string valueField;
 		public string value
@@ -521,12 +521,12 @@ namespace PayPal.Invoice.Model
 		{
 			string key = "";
 			int i;
-			key = prefix + "name";
+			key = prefix + ".name";
 			if(map.ContainsKey(key))
 			{
 				this.name = map[key];
 			}
-			key = prefix + "value";
+			key = prefix ;
 			if(map.ContainsKey(key))
 			{
 				this.value = map[key];
@@ -546,7 +546,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -563,7 +563,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -598,7 +598,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -622,7 +622,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private DetailLevelCode? detailLevelField;
 		public DetailLevelCode? detailLevel
@@ -639,7 +639,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string errorLanguageField;
 		public string errorLanguage
@@ -696,7 +696,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string timestampField;
 		public string timestamp
@@ -713,7 +713,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private AckCode? ackField;
 		public AckCode? ack
@@ -730,7 +730,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string correlationIdField;
 		public string correlationId
@@ -747,7 +747,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string buildField;
 		public string build
@@ -940,7 +940,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string firstNameField;
 		public string firstName
@@ -957,7 +957,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string lastNameField;
 		public string lastName
@@ -974,7 +974,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string businessNameField;
 		public string businessName
@@ -991,7 +991,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string phoneField;
 		public string phone
@@ -1008,7 +1008,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string faxField;
 		public string fax
@@ -1025,7 +1025,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string websiteField;
 		public string website
@@ -1042,7 +1042,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string customValueField;
 		public string customValue
@@ -1059,7 +1059,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private BaseAddress addressField;
 		public BaseAddress address
@@ -1179,7 +1179,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string nameField;
 		public string name
@@ -1196,7 +1196,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string descriptionField;
 		public string description
@@ -1213,7 +1213,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dateField;
 		public string date
@@ -1230,7 +1230,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? quantityField;
 		public decimal? quantity
@@ -1247,7 +1247,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? unitPriceField;
 		public decimal? unitPrice
@@ -1264,7 +1264,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string taxNameField;
 		public string taxName
@@ -1281,7 +1281,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? taxRateField;
 		public decimal? taxRate
@@ -1399,7 +1399,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<InvoiceItemType> itemField = new List<InvoiceItemType>();
 		public List<InvoiceItemType> item
@@ -1473,7 +1473,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string merchantEmailField;
 		public string merchantEmail
@@ -1490,7 +1490,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string payerEmailField;
 		public string payerEmail
@@ -1507,7 +1507,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string numberField;
 		public string number
@@ -1524,7 +1524,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private BusinessInfoType merchantInfoField;
 		public BusinessInfoType merchantInfo
@@ -1541,7 +1541,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceItemListType itemListField;
 		public InvoiceItemListType itemList
@@ -1558,7 +1558,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string currencyCodeField;
 		public string currencyCode
@@ -1575,7 +1575,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceDateField;
 		public string invoiceDate
@@ -1592,7 +1592,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dueDateField;
 		public string dueDate
@@ -1609,7 +1609,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PaymentTermsType? paymentTermsField;
 		public PaymentTermsType? paymentTerms
@@ -1626,7 +1626,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? discountPercentField;
 		public decimal? discountPercent
@@ -1643,7 +1643,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? discountAmountField;
 		public decimal? discountAmount
@@ -1660,7 +1660,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string termsField;
 		public string terms
@@ -1677,7 +1677,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string noteField;
 		public string note
@@ -1694,7 +1694,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string merchantMemoField;
 		public string merchantMemo
@@ -1711,7 +1711,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private BusinessInfoType billingInfoField;
 		public BusinessInfoType billingInfo
@@ -1728,7 +1728,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private BusinessInfoType shippingInfoField;
 		public BusinessInfoType shippingInfo
@@ -1745,7 +1745,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? shippingAmountField;
 		public decimal? shippingAmount
@@ -1762,7 +1762,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string shippingTaxNameField;
 		public string shippingTaxName
@@ -1779,7 +1779,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? shippingTaxRateField;
 		public decimal? shippingTaxRate
@@ -1796,7 +1796,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string logoUrlField;
 		public string logoUrl
@@ -1813,7 +1813,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string referrerCodeField;
 		public string referrerCode
@@ -1830,7 +1830,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string customAmountLabelField;
 		public string customAmountLabel
@@ -1847,7 +1847,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? customAmountValueField;
 		public decimal? customAmountValue
@@ -2117,7 +2117,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private StatusType? statusField;
 		public StatusType? status
@@ -2134,7 +2134,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? totalAmountField;
 		public decimal? totalAmount
@@ -2151,7 +2151,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OriginType? originField;
 		public OriginType? origin
@@ -2168,7 +2168,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string createdDateField;
 		public string createdDate
@@ -2185,7 +2185,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string createdByField;
 		public string createdBy
@@ -2202,7 +2202,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string canceledDateField;
 		public string canceledDate
@@ -2219,7 +2219,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ActorType? canceledByActorField;
 		public ActorType? canceledByActor
@@ -2236,7 +2236,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string canceledByField;
 		public string canceledBy
@@ -2253,7 +2253,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string lastUpdatedDateField;
 		public string lastUpdatedDate
@@ -2270,7 +2270,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string lastUpdatedByField;
 		public string lastUpdatedBy
@@ -2287,7 +2287,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string firstSentDateField;
 		public string firstSentDate
@@ -2304,7 +2304,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string lastSentDateField;
 		public string lastSentDate
@@ -2321,7 +2321,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string lastSentByField;
 		public string lastSentBy
@@ -2338,7 +2338,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string paidDateField;
 		public string paidDate
@@ -2449,7 +2449,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string noteField;
 		public string note
@@ -2466,7 +2466,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dateField;
 		public string date
@@ -2530,7 +2530,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dateField;
 		public string date
@@ -2576,7 +2576,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string transactionIDField;
 		public string transactionID
@@ -2593,7 +2593,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dateField;
 		public string date
@@ -2644,7 +2644,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PaymentMethodsType? methodField;
 		public PaymentMethodsType? method
@@ -2661,7 +2661,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string noteField;
 		public string note
@@ -2678,7 +2678,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dateField;
 		public string date
@@ -2752,7 +2752,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private bool? viaPayPalField;
 		public bool? viaPayPal
@@ -2769,7 +2769,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PayPalPaymentDetailsType paypalPaymentField;
 		public PayPalPaymentDetailsType paypalPayment
@@ -2786,7 +2786,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OtherPaymentDetailsType otherPaymentField;
 		public OtherPaymentDetailsType otherPayment
@@ -2824,9 +2824,10 @@ namespace PayPal.Invoice.Model
 				this.paypalPayment = new PayPalPaymentDetailsType(map, key + ".");
 			}
 			key = prefix + "otherPayment";
-			if(map.ContainsKey(key))
+            if (map.ContainsKey(key + ".method") || map.ContainsKey(key + ".note")
+                    || map.ContainsKey(key + ".date"))
 			{
-				this.otherPayment = new OtherPaymentDetailsType(map, key);
+				this.otherPayment = new OtherPaymentDetailsType(map, key + ".");
 			}
 		}
 		
@@ -2842,7 +2843,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string startDateField;
 		public string startDate
@@ -2859,7 +2860,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string endDateField;
 		public string endDate
@@ -2907,7 +2908,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string emailField;
 		public string email
@@ -2924,7 +2925,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string recipientNameField;
 		public string recipientName
@@ -2941,7 +2942,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string businessNameField;
 		public string businessName
@@ -2958,7 +2959,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -2975,7 +2976,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<StatusType?> statusField = new List<StatusType?>();
 		public List<StatusType?> status
@@ -2992,7 +2993,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? lowerAmountField;
 		public decimal? lowerAmount
@@ -3009,7 +3010,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? upperAmountField;
 		public decimal? upperAmount
@@ -3026,7 +3027,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string currencyCodeField;
 		public string currencyCode
@@ -3043,7 +3044,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string memoField;
 		public string memo
@@ -3060,7 +3061,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OriginType? originField;
 		public OriginType? origin
@@ -3077,7 +3078,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private DateRangeType invoiceDateField;
 		public DateRangeType invoiceDate
@@ -3094,7 +3095,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private DateRangeType dueDateField;
 		public DateRangeType dueDate
@@ -3111,7 +3112,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private DateRangeType paymentDateField;
 		public DateRangeType paymentDate
@@ -3128,7 +3129,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private DateRangeType creationDateField;
 		public DateRangeType creationDate
@@ -3233,7 +3234,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -3250,7 +3251,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string merchantEmailField;
 		public string merchantEmail
@@ -3267,7 +3268,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string payerEmailField;
 		public string payerEmail
@@ -3284,7 +3285,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string numberField;
 		public string number
@@ -3301,7 +3302,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string billingBusinessNameField;
 		public string billingBusinessName
@@ -3318,7 +3319,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string billingFirstNameField;
 		public string billingFirstName
@@ -3335,7 +3336,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string billingLastNameField;
 		public string billingLastName
@@ -3352,7 +3353,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string shippingBusinessNameField;
 		public string shippingBusinessName
@@ -3369,7 +3370,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string shippingFirstNameField;
 		public string shippingFirstName
@@ -3386,7 +3387,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string shippingLastNameField;
 		public string shippingLastName
@@ -3403,7 +3404,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private decimal? totalAmountField;
 		public decimal? totalAmount
@@ -3420,7 +3421,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string currencyCodeField;
 		public string currencyCode
@@ -3437,7 +3438,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceDateField;
 		public string invoiceDate
@@ -3454,7 +3455,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string dueDateField;
 		public string dueDate
@@ -3471,7 +3472,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private StatusType? statusField;
 		public StatusType? status
@@ -3488,7 +3489,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OriginType? originField;
 		public OriginType? origin
@@ -3505,7 +3506,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string referrerCodeField;
 		public string referrerCode
@@ -3631,7 +3632,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<InvoiceSummaryType> invoiceField = new List<InvoiceSummaryType>();
 		public List<InvoiceSummaryType> invoice
@@ -3684,7 +3685,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -3701,7 +3702,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceType invoiceField;
 		public InvoiceType invoice
@@ -3759,7 +3760,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -3776,7 +3777,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -3793,7 +3794,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -3810,7 +3811,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -3827,7 +3828,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? totalAmountField;
 		public int? totalAmount
@@ -3844,7 +3845,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -3899,7 +3900,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -3922,7 +3923,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -3939,7 +3940,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -3996,7 +3997,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -4013,7 +4014,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4030,7 +4031,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -4047,7 +4048,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -4092,7 +4093,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -4115,7 +4116,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -4132,7 +4133,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceType invoiceField;
 		public InvoiceType invoice
@@ -4190,7 +4191,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -4207,7 +4208,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4224,7 +4225,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -4241,7 +4242,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -4258,7 +4259,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? totalAmountField;
 		public int? totalAmount
@@ -4275,7 +4276,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -4330,7 +4331,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -4353,7 +4354,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -4370,7 +4371,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4387,7 +4388,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceType invoiceField;
 		public InvoiceType invoice
@@ -4450,7 +4451,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -4467,7 +4468,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4484,7 +4485,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -4501,7 +4502,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -4518,7 +4519,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? totalAmountField;
 		public int? totalAmount
@@ -4535,7 +4536,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -4590,7 +4591,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -4613,7 +4614,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -4630,7 +4631,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4687,7 +4688,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -4704,7 +4705,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceType invoiceField;
 		public InvoiceType invoice
@@ -4721,7 +4722,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceDetailsType invoiceDetailsField;
 		public InvoiceDetailsType invoiceDetails
@@ -4738,7 +4739,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PaymentDetailsType paymentDetailsField;
 		public PaymentDetailsType paymentDetails
@@ -4755,7 +4756,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PaymentRefundDetailsType refundDetailsField;
 		public PaymentRefundDetailsType refundDetails
@@ -4772,7 +4773,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -4789,7 +4790,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -4849,7 +4850,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -4872,7 +4873,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -4889,7 +4890,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -4906,7 +4907,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string subjectField;
 		public string subject
@@ -4923,7 +4924,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string noteForPayerField;
 		public string noteForPayer
@@ -4940,7 +4941,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private bool? sendCopyToMerchantField;
 		public bool? sendCopyToMerchant
@@ -5008,7 +5009,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -5025,7 +5026,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -5042,7 +5043,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -5059,7 +5060,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -5076,7 +5077,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -5126,7 +5127,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -5149,7 +5150,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -5166,7 +5167,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string merchantEmailField;
 		public string merchantEmail
@@ -5183,7 +5184,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private SearchParametersType parametersField;
 		public SearchParametersType parameters
@@ -5200,7 +5201,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? pageField;
 		public int? page
@@ -5217,7 +5218,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? pageSizeField;
 		public int? pageSize
@@ -5290,7 +5291,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -5307,7 +5308,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? countField;
 		public int? count
@@ -5324,7 +5325,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private InvoiceSummaryListType invoiceListField;
 		public InvoiceSummaryListType invoiceList
@@ -5341,7 +5342,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private int? pageField;
 		public int? page
@@ -5358,7 +5359,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private bool? hasNextPageField;
 		public bool? hasNextPage
@@ -5375,7 +5376,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private bool? hasPreviousPageField;
 		public bool? hasPreviousPage
@@ -5392,7 +5393,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -5452,7 +5453,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -5475,7 +5476,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -5492,7 +5493,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -5509,7 +5510,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OtherPaymentDetailsType paymentField;
 		public OtherPaymentDetailsType payment
@@ -5572,7 +5573,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -5589,7 +5590,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -5606,7 +5607,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -5623,7 +5624,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -5640,7 +5641,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -5690,7 +5691,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -5713,7 +5714,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -5730,7 +5731,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -5747,7 +5748,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OtherPaymentRefundDetailsType refundDetailField;
 		public OtherPaymentRefundDetailsType refundDetail
@@ -5810,7 +5811,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -5827,7 +5828,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -5844,7 +5845,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -5861,7 +5862,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -5878,7 +5879,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -5928,7 +5929,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -5951,7 +5952,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private RequestEnvelope requestEnvelopeField;
 		public RequestEnvelope requestEnvelope
@@ -5968,7 +5969,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -6025,7 +6026,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private ResponseEnvelope responseEnvelopeField;
 		public ResponseEnvelope responseEnvelope
@@ -6042,7 +6043,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceIDField;
 		public string invoiceID
@@ -6059,7 +6060,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceNumberField;
 		public string invoiceNumber
@@ -6076,7 +6077,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private string invoiceURLField;
 		public string invoiceURL
@@ -6093,7 +6094,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
@@ -6143,7 +6144,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true){
 				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".parameter(0)"))
+				if(map.ContainsKey(key + ".errorId"))
 				{
 					this.error.Add(new ErrorData(map, key + "."));
 				} else
@@ -6166,7 +6167,7 @@ namespace PayPal.Invoice.Model
 	{
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private bool? viaPayPalField;
 		public bool? viaPayPal
@@ -6183,7 +6184,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private PayPalPaymentRefundDetailsType paypalPaymentField;
 		public PayPalPaymentRefundDetailsType paypalPayment
@@ -6200,7 +6201,7 @@ namespace PayPal.Invoice.Model
 		
 
 		/**
-          *No Document Comments
+          *
 		  */
 		private OtherPaymentRefundDetailsType otherPaymentField;
 		public OtherPaymentRefundDetailsType otherPayment
@@ -6238,9 +6239,9 @@ namespace PayPal.Invoice.Model
 				this.paypalPayment = new PayPalPaymentRefundDetailsType(map, key);
 			}
 			key = prefix + "otherPayment";
-			if(map.ContainsKey(key))
+            if (map.ContainsKey(key + ".note") || map.ContainsKey(key + ".date"))
 			{
-				this.otherPayment = new OtherPaymentRefundDetailsType(map, key);
+				this.otherPayment = new OtherPaymentRefundDetailsType(map, key + ".");
 			}
 		}
 		

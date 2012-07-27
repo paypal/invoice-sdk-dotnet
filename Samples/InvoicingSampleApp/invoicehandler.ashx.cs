@@ -580,7 +580,7 @@ namespace InvoicingSampleApp
                     idx++;
                 }
             }
-            displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
+            displayResponse(context, "SearchInvoices", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null);
         }
 

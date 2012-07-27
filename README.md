@@ -6,6 +6,7 @@ Prerequisites
 
 PayPal's C# Invoice SDK requires 
 
+ * .NET 2.0+
  * Visual Studio 2005
  * NUnit 2.5.10.11092 (only for running the test cases) 
   

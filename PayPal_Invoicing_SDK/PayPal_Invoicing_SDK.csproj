@@ -60,8 +60,8 @@
     <Compile Include="Authentication\ICredential.cs" />
     <Compile Include="OAuth\OAuthGenerator.cs" />
     <Compile Include="OAuth\PayPalURLEncoder.cs" />
+    <Compile Include="Permissions\PayPalPermissionsModel.cs" />
     <Compile Include="Permissions\PermissionsService.cs" />
-    <Compile Include="Permissions\PermissionsStubs.cs" />
     <Compile Include="Util\NVPUtil.cs" />
     <Compile Include="Util\ReadCert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
