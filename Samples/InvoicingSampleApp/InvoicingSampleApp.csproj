@@ -111,6 +111,7 @@
     <Compile Include="GetAccessToken.aspx.designer.cs">
       <DependentUpon>GetAccessToken.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SanityTest\DeserializationTestFilter.cs" />
     <Compile Include="searchinvoices.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>searchinvoices.aspx</DependentUpon>

@@ -216,45 +216,69 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public BaseAddress(Dictionary<string, string> map, string prefix)
+
+		public static BaseAddress createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "line1";
-			if(map.ContainsKey(key))
+			BaseAddress baseAddress = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.line1 = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "line1";
+			if (map.ContainsKey(key))
+			{
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.line1 = map[key];
 			}
 			key = prefix + "line2";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.line2 = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.line2 = map[key];
 			}
 			key = prefix + "city";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.city = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.city = map[key];
 			}
 			key = prefix + "state";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.state = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.state = map[key];
 			}
 			key = prefix + "postalCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.postalCode = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.postalCode = map[key];
 			}
 			key = prefix + "countryCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.countryCode = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.countryCode = map[key];
 			}
 			key = prefix + "type";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.type = map[key];
+				baseAddress = (baseAddress == null) ? new BaseAddress() : baseAddress;
+				baseAddress.type = map[key];
 			}
+			return baseAddress;
 		}
 		
 	}
@@ -412,57 +436,84 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public ErrorData(Dictionary<string, string> map, string prefix)
+
+		public static ErrorData createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "errorId";
-			if(map.ContainsKey(key))
+			ErrorData errorData = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.errorId = System.Convert.ToInt32(map[key]);
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "errorId";
+			if (map.ContainsKey(key))
+			{
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.errorId = System.Convert.ToInt32(map[key]);
 			}
 			key = prefix + "domain";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.domain = map[key];
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.domain = map[key];
 			}
 			key = prefix + "subdomain";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.subdomain = map[key];
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.subdomain = map[key];
 			}
 			key = prefix + "severity";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.severity = (ErrorSeverity)EnumUtils.getValue(map[key],typeof(ErrorSeverity));;
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.severity = (ErrorSeverity)EnumUtils.getValue(map[key],typeof(ErrorSeverity));;
 			}
 			key = prefix + "category";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.category = (ErrorCategory)EnumUtils.getValue(map[key],typeof(ErrorCategory));;
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.category = (ErrorCategory)EnumUtils.getValue(map[key],typeof(ErrorCategory));;
 			}
 			key = prefix + "message";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.message = map[key];
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.message = map[key];
 			}
 			key = prefix + "exceptionId";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.exceptionId = map[key];
+				errorData = (errorData == null) ? new ErrorData() : errorData;
+				errorData.exceptionId = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "parameter" + "(" + i + ")";
-				if(map.ContainsKey(key))
+			while(true)
+			{
+				ErrorParameter parameter =  ErrorParameter.createInstance(map, prefix + "parameter", i);
+				if (parameter != null)
 				{
-					this.parameter.Add(new ErrorParameter(map, key));
-				} else
+					errorData = (errorData == null) ? new ErrorData() : errorData;
+					errorData.parameter.Add(parameter);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return errorData;
 		}
 		
 	}
@@ -517,20 +568,39 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public ErrorParameter(Dictionary<string, string> map, string prefix)
+
+		public static ErrorParameter createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + ".name";
-			if(map.ContainsKey(key))
+			ErrorParameter errorParameter = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.name = map[key];
-			}
-			key = prefix ;
-			if(map.ContainsKey(key))
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
 			{
-				this.value = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
 			}
+			key = prefix + "name";
+			if (map.ContainsKey(key))
+			{
+				errorParameter = (errorParameter == null) ? new ErrorParameter() : errorParameter;
+				errorParameter.name = map[key];
+			}
+			key = prefix.Substring(0, prefix.Length - 1);
+			if (map.ContainsKey(key))
+			{
+				errorParameter = (errorParameter == null) ? new ErrorParameter() : errorParameter;
+				errorParameter.value = map[key];
+			}
+			return errorParameter;
 		}
 		
 	}
@@ -586,27 +656,48 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public FaultMessage(Dictionary<string, string> map, string prefix)
+
+		public static FaultMessage createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			FaultMessage faultMessage = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
+				faultMessage.responseEnvelope = responseEnvelope;
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
+					faultMessage.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return faultMessage;
 		}
 		
 	}
@@ -770,30 +861,51 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public ResponseEnvelope(Dictionary<string, string> map, string prefix)
+
+		public static ResponseEnvelope createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "timestamp";
-			if(map.ContainsKey(key))
+			ResponseEnvelope responseEnvelope = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.timestamp = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "timestamp";
+			if (map.ContainsKey(key))
+			{
+				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
+				responseEnvelope.timestamp = map[key];
 			}
 			key = prefix + "ack";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.ack = (AckCode)EnumUtils.getValue(map[key],typeof(AckCode));;
+				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
+				responseEnvelope.ack = (AckCode)EnumUtils.getValue(map[key],typeof(AckCode));;
 			}
 			key = prefix + "correlationId";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.correlationId = map[key];
+				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
+				responseEnvelope.correlationId = map[key];
 			}
 			key = prefix + "build";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.build = map[key];
+				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
+				responseEnvelope.build = map[key];
 			}
+			return responseEnvelope;
 		}
 		
 	}
@@ -1120,50 +1232,75 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public BusinessInfoType(Dictionary<string, string> map, string prefix)
+
+		public static BusinessInfoType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "firstName";
-			if(map.ContainsKey(key))
+			BusinessInfoType businessInfoType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.firstName = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "firstName";
+			if (map.ContainsKey(key))
+			{
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.firstName = map[key];
 			}
 			key = prefix + "lastName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.lastName = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.lastName = map[key];
 			}
 			key = prefix + "businessName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.businessName = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.businessName = map[key];
 			}
 			key = prefix + "phone";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.phone = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.phone = map[key];
 			}
 			key = prefix + "fax";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.fax = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.fax = map[key];
 			}
 			key = prefix + "website";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.website = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.website = map[key];
 			}
 			key = prefix + "customValue";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.customValue = map[key];
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.customValue = map[key];
 			}
-			key = prefix + "address";
-			if(map.ContainsKey(key + ".line1"))
+			BaseAddress address =  BaseAddress.createInstance(map, prefix + "address", -1);
+			if (address != null)
 			{
-				this.address = new BaseAddress(map, key + ".");
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.address = address;
 			}
+			return businessInfoType;
 		}
 		
 	}
@@ -1346,45 +1483,69 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public InvoiceItemType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceItemType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "name";
-			if(map.ContainsKey(key))
+			InvoiceItemType invoiceItemType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.name = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "name";
+			if (map.ContainsKey(key))
+			{
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.name = map[key];
 			}
 			key = prefix + "description";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.description = map[key];
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.description = map[key];
 			}
 			key = prefix + "date";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.date = map[key];
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.date = map[key];
 			}
 			key = prefix + "quantity";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.quantity = System.Convert.ToDecimal(map[key]);
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.quantity = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "unitPrice";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.unitPrice = System.Convert.ToDecimal(map[key]);
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.unitPrice = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "taxName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.taxName = map[key];
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.taxName = map[key];
 			}
 			key = prefix + "taxRate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.taxRate = System.Convert.ToDecimal(map[key]);
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.taxRate = System.Convert.ToDecimal(map[key]);
 			}
+			return invoiceItemType;
 		}
 		
 	}
@@ -1442,22 +1603,42 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public InvoiceItemListType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceItemListType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			i = 0;
-			while(true){
-				key = prefix + "item" + "(" + i + ")";
-				if(map.ContainsKey(key + ".name"))
+			InvoiceItemListType invoiceItemListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
 				{
-					this.item.Add(new InvoiceItemType(map, key + "."));
-				} else
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				InvoiceItemType item =  InvoiceItemType.createInstance(map, prefix + "item", i);
+				if (item != null)
+				{
+					invoiceItemListType = (invoiceItemListType == null) ? new InvoiceItemListType() : invoiceItemListType;
+					invoiceItemListType.item.Add(item);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return invoiceItemListType;
 		}
 		
 	}
@@ -1983,125 +2164,165 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public InvoiceType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "merchantEmail";
-			if(map.ContainsKey(key))
+			InvoiceType invoiceType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.merchantEmail = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "merchantEmail";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.merchantEmail = map[key];
 			}
 			key = prefix + "payerEmail";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.payerEmail = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.payerEmail = map[key];
 			}
 			key = prefix + "number";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.number = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.number = map[key];
 			}
-			key = prefix + "merchantInfo";
-			if(map.ContainsKey(key + ".address.line1"))
+			BusinessInfoType merchantInfo =  BusinessInfoType.createInstance(map, prefix + "merchantInfo", -1);
+			if (merchantInfo != null)
 			{
-				this.merchantInfo = new BusinessInfoType(map, key + ".");
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.merchantInfo = merchantInfo;
 			}
-			key = prefix + "itemList";
-			if(map.ContainsKey(key + ".item(0).name"))
+			InvoiceItemListType itemList =  InvoiceItemListType.createInstance(map, prefix + "itemList", -1);
+			if (itemList != null)
 			{
-				this.itemList = new InvoiceItemListType(map, key + ".");
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.itemList = itemList;
 			}
 			key = prefix + "currencyCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.currencyCode = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.currencyCode = map[key];
 			}
 			key = prefix + "invoiceDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceDate = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.invoiceDate = map[key];
 			}
 			key = prefix + "dueDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.dueDate = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.dueDate = map[key];
 			}
 			key = prefix + "paymentTerms";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.paymentTerms = (PaymentTermsType)EnumUtils.getValue(map[key],typeof(PaymentTermsType));;
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.paymentTerms = (PaymentTermsType)EnumUtils.getValue(map[key],typeof(PaymentTermsType));;
 			}
 			key = prefix + "discountPercent";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.discountPercent = System.Convert.ToDecimal(map[key]);
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.discountPercent = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "discountAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.discountAmount = System.Convert.ToDecimal(map[key]);
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.discountAmount = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "terms";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.terms = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.terms = map[key];
 			}
 			key = prefix + "note";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.note = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.note = map[key];
 			}
 			key = prefix + "merchantMemo";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.merchantMemo = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.merchantMemo = map[key];
 			}
-			key = prefix + "billingInfo";
-			if(map.ContainsKey(key + ".address.line1"))
+			BusinessInfoType billingInfo =  BusinessInfoType.createInstance(map, prefix + "billingInfo", -1);
+			if (billingInfo != null)
 			{
-				this.billingInfo = new BusinessInfoType(map, key + ".");
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.billingInfo = billingInfo;
 			}
-			key = prefix + "shippingInfo";
-			if(map.ContainsKey(key + ".address.line1"))
+			BusinessInfoType shippingInfo =  BusinessInfoType.createInstance(map, prefix + "shippingInfo", -1);
+			if (shippingInfo != null)
 			{
-				this.shippingInfo = new BusinessInfoType(map, key + ".");
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.shippingInfo = shippingInfo;
 			}
 			key = prefix + "shippingAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingAmount = System.Convert.ToDecimal(map[key]);
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.shippingAmount = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "shippingTaxName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingTaxName = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.shippingTaxName = map[key];
 			}
 			key = prefix + "shippingTaxRate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingTaxRate = System.Convert.ToDecimal(map[key]);
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.shippingTaxRate = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "logoUrl";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.logoUrl = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.logoUrl = map[key];
 			}
 			key = prefix + "referrerCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.referrerCode = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.referrerCode = map[key];
 			}
 			key = prefix + "customAmountLabel";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.customAmountLabel = map[key];
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.customAmountLabel = map[key];
 			}
 			key = prefix + "customAmountValue";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.customAmountValue = System.Convert.ToDecimal(map[key]);
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.customAmountValue = System.Convert.ToDecimal(map[key]);
 			}
+			return invoiceType;
 		}
 		
 	}
@@ -2361,80 +2582,111 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public InvoiceDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "status";
-			if(map.ContainsKey(key))
+			InvoiceDetailsType invoiceDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "status";
+			if (map.ContainsKey(key))
+			{
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
 			}
 			key = prefix + "totalAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.totalAmount = System.Convert.ToDecimal(map[key]);
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.totalAmount = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "origin";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
 			}
 			key = prefix + "createdDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.createdDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.createdDate = map[key];
 			}
 			key = prefix + "createdBy";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.createdBy = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.createdBy = map[key];
 			}
 			key = prefix + "canceledDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.canceledDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.canceledDate = map[key];
 			}
 			key = prefix + "canceledByActor";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.canceledByActor = (ActorType)EnumUtils.getValue(map[key],typeof(ActorType));;
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.canceledByActor = (ActorType)EnumUtils.getValue(map[key],typeof(ActorType));;
 			}
 			key = prefix + "canceledBy";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.canceledBy = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.canceledBy = map[key];
 			}
 			key = prefix + "lastUpdatedDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.lastUpdatedDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.lastUpdatedDate = map[key];
 			}
 			key = prefix + "lastUpdatedBy";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.lastUpdatedBy = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.lastUpdatedBy = map[key];
 			}
 			key = prefix + "firstSentDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.firstSentDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.firstSentDate = map[key];
 			}
 			key = prefix + "lastSentDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.lastSentDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.lastSentDate = map[key];
 			}
 			key = prefix + "lastSentBy";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.lastSentBy = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.lastSentBy = map[key];
 			}
 			key = prefix + "paidDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.paidDate = map[key];
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.paidDate = map[key];
 			}
+			return invoiceDetailsType;
 		}
 		
 	}
@@ -2502,20 +2754,39 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public OtherPaymentRefundDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static OtherPaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "note";
-			if(map.ContainsKey(key))
+			OtherPaymentRefundDetailsType otherPaymentRefundDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.note = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "note";
+			if (map.ContainsKey(key))
+			{
+				otherPaymentRefundDetailsType = (otherPaymentRefundDetailsType == null) ? new OtherPaymentRefundDetailsType() : otherPaymentRefundDetailsType;
+				otherPaymentRefundDetailsType.note = map[key];
 			}
 			key = prefix + "date";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.date = map[key];
+				otherPaymentRefundDetailsType = (otherPaymentRefundDetailsType == null) ? new OtherPaymentRefundDetailsType() : otherPaymentRefundDetailsType;
+				otherPaymentRefundDetailsType.date = map[key];
 			}
+			return otherPaymentRefundDetailsType;
 		}
 		
 	}
@@ -2553,15 +2824,33 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public PayPalPaymentRefundDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static PayPalPaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "date";
-			if(map.ContainsKey(key))
+			PayPalPaymentRefundDetailsType payPalPaymentRefundDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.date = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
 			}
+			key = prefix + "date";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentRefundDetailsType = (payPalPaymentRefundDetailsType == null) ? new PayPalPaymentRefundDetailsType() : payPalPaymentRefundDetailsType;
+				payPalPaymentRefundDetailsType.date = map[key];
+			}
+			return payPalPaymentRefundDetailsType;
 		}
 		
 	}
@@ -2616,20 +2905,39 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public PayPalPaymentDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static PayPalPaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "transactionID";
-			if(map.ContainsKey(key))
+			PayPalPaymentDetailsType payPalPaymentDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.transactionID = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "transactionID";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentDetailsType = (payPalPaymentDetailsType == null) ? new PayPalPaymentDetailsType() : payPalPaymentDetailsType;
+				payPalPaymentDetailsType.transactionID = map[key];
 			}
 			key = prefix + "date";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.date = map[key];
+				payPalPaymentDetailsType = (payPalPaymentDetailsType == null) ? new PayPalPaymentDetailsType() : payPalPaymentDetailsType;
+				payPalPaymentDetailsType.date = map[key];
 			}
+			return payPalPaymentDetailsType;
 		}
 		
 	}
@@ -2719,25 +3027,45 @@ namespace PayPal.Invoice.Model
 			}
 			return sb.ToString();
 		}
-		public OtherPaymentDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static OtherPaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "method";
-			if(map.ContainsKey(key))
+			OtherPaymentDetailsType otherPaymentDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.method = (PaymentMethodsType)EnumUtils.getValue(map[key],typeof(PaymentMethodsType));;
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "method";
+			if (map.ContainsKey(key))
+			{
+				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
+				otherPaymentDetailsType.method = (PaymentMethodsType)EnumUtils.getValue(map[key],typeof(PaymentMethodsType));;
 			}
 			key = prefix + "note";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.note = map[key];
+				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
+				otherPaymentDetailsType.note = map[key];
 			}
 			key = prefix + "date";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.date = map[key];
+				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
+				otherPaymentDetailsType.date = map[key];
 			}
+			return otherPaymentDetailsType;
 		}
 		
 	}
@@ -2809,26 +3137,45 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public PaymentDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static PaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
+			PaymentDetailsType paymentDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
 			key = prefix + "viaPayPal";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.viaPayPal = System.Convert.ToBoolean(map[key]);
+				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
+				paymentDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
 			}
-			key = prefix + "paypalPayment";
-			if(map.ContainsKey(key + ".transactionID"))
+			PayPalPaymentDetailsType paypalPayment =  PayPalPaymentDetailsType.createInstance(map, prefix + "paypalPayment", -1);
+			if (paypalPayment != null)
 			{
-				this.paypalPayment = new PayPalPaymentDetailsType(map, key + ".");
+				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
+				paymentDetailsType.paypalPayment = paypalPayment;
 			}
-			key = prefix + "otherPayment";
-            if (map.ContainsKey(key + ".method") || map.ContainsKey(key + ".note")
-                    || map.ContainsKey(key + ".date"))
+			OtherPaymentDetailsType otherPayment =  OtherPaymentDetailsType.createInstance(map, prefix + "otherPayment", -1);
+			if (otherPayment != null)
 			{
-				this.otherPayment = new OtherPaymentDetailsType(map, key + ".");
+				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
+				paymentDetailsType.otherPayment = otherPayment;
 			}
+			return paymentDetailsType;
 		}
 		
 	}
@@ -3175,7 +3522,7 @@ namespace PayPal.Invoice.Model
 			{
 				if (this.status[i] != null)
 				{
-					sb.Append(prefix).Append("status").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
+					sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
 					sb.Append("&");
 				}
 			}
@@ -3529,95 +3876,129 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public InvoiceSummaryType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceSummaryType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			InvoiceSummaryType invoiceSummaryType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.invoiceID = map[key];
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			key = prefix + "invoiceID";
+			if (map.ContainsKey(key))
+			{
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.invoiceID = map[key];
 			}
 			key = prefix + "merchantEmail";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.merchantEmail = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.merchantEmail = map[key];
 			}
 			key = prefix + "payerEmail";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.payerEmail = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.payerEmail = map[key];
 			}
 			key = prefix + "number";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.number = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.number = map[key];
 			}
 			key = prefix + "billingBusinessName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.billingBusinessName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.billingBusinessName = map[key];
 			}
 			key = prefix + "billingFirstName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.billingFirstName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.billingFirstName = map[key];
 			}
 			key = prefix + "billingLastName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.billingLastName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.billingLastName = map[key];
 			}
 			key = prefix + "shippingBusinessName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingBusinessName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.shippingBusinessName = map[key];
 			}
 			key = prefix + "shippingFirstName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingFirstName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.shippingFirstName = map[key];
 			}
 			key = prefix + "shippingLastName";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.shippingLastName = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.shippingLastName = map[key];
 			}
 			key = prefix + "totalAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.totalAmount = System.Convert.ToDecimal(map[key]);
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.totalAmount = System.Convert.ToDecimal(map[key]);
 			}
 			key = prefix + "currencyCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.currencyCode = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.currencyCode = map[key];
 			}
 			key = prefix + "invoiceDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceDate = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.invoiceDate = map[key];
 			}
 			key = prefix + "dueDate";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.dueDate = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.dueDate = map[key];
 			}
 			key = prefix + "status";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
 			}
 			key = prefix + "origin";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
 			}
 			key = prefix + "referrerCode";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.referrerCode = map[key];
+				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
+				invoiceSummaryType.referrerCode = map[key];
 			}
+			return invoiceSummaryType;
 		}
 		
 	}
@@ -3655,22 +4036,42 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public InvoiceSummaryListType(Dictionary<string, string> map, string prefix)
+
+		public static InvoiceSummaryListType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			i = 0;
-			while(true){
-				key = prefix + "invoice" + "(" + i + ")";
-				if(map.ContainsKey(key + ".invoiceID"))
+			InvoiceSummaryListType invoiceSummaryListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
 				{
-					this.invoice.Add(new InvoiceSummaryType(map, key + "."));
-				} else
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				InvoiceSummaryType invoice =  InvoiceSummaryType.createInstance(map, prefix + "invoice", i);
+				if (invoice != null)
+				{
+					invoiceSummaryListType = (invoiceSummaryListType == null) ? new InvoiceSummaryListType() : invoiceSummaryListType;
+					invoiceSummaryListType.invoice.Add(invoice);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return invoiceSummaryListType;
 		}
 		
 	}
@@ -3868,47 +4269,72 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public CreateInvoiceResponse(Dictionary<string, string> map, string prefix)
+
+		public static CreateInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			CreateInvoiceResponse createInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.invoiceURL = map[key];
 			}
 			key = prefix + "totalAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.totalAmount = System.Convert.ToInt32(map[key]);
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+					createInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return createInvoiceResponse;
 		}
 		
 	}
@@ -4071,37 +4497,60 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public SendInvoiceResponse(Dictionary<string, string> map, string prefix)
+
+		public static SendInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			SendInvoiceResponse sendInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
+				sendInvoiceResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
+				sendInvoiceResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
+				sendInvoiceResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
+					sendInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return sendInvoiceResponse;
 		}
 		
 	}
@@ -4299,47 +4748,72 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public CreateAndSendInvoiceResponse(Dictionary<string, string> map, string prefix)
+
+		public static CreateAndSendInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			CreateAndSendInvoiceResponse createAndSendInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.invoiceURL = map[key];
 			}
 			key = prefix + "totalAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.totalAmount = System.Convert.ToInt32(map[key]);
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+					createAndSendInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return createAndSendInvoiceResponse;
 		}
 		
 	}
@@ -4559,47 +5033,72 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public UpdateInvoiceResponse(Dictionary<string, string> map, string prefix)
+
+		public static UpdateInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			UpdateInvoiceResponse updateInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+				updateInvoiceResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+				updateInvoiceResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+				updateInvoiceResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+				updateInvoiceResponse.invoiceURL = map[key];
 			}
 			key = prefix + "totalAmount";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.totalAmount = System.Convert.ToInt32(map[key]);
+				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+				updateInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
+					updateInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return updateInvoiceResponse;
 		}
 		
 	}
@@ -4813,52 +5312,78 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public GetInvoiceDetailsResponse(Dictionary<string, string> map, string prefix)
+
+		public static GetInvoiceDetailsResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			GetInvoiceDetailsResponse getInvoiceDetailsResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
 			}
-			key = prefix + "invoice";
-			if(map.ContainsKey(key + ".merchantEmail"))
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
 			{
-				this.invoice = new InvoiceType(map, key + ".");
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.responseEnvelope = responseEnvelope;
 			}
-			key = prefix + "invoiceDetails";
-			if(map.ContainsKey(key + ".createdDate"))
+			InvoiceType invoice =  InvoiceType.createInstance(map, prefix + "invoice", -1);
+			if (invoice != null)
 			{
-				this.invoiceDetails = new InvoiceDetailsType(map, key + ".");
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.invoice = invoice;
 			}
-			key = prefix + "paymentDetails";
-			if(map.ContainsKey(key + ".viaPayPal"))
+			InvoiceDetailsType invoiceDetails =  InvoiceDetailsType.createInstance(map, prefix + "invoiceDetails", -1);
+			if (invoiceDetails != null)
 			{
-				this.paymentDetails = new PaymentDetailsType(map, key + ".");
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.invoiceDetails = invoiceDetails;
 			}
-			key = prefix + "refundDetails";
-			if(map.ContainsKey(key + ".viaPayPal"))
+			PaymentDetailsType paymentDetails =  PaymentDetailsType.createInstance(map, prefix + "paymentDetails", -1);
+			if (paymentDetails != null)
 			{
-				this.refundDetails = new PaymentRefundDetailsType(map, key + ".");
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.paymentDetails = paymentDetails;
+			}
+			PaymentRefundDetailsType refundDetails =  PaymentRefundDetailsType.createInstance(map, prefix + "refundDetails", -1);
+			if (refundDetails != null)
+			{
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.refundDetails = refundDetails;
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+					getInvoiceDetailsResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return getInvoiceDetailsResponse;
 		}
 		
 	}
@@ -5100,42 +5625,66 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public CancelInvoiceResponse(Dictionary<string, string> map, string prefix)
+
+		public static CancelInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			CancelInvoiceResponse cancelInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
+				cancelInvoiceResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
+				cancelInvoiceResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
+				cancelInvoiceResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
+				cancelInvoiceResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
+					cancelInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return cancelInvoiceResponse;
 		}
 		
 	}
@@ -5416,52 +5965,78 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public SearchInvoicesResponse(Dictionary<string, string> map, string prefix)
+
+		public static SearchInvoicesResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			SearchInvoicesResponse searchInvoicesResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "count";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.count = System.Convert.ToInt32(map[key]);
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.count = System.Convert.ToInt32(map[key]);
 			}
-			key = prefix + "invoiceList";
-			if(map.ContainsKey(key + ".invoice(0).invoiceID"))
+			InvoiceSummaryListType invoiceList =  InvoiceSummaryListType.createInstance(map, prefix + "invoiceList", -1);
+			if (invoiceList != null)
 			{
-				this.invoiceList = new InvoiceSummaryListType(map, key + ".");
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.invoiceList = invoiceList;
 			}
 			key = prefix + "page";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.page = System.Convert.ToInt32(map[key]);
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.page = System.Convert.ToInt32(map[key]);
 			}
 			key = prefix + "hasNextPage";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.hasNextPage = System.Convert.ToBoolean(map[key]);
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.hasNextPage = System.Convert.ToBoolean(map[key]);
 			}
 			key = prefix + "hasPreviousPage";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.hasPreviousPage = System.Convert.ToBoolean(map[key]);
+				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+				searchInvoicesResponse.hasPreviousPage = System.Convert.ToBoolean(map[key]);
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
+					searchInvoicesResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return searchInvoicesResponse;
 		}
 		
 	}
@@ -5664,42 +6239,66 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public MarkInvoiceAsPaidResponse(Dictionary<string, string> map, string prefix)
+
+		public static MarkInvoiceAsPaidResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			MarkInvoiceAsPaidResponse markInvoiceAsPaidResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
+				markInvoiceAsPaidResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
+				markInvoiceAsPaidResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
+				markInvoiceAsPaidResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
+				markInvoiceAsPaidResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
+					markInvoiceAsPaidResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return markInvoiceAsPaidResponse;
 		}
 		
 	}
@@ -5902,42 +6501,66 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public MarkInvoiceAsRefundedResponse(Dictionary<string, string> map, string prefix)
+
+		public static MarkInvoiceAsRefundedResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			MarkInvoiceAsRefundedResponse markInvoiceAsRefundedResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
+				markInvoiceAsRefundedResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
+				markInvoiceAsRefundedResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
+				markInvoiceAsRefundedResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
+				markInvoiceAsRefundedResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
+					markInvoiceAsRefundedResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return markInvoiceAsRefundedResponse;
 		}
 		
 	}
@@ -6117,42 +6740,66 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public MarkInvoiceAsUnpaidResponse(Dictionary<string, string> map, string prefix)
+
+		public static MarkInvoiceAsUnpaidResponse createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
-			key = prefix + "responseEnvelope";
-			if(map.ContainsKey(key + ".timestamp"))
+			MarkInvoiceAsUnpaidResponse markInvoiceAsUnpaidResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
 			{
-				this.responseEnvelope = new ResponseEnvelope(map, key + ".");
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
+				markInvoiceAsUnpaidResponse.responseEnvelope = responseEnvelope;
 			}
 			key = prefix + "invoiceID";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceID = map[key];
+				markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
+				markInvoiceAsUnpaidResponse.invoiceID = map[key];
 			}
 			key = prefix + "invoiceNumber";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceNumber = map[key];
+				markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
+				markInvoiceAsUnpaidResponse.invoiceNumber = map[key];
 			}
 			key = prefix + "invoiceURL";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.invoiceURL = map[key];
+				markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
+				markInvoiceAsUnpaidResponse.invoiceURL = map[key];
 			}
 			i = 0;
-			while(true){
-				key = prefix + "error" + "(" + i + ")";
-				if(map.ContainsKey(key + ".errorId"))
+			while(true)
+			{
+				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				if (error != null)
 				{
-					this.error.Add(new ErrorData(map, key + "."));
-				} else
+					markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
+					markInvoiceAsUnpaidResponse.error.Add(error);
+					i++;
+				} 
+				else
 				{
 					break;
 				}
-				i++;
 			}
+			return markInvoiceAsUnpaidResponse;
 		}
 		
 	}
@@ -6224,25 +6871,45 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public PaymentRefundDetailsType(Dictionary<string, string> map, string prefix)
+
+		public static PaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
 		{
-			string key = "";
-			int i;
+			PaymentRefundDetailsType paymentRefundDetailsType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
 			key = prefix + "viaPayPal";
-			if(map.ContainsKey(key))
+			if (map.ContainsKey(key))
 			{
-				this.viaPayPal = System.Convert.ToBoolean(map[key]);
+				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
+				paymentRefundDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
 			}
-			key = prefix + "paypalPayment";
-			if(map.ContainsKey(key))
+			PayPalPaymentRefundDetailsType paypalPayment =  PayPalPaymentRefundDetailsType.createInstance(map, prefix + "paypalPayment", -1);
+			if (paypalPayment != null)
 			{
-				this.paypalPayment = new PayPalPaymentRefundDetailsType(map, key);
+				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
+				paymentRefundDetailsType.paypalPayment = paypalPayment;
 			}
-			key = prefix + "otherPayment";
-            if (map.ContainsKey(key + ".note") || map.ContainsKey(key + ".date"))
+			OtherPaymentRefundDetailsType otherPayment =  OtherPaymentRefundDetailsType.createInstance(map, prefix + "otherPayment", -1);
+			if (otherPayment != null)
 			{
-				this.otherPayment = new OtherPaymentRefundDetailsType(map, key + ".");
+				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
+				paymentRefundDetailsType.otherPayment = otherPayment;
 			}
+			return paymentRefundDetailsType;
 		}
 		
 	}

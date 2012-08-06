@@ -24,7 +24,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("RequestPermissions", RequestPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new RequestPermissionsResponse(util.parseNVPString(resp), "");
+			return RequestPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -42,7 +43,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("GetAccessToken", GetAccessTokenRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new GetAccessTokenResponse(util.parseNVPString(resp), "");
+			return GetAccessTokenResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -60,7 +62,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("GetPermissions", GetPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new GetPermissionsResponse(util.parseNVPString(resp), "");
+			return GetPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -78,7 +81,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("CancelPermissions", CancelPermissionsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new CancelPermissionsResponse(util.parseNVPString(resp), "");
+			return CancelPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -96,7 +100,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("GetBasicPersonalData", GetBasicPersonalDataRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new GetBasicPersonalDataResponse(util.parseNVPString(resp), "");
+			return GetBasicPersonalDataResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -114,7 +119,8 @@ namespace PayPal.Permissions {
 	 	{
 			string resp = call("GetAdvancedPersonalData", GetAdvancedPersonalDataRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new GetAdvancedPersonalDataResponse(util.parseNVPString(resp), "");
+			return GetAdvancedPersonalDataResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 

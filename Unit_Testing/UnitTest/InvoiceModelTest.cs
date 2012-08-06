@@ -118,14 +118,14 @@ namespace PayPal.UnitTest
             response.Add("responseEnvelope.correlationId", "b1985a21862fe");
             response.Add("responseEnvelope.build", "1877082");
 
-            ResponseEnvelope env = new ResponseEnvelope(response, "responseEnvelope.");
+            ResponseEnvelope env = ResponseEnvelope.createInstance(response, "responseEnvelope.", -1);
             Assert.AreEqual("2011-05-11T22%3A05%3A33.962-07%3A00", env.timestamp);
             Assert.AreEqual(null, env.ack);
             Assert.AreEqual("b1985a21862fe", env.correlationId);
             Assert.AreEqual("1877082", env.build);
 
             response.Add("responseEnvelope.ack", "Failure");
-            env = new ResponseEnvelope(response, "responseEnvelope.");
+            env = ResponseEnvelope.createInstance(response, "responseEnvelope.", -1);
             Assert.AreEqual("2011-05-11T22%3A05%3A33.962-07%3A00", env.timestamp);
             Assert.AreEqual(AckCode.FAILURE, env.ack);
             Assert.AreEqual("b1985a21862fe", env.correlationId);
@@ -169,7 +169,7 @@ namespace PayPal.UnitTest
         [Test]
         public void errorParameterConstruction()
         {
-            ErrorParameter errParam = new ErrorParameter(this.errorResponse, "error(0).parameter(0).");
+            ErrorParameter errParam = ErrorParameter.createInstance(this.errorResponse, "error(0).parameter", 0);
             Assert.AreEqual("shippingTaxName", errParam.name);
         }
 
@@ -177,16 +177,15 @@ namespace PayPal.UnitTest
         public void errorDataConstruction()
         {        
             
-            ErrorData err = new ErrorData(this.errorResponse, "error(0).");
+            ErrorData err = ErrorData.createInstance(this.errorResponse, "error", 0);
             Assert.AreEqual(580022, err.errorId);
             Assert.AreEqual(ErrorSeverity.ERROR, err.severity);
             Assert.AreEqual(ErrorCategory.APPLICATION, err.category);
             Assert.AreEqual(2, err.parameter.Count);
             Assert.AreEqual("shippingTaxName", err.parameter[0].name);
             Console.WriteLine(err.severity);
-            err = new ErrorData(this.errorResponse, "xyz");
-            Assert.AreEqual(null, err.errorId);
-            Assert.AreEqual(0, err.parameter.Count);
+            err = ErrorData.createInstance(this.errorResponse, "xyz", 0);
+            Assert.AreEqual(null, err);            
         }
 
         [Test]
@@ -279,7 +278,7 @@ namespace PayPal.UnitTest
         [Test]
         public void createInvoiceResponseConstruction()
         {
-            CreateInvoiceResponse cir = new CreateInvoiceResponse(validCreateInvoiceResponse, "");
+            CreateInvoiceResponse cir = CreateInvoiceResponse.createInstance(validCreateInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);
             Assert.AreEqual("0056", cir.invoiceNumber);
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
@@ -291,7 +290,7 @@ namespace PayPal.UnitTest
         [Test]
         public void createAndSendInvoiceResponseConstruction()
         {
-            CreateAndSendInvoiceResponse cir = new CreateAndSendInvoiceResponse(validCreateInvoiceResponse, "");
+            CreateAndSendInvoiceResponse cir = CreateAndSendInvoiceResponse.createInstance(validCreateInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);
             Assert.AreEqual("0056", cir.invoiceNumber);
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
@@ -303,7 +302,7 @@ namespace PayPal.UnitTest
         [Test]
         public void sendInvoiceResponseConstruction()
         {
-            SendInvoiceResponse cir = new SendInvoiceResponse(validSendInvoiceResponse, "");
+            SendInvoiceResponse cir = SendInvoiceResponse.createInstance(validSendInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);            
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
             Assert.AreEqual("1917403", cir.responseEnvelope.build);

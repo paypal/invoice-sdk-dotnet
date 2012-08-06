@@ -158,7 +158,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateAndSendInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), cir.error, null);
+                service.getLastResponse(), cir.error, null, cir);
         }
 
         private void SendInvoice(HttpContext context)
@@ -191,7 +191,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceId", sir.invoiceID);            
             keyResponseParams.Add("invoiceUrl", sir.invoiceURL);
             displayResponse(context, "SendInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), sir.error, null);
+                service.getLastResponse(), sir.error, null, sir);
         }
 
         private void CreateInvoice(HttpContext context)
@@ -248,7 +248,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), cir.error, null);
+                service.getLastResponse(), cir.error, null, cir);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace InvoicingSampleApp
                 keyResponseParams.Add("totalAmount", response.invoiceDetails.totalAmount.ToString());
             }
             displayResponse(context, "GetInvoiceDetails", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null);
+                service.getLastResponse(), response.error, null, response);
         }
 
 
@@ -348,7 +348,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsPaid", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null, response); 
 
         }
 
@@ -387,7 +387,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "CancelInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null, response); 
 
         }
 
@@ -451,7 +451,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             keyResponseParams.Add("totalAmount", response.totalAmount.ToString());
             displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null, response); 
         }
 
 
@@ -586,7 +586,7 @@ namespace InvoicingSampleApp
                 }
             }
             displayResponse(context, "SearchInvoices", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null);
+                service.getLastResponse(), response.error, null, response);
         }
 
         /// <summary>
@@ -631,8 +631,8 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceId", response.invoiceID);
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
-            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),  
-                service.getLastResponse(), response.error, null);            
+            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null, response);            
         }
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsUnpaid", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null);
+                service.getLastResponse(), response.error, null, response);
         }
 
         /// <summary>
@@ -754,8 +754,11 @@ namespace InvoicingSampleApp
         /// <param name="errorMessages"></param>
         /// <param name="redirectUrl"></param>
         private void displayResponse(HttpContext context, string apiName, Dictionary<string, string> responseValues,
-            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl)
+            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl, Object responseObject)
         {
+
+            context.Items["responseObject"] = responseObject;
+            context.Items["responsePayload"] = responsePayload;
 
             context.Response.Write("<html><head><title>");
             context.Response.Write("PayPal Invoice - " + apiName);

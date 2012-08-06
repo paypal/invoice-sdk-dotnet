@@ -24,7 +24,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new CreateInvoiceResponse(util.parseNVPString(resp), "");
+			return CreateInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -42,7 +43,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new SendInvoiceResponse(util.parseNVPString(resp), "");
+			return SendInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -60,7 +62,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new CreateAndSendInvoiceResponse(util.parseNVPString(resp), "");
+			return CreateAndSendInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -78,7 +81,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new UpdateInvoiceResponse(util.parseNVPString(resp), "");
+			return UpdateInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -96,7 +100,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new GetInvoiceDetailsResponse(util.parseNVPString(resp), "");
+			return GetInvoiceDetailsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -114,7 +119,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new CancelInvoiceResponse(util.parseNVPString(resp), "");
+			return CancelInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -132,7 +138,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new SearchInvoicesResponse(util.parseNVPString(resp), "");
+			return SearchInvoicesResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -150,7 +157,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new MarkInvoiceAsPaidResponse(util.parseNVPString(resp), "");
+			return MarkInvoiceAsPaidResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -168,7 +176,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("MarkInvoiceAsUnpaid", MarkInvoiceAsUnpaidRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new MarkInvoiceAsUnpaidResponse(util.parseNVPString(resp), "");
+			return MarkInvoiceAsUnpaidResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
@@ -186,7 +195,8 @@ namespace PayPal.Invoice {
 	 	{
 			string resp = call("MarkInvoiceAsRefunded", MarkInvoiceAsRefundedRequest.toNVPString(""), apiUsername);
 			NVPUtil util = new NVPUtil();
-			return new MarkInvoiceAsRefundedResponse(util.parseNVPString(resp), "");
+			return MarkInvoiceAsRefundedResponse.createInstance(util.parseNVPString(resp), "", -1);
+			
 	 	}
 	 
 	 	/** 
