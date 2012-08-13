@@ -686,8 +686,9 @@ namespace InvoicingSampleApp
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
 
-            string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
-            string returnURL = url + "/GetAccessToken.aspx?source=" 
+            string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port
+            		+  context.Request.ApplicationPath;
+            string returnURL = url + (context.Request.ApplicationPath.EndsWith("/") ? "" : "/") + "GetAccessToken.aspx?source=" 
                 + context.Request.UrlReferrer.LocalPath;
             rp.callback = returnURL;            
             PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
