@@ -158,7 +158,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateAndSendInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), cir.error, null, cir);
+                service.getLastResponse(), cir.error, null);
         }
 
         private void SendInvoice(HttpContext context)
@@ -191,7 +191,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceId", sir.invoiceID);            
             keyResponseParams.Add("invoiceUrl", sir.invoiceURL);
             displayResponse(context, "SendInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), sir.error, null, sir);
+                service.getLastResponse(), sir.error, null);
         }
 
         private void CreateInvoice(HttpContext context)
@@ -248,7 +248,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), cir.error, null, cir);
+                service.getLastResponse(), cir.error, null);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace InvoicingSampleApp
                 keyResponseParams.Add("totalAmount", response.invoiceDetails.totalAmount.ToString());
             }
             displayResponse(context, "GetInvoiceDetails", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response);
+                service.getLastResponse(), response.error, null);
         }
 
 
@@ -348,7 +348,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsPaid", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response); 
+                service.getLastResponse(), response.error, null); 
 
         }
 
@@ -387,7 +387,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "CancelInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response); 
+                service.getLastResponse(), response.error, null); 
 
         }
 
@@ -451,7 +451,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             keyResponseParams.Add("totalAmount", response.totalAmount.ToString());
             displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response); 
+                service.getLastResponse(), response.error, null); 
         }
 
 
@@ -586,7 +586,7 @@ namespace InvoicingSampleApp
                 }
             }
             displayResponse(context, "SearchInvoices", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response);
+                service.getLastResponse(), response.error, null);
         }
 
         /// <summary>
@@ -631,8 +631,8 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceId", response.invoiceID);
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
-            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response);            
+            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),  
+                service.getLastResponse(), response.error, null);            
         }
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace InvoicingSampleApp
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsUnpaid", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null, response);
+                service.getLastResponse(), response.error, null);
         }
 
         /// <summary>
@@ -686,9 +686,8 @@ namespace InvoicingSampleApp
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
 
-            string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port
-            		+  context.Request.ApplicationPath;
-            string returnURL = url + (context.Request.ApplicationPath.EndsWith("/") ? "" : "/") + "GetAccessToken.aspx?source=" 
+            string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
+            string returnURL = url + "/GetAccessToken.aspx?source=" 
                 + context.Request.UrlReferrer.LocalPath;
             rp.callback = returnURL;            
             PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
@@ -755,11 +754,8 @@ namespace InvoicingSampleApp
         /// <param name="errorMessages"></param>
         /// <param name="redirectUrl"></param>
         private void displayResponse(HttpContext context, string apiName, Dictionary<string, string> responseValues,
-            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl, Object responseObject)
+            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl)
         {
-
-            context.Items["responseObject"] = responseObject;
-            context.Items["responsePayload"] = responsePayload;
 
             context.Response.Write("<html><head><title>");
             context.Response.Write("PayPal Invoice - " + apiName);
@@ -783,12 +779,42 @@ namespace InvoicingSampleApp
             }
             context.Response.Write("<div class='section_header'>Key values from response</div>");
             context.Response.Write("<div class='note'>Consult response object and reference doc for complete list of response values.</div><table>");
+            
+            /*
             foreach (KeyValuePair<String, String> entry in responseValues)
             {
                 context.Response.Write("<tr><td class='label'>");
                 context.Response.Write(entry.Key);
                 context.Response.Write(": </td><td>");
                 context.Response.Write(entry.Value);
+                context.Response.Write("</td></tr>");
+            }
+            */
+
+            //Selenium Test Case            
+            foreach (KeyValuePair<String, String> entry in responseValues)
+            {
+
+                context.Response.Write("<tr><td class='label'>");
+                context.Response.Write(entry.Key);
+                context.Response.Write(": </td><td>");
+
+                if (entry.Key == "Redirect To PayPal")
+                {
+                    context.Response.Write("<a id='");
+                    context.Response.Write(entry.Key);
+                    context.Response.Write("' href=");
+                    context.Response.Write(entry.Value);
+                    context.Response.Write(">Redirect To PayPal</a>");
+                }
+                else
+                {
+                    context.Response.Write("<div id='");
+                    context.Response.Write(entry.Key);
+                    context.Response.Write("'>");
+                    context.Response.Write(entry.Value);
+                }
+
                 context.Response.Write("</td></tr>");
             }
 
