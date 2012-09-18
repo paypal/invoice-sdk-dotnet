@@ -6,14 +6,10 @@ using log4net;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CommandLine")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyTitle("PayPal Merchant SDK for .NET")]
 [assembly: AssemblyCompany("eBay Inc.,")]
-[assembly: AssemblyProduct("CommandLine")]
-[assembly: AssemblyCopyright("Copyright © eBay Inc., 2009")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyProduct("PayPal")]
+[assembly: AssemblyCopyright("Copyright © eBay Inc., 2009-2012")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -31,5 +27,6 @@ using log4net;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.93.0")]
+[assembly: AssemblyFileVersion("1.1.93.0")]
+
