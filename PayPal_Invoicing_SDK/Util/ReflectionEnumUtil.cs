@@ -18,7 +18,7 @@ namespace PayPal.Util
             return description;
         }
 
-        public static object getValue(String value, Type enumType)
+        public static object getValue(string value, Type enumType)
         {
             string[] names = Enum.GetNames(enumType);
             foreach (string name in names)
