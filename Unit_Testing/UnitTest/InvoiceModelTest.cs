@@ -102,12 +102,12 @@ namespace PayPal.UnitTest
         public void requestEnvelopeSerialization()
         {
             RequestEnvelope env = new RequestEnvelope("en_US");
-            Assert.AreEqual("errorLanguage=en_US&", env.toNVPString(""));
-            Assert.AreEqual("requestEnvelope.errorLanguage=en_US&", env.toNVPString("requestEnvelope."));
+            Assert.AreEqual("errorLanguage=en_US&", env.ToNVPString(""));
+            Assert.AreEqual("requestEnvelope.errorLanguage=en_US&", env.ToNVPString("requestEnvelope."));
 
             env.detailLevel = DetailLevelCode.RETURNALL;
             Assert.AreEqual("requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&", 
-                                                                    env.toNVPString("requestEnvelope."));
+                                                                    env.ToNVPString("requestEnvelope."));
         }
 
         [Test]
@@ -118,14 +118,14 @@ namespace PayPal.UnitTest
             response.Add("responseEnvelope.correlationId", "b1985a21862fe");
             response.Add("responseEnvelope.build", "1877082");
 
-            ResponseEnvelope env = ResponseEnvelope.createInstance(response, "responseEnvelope.", -1);
+            ResponseEnvelope env = ResponseEnvelope.CreateInstance(response, "responseEnvelope.", -1);
             Assert.AreEqual("2011-05-11T22%3A05%3A33.962-07%3A00", env.timestamp);
             Assert.AreEqual(null, env.ack);
             Assert.AreEqual("b1985a21862fe", env.correlationId);
             Assert.AreEqual("1877082", env.build);
 
             response.Add("responseEnvelope.ack", "Failure");
-            env = ResponseEnvelope.createInstance(response, "responseEnvelope.", -1);
+            env = ResponseEnvelope.CreateInstance(response, "responseEnvelope.", -1);
             Assert.AreEqual("2011-05-11T22%3A05%3A33.962-07%3A00", env.timestamp);
             Assert.AreEqual(AckCode.FAILURE, env.ack);
             Assert.AreEqual("b1985a21862fe", env.correlationId);
@@ -142,34 +142,34 @@ namespace PayPal.UnitTest
             invoiceItem.unitPrice = 12.0M;
 
             string expectedNVString = "name=product1&quantity=10&unitPrice=12.0&taxName=product+1&";
-            Assert.AreEqual(expectedNVString, invoiceItem.toNVPString(""));
+            Assert.AreEqual(expectedNVString, invoiceItem.ToNVPString(""));
             
             expectedNVString = "name=product1&description=The+all+new+shiny+product+1&quantity=10&unitPrice=12.0&taxName=product+1&taxRate=1.4&";
             //invoiceItem.date = "";
             invoiceItem.description = "The all new shiny product 1";
             invoiceItem.taxRate = 1.4M;
-            Assert.AreEqual(expectedNVString, invoiceItem.toNVPString(""));
+            Assert.AreEqual(expectedNVString, invoiceItem.ToNVPString(""));
         }
 
         [Test]
         public void baseAddressSerialization()
         {            
             string expectedNVString = "line1=1968+Ape+Way&line2=Apt+123&city=Austin&state=TX&postalCode=78750&countryCode=US&";
-            Assert.AreEqual(expectedNVString, addr.toNVPString(""));
+            Assert.AreEqual(expectedNVString, addr.ToNVPString(""));
 
             expectedNVString = "prefix.line1=1968+Ape+Way&prefix.line2=Apt+123&prefix.city=Austin&prefix.state=TX&prefix.postalCode=78750&prefix.countryCode=US&";
-            Assert.AreEqual(expectedNVString, addr.toNVPString("prefix."));
+            Assert.AreEqual(expectedNVString, addr.ToNVPString("prefix."));
 
             addr = new BaseAddress("1968 Ape Way", "Austin", "US");
             expectedNVString = "line1=1968+Ape+Way&city=Austin&countryCode=US&";
-            Assert.AreEqual(expectedNVString, addr.toNVPString(""));
+            Assert.AreEqual(expectedNVString, addr.ToNVPString(""));
             
         }
 
         [Test]
         public void errorParameterConstruction()
         {
-            ErrorParameter errParam = ErrorParameter.createInstance(this.errorResponse, "error(0).parameter", 0);
+            ErrorParameter errParam = ErrorParameter.CreateInstance(this.errorResponse, "error(0).parameter", 0);
             Assert.AreEqual("shippingTaxName", errParam.name);
         }
 
@@ -177,14 +177,14 @@ namespace PayPal.UnitTest
         public void errorDataConstruction()
         {        
             
-            ErrorData err = ErrorData.createInstance(this.errorResponse, "error", 0);
+            ErrorData err = ErrorData.CreateInstance(this.errorResponse, "error", 0);
             Assert.AreEqual(580022, err.errorId);
             Assert.AreEqual(ErrorSeverity.ERROR, err.severity);
             Assert.AreEqual(ErrorCategory.APPLICATION, err.category);
             Assert.AreEqual(2, err.parameter.Count);
             Assert.AreEqual("shippingTaxName", err.parameter[0].name);
             Console.WriteLine(err.severity);
-            err = ErrorData.createInstance(this.errorResponse, "xyz", 0);
+            err = ErrorData.CreateInstance(this.errorResponse, "xyz", 0);
             Assert.AreEqual(null, err);            
         }
 
@@ -194,12 +194,12 @@ namespace PayPal.UnitTest
 
 
             string expectedNVPString = "firstName=Bonzop&lastName=Zaius&businessName=Bonzop+Inc&phone=5126914160&fax=5126914161&website=www.bonzop-inc.com&customValue=Business+mumbo+jumbo+%c2%a9&";
-            Assert.AreEqual(expectedNVPString, bizInfo.toNVPString(""));           
+            Assert.AreEqual(expectedNVPString, bizInfo.ToNVPString(""));           
                  
             bizInfo.address = this.addr;
             expectedNVPString = "firstName=Bonzop&lastName=Zaius&businessName=Bonzop+Inc&phone=5126914160&fax=5126914161&website=www.bonzop-inc.com&customValue=Business+mumbo+jumbo+%c2%a9&"
                     + "address.line1=1968+Ape+Way&address.line2=Apt+123&address.city=Austin&address.state=TX&address.postalCode=78750&address.countryCode=US&";
-            Assert.AreEqual(expectedNVPString, bizInfo.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, bizInfo.ToNVPString(""));
         }
 
         [Test]
@@ -212,8 +212,8 @@ namespace PayPal.UnitTest
                 + "discountAmount=10.0&terms=Payment+terms&note=Note+about+invoice&merchantMemo=memo&"
                 + "billingInfo.firstName=Bonzop&billingInfo.lastName=Zaius&billingInfo.businessName=Bonzop+Inc&billingInfo.phone=5126914160&billingInfo.fax=5126914161&billingInfo.website=www.bonzop-inc.com&billingInfo.customValue=Business+mumbo+jumbo+%c2%a9&"
                 + "shippingAmount=2.1&shippingTaxName=Bonzop+Inc&shippingTaxRate=1.2&";
-            Console.WriteLine(invoice.toNVPString(""));
-            Assert.AreEqual(expectedNVPString, invoice.toNVPString(""));
+            Console.WriteLine(invoice.ToNVPString(""));
+            Assert.AreEqual(expectedNVPString, invoice.ToNVPString(""));
 
             invoice.shippingInfo = this.bizInfo;
             expectedNVPString = "merchantEmail=jb-us-seller1%40paypal.com&payerEmail=jbui-us-personal1%40paypal.com&number=FD-123-5421&"
@@ -222,7 +222,7 @@ namespace PayPal.UnitTest
                 + "billingInfo.firstName=Bonzop&billingInfo.lastName=Zaius&billingInfo.businessName=Bonzop+Inc&billingInfo.phone=5126914160&billingInfo.fax=5126914161&billingInfo.website=www.bonzop-inc.com&billingInfo.customValue=Business+mumbo+jumbo+%c2%a9&"
                 + "shippingInfo.firstName=Bonzop&shippingInfo.lastName=Zaius&shippingInfo.businessName=Bonzop+Inc&shippingInfo.phone=5126914160&shippingInfo.fax=5126914161&shippingInfo.website=www.bonzop-inc.com&shippingInfo.customValue=Business+mumbo+jumbo+%c2%a9&"
                 + "shippingAmount=2.1&shippingTaxName=Bonzop+Inc&shippingTaxRate=1.2&";
-            Assert.AreEqual(expectedNVPString, invoice.toNVPString(""));            
+            Assert.AreEqual(expectedNVPString, invoice.ToNVPString(""));            
         }
 
         [Test]
@@ -237,10 +237,10 @@ namespace PayPal.UnitTest
                 + "invoice.discountAmount=10.0&invoice.terms=Payment+terms&invoice.note=Note+about+invoice&invoice.merchantMemo=memo&"
                 + "invoice.billingInfo.firstName=Bonzop&invoice.billingInfo.lastName=Zaius&invoice.billingInfo.businessName=Bonzop+Inc&invoice.billingInfo.phone=5126914160&invoice.billingInfo.fax=5126914161&invoice.billingInfo.website=www.bonzop-inc.com&invoice.billingInfo.customValue=Business+mumbo+jumbo+%c2%a9&"
                 + "invoice.shippingAmount=2.1&invoice.shippingTaxName=Bonzop+Inc&invoice.shippingTaxRate=1.2&";
-            Assert.AreEqual(expectedNVPString, cir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, cir.ToNVPString(""));
 
             cir = new CreateInvoiceRequest(new RequestEnvelope("en_US"), invoice);            
-            Assert.AreEqual(expectedNVPString, cir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, cir.ToNVPString(""));
         }
 
         [Test]
@@ -255,10 +255,10 @@ namespace PayPal.UnitTest
                 + "invoice.discountAmount=10.0&invoice.terms=Payment+terms&invoice.note=Note+about+invoice&invoice.merchantMemo=memo&"
                 + "invoice.billingInfo.firstName=Bonzop&invoice.billingInfo.lastName=Zaius&invoice.billingInfo.businessName=Bonzop+Inc&invoice.billingInfo.phone=5126914160&invoice.billingInfo.fax=5126914161&invoice.billingInfo.website=www.bonzop-inc.com&invoice.billingInfo.customValue=Business+mumbo+jumbo+%c2%a9&"
                 + "invoice.shippingAmount=2.1&invoice.shippingTaxName=Bonzop+Inc&invoice.shippingTaxRate=1.2&";
-            Assert.AreEqual(expectedNVPString, cir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, cir.ToNVPString(""));
 
             cir = new CreateAndSendInvoiceRequest(new RequestEnvelope("en_US"), invoice);
-            Assert.AreEqual(expectedNVPString, cir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, cir.ToNVPString(""));
         }
 
         [Test]
@@ -269,16 +269,16 @@ namespace PayPal.UnitTest
             sir.requestEnvelope = new RequestEnvelope("en_US");
 
             string expectedNVPString = "requestEnvelope.errorLanguage=en_US&invoiceID=INV-123456&";
-            Assert.AreEqual(expectedNVPString, sir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, sir.ToNVPString(""));
 
             sir = new SendInvoiceRequest(new RequestEnvelope("en_US"), "INV-123456");
-            Assert.AreEqual(expectedNVPString, sir.toNVPString(""));
+            Assert.AreEqual(expectedNVPString, sir.ToNVPString(""));
         }
 
         [Test]
         public void createInvoiceResponseConstruction()
         {
-            CreateInvoiceResponse cir = CreateInvoiceResponse.createInstance(validCreateInvoiceResponse, "", -1);
+            CreateInvoiceResponse cir = CreateInvoiceResponse.CreateInstance(validCreateInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);
             Assert.AreEqual("0056", cir.invoiceNumber);
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
@@ -290,7 +290,7 @@ namespace PayPal.UnitTest
         [Test]
         public void createAndSendInvoiceResponseConstruction()
         {
-            CreateAndSendInvoiceResponse cir = CreateAndSendInvoiceResponse.createInstance(validCreateInvoiceResponse, "", -1);
+            CreateAndSendInvoiceResponse cir = CreateAndSendInvoiceResponse.CreateInstance(validCreateInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);
             Assert.AreEqual("0056", cir.invoiceNumber);
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
@@ -302,7 +302,7 @@ namespace PayPal.UnitTest
         [Test]
         public void sendInvoiceResponseConstruction()
         {
-            SendInvoiceResponse cir = SendInvoiceResponse.createInstance(validSendInvoiceResponse, "", -1);
+            SendInvoiceResponse cir = SendInvoiceResponse.CreateInstance(validSendInvoiceResponse, "", -1);
             Assert.AreEqual("INV2-PCWG-P78G-7EYV-94QY", cir.invoiceID);            
             Assert.AreEqual(AckCode.SUCCESS, cir.responseEnvelope.ack);
             Assert.AreEqual("1917403", cir.responseEnvelope.build);

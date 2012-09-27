@@ -4,19 +4,20 @@
   */
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 using System.Collections;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 using PayPal.Util;
 
 namespace PayPal.Permissions.Model
 {
 
-	public class EnumUtils
+	public static class EnumUtils
 	{
-		public static string getDescription(Enum value)
+		public static string GetDescription(Enum value)
 		{
 			string description = "";
 			DescriptionAttribute[] attributes = (DescriptionAttribute[])value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -27,12 +28,12 @@ namespace PayPal.Permissions.Model
 			return description;
 		}
 		
-		public static object getValue(String value,Type enumType)
+		public static object GetValue(string value,Type enumType)
 		{
 			string[] names = Enum.GetNames(enumType);
 			foreach(string name in names)
             {
-            	if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
+            	if (GetDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
             	{
 					return Enum.Parse(enumType, name);
 				}
@@ -45,8 +46,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class ErrorData	
-	{
+	public partial class ErrorData	{
 
 		/**
           *
@@ -192,7 +192,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static ErrorData createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ErrorData CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ErrorData errorData = null;
 			string key;
@@ -233,13 +233,13 @@ namespace PayPal.Permissions.Model
 			if (map.ContainsKey(key))
 			{
 				errorData = (errorData == null) ? new ErrorData() : errorData;
-				errorData.severity = (ErrorSeverity)EnumUtils.getValue(map[key],typeof(ErrorSeverity));;
+				errorData.severity = (ErrorSeverity)EnumUtils.GetValue(map[key],typeof(ErrorSeverity));
 			}
 			key = prefix + "category";
 			if (map.ContainsKey(key))
 			{
 				errorData = (errorData == null) ? new ErrorData() : errorData;
-				errorData.category = (ErrorCategory)EnumUtils.getValue(map[key],typeof(ErrorCategory));;
+				errorData.category = (ErrorCategory)EnumUtils.GetValue(map[key],typeof(ErrorCategory));
 			}
 			key = prefix + "message";
 			if (map.ContainsKey(key))
@@ -256,7 +256,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorParameter parameter =  ErrorParameter.createInstance(map, prefix + "parameter", i);
+				ErrorParameter parameter =  ErrorParameter.CreateInstance(map, prefix + "parameter", i);
 				if (parameter != null)
 				{
 					errorData = (errorData == null) ? new ErrorData() : errorData;
@@ -270,7 +270,6 @@ namespace PayPal.Permissions.Model
 			}
 			return errorData;
 		}
-		
 	}
 
 
@@ -279,8 +278,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class ErrorParameter	
-	{
+	public partial class ErrorParameter	{
 
 		/**
           *
@@ -324,7 +322,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static ErrorParameter createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ErrorParameter CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ErrorParameter errorParameter = null;
 			string key;
@@ -357,7 +355,6 @@ namespace PayPal.Permissions.Model
 			}
 			return errorParameter;
 		}
-		
 	}
 
 
@@ -366,8 +363,7 @@ namespace PayPal.Permissions.Model
 	/**
       *This is the sample message 
       */
-	public partial class ResponseEnvelope	
-	{
+	public partial class ResponseEnvelope	{
 
 		/**
           *
@@ -445,7 +441,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static ResponseEnvelope createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ResponseEnvelope CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ResponseEnvelope responseEnvelope = null;
 			string key;
@@ -474,7 +470,7 @@ namespace PayPal.Permissions.Model
 			if (map.ContainsKey(key))
 			{
 				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
-				responseEnvelope.ack = (AckCode)EnumUtils.getValue(map[key],typeof(AckCode));;
+				responseEnvelope.ack = (AckCode)EnumUtils.GetValue(map[key],typeof(AckCode));
 			}
 			key = prefix + "correlationId";
 			if (map.ContainsKey(key))
@@ -490,7 +486,6 @@ namespace PayPal.Permissions.Model
 			}
 			return responseEnvelope;
 		}
-		
 	}
 
 
@@ -500,8 +495,7 @@ namespace PayPal.Permissions.Model
       *This specifies the list of parameters with every request to
       *the service. 
       */
-	public partial class RequestEnvelope	
-	{
+	public partial class RequestEnvelope	{
 
 		/**
           *
@@ -534,7 +528,7 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.errorLanguage != null)
@@ -551,8 +545,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class FaultMessage	
-	{
+	public partial class FaultMessage	{
 
 		/**
           *
@@ -596,7 +589,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static FaultMessage createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static FaultMessage CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			FaultMessage faultMessage = null;
 			string key;
@@ -615,7 +608,7 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
@@ -624,7 +617,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
@@ -638,7 +631,6 @@ namespace PayPal.Permissions.Model
 			}
 			return faultMessage;
 		}
-		
 	}
 
 
@@ -647,6 +639,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
+    [Serializable]
 	public enum ErrorSeverity {
 		[Description("Error")]ERROR,	
 		[Description("Warning")]WARNING	
@@ -658,6 +651,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
+    [Serializable]
 	public enum ErrorCategory {
 		[Description("System")]SYSTEM,	
 		[Description("Application")]APPLICATION,	
@@ -676,6 +670,7 @@ namespace PayPal.Permissions.Model
       * an application level acknowledgment element.
       * 
       */
+    [Serializable]
 	public enum AckCode {
 		[Description("Success")]SUCCESS,	
 		[Description("Failure")]FAILURE,	
@@ -692,6 +687,7 @@ namespace PayPal.Permissions.Model
       * Enumeration for Personal Attributes of a user.
       * 
       */
+    [Serializable]
 	public enum PersonalAttribute {
 		[Description("http://axschema.org/namePerson/first")]HTTPAXSCHEMAORGNAMEPERSONFIRST,	
 		[Description("http://axschema.org/namePerson/last")]HTTPAXSCHEMAORGNAMEPERSONLAST,	
@@ -717,8 +713,7 @@ namespace PayPal.Permissions.Model
       *Primary element is "scope", which lists the permissions
       *needed. 
       */
-	public partial class RequestPermissionsRequest	
-	{
+	public partial class RequestPermissionsRequest	{
 
 		/**
           *
@@ -786,13 +781,13 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			for (int i = 0; i < this.scope.Count; i++)
 			{
@@ -815,8 +810,7 @@ namespace PayPal.Permissions.Model
 	/**
       *Returns the temporary request token 
       */
-	public partial class RequestPermissionsResponse	
-	{
+	public partial class RequestPermissionsResponse	{
 
 		/**
           *
@@ -877,7 +871,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static RequestPermissionsResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static RequestPermissionsResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			RequestPermissionsResponse requestPermissionsResponse = null;
 			string key;
@@ -896,7 +890,7 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				requestPermissionsResponse = (requestPermissionsResponse == null) ? new RequestPermissionsResponse() : requestPermissionsResponse;
@@ -911,7 +905,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					requestPermissionsResponse = (requestPermissionsResponse == null) ? new RequestPermissionsResponse() : requestPermissionsResponse;
@@ -925,7 +919,6 @@ namespace PayPal.Permissions.Model
 			}
 			return requestPermissionsResponse;
 		}
-		
 	}
 
 
@@ -936,8 +929,7 @@ namespace PayPal.Permissions.Model
       *client can either send the token and verifier, or a subject.
       *
       */
-	public partial class GetAccessTokenRequest	
-	{
+	public partial class GetAccessTokenRequest	{
 
 		/**
           *
@@ -1014,13 +1006,13 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.token != null)
 			{
@@ -1046,8 +1038,7 @@ namespace PayPal.Permissions.Model
       *make requests for protected resources owned by another
       *account. 
       */
-	public partial class GetAccessTokenResponse	
-	{
+	public partial class GetAccessTokenResponse	{
 
 		/**
           *
@@ -1142,7 +1133,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static GetAccessTokenResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static GetAccessTokenResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			GetAccessTokenResponse getAccessTokenResponse = null;
 			string key;
@@ -1161,7 +1152,7 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				getAccessTokenResponse = (getAccessTokenResponse == null) ? new GetAccessTokenResponse() : getAccessTokenResponse;
@@ -1197,7 +1188,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					getAccessTokenResponse = (getAccessTokenResponse == null) ? new GetAccessTokenResponse() : getAccessTokenResponse;
@@ -1211,7 +1202,6 @@ namespace PayPal.Permissions.Model
 			}
 			return getAccessTokenResponse;
 		}
-		
 	}
 
 
@@ -1221,8 +1211,7 @@ namespace PayPal.Permissions.Model
       *Request to retrieve the approved list of permissions
       *associated with a token. 
       */
-	public partial class GetPermissionsRequest	
-	{
+	public partial class GetPermissionsRequest	{
 
 		/**
           *
@@ -1272,13 +1261,13 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.token != null)
 			{
@@ -1294,8 +1283,7 @@ namespace PayPal.Permissions.Model
 	/**
       *The list of permissions associated with the token. 
       */
-	public partial class GetPermissionsResponse	
-	{
+	public partial class GetPermissionsResponse	{
 
 		/**
           *
@@ -1356,7 +1344,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static GetPermissionsResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static GetPermissionsResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			GetPermissionsResponse getPermissionsResponse = null;
 			string key;
@@ -1375,7 +1363,7 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				getPermissionsResponse = (getPermissionsResponse == null) ? new GetPermissionsResponse() : getPermissionsResponse;
@@ -1399,7 +1387,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					getPermissionsResponse = (getPermissionsResponse == null) ? new GetPermissionsResponse() : getPermissionsResponse;
@@ -1413,7 +1401,6 @@ namespace PayPal.Permissions.Model
 			}
 			return getPermissionsResponse;
 		}
-		
 	}
 
 
@@ -1423,8 +1410,7 @@ namespace PayPal.Permissions.Model
       *Request to invalidate an access token and revoke the
       *permissions associated with it. 
       */
-	public partial class CancelPermissionsRequest	
-	{
+	public partial class CancelPermissionsRequest	{
 
 		/**
           *
@@ -1474,13 +1460,13 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.token != null)
 			{
@@ -1496,8 +1482,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class CancelPermissionsResponse	
-	{
+	public partial class CancelPermissionsResponse	{
 
 		/**
           *
@@ -1541,7 +1526,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static CancelPermissionsResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static CancelPermissionsResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			CancelPermissionsResponse cancelPermissionsResponse = null;
 			string key;
@@ -1560,7 +1545,7 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				cancelPermissionsResponse = (cancelPermissionsResponse == null) ? new CancelPermissionsResponse() : cancelPermissionsResponse;
@@ -1569,7 +1554,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					cancelPermissionsResponse = (cancelPermissionsResponse == null) ? new CancelPermissionsResponse() : cancelPermissionsResponse;
@@ -1583,7 +1568,6 @@ namespace PayPal.Permissions.Model
 			}
 			return cancelPermissionsResponse;
 		}
-		
 	}
 
 
@@ -1592,8 +1576,7 @@ namespace PayPal.Permissions.Model
 	/**
       *List of Personal Attributes to be sent as a request. 
       */
-	public partial class PersonalAttributeList	
-	{
+	public partial class PersonalAttributeList	{
 
 		/**
           *
@@ -1619,14 +1602,14 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < this.attribute.Count; i++)
 			{
 				if (this.attribute[i] != null)
 				{
-					sb.Append(prefix).Append("attribute").Append(i).Append(")=").Append(EnumUtils.getDescription(attribute[i]));
+					sb.Append(prefix).Append("attribute(").Append(i).Append(")=").Append(EnumUtils.GetDescription(attribute[i]));
 					sb.Append("&");
 				}
 			}
@@ -1642,8 +1625,7 @@ namespace PayPal.Permissions.Model
       *Name-value pair with Name being the PersonalAttribute
       *requested and value being the data. 
       */
-	public partial class PersonalData	
-	{
+	public partial class PersonalData	{
 
 		/**
           *
@@ -1687,7 +1669,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static PersonalData createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PersonalData CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PersonalData personalData = null;
 			string key;
@@ -1710,7 +1692,7 @@ namespace PayPal.Permissions.Model
 			if (map.ContainsKey(key))
 			{
 				personalData = (personalData == null) ? new PersonalData() : personalData;
-				personalData.personalDataKey = (PersonalAttribute)EnumUtils.getValue(map[key],typeof(PersonalAttribute));;
+				personalData.personalDataKey = (PersonalAttribute)EnumUtils.GetValue(map[key],typeof(PersonalAttribute));
 			}
 			key = prefix + "personalDataValue";
 			if (map.ContainsKey(key))
@@ -1720,7 +1702,6 @@ namespace PayPal.Permissions.Model
 			}
 			return personalData;
 		}
-		
 	}
 
 
@@ -1730,8 +1711,7 @@ namespace PayPal.Permissions.Model
       *Set of personal data which forms the response of
       *GetPersonalData call. 
       */
-	public partial class PersonalDataList	
-	{
+	public partial class PersonalDataList	{
 
 		/**
           *
@@ -1758,7 +1738,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static PersonalDataList createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PersonalDataList CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PersonalDataList personalDataList = null;
 			string key;
@@ -1780,7 +1760,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				PersonalData personalData =  PersonalData.createInstance(map, prefix + "personalData", i);
+				PersonalData personalData =  PersonalData.CreateInstance(map, prefix + "personalData", i);
 				if (personalData != null)
 				{
 					personalDataList = (personalDataList == null) ? new PersonalDataList() : personalDataList;
@@ -1794,7 +1774,6 @@ namespace PayPal.Permissions.Model
 			}
 			return personalDataList;
 		}
-		
 	}
 
 
@@ -1806,8 +1785,7 @@ namespace PayPal.Permissions.Model
       *PersonalDataList. This call will accept only 'Basic'
       *attributes and ignore others. 
       */
-	public partial class GetBasicPersonalDataRequest	
-	{
+	public partial class GetBasicPersonalDataRequest	{
 
 		/**
           *
@@ -1857,18 +1835,18 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.attributeList != null)
 			{
 					string newPrefix = prefix + "attributeList" + ".";
-					sb.Append(this.attributeListField.toNVPString(newPrefix));
+					sb.Append(this.attributeListField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -1883,8 +1861,7 @@ namespace PayPal.Permissions.Model
       *PersonalDataList. This call will accept both 'Basic' and
       *Advanced attributes. 
       */
-	public partial class GetAdvancedPersonalDataRequest	
-	{
+	public partial class GetAdvancedPersonalDataRequest	{
 
 		/**
           *
@@ -1934,18 +1911,18 @@ namespace PayPal.Permissions.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.attributeList != null)
 			{
 					string newPrefix = prefix + "attributeList" + ".";
-					sb.Append(this.attributeListField.toNVPString(newPrefix));
+					sb.Append(this.attributeListField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -1957,8 +1934,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class GetBasicPersonalDataResponse	
-	{
+	public partial class GetBasicPersonalDataResponse	{
 
 		/**
           *
@@ -2019,7 +1995,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static GetBasicPersonalDataResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static GetBasicPersonalDataResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			GetBasicPersonalDataResponse getBasicPersonalDataResponse = null;
 			string key;
@@ -2038,13 +2014,13 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				getBasicPersonalDataResponse = (getBasicPersonalDataResponse == null) ? new GetBasicPersonalDataResponse() : getBasicPersonalDataResponse;
 				getBasicPersonalDataResponse.responseEnvelope = responseEnvelope;
 			}
-			PersonalDataList response =  PersonalDataList.createInstance(map, prefix + "response", -1);
+			PersonalDataList response =  PersonalDataList.CreateInstance(map, prefix + "response", -1);
 			if (response != null)
 			{
 				getBasicPersonalDataResponse = (getBasicPersonalDataResponse == null) ? new GetBasicPersonalDataResponse() : getBasicPersonalDataResponse;
@@ -2053,7 +2029,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					getBasicPersonalDataResponse = (getBasicPersonalDataResponse == null) ? new GetBasicPersonalDataResponse() : getBasicPersonalDataResponse;
@@ -2067,7 +2043,6 @@ namespace PayPal.Permissions.Model
 			}
 			return getBasicPersonalDataResponse;
 		}
-		
 	}
 
 
@@ -2076,8 +2051,7 @@ namespace PayPal.Permissions.Model
 	/**
       *
       */
-	public partial class GetAdvancedPersonalDataResponse	
-	{
+	public partial class GetAdvancedPersonalDataResponse	{
 
 		/**
           *
@@ -2138,7 +2112,7 @@ namespace PayPal.Permissions.Model
 
 
 
-		public static GetAdvancedPersonalDataResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static GetAdvancedPersonalDataResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			GetAdvancedPersonalDataResponse getAdvancedPersonalDataResponse = null;
 			string key;
@@ -2157,13 +2131,13 @@ namespace PayPal.Permissions.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				getAdvancedPersonalDataResponse = (getAdvancedPersonalDataResponse == null) ? new GetAdvancedPersonalDataResponse() : getAdvancedPersonalDataResponse;
 				getAdvancedPersonalDataResponse.responseEnvelope = responseEnvelope;
 			}
-			PersonalDataList response =  PersonalDataList.createInstance(map, prefix + "response", -1);
+			PersonalDataList response =  PersonalDataList.CreateInstance(map, prefix + "response", -1);
 			if (response != null)
 			{
 				getAdvancedPersonalDataResponse = (getAdvancedPersonalDataResponse == null) ? new GetAdvancedPersonalDataResponse() : getAdvancedPersonalDataResponse;
@@ -2172,7 +2146,7 @@ namespace PayPal.Permissions.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					getAdvancedPersonalDataResponse = (getAdvancedPersonalDataResponse == null) ? new GetAdvancedPersonalDataResponse() : getAdvancedPersonalDataResponse;
@@ -2186,7 +2160,6 @@ namespace PayPal.Permissions.Model
 			}
 			return getAdvancedPersonalDataResponse;
 		}
-		
 	}
 
 

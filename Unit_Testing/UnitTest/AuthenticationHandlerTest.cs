@@ -20,7 +20,7 @@ namespace PayPal.UnitTest
         {
             ConnectionManager connMgr = ConnectionManager.Instance;
             AuthenticationHandler authHandler = new AuthenticationHandler("incomplete-credentials_api1.paypal.com");
-            HttpWebRequest httpRequest = connMgr.getConnection("http://paypal.com");
+            HttpWebRequest httpRequest = connMgr.GetConnection("http://paypal.com");
 
             authHandler.SetAuthenticationParams(httpRequest, "");            
         }
@@ -30,7 +30,7 @@ namespace PayPal.UnitTest
         {
             ConnectionManager connMgr = ConnectionManager.Instance;
             AuthenticationHandler authHandler = new AuthenticationHandler("jb-us-seller_api1.paypal.com");
-            HttpWebRequest httpRequest = connMgr.getConnection("http://paypal.com");
+            HttpWebRequest httpRequest = connMgr.GetConnection("http://paypal.com");
             
             authHandler.SetAuthenticationParams(httpRequest, "");
 
@@ -71,7 +71,7 @@ namespace PayPal.UnitTest
         public void testOAuthSignature()
         {            
             ConnectionManager connMgr = ConnectionManager.Instance;            
-            HttpWebRequest httpRequest = connMgr.getConnection("http://paypal.com");
+            HttpWebRequest httpRequest = connMgr.GetConnection("http://paypal.com");
 
             AuthenticationHandler authHandler = new AuthenticationHandler("jb-us-seller_api1.paypal.com");            
             authHandler.SetOAuthToken("token", "tokenSecret");            
