@@ -4,19 +4,20 @@
   */
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 using System.Collections;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
 using PayPal.Util;
 
 namespace PayPal.Invoice.Model
 {
 
-	public class EnumUtils
+	public static class EnumUtils
 	{
-		public static string getDescription(Enum value)
+		public static string GetDescription(Enum value)
 		{
 			string description = "";
 			DescriptionAttribute[] attributes = (DescriptionAttribute[])value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -27,12 +28,12 @@ namespace PayPal.Invoice.Model
 			return description;
 		}
 		
-		public static object getValue(String value,Type enumType)
+		public static object GetValue(string value,Type enumType)
 		{
 			string[] names = Enum.GetNames(enumType);
 			foreach(string name in names)
             {
-            	if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
+            	if (GetDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
             	{
 					return Enum.Parse(enumType, name);
 				}
@@ -45,8 +46,7 @@ namespace PayPal.Invoice.Model
 	/**
       *
       */
-	public partial class BaseAddress	
-	{
+	public partial class BaseAddress	{
 
 		/**
           *
@@ -183,7 +183,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.line1 != null)
@@ -217,7 +217,7 @@ namespace PayPal.Invoice.Model
 			return sb.ToString();
 		}
 
-		public static BaseAddress createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static BaseAddress CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			BaseAddress baseAddress = null;
 			string key;
@@ -280,7 +280,6 @@ namespace PayPal.Invoice.Model
 			}
 			return baseAddress;
 		}
-		
 	}
 
 
@@ -290,8 +289,7 @@ namespace PayPal.Invoice.Model
       *This type contains the detailed error information resulting
       *from the service operation. 
       */
-	public partial class ErrorData	
-	{
+	public partial class ErrorData	{
 
 		/**
           *
@@ -437,7 +435,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static ErrorData createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ErrorData CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ErrorData errorData = null;
 			string key;
@@ -478,13 +476,13 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				errorData = (errorData == null) ? new ErrorData() : errorData;
-				errorData.severity = (ErrorSeverity)EnumUtils.getValue(map[key],typeof(ErrorSeverity));;
+				errorData.severity = (ErrorSeverity)EnumUtils.GetValue(map[key],typeof(ErrorSeverity));
 			}
 			key = prefix + "category";
 			if (map.ContainsKey(key))
 			{
 				errorData = (errorData == null) ? new ErrorData() : errorData;
-				errorData.category = (ErrorCategory)EnumUtils.getValue(map[key],typeof(ErrorCategory));;
+				errorData.category = (ErrorCategory)EnumUtils.GetValue(map[key],typeof(ErrorCategory));
 			}
 			key = prefix + "message";
 			if (map.ContainsKey(key))
@@ -501,7 +499,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorParameter parameter =  ErrorParameter.createInstance(map, prefix + "parameter", i);
+				ErrorParameter parameter =  ErrorParameter.CreateInstance(map, prefix + "parameter", i);
 				if (parameter != null)
 				{
 					errorData = (errorData == null) ? new ErrorData() : errorData;
@@ -515,7 +513,6 @@ namespace PayPal.Invoice.Model
 			}
 			return errorData;
 		}
-		
 	}
 
 
@@ -524,8 +521,7 @@ namespace PayPal.Invoice.Model
 	/**
       *
       */
-	public partial class ErrorParameter	
-	{
+	public partial class ErrorParameter	{
 
 		/**
           *
@@ -569,7 +565,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static ErrorParameter createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ErrorParameter CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ErrorParameter errorParameter = null;
 			string key;
@@ -602,7 +598,6 @@ namespace PayPal.Invoice.Model
 			}
 			return errorParameter;
 		}
-		
 	}
 
 
@@ -612,8 +607,7 @@ namespace PayPal.Invoice.Model
       *This specifies a fault, encapsulating error data, with
       *specific error codes. 
       */
-	public partial class FaultMessage	
-	{
+	public partial class FaultMessage	{
 
 		/**
           *
@@ -657,7 +651,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static FaultMessage createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static FaultMessage CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			FaultMessage faultMessage = null;
 			string key;
@@ -676,7 +670,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
@@ -685,7 +679,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					faultMessage = (faultMessage == null) ? new FaultMessage() : faultMessage;
@@ -699,7 +693,6 @@ namespace PayPal.Invoice.Model
 			}
 			return faultMessage;
 		}
-		
 	}
 
 
@@ -709,8 +702,7 @@ namespace PayPal.Invoice.Model
       *This specifies the list of parameters with every request to
       *the service. 
       */
-	public partial class RequestEnvelope	
-	{
+	public partial class RequestEnvelope	{
 
 		/**
           *
@@ -760,12 +752,12 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.detailLevel != null)
 			{
-					sb.Append(prefix).Append("detailLevel").Append("=").Append(EnumUtils.getDescription(detailLevel));
+					sb.Append(prefix).Append("detailLevel").Append("=").Append(EnumUtils.GetDescription(detailLevel));
 					sb.Append("&");
 			}
 			if (this.errorLanguage != null)
@@ -783,8 +775,7 @@ namespace PayPal.Invoice.Model
       *This specifies a list of parameters with every response from
       *a service. 
       */
-	public partial class ResponseEnvelope	
-	{
+	public partial class ResponseEnvelope	{
 
 		/**
           *
@@ -862,7 +853,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static ResponseEnvelope createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static ResponseEnvelope CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			ResponseEnvelope responseEnvelope = null;
 			string key;
@@ -891,7 +882,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				responseEnvelope = (responseEnvelope == null) ? new ResponseEnvelope() : responseEnvelope;
-				responseEnvelope.ack = (AckCode)EnumUtils.getValue(map[key],typeof(AckCode));;
+				responseEnvelope.ack = (AckCode)EnumUtils.GetValue(map[key],typeof(AckCode));
 			}
 			key = prefix + "correlationId";
 			if (map.ContainsKey(key))
@@ -907,7 +898,6 @@ namespace PayPal.Invoice.Model
 			}
 			return responseEnvelope;
 		}
-		
 	}
 
 
@@ -922,6 +912,7 @@ namespace PayPal.Invoice.Model
       * an application level acknowledgment element.
       * 
       */
+    [Serializable]
 	public enum AckCode {
 		[Description("Success")]SUCCESS,	
 		[Description("Failure")]FAILURE,	
@@ -937,6 +928,7 @@ namespace PayPal.Invoice.Model
       * DetailLevelCodeType
       * 
       */
+    [Serializable]
 	public enum DetailLevelCode {
 		[Description("ReturnAll")]RETURNALL	
 	}
@@ -947,6 +939,7 @@ namespace PayPal.Invoice.Model
 	/**
       *
       */
+    [Serializable]
 	public enum ErrorCategory {
 		[Description("System")]SYSTEM,	
 		[Description("Application")]APPLICATION,	
@@ -959,6 +952,7 @@ namespace PayPal.Invoice.Model
 	/**
       *
       */
+    [Serializable]
 	public enum ErrorSeverity {
 		[Description("Error")]ERROR,	
 		[Description("Warning")]WARNING	
@@ -971,6 +965,7 @@ namespace PayPal.Invoice.Model
       * Specifies the payment terms for this invoice.
       * 
       */
+    [Serializable]
 	public enum PaymentTermsType {
 		[Description("DueOnReceipt")]DUEONRECEIPT,	
 		[Description("DueOnDateSpecified")]DUEONDATESPECIFIED,	
@@ -988,6 +983,7 @@ namespace PayPal.Invoice.Model
       *invoice as paid.
       * 
       */
+    [Serializable]
 	public enum PaymentMethodsType {
 		[Description("BankTransfer")]BANKTRANSFER,	
 		[Description("Cash")]CASH,	
@@ -1006,6 +1002,7 @@ namespace PayPal.Invoice.Model
       * Specifies the invoice status.
       * 
       */
+    [Serializable]
 	public enum StatusType {
 		[Description("Draft")]DRAFT,	
 		[Description("Sent")]SENT,	
@@ -1024,6 +1021,7 @@ namespace PayPal.Invoice.Model
       * Specifies the merchant or payer.
       * 
       */
+    [Serializable]
 	public enum OriginType {
 		[Description("Web")]WEB,	
 		[Description("API")]API	
@@ -1036,6 +1034,7 @@ namespace PayPal.Invoice.Model
       * Specifies the merchant or payer.
       * 
       */
+    [Serializable]
 	public enum ActorType {
 		[Description("Merchant")]MERCHANT,	
 		[Description("Payer")]PAYER	
@@ -1048,8 +1047,7 @@ namespace PayPal.Invoice.Model
       *Contact information for a company participating in the
       *invoicing system. 
       */
-	public partial class BusinessInfoType	
-	{
+	public partial class BusinessInfoType	{
 
 		/**
           *
@@ -1194,7 +1192,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.firstName != null)
@@ -1228,12 +1226,12 @@ namespace PayPal.Invoice.Model
 			if (this.address != null)
 			{
 					string newPrefix = prefix + "address" + ".";
-					sb.Append(this.addressField.toNVPString(newPrefix));
+					sb.Append(this.addressField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
 
-		public static BusinessInfoType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static BusinessInfoType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			BusinessInfoType businessInfoType = null;
 			string key;
@@ -1294,7 +1292,7 @@ namespace PayPal.Invoice.Model
 				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
 				businessInfoType.customValue = map[key];
 			}
-			BaseAddress address =  BaseAddress.createInstance(map, prefix + "address", -1);
+			BaseAddress address =  BaseAddress.CreateInstance(map, prefix + "address", -1);
 			if (address != null)
 			{
 				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
@@ -1302,7 +1300,6 @@ namespace PayPal.Invoice.Model
 			}
 			return businessInfoType;
 		}
-		
 	}
 
 
@@ -1312,8 +1309,7 @@ namespace PayPal.Invoice.Model
       *Item information about a service or product listed in the
       *invoice. 
       */
-	public partial class InvoiceItemType	
-	{
+	public partial class InvoiceItemType	{
 
 		/**
           *
@@ -1450,7 +1446,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.name != null)
@@ -1484,7 +1480,7 @@ namespace PayPal.Invoice.Model
 			return sb.ToString();
 		}
 
-		public static InvoiceItemType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceItemType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceItemType invoiceItemType = null;
 			string key;
@@ -1547,7 +1543,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceItemType;
 		}
-		
 	}
 
 
@@ -1556,8 +1551,7 @@ namespace PayPal.Invoice.Model
 	/**
       *A list of invoice items. 
       */
-	public partial class InvoiceItemListType	
-	{
+	public partial class InvoiceItemListType	{
 
 		/**
           *
@@ -1590,7 +1584,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < this.item.Count; i++)
@@ -1598,13 +1592,13 @@ namespace PayPal.Invoice.Model
 				if (this.item[i] != null)
 				{
 					string newPrefix = prefix + "item" + "(" + i + ").";
-					sb.Append(this.item[i].toNVPString(newPrefix));
+					sb.Append(this.item[i].ToNVPString(newPrefix));
 				}
 			}
 			return sb.ToString();
 		}
 
-		public static InvoiceItemListType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceItemListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceItemListType invoiceItemListType = null;
 			string key;
@@ -1626,7 +1620,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				InvoiceItemType item =  InvoiceItemType.createInstance(map, prefix + "item", i);
+				InvoiceItemType item =  InvoiceItemType.CreateInstance(map, prefix + "item", i);
 				if (item != null)
 				{
 					invoiceItemListType = (invoiceItemListType == null) ? new InvoiceItemListType() : invoiceItemListType;
@@ -1640,7 +1634,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceItemListType;
 		}
-		
 	}
 
 
@@ -1650,8 +1643,7 @@ namespace PayPal.Invoice.Model
       *Invoice details about the merchant, payer, totals and terms.
       *
       */
-	public partial class InvoiceType	
-	{
+	public partial class InvoiceType	{
 
 		/**
           *
@@ -2062,7 +2054,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.merchantEmail != null)
@@ -2080,12 +2072,12 @@ namespace PayPal.Invoice.Model
 			if (this.merchantInfo != null)
 			{
 					string newPrefix = prefix + "merchantInfo" + ".";
-					sb.Append(this.merchantInfoField.toNVPString(newPrefix));
+					sb.Append(this.merchantInfoField.ToNVPString(newPrefix));
 			}
 			if (this.itemList != null)
 			{
 					string newPrefix = prefix + "itemList" + ".";
-					sb.Append(this.itemListField.toNVPString(newPrefix));
+					sb.Append(this.itemListField.ToNVPString(newPrefix));
 			}
 			if (this.currencyCode != null)
 			{
@@ -2101,7 +2093,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.paymentTerms != null)
 			{
-					sb.Append(prefix).Append("paymentTerms").Append("=").Append(EnumUtils.getDescription(paymentTerms));
+					sb.Append(prefix).Append("paymentTerms").Append("=").Append(EnumUtils.GetDescription(paymentTerms));
 					sb.Append("&");
 			}
 			if (this.discountPercent != null)
@@ -2127,12 +2119,12 @@ namespace PayPal.Invoice.Model
 			if (this.billingInfo != null)
 			{
 					string newPrefix = prefix + "billingInfo" + ".";
-					sb.Append(this.billingInfoField.toNVPString(newPrefix));
+					sb.Append(this.billingInfoField.ToNVPString(newPrefix));
 			}
 			if (this.shippingInfo != null)
 			{
 					string newPrefix = prefix + "shippingInfo" + ".";
-					sb.Append(this.shippingInfoField.toNVPString(newPrefix));
+					sb.Append(this.shippingInfoField.ToNVPString(newPrefix));
 			}
 			if (this.shippingAmount != null)
 			{
@@ -2165,7 +2157,7 @@ namespace PayPal.Invoice.Model
 			return sb.ToString();
 		}
 
-		public static InvoiceType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceType invoiceType = null;
 			string key;
@@ -2202,13 +2194,13 @@ namespace PayPal.Invoice.Model
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.number = map[key];
 			}
-			BusinessInfoType merchantInfo =  BusinessInfoType.createInstance(map, prefix + "merchantInfo", -1);
+			BusinessInfoType merchantInfo =  BusinessInfoType.CreateInstance(map, prefix + "merchantInfo", -1);
 			if (merchantInfo != null)
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.merchantInfo = merchantInfo;
 			}
-			InvoiceItemListType itemList =  InvoiceItemListType.createInstance(map, prefix + "itemList", -1);
+			InvoiceItemListType itemList =  InvoiceItemListType.CreateInstance(map, prefix + "itemList", -1);
 			if (itemList != null)
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
@@ -2236,7 +2228,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.paymentTerms = (PaymentTermsType)EnumUtils.getValue(map[key],typeof(PaymentTermsType));;
+				invoiceType.paymentTerms = (PaymentTermsType)EnumUtils.GetValue(map[key],typeof(PaymentTermsType));
 			}
 			key = prefix + "discountPercent";
 			if (map.ContainsKey(key))
@@ -2268,13 +2260,13 @@ namespace PayPal.Invoice.Model
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.merchantMemo = map[key];
 			}
-			BusinessInfoType billingInfo =  BusinessInfoType.createInstance(map, prefix + "billingInfo", -1);
+			BusinessInfoType billingInfo =  BusinessInfoType.CreateInstance(map, prefix + "billingInfo", -1);
 			if (billingInfo != null)
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.billingInfo = billingInfo;
 			}
-			BusinessInfoType shippingInfo =  BusinessInfoType.createInstance(map, prefix + "shippingInfo", -1);
+			BusinessInfoType shippingInfo =  BusinessInfoType.CreateInstance(map, prefix + "shippingInfo", -1);
 			if (shippingInfo != null)
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
@@ -2324,7 +2316,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceType;
 		}
-		
 	}
 
 
@@ -2334,8 +2325,7 @@ namespace PayPal.Invoice.Model
       *Invoice details about the invoice status and state change
       *dates. 
       */
-	public partial class InvoiceDetailsType	
-	{
+	public partial class InvoiceDetailsType	{
 
 		/**
           *
@@ -2583,7 +2573,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static InvoiceDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceDetailsType invoiceDetailsType = null;
 			string key;
@@ -2606,7 +2596,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
-				invoiceDetailsType.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
+				invoiceDetailsType.status = (StatusType)EnumUtils.GetValue(map[key],typeof(StatusType));
 			}
 			key = prefix + "totalAmount";
 			if (map.ContainsKey(key))
@@ -2618,7 +2608,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
-				invoiceDetailsType.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
+				invoiceDetailsType.origin = (OriginType)EnumUtils.GetValue(map[key],typeof(OriginType));
 			}
 			key = prefix + "createdDate";
 			if (map.ContainsKey(key))
@@ -2642,7 +2632,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
-				invoiceDetailsType.canceledByActor = (ActorType)EnumUtils.getValue(map[key],typeof(ActorType));;
+				invoiceDetailsType.canceledByActor = (ActorType)EnumUtils.GetValue(map[key],typeof(ActorType));
 			}
 			key = prefix + "canceledBy";
 			if (map.ContainsKey(key))
@@ -2688,7 +2678,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceDetailsType;
 		}
-		
 	}
 
 
@@ -2697,8 +2686,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Details of the refund made against this invoice. 
       */
-	public partial class OtherPaymentRefundDetailsType	
-	{
+	public partial class OtherPaymentRefundDetailsType	{
 
 		/**
           *
@@ -2741,7 +2729,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.note != null)
@@ -2755,7 +2743,7 @@ namespace PayPal.Invoice.Model
 			return sb.ToString();
 		}
 
-		public static OtherPaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static OtherPaymentRefundDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			OtherPaymentRefundDetailsType otherPaymentRefundDetailsType = null;
 			string key;
@@ -2788,7 +2776,6 @@ namespace PayPal.Invoice.Model
 			}
 			return otherPaymentRefundDetailsType;
 		}
-		
 	}
 
 
@@ -2797,8 +2784,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Details of the paypal refund made against this invoice. 
       */
-	public partial class PayPalPaymentRefundDetailsType	
-	{
+	public partial class PayPalPaymentRefundDetailsType	{
 
 		/**
           *
@@ -2825,7 +2811,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static PayPalPaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PayPalPaymentRefundDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PayPalPaymentRefundDetailsType payPalPaymentRefundDetailsType = null;
 			string key;
@@ -2852,7 +2838,6 @@ namespace PayPal.Invoice.Model
 			}
 			return payPalPaymentRefundDetailsType;
 		}
-		
 	}
 
 
@@ -2861,8 +2846,7 @@ namespace PayPal.Invoice.Model
 	/**
       *PayPal payment details about the invoice. 
       */
-	public partial class PayPalPaymentDetailsType	
-	{
+	public partial class PayPalPaymentDetailsType	{
 
 		/**
           *
@@ -2906,7 +2890,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static PayPalPaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PayPalPaymentDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PayPalPaymentDetailsType payPalPaymentDetailsType = null;
 			string key;
@@ -2939,7 +2923,6 @@ namespace PayPal.Invoice.Model
 			}
 			return payPalPaymentDetailsType;
 		}
-		
 	}
 
 
@@ -2948,8 +2931,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Offline payment details about the invoice. 
       */
-	public partial class OtherPaymentDetailsType	
-	{
+	public partial class OtherPaymentDetailsType	{
 
 		/**
           *
@@ -3009,12 +2991,12 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.method != null)
 			{
-					sb.Append(prefix).Append("method").Append("=").Append(EnumUtils.getDescription(method));
+					sb.Append(prefix).Append("method").Append("=").Append(EnumUtils.GetDescription(method));
 					sb.Append("&");
 			}
 			if (this.note != null)
@@ -3028,7 +3010,7 @@ namespace PayPal.Invoice.Model
 			return sb.ToString();
 		}
 
-		public static OtherPaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static OtherPaymentDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			OtherPaymentDetailsType otherPaymentDetailsType = null;
 			string key;
@@ -3051,7 +3033,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
-				otherPaymentDetailsType.method = (PaymentMethodsType)EnumUtils.getValue(map[key],typeof(PaymentMethodsType));;
+				otherPaymentDetailsType.method = (PaymentMethodsType)EnumUtils.GetValue(map[key],typeof(PaymentMethodsType));
 			}
 			key = prefix + "note";
 			if (map.ContainsKey(key))
@@ -3067,7 +3049,6 @@ namespace PayPal.Invoice.Model
 			}
 			return otherPaymentDetailsType;
 		}
-		
 	}
 
 
@@ -3076,8 +3057,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Payment details about the invoice. 
       */
-	public partial class PaymentDetailsType	
-	{
+	public partial class PaymentDetailsType	{
 
 		/**
           *
@@ -3138,7 +3118,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static PaymentDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PaymentDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PaymentDetailsType paymentDetailsType = null;
 			string key;
@@ -3163,13 +3143,13 @@ namespace PayPal.Invoice.Model
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
 				paymentDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
 			}
-			PayPalPaymentDetailsType paypalPayment =  PayPalPaymentDetailsType.createInstance(map, prefix + "paypalPayment", -1);
+			PayPalPaymentDetailsType paypalPayment =  PayPalPaymentDetailsType.CreateInstance(map, prefix + "paypalPayment", -1);
 			if (paypalPayment != null)
 			{
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
 				paymentDetailsType.paypalPayment = paypalPayment;
 			}
-			OtherPaymentDetailsType otherPayment =  OtherPaymentDetailsType.createInstance(map, prefix + "otherPayment", -1);
+			OtherPaymentDetailsType otherPayment =  OtherPaymentDetailsType.CreateInstance(map, prefix + "otherPayment", -1);
 			if (otherPayment != null)
 			{
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
@@ -3177,7 +3157,6 @@ namespace PayPal.Invoice.Model
 			}
 			return paymentDetailsType;
 		}
-		
 	}
 
 
@@ -3186,8 +3165,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Determines an inclusive date range. 
       */
-	public partial class DateRangeType	
-	{
+	public partial class DateRangeType	{
 
 		/**
           *
@@ -3230,7 +3208,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.startDate != null)
@@ -3251,8 +3229,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Search parameters criteria. 
       */
-	public partial class SearchParametersType	
-	{
+	public partial class SearchParametersType	{
 
 		/**
           *
@@ -3499,7 +3476,7 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.email != null)
@@ -3522,7 +3499,7 @@ namespace PayPal.Invoice.Model
 			{
 				if (this.status[i] != null)
 				{
-					sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.getDescription(status[i]));
+					sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.GetDescription(status[i]));
 					sb.Append("&");
 				}
 			}
@@ -3544,28 +3521,28 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.origin != null)
 			{
-					sb.Append(prefix).Append("origin").Append("=").Append(EnumUtils.getDescription(origin));
+					sb.Append(prefix).Append("origin").Append("=").Append(EnumUtils.GetDescription(origin));
 					sb.Append("&");
 			}
 			if (this.invoiceDate != null)
 			{
 					string newPrefix = prefix + "invoiceDate" + ".";
-					sb.Append(this.invoiceDateField.toNVPString(newPrefix));
+					sb.Append(this.invoiceDateField.ToNVPString(newPrefix));
 			}
 			if (this.dueDate != null)
 			{
 					string newPrefix = prefix + "dueDate" + ".";
-					sb.Append(this.dueDateField.toNVPString(newPrefix));
+					sb.Append(this.dueDateField.ToNVPString(newPrefix));
 			}
 			if (this.paymentDate != null)
 			{
 					string newPrefix = prefix + "paymentDate" + ".";
-					sb.Append(this.paymentDateField.toNVPString(newPrefix));
+					sb.Append(this.paymentDateField.ToNVPString(newPrefix));
 			}
 			if (this.creationDate != null)
 			{
 					string newPrefix = prefix + "creationDate" + ".";
-					sb.Append(this.creationDateField.toNVPString(newPrefix));
+					sb.Append(this.creationDateField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -3577,8 +3554,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Summary of invoice information. 
       */
-	public partial class InvoiceSummaryType	
-	{
+	public partial class InvoiceSummaryType	{
 
 		/**
           *
@@ -3877,7 +3853,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static InvoiceSummaryType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceSummaryType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceSummaryType invoiceSummaryType = null;
 			string key;
@@ -3984,13 +3960,13 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
-				invoiceSummaryType.status = (StatusType)EnumUtils.getValue(map[key],typeof(StatusType));;
+				invoiceSummaryType.status = (StatusType)EnumUtils.GetValue(map[key],typeof(StatusType));
 			}
 			key = prefix + "origin";
 			if (map.ContainsKey(key))
 			{
 				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
-				invoiceSummaryType.origin = (OriginType)EnumUtils.getValue(map[key],typeof(OriginType));;
+				invoiceSummaryType.origin = (OriginType)EnumUtils.GetValue(map[key],typeof(OriginType));
 			}
 			key = prefix + "referrerCode";
 			if (map.ContainsKey(key))
@@ -4000,7 +3976,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceSummaryType;
 		}
-		
 	}
 
 
@@ -4009,8 +3984,7 @@ namespace PayPal.Invoice.Model
 	/**
       *A list of invoice summaries. 
       */
-	public partial class InvoiceSummaryListType	
-	{
+	public partial class InvoiceSummaryListType	{
 
 		/**
           *
@@ -4037,7 +4011,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static InvoiceSummaryListType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static InvoiceSummaryListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			InvoiceSummaryListType invoiceSummaryListType = null;
 			string key;
@@ -4059,7 +4033,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				InvoiceSummaryType invoice =  InvoiceSummaryType.createInstance(map, prefix + "invoice", i);
+				InvoiceSummaryType invoice =  InvoiceSummaryType.CreateInstance(map, prefix + "invoice", i);
 				if (invoice != null)
 				{
 					invoiceSummaryListType = (invoiceSummaryListType == null) ? new InvoiceSummaryListType() : invoiceSummaryListType;
@@ -4073,7 +4047,6 @@ namespace PayPal.Invoice.Model
 			}
 			return invoiceSummaryListType;
 		}
-		
 	}
 
 
@@ -4082,8 +4055,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for CreateInvoice. 
       */
-	public partial class CreateInvoiceRequest	
-	{
+	public partial class CreateInvoiceRequest	{
 
 		/**
           *
@@ -4134,18 +4106,18 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoice != null)
 			{
 					string newPrefix = prefix + "invoice" + ".";
-					sb.Append(this.invoiceField.toNVPString(newPrefix));
+					sb.Append(this.invoiceField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -4157,8 +4129,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for CreateInvoice. 
       */
-	public partial class CreateInvoiceResponse	
-	{
+	public partial class CreateInvoiceResponse	{
 
 		/**
           *
@@ -4270,7 +4241,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static CreateInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static CreateInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			CreateInvoiceResponse createInvoiceResponse = null;
 			string key;
@@ -4289,7 +4260,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
@@ -4322,7 +4293,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
@@ -4336,7 +4307,6 @@ namespace PayPal.Invoice.Model
 			}
 			return createInvoiceResponse;
 		}
-		
 	}
 
 
@@ -4345,8 +4315,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for SendInvoice. 
       */
-	public partial class SendInvoiceRequest	
-	{
+	public partial class SendInvoiceRequest	{
 
 		/**
           *
@@ -4397,13 +4366,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -4419,8 +4388,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for SendInvoice. 
       */
-	public partial class SendInvoiceResponse	
-	{
+	public partial class SendInvoiceResponse	{
 
 		/**
           *
@@ -4498,7 +4466,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static SendInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static SendInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			SendInvoiceResponse sendInvoiceResponse = null;
 			string key;
@@ -4517,7 +4485,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
@@ -4538,7 +4506,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
@@ -4552,7 +4520,6 @@ namespace PayPal.Invoice.Model
 			}
 			return sendInvoiceResponse;
 		}
-		
 	}
 
 
@@ -4561,8 +4528,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for CreateAndSendInvoice. 
       */
-	public partial class CreateAndSendInvoiceRequest	
-	{
+	public partial class CreateAndSendInvoiceRequest	{
 
 		/**
           *
@@ -4613,18 +4579,18 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoice != null)
 			{
 					string newPrefix = prefix + "invoice" + ".";
-					sb.Append(this.invoiceField.toNVPString(newPrefix));
+					sb.Append(this.invoiceField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -4636,8 +4602,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for CreateAndSendInvoice. 
       */
-	public partial class CreateAndSendInvoiceResponse	
-	{
+	public partial class CreateAndSendInvoiceResponse	{
 
 		/**
           *
@@ -4749,7 +4714,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static CreateAndSendInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static CreateAndSendInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			CreateAndSendInvoiceResponse createAndSendInvoiceResponse = null;
 			string key;
@@ -4768,7 +4733,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
@@ -4801,7 +4766,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
@@ -4815,7 +4780,6 @@ namespace PayPal.Invoice.Model
 			}
 			return createAndSendInvoiceResponse;
 		}
-		
 	}
 
 
@@ -4824,8 +4788,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for UpdateInvoice. 
       */
-	public partial class UpdateInvoiceRequest	
-	{
+	public partial class UpdateInvoiceRequest	{
 
 		/**
           *
@@ -4894,13 +4857,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -4909,7 +4872,7 @@ namespace PayPal.Invoice.Model
 			if (this.invoice != null)
 			{
 					string newPrefix = prefix + "invoice" + ".";
-					sb.Append(this.invoiceField.toNVPString(newPrefix));
+					sb.Append(this.invoiceField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -4921,8 +4884,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for UpdateInvoice. 
       */
-	public partial class UpdateInvoiceResponse	
-	{
+	public partial class UpdateInvoiceResponse	{
 
 		/**
           *
@@ -5034,7 +4996,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static UpdateInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static UpdateInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			UpdateInvoiceResponse updateInvoiceResponse = null;
 			string key;
@@ -5053,7 +5015,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
@@ -5086,7 +5048,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
@@ -5100,7 +5062,6 @@ namespace PayPal.Invoice.Model
 			}
 			return updateInvoiceResponse;
 		}
-		
 	}
 
 
@@ -5109,8 +5070,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for GetInvoiceDetails. 
       */
-	public partial class GetInvoiceDetailsRequest	
-	{
+	public partial class GetInvoiceDetailsRequest	{
 
 		/**
           *
@@ -5161,13 +5121,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -5183,8 +5143,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for CreateInvoice. 
       */
-	public partial class GetInvoiceDetailsResponse	
-	{
+	public partial class GetInvoiceDetailsResponse	{
 
 		/**
           *
@@ -5313,7 +5272,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static GetInvoiceDetailsResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static GetInvoiceDetailsResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			GetInvoiceDetailsResponse getInvoiceDetailsResponse = null;
 			string key;
@@ -5332,31 +5291,31 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
 				getInvoiceDetailsResponse.responseEnvelope = responseEnvelope;
 			}
-			InvoiceType invoice =  InvoiceType.createInstance(map, prefix + "invoice", -1);
+			InvoiceType invoice =  InvoiceType.CreateInstance(map, prefix + "invoice", -1);
 			if (invoice != null)
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
 				getInvoiceDetailsResponse.invoice = invoice;
 			}
-			InvoiceDetailsType invoiceDetails =  InvoiceDetailsType.createInstance(map, prefix + "invoiceDetails", -1);
+			InvoiceDetailsType invoiceDetails =  InvoiceDetailsType.CreateInstance(map, prefix + "invoiceDetails", -1);
 			if (invoiceDetails != null)
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
 				getInvoiceDetailsResponse.invoiceDetails = invoiceDetails;
 			}
-			PaymentDetailsType paymentDetails =  PaymentDetailsType.createInstance(map, prefix + "paymentDetails", -1);
+			PaymentDetailsType paymentDetails =  PaymentDetailsType.CreateInstance(map, prefix + "paymentDetails", -1);
 			if (paymentDetails != null)
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
 				getInvoiceDetailsResponse.paymentDetails = paymentDetails;
 			}
-			PaymentRefundDetailsType refundDetails =  PaymentRefundDetailsType.createInstance(map, prefix + "refundDetails", -1);
+			PaymentRefundDetailsType refundDetails =  PaymentRefundDetailsType.CreateInstance(map, prefix + "refundDetails", -1);
 			if (refundDetails != null)
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
@@ -5371,7 +5330,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
@@ -5385,7 +5344,6 @@ namespace PayPal.Invoice.Model
 			}
 			return getInvoiceDetailsResponse;
 		}
-		
 	}
 
 
@@ -5394,8 +5352,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for CancelInvoice. 
       */
-	public partial class CancelInvoiceRequest	
-	{
+	public partial class CancelInvoiceRequest	{
 
 		/**
           *
@@ -5496,13 +5453,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -5530,8 +5487,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for CancelInvoice. 
       */
-	public partial class CancelInvoiceResponse	
-	{
+	public partial class CancelInvoiceResponse	{
 
 		/**
           *
@@ -5626,7 +5582,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static CancelInvoiceResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static CancelInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			CancelInvoiceResponse cancelInvoiceResponse = null;
 			string key;
@@ -5645,7 +5601,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
@@ -5672,7 +5628,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					cancelInvoiceResponse = (cancelInvoiceResponse == null) ? new CancelInvoiceResponse() : cancelInvoiceResponse;
@@ -5686,7 +5642,6 @@ namespace PayPal.Invoice.Model
 			}
 			return cancelInvoiceResponse;
 		}
-		
 	}
 
 
@@ -5695,8 +5650,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for SearchInvoices. 
       */
-	public partial class SearchInvoicesRequest	
-	{
+	public partial class SearchInvoicesRequest	{
 
 		/**
           *
@@ -5801,13 +5755,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.merchantEmail != null)
 			{
@@ -5816,7 +5770,7 @@ namespace PayPal.Invoice.Model
 			if (this.parameters != null)
 			{
 					string newPrefix = prefix + "parameters" + ".";
-					sb.Append(this.parametersField.toNVPString(newPrefix));
+					sb.Append(this.parametersField.ToNVPString(newPrefix));
 			}
 			if (this.page != null)
 			{
@@ -5836,8 +5790,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for SearchInvoices. 
       */
-	public partial class SearchInvoicesResponse	
-	{
+	public partial class SearchInvoicesResponse	{
 
 		/**
           *
@@ -5966,7 +5919,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static SearchInvoicesResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static SearchInvoicesResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			SearchInvoicesResponse searchInvoicesResponse = null;
 			string key;
@@ -5985,7 +5938,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
@@ -5997,7 +5950,7 @@ namespace PayPal.Invoice.Model
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
 				searchInvoicesResponse.count = System.Convert.ToInt32(map[key]);
 			}
-			InvoiceSummaryListType invoiceList =  InvoiceSummaryListType.createInstance(map, prefix + "invoiceList", -1);
+			InvoiceSummaryListType invoiceList =  InvoiceSummaryListType.CreateInstance(map, prefix + "invoiceList", -1);
 			if (invoiceList != null)
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
@@ -6024,7 +5977,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
@@ -6038,7 +5991,6 @@ namespace PayPal.Invoice.Model
 			}
 			return searchInvoicesResponse;
 		}
-		
 	}
 
 
@@ -6047,8 +5999,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for MarkInvoiceAsPaid. 
       */
-	public partial class MarkInvoiceAsPaidRequest	
-	{
+	public partial class MarkInvoiceAsPaidRequest	{
 
 		/**
           *
@@ -6117,13 +6068,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -6132,7 +6083,7 @@ namespace PayPal.Invoice.Model
 			if (this.payment != null)
 			{
 					string newPrefix = prefix + "payment" + ".";
-					sb.Append(this.paymentField.toNVPString(newPrefix));
+					sb.Append(this.paymentField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -6144,8 +6095,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for MarkInvoiceAsPaid. 
       */
-	public partial class MarkInvoiceAsPaidResponse	
-	{
+	public partial class MarkInvoiceAsPaidResponse	{
 
 		/**
           *
@@ -6240,7 +6190,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static MarkInvoiceAsPaidResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static MarkInvoiceAsPaidResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			MarkInvoiceAsPaidResponse markInvoiceAsPaidResponse = null;
 			string key;
@@ -6259,7 +6209,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
@@ -6286,7 +6236,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					markInvoiceAsPaidResponse = (markInvoiceAsPaidResponse == null) ? new MarkInvoiceAsPaidResponse() : markInvoiceAsPaidResponse;
@@ -6300,7 +6250,6 @@ namespace PayPal.Invoice.Model
 			}
 			return markInvoiceAsPaidResponse;
 		}
-		
 	}
 
 
@@ -6309,8 +6258,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for MarkInvoiceAsRefunded. 
       */
-	public partial class MarkInvoiceAsRefundedRequest	
-	{
+	public partial class MarkInvoiceAsRefundedRequest	{
 
 		/**
           *
@@ -6379,13 +6327,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -6394,7 +6342,7 @@ namespace PayPal.Invoice.Model
 			if (this.refundDetail != null)
 			{
 					string newPrefix = prefix + "refundDetail" + ".";
-					sb.Append(this.refundDetailField.toNVPString(newPrefix));
+					sb.Append(this.refundDetailField.ToNVPString(newPrefix));
 			}
 			return sb.ToString();
 		}
@@ -6406,8 +6354,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for MarkInvoiceAsRefunded. 
       */
-	public partial class MarkInvoiceAsRefundedResponse	
-	{
+	public partial class MarkInvoiceAsRefundedResponse	{
 
 		/**
           *
@@ -6502,7 +6449,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static MarkInvoiceAsRefundedResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static MarkInvoiceAsRefundedResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			MarkInvoiceAsRefundedResponse markInvoiceAsRefundedResponse = null;
 			string key;
@@ -6521,7 +6468,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
@@ -6548,7 +6495,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					markInvoiceAsRefundedResponse = (markInvoiceAsRefundedResponse == null) ? new MarkInvoiceAsRefundedResponse() : markInvoiceAsRefundedResponse;
@@ -6562,7 +6509,6 @@ namespace PayPal.Invoice.Model
 			}
 			return markInvoiceAsRefundedResponse;
 		}
-		
 	}
 
 
@@ -6571,8 +6517,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The request object for MarkInvoiceAsUnpaid. 
       */
-	public partial class MarkInvoiceAsUnpaidRequest	
-	{
+	public partial class MarkInvoiceAsUnpaidRequest	{
 
 		/**
           *
@@ -6623,13 +6568,13 @@ namespace PayPal.Invoice.Model
 		}
 
 
-		public string toNVPString(string prefix)
+		public string ToNVPString(string prefix)
 		{
 			StringBuilder sb = new StringBuilder();
 			if (this.requestEnvelope != null)
 			{
 					string newPrefix = prefix + "requestEnvelope" + ".";
-					sb.Append(this.requestEnvelopeField.toNVPString(newPrefix));
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
 			}
 			if (this.invoiceID != null)
 			{
@@ -6645,8 +6590,7 @@ namespace PayPal.Invoice.Model
 	/**
       *The response object for MarkInvoiceAsUnpaid. 
       */
-	public partial class MarkInvoiceAsUnpaidResponse	
-	{
+	public partial class MarkInvoiceAsUnpaidResponse	{
 
 		/**
           *
@@ -6741,7 +6685,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static MarkInvoiceAsUnpaidResponse createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static MarkInvoiceAsUnpaidResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			MarkInvoiceAsUnpaidResponse markInvoiceAsUnpaidResponse = null;
 			string key;
@@ -6760,7 +6704,7 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
-			ResponseEnvelope responseEnvelope =  ResponseEnvelope.createInstance(map, prefix + "responseEnvelope", -1);
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
 			if (responseEnvelope != null)
 			{
 				markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
@@ -6787,7 +6731,7 @@ namespace PayPal.Invoice.Model
 			i = 0;
 			while(true)
 			{
-				ErrorData error =  ErrorData.createInstance(map, prefix + "error", i);
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
 				if (error != null)
 				{
 					markInvoiceAsUnpaidResponse = (markInvoiceAsUnpaidResponse == null) ? new MarkInvoiceAsUnpaidResponse() : markInvoiceAsUnpaidResponse;
@@ -6801,7 +6745,6 @@ namespace PayPal.Invoice.Model
 			}
 			return markInvoiceAsUnpaidResponse;
 		}
-		
 	}
 
 
@@ -6810,8 +6753,7 @@ namespace PayPal.Invoice.Model
 	/**
       *Payment refund details about the invoice.  
       */
-	public partial class PaymentRefundDetailsType	
-	{
+	public partial class PaymentRefundDetailsType	{
 
 		/**
           *
@@ -6872,7 +6814,7 @@ namespace PayPal.Invoice.Model
 
 
 
-		public static PaymentRefundDetailsType createInstance(Dictionary<string, string> map, string prefix, int index)
+		public static PaymentRefundDetailsType CreateInstance(Dictionary<string, string> map, string prefix, int index)
 		{
 			PaymentRefundDetailsType paymentRefundDetailsType = null;
 			string key;
@@ -6897,13 +6839,13 @@ namespace PayPal.Invoice.Model
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
 				paymentRefundDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
 			}
-			PayPalPaymentRefundDetailsType paypalPayment =  PayPalPaymentRefundDetailsType.createInstance(map, prefix + "paypalPayment", -1);
+			PayPalPaymentRefundDetailsType paypalPayment =  PayPalPaymentRefundDetailsType.CreateInstance(map, prefix + "paypalPayment", -1);
 			if (paypalPayment != null)
 			{
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
 				paymentRefundDetailsType.paypalPayment = paypalPayment;
 			}
-			OtherPaymentRefundDetailsType otherPayment =  OtherPaymentRefundDetailsType.createInstance(map, prefix + "otherPayment", -1);
+			OtherPaymentRefundDetailsType otherPayment =  OtherPaymentRefundDetailsType.CreateInstance(map, prefix + "otherPayment", -1);
 			if (otherPayment != null)
 			{
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
@@ -6911,7 +6853,6 @@ namespace PayPal.Invoice.Model
 			}
 			return paymentRefundDetailsType;
 		}
-		
 	}
 
 

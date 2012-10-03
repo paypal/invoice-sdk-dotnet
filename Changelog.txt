@@ -1,4 +1,11 @@
 
+Version 1.5.95 - September 28, 2012
+ 
+	- Updated SDK sample
+	- Assembly files are updated with assembly versions.(https://github.com/paypal/SDKs/issues/18)
+--------------------------------------------------------------------------------------------------
+
+
 Version 1.4.93 - August 13, 2012
  
 	- SDK Core - Deserialization Logic Change

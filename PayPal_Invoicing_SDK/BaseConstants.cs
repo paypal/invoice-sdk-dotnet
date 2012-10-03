@@ -51,7 +51,7 @@ namespace PayPal
         public static readonly Encoding ENCODING_FORMAT = Encoding.UTF8;
         
         public const string SDK_NAME = "sdk-invoicing-dotnet";
-        public const string SDK_VERSION = "1.4.93";
+        public const string SDK_VERSION = "1.5.95";
 
         public class ErrorMessages
         {

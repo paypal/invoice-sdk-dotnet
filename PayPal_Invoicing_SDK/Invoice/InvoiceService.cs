@@ -1,3 +1,4 @@
+using System.Xml;
 using PayPal;
 using PayPal.Authentication;
 using PayPal.Util;
@@ -20,191 +21,191 @@ namespace PayPal.Invoice {
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest, string apiUsername)
+	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest createInvoiceRequest, string apiUserName)
 	 	{
-			string resp = call("CreateInvoice", CreateInvoiceRequest.toNVPString(""), apiUsername);
+			string response = Call("CreateInvoice", createInvoiceRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return CreateInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return CreateInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest CreateInvoiceRequest)
+	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest createInvoiceRequest)
 	 	{
-	 		return CreateInvoice(CreateInvoiceRequest, null);
+	 		return CreateInvoice(createInvoiceRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest, string apiUsername)
+	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest sendInvoiceRequest, string apiUserName)
 	 	{
-			string resp = call("SendInvoice", SendInvoiceRequest.toNVPString(""), apiUsername);
+			string response = Call("SendInvoice", sendInvoiceRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return SendInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return SendInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest SendInvoiceRequest)
+	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest sendInvoiceRequest)
 	 	{
-	 		return SendInvoice(SendInvoiceRequest, null);
+	 		return SendInvoice(sendInvoiceRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest, string apiUsername)
+	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest createAndSendInvoiceRequest, string apiUserName)
 	 	{
-			string resp = call("CreateAndSendInvoice", CreateAndSendInvoiceRequest.toNVPString(""), apiUsername);
+			string response = Call("CreateAndSendInvoice", createAndSendInvoiceRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return CreateAndSendInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return CreateAndSendInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest CreateAndSendInvoiceRequest)
+	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest createAndSendInvoiceRequest)
 	 	{
-	 		return CreateAndSendInvoice(CreateAndSendInvoiceRequest, null);
+	 		return CreateAndSendInvoice(createAndSendInvoiceRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest, string apiUsername)
+	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest updateInvoiceRequest, string apiUserName)
 	 	{
-			string resp = call("UpdateInvoice", UpdateInvoiceRequest.toNVPString(""), apiUsername);
+			string response = Call("UpdateInvoice", updateInvoiceRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return UpdateInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return UpdateInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest UpdateInvoiceRequest)
+	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest updateInvoiceRequest)
 	 	{
-	 		return UpdateInvoice(UpdateInvoiceRequest, null);
+	 		return UpdateInvoice(updateInvoiceRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest, string apiUsername)
+	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest getInvoiceDetailsRequest, string apiUserName)
 	 	{
-			string resp = call("GetInvoiceDetails", GetInvoiceDetailsRequest.toNVPString(""), apiUsername);
+			string response = Call("GetInvoiceDetails", getInvoiceDetailsRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return GetInvoiceDetailsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return GetInvoiceDetailsResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest GetInvoiceDetailsRequest)
+	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest getInvoiceDetailsRequest)
 	 	{
-	 		return GetInvoiceDetails(GetInvoiceDetailsRequest, null);
+	 		return GetInvoiceDetails(getInvoiceDetailsRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest, string apiUsername)
+	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest cancelInvoiceRequest, string apiUserName)
 	 	{
-			string resp = call("CancelInvoice", CancelInvoiceRequest.toNVPString(""), apiUsername);
+			string response = Call("CancelInvoice", cancelInvoiceRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return CancelInvoiceResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return CancelInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest CancelInvoiceRequest)
+	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest cancelInvoiceRequest)
 	 	{
-	 		return CancelInvoice(CancelInvoiceRequest, null);
+	 		return CancelInvoice(cancelInvoiceRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest, string apiUsername)
+	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest searchInvoicesRequest, string apiUserName)
 	 	{
-			string resp = call("SearchInvoices", SearchInvoicesRequest.toNVPString(""), apiUsername);
+			string response = Call("SearchInvoices", searchInvoicesRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return SearchInvoicesResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return SearchInvoicesResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest SearchInvoicesRequest)
+	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest searchInvoicesRequest)
 	 	{
-	 		return SearchInvoices(SearchInvoicesRequest, null);
+	 		return SearchInvoices(searchInvoicesRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest, string apiUsername)
+	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest markInvoiceAsPaidRequest, string apiUserName)
 	 	{
-			string resp = call("MarkInvoiceAsPaid", MarkInvoiceAsPaidRequest.toNVPString(""), apiUsername);
+			string response = Call("MarkInvoiceAsPaid", markInvoiceAsPaidRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsPaidResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return MarkInvoiceAsPaidResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest MarkInvoiceAsPaidRequest)
+	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest markInvoiceAsPaidRequest)
 	 	{
-	 		return MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest, null);
+	 		return MarkInvoiceAsPaid(markInvoiceAsPaidRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest, string apiUsername)
+	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest markInvoiceAsUnpaidRequest, string apiUserName)
 	 	{
-			string resp = call("MarkInvoiceAsUnpaid", MarkInvoiceAsUnpaidRequest.toNVPString(""), apiUsername);
+			string response = Call("MarkInvoiceAsUnpaid", markInvoiceAsUnpaidRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsUnpaidResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return MarkInvoiceAsUnpaidResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest MarkInvoiceAsUnpaidRequest)
+	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest markInvoiceAsUnpaidRequest)
 	 	{
-	 		return MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest, null);
+	 		return MarkInvoiceAsUnpaid(markInvoiceAsUnpaidRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest, string apiUsername)
+	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest markInvoiceAsRefundedRequest, string apiUserName)
 	 	{
-			string resp = call("MarkInvoiceAsRefunded", MarkInvoiceAsRefundedRequest.toNVPString(""), apiUsername);
+			string response = Call("MarkInvoiceAsRefunded", markInvoiceAsRefundedRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsRefundedResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return MarkInvoiceAsRefundedResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest MarkInvoiceAsRefundedRequest)
+	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest markInvoiceAsRefundedRequest)
 	 	{
-	 		return MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest, null);
+	 		return MarkInvoiceAsRefunded(markInvoiceAsRefundedRequest, null);
 	 	}
 	}
 }
