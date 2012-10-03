@@ -1,3 +1,4 @@
+using System.Xml;
 using PayPal;
 using PayPal.Authentication;
 using PayPal.Util;
@@ -20,115 +21,115 @@ namespace PayPal.Permissions {
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest RequestPermissionsRequest, string apiUsername)
+	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest requestPermissionsRequest, string apiUserName)
 	 	{
-			string resp = call("RequestPermissions", RequestPermissionsRequest.toNVPString(""), apiUsername);
+			string response = Call("RequestPermissions", requestPermissionsRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return RequestPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return RequestPermissionsResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest RequestPermissionsRequest)
+	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest requestPermissionsRequest)
 	 	{
-	 		return RequestPermissions(RequestPermissionsRequest, null);
+	 		return RequestPermissions(requestPermissionsRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest GetAccessTokenRequest, string apiUsername)
+	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest getAccessTokenRequest, string apiUserName)
 	 	{
-			string resp = call("GetAccessToken", GetAccessTokenRequest.toNVPString(""), apiUsername);
+			string response = Call("GetAccessToken", getAccessTokenRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return GetAccessTokenResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return GetAccessTokenResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest GetAccessTokenRequest)
+	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest getAccessTokenRequest)
 	 	{
-	 		return GetAccessToken(GetAccessTokenRequest, null);
+	 		return GetAccessToken(getAccessTokenRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest GetPermissionsRequest, string apiUsername)
+	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest getPermissionsRequest, string apiUserName)
 	 	{
-			string resp = call("GetPermissions", GetPermissionsRequest.toNVPString(""), apiUsername);
+			string response = Call("GetPermissions", getPermissionsRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return GetPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return GetPermissionsResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest GetPermissionsRequest)
+	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest getPermissionsRequest)
 	 	{
-	 		return GetPermissions(GetPermissionsRequest, null);
+	 		return GetPermissions(getPermissionsRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest CancelPermissionsRequest, string apiUsername)
+	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest cancelPermissionsRequest, string apiUserName)
 	 	{
-			string resp = call("CancelPermissions", CancelPermissionsRequest.toNVPString(""), apiUsername);
+			string response = Call("CancelPermissions", cancelPermissionsRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return CancelPermissionsResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return CancelPermissionsResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest CancelPermissionsRequest)
+	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest cancelPermissionsRequest)
 	 	{
-	 		return CancelPermissions(CancelPermissionsRequest, null);
+	 		return CancelPermissions(cancelPermissionsRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest GetBasicPersonalDataRequest, string apiUsername)
+	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest getBasicPersonalDataRequest, string apiUserName)
 	 	{
-			string resp = call("GetBasicPersonalData", GetBasicPersonalDataRequest.toNVPString(""), apiUsername);
+			string response = Call("GetBasicPersonalData", getBasicPersonalDataRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return GetBasicPersonalDataResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return GetBasicPersonalDataResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest GetBasicPersonalDataRequest)
+	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest getBasicPersonalDataRequest)
 	 	{
-	 		return GetBasicPersonalData(GetBasicPersonalDataRequest, null);
+	 		return GetBasicPersonalData(getBasicPersonalDataRequest, null);
 	 	}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
-	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest GetAdvancedPersonalDataRequest, string apiUsername)
+	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest getAdvancedPersonalDataRequest, string apiUserName)
 	 	{
-			string resp = call("GetAdvancedPersonalData", GetAdvancedPersonalDataRequest.toNVPString(""), apiUsername);
+			string response = Call("GetAdvancedPersonalData", getAdvancedPersonalDataRequest.ToNVPString(""), apiUserName);
 			NVPUtil util = new NVPUtil();
-			return GetAdvancedPersonalDataResponse.createInstance(util.parseNVPString(resp), "", -1);
+			return GetAdvancedPersonalDataResponse.CreateInstance(util.ParseNVPString(response), "", -1);
 			
 	 	}
 	 
 	 	/** 
           *AUTO_GENERATED
 	 	  */
-	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest GetAdvancedPersonalDataRequest)
+	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest getAdvancedPersonalDataRequest)
 	 	{
-	 		return GetAdvancedPersonalData(GetAdvancedPersonalDataRequest, null);
+	 		return GetAdvancedPersonalData(getAdvancedPersonalDataRequest, null);
 	 	}
 	}
 }
