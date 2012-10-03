@@ -16,7 +16,7 @@ namespace PayPal.UnitTest
         {
             APIService service = new APIService("Invoice", "1.0.0");
             string request = "requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY";
-            string response = service.makeRequest("SendInvoice", request, null, null, null);
+            string response = service.MakeRequest("SendInvoice", request, null, null, null);
             StringAssert.Contains("responseEnvelope.ack", response);
         }
 
@@ -25,7 +25,7 @@ namespace PayPal.UnitTest
         {
             APIService service = new APIService("Invoice", "1.0.0");
             string request = "requestEnvelope.detailLevel=ReturnAll&requestEnvelope.errorLanguage=en_US&invoiceID=INV2-PCWG-P78G-7EYV-94QY";
-            string response = service.makeRequest("SendInvoice", request, "jb-us-seller_api1.paypal.com", null, null);
+            string response = service.MakeRequest("SendInvoice", request, "jb-us-seller_api1.paypal.com", null, null);
             StringAssert.Contains("responseEnvelope.ack", response);
         }
 

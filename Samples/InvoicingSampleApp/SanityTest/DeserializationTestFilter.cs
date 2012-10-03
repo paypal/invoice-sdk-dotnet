@@ -35,7 +35,7 @@ namespace InvoicingSampleApp.SanityTest
                 String originalResponse = (String) context.Items["responsePayload"];
                 Dictionary<string, string> constructedMap = ReflectionUtil.decodeResponseObject(responseObj, "");
                 NVPUtil nvpUtil = new NVPUtil();
-                Dictionary<string, string> originalMap = nvpUtil.parseNVPString(originalResponse);
+                Dictionary<string, string> originalMap = nvpUtil.ParseNVPString(originalResponse);
 
                 if (!originalMap.Equals(constructedMap)) {			        
 			        foreach (String key in originalMap.Keys) {
