@@ -10,7 +10,7 @@
 </head>
 <body>
     <h4>PayPal Invoicing SDK Samples Home</h4>
-    <h5>SDK v<asp:Label ID="sdkVersion" runat="server" /></h5>
+    <%--<h5>SDK v<asp:Label ID="sdkVersion" runat="server" /></h5>--%>
     <form id="form1" runat="server">    
     <div>        
         <ul>

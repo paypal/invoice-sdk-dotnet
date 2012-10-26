@@ -32,6 +32,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal_Core_SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -40,37 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasePayPalService.cs" />
-    <Compile Include="Authentication\AuthenticationHandler.cs" />
-    <Compile Include="Exception\ConfigException.cs" />
-    <Compile Include="Exception\ConnectionException.cs" />
-    <Compile Include="Exception\InvalidCredentialException.cs" />
-    <Compile Include="Exception\MissingCredentialException.cs" />
-    <Compile Include="Exception\OAuthException.cs" />
     <Compile Include="Invoice\InvoiceService.cs" />
     <Compile Include="Invoice\PayPalInvoiceModel.cs" />
-    <Compile Include="Manager\SDKConfigHandler.cs" />
-    <Compile Include="Manager\ConfigManager.cs" />
-    <Compile Include="Manager\ConnectionManager.cs" />
-    <Compile Include="Manager\CredentialManager.cs" />
-    <Compile Include="APIService.cs" />
-    <Compile Include="Authentication\SignatureCredential.cs" />
-    <Compile Include="BaseConstants.cs" />
-    <Compile Include="Authentication\CertificateCredential.cs" />
-    <Compile Include="Authentication\ICredential.cs" />
-    <Compile Include="OAuth\OAuthGenerator.cs" />
-    <Compile Include="OAuth\PayPalURLEncoder.cs" />
     <Compile Include="Permissions\PayPalPermissionsModel.cs" />
     <Compile Include="Permissions\PermissionsService.cs" />
-    <Compile Include="Util\NVPUtil.cs" />
-    <Compile Include="Util\ReadCert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\ReflectionEnumUtil.cs" />
-    <Compile Include="Util\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\log4net.dll" />
     <Content Include="lib\log4net.xml" />
+    <Content Include="lib\PayPal_Core_SDK.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\GenerateNDoc.bat" />

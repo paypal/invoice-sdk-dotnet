@@ -14,12 +14,10 @@ using PayPal;
 namespace InvoicingSampleApp
 {
     public partial class _Default : System.Web.UI.Page
-    {
-        
-
+    { 
         protected void Page_Load(object sender, EventArgs e)
         {
-            sdkVersion.Text = BaseConstants.SDK_VERSION;
+            //sdkVersion.Text = BaseConstants.SDK_VERSION;
         }
     }
 }

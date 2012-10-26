@@ -3,13 +3,14 @@
   * AUTO_GENERATED_CODE 
   */
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using PayPal.Util;
 
 namespace PayPal.Invoice.Model
@@ -47,6 +48,12 @@ namespace PayPal.Invoice.Model
       *
       */
 	public partial class BaseAddress	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -170,7 +177,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public BaseAddress(string line1, string city, string countryCode){
+	 	public BaseAddress(string line1, string city, string countryCode)
+	 	{
 			this.line1 = line1;
 			this.city = city;
 			this.countryCode = countryCode;
@@ -179,7 +187,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public BaseAddress(){
+	 	public BaseAddress()
+	 	{
 		}
 
 
@@ -290,6 +299,12 @@ namespace PayPal.Invoice.Model
       *from the service operation. 
       */
 	public partial class ErrorData	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -430,7 +445,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public ErrorData(){
+	 	public ErrorData()
+	 	{
 		}
 
 
@@ -523,6 +539,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class ErrorParameter	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -560,7 +582,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public ErrorParameter(){
+	 	public ErrorParameter()
+	 	{
 		}
 
 
@@ -609,6 +632,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class FaultMessage	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -646,7 +675,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public FaultMessage(){
+	 	public FaultMessage()
+	 	{
 		}
 
 
@@ -704,6 +734,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class RequestEnvelope	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -741,14 +777,16 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public RequestEnvelope(string errorLanguage){
+	 	public RequestEnvelope(string errorLanguage)
+	 	{
 			this.errorLanguage = errorLanguage;
 		}
 
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public RequestEnvelope(){
+	 	public RequestEnvelope()
+	 	{
 		}
 
 
@@ -776,6 +814,12 @@ namespace PayPal.Invoice.Model
       *a service. 
       */
 	public partial class ResponseEnvelope	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.common";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -848,7 +892,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public ResponseEnvelope(){
+	 	public ResponseEnvelope()
+	 	{
 		}
 
 
@@ -1049,6 +1094,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class BusinessInfoType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -1188,7 +1239,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public BusinessInfoType(){
+	 	public BusinessInfoType()
+	 	{
 		}
 
 
@@ -1310,6 +1362,12 @@ namespace PayPal.Invoice.Model
       *invoice. 
       */
 	public partial class InvoiceItemType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -1433,7 +1491,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public InvoiceItemType(string name, decimal? quantity, decimal? unitPrice){
+	 	public InvoiceItemType(string name, decimal? quantity, decimal? unitPrice)
+	 	{
 			this.name = name;
 			this.quantity = quantity;
 			this.unitPrice = unitPrice;
@@ -1442,7 +1501,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceItemType(){
+	 	public InvoiceItemType()
+	 	{
 		}
 
 
@@ -1463,11 +1523,11 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.quantity != null)
 			{
-					sb.Append(prefix).Append("quantity").Append("=").Append(this.quantity).Append("&");
+					sb.Append(prefix).Append("quantity").Append("=").Append(Convert.ToString(this.quantity, DefaultCulture)).Append("&");
 			}
 			if (this.unitPrice != null)
 			{
-					sb.Append(prefix).Append("unitPrice").Append("=").Append(this.unitPrice).Append("&");
+					sb.Append(prefix).Append("unitPrice").Append("=").Append(Convert.ToString(this.unitPrice, DefaultCulture)).Append("&");
 			}
 			if (this.taxName != null)
 			{
@@ -1475,7 +1535,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.taxRate != null)
 			{
-					sb.Append(prefix).Append("taxRate").Append("=").Append(this.taxRate).Append("&");
+					sb.Append(prefix).Append("taxRate").Append("=").Append(Convert.ToString(this.taxRate, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -1553,6 +1613,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class InvoiceItemListType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -1573,14 +1639,16 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public InvoiceItemListType(List<InvoiceItemType> item){
+	 	public InvoiceItemListType(List<InvoiceItemType> item)
+	 	{
 			this.item = item;
 		}
 
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceItemListType(){
+	 	public InvoiceItemListType()
+	 	{
 		}
 
 
@@ -1644,6 +1712,12 @@ namespace PayPal.Invoice.Model
       *
       */
 	public partial class InvoiceType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -2039,7 +2113,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode, PaymentTermsType? paymentTerms){
+	 	public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode, PaymentTermsType? paymentTerms)
+	 	{
 			this.merchantEmail = merchantEmail;
 			this.payerEmail = payerEmail;
 			this.itemList = itemList;
@@ -2050,7 +2125,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceType(){
+	 	public InvoiceType()
+	 	{
 		}
 
 
@@ -2098,11 +2174,11 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.discountPercent != null)
 			{
-					sb.Append(prefix).Append("discountPercent").Append("=").Append(this.discountPercent).Append("&");
+					sb.Append(prefix).Append("discountPercent").Append("=").Append(Convert.ToString(this.discountPercent, DefaultCulture)).Append("&");
 			}
 			if (this.discountAmount != null)
 			{
-					sb.Append(prefix).Append("discountAmount").Append("=").Append(this.discountAmount).Append("&");
+					sb.Append(prefix).Append("discountAmount").Append("=").Append(Convert.ToString(this.discountAmount, DefaultCulture)).Append("&");
 			}
 			if (this.terms != null)
 			{
@@ -2128,7 +2204,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.shippingAmount != null)
 			{
-					sb.Append(prefix).Append("shippingAmount").Append("=").Append(this.shippingAmount).Append("&");
+					sb.Append(prefix).Append("shippingAmount").Append("=").Append(Convert.ToString(this.shippingAmount, DefaultCulture)).Append("&");
 			}
 			if (this.shippingTaxName != null)
 			{
@@ -2136,7 +2212,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.shippingTaxRate != null)
 			{
-					sb.Append(prefix).Append("shippingTaxRate").Append("=").Append(this.shippingTaxRate).Append("&");
+					sb.Append(prefix).Append("shippingTaxRate").Append("=").Append(Convert.ToString(this.shippingTaxRate, DefaultCulture)).Append("&");
 			}
 			if (this.logoUrl != null)
 			{
@@ -2152,7 +2228,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.customAmountValue != null)
 			{
-					sb.Append(prefix).Append("customAmountValue").Append("=").Append(this.customAmountValue).Append("&");
+					sb.Append(prefix).Append("customAmountValue").Append("=").Append(Convert.ToString(this.customAmountValue, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -2326,6 +2402,12 @@ namespace PayPal.Invoice.Model
       *dates. 
       */
 	public partial class InvoiceDetailsType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -2568,7 +2650,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceDetailsType(){
+	 	public InvoiceDetailsType()
+	 	{
 		}
 
 
@@ -2688,6 +2771,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class OtherPaymentRefundDetailsType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -2725,7 +2814,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public OtherPaymentRefundDetailsType(){
+	 	public OtherPaymentRefundDetailsType()
+	 	{
 		}
 
 
@@ -2786,6 +2876,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class PayPalPaymentRefundDetailsType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -2806,7 +2902,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public PayPalPaymentRefundDetailsType(){
+	 	public PayPalPaymentRefundDetailsType()
+	 	{
 		}
 
 
@@ -2848,6 +2945,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class PayPalPaymentDetailsType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -2885,7 +2988,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public PayPalPaymentDetailsType(){
+	 	public PayPalPaymentDetailsType()
+	 	{
 		}
 
 
@@ -2932,6 +3036,12 @@ namespace PayPal.Invoice.Model
       *Offline payment details about the invoice. 
       */
 	public partial class OtherPaymentDetailsType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -2987,7 +3097,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public OtherPaymentDetailsType(){
+	 	public OtherPaymentDetailsType()
+	 	{
 		}
 
 
@@ -3059,6 +3170,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class PaymentDetailsType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -3113,7 +3230,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public PaymentDetailsType(){
+	 	public PaymentDetailsType()
+	 	{
 		}
 
 
@@ -3167,6 +3285,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class DateRangeType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -3204,7 +3328,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public DateRangeType(){
+	 	public DateRangeType()
+	 	{
 		}
 
 
@@ -3230,6 +3355,12 @@ namespace PayPal.Invoice.Model
       *Search parameters criteria. 
       */
 	public partial class SearchParametersType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -3472,7 +3603,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public SearchParametersType(){
+	 	public SearchParametersType()
+	 	{
 		}
 
 
@@ -3505,11 +3637,11 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.lowerAmount != null)
 			{
-					sb.Append(prefix).Append("lowerAmount").Append("=").Append(this.lowerAmount).Append("&");
+					sb.Append(prefix).Append("lowerAmount").Append("=").Append(Convert.ToString(this.lowerAmount, DefaultCulture)).Append("&");
 			}
 			if (this.upperAmount != null)
 			{
-					sb.Append(prefix).Append("upperAmount").Append("=").Append(this.upperAmount).Append("&");
+					sb.Append(prefix).Append("upperAmount").Append("=").Append(Convert.ToString(this.upperAmount, DefaultCulture)).Append("&");
 			}
 			if (this.currencyCode != null)
 			{
@@ -3555,6 +3687,12 @@ namespace PayPal.Invoice.Model
       *Summary of invoice information. 
       */
 	public partial class InvoiceSummaryType	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -3848,7 +3986,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceSummaryType(){
+	 	public InvoiceSummaryType()
+	 	{
 		}
 
 
@@ -3986,6 +4125,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class InvoiceSummaryListType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -4006,7 +4151,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public InvoiceSummaryListType(){
+	 	public InvoiceSummaryListType()
+	 	{
 		}
 
 
@@ -4057,6 +4203,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class CreateInvoiceRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -4094,7 +4246,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public CreateInvoiceRequest(RequestEnvelope requestEnvelope, InvoiceType invoice){
+	 	public CreateInvoiceRequest(RequestEnvelope requestEnvelope, InvoiceType invoice)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoice = invoice;
 		}
@@ -4102,7 +4255,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CreateInvoiceRequest(){
+	 	public CreateInvoiceRequest()
+	 	{
 		}
 
 
@@ -4130,6 +4284,12 @@ namespace PayPal.Invoice.Model
       *The response object for CreateInvoice. 
       */
 	public partial class CreateInvoiceResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -4236,7 +4396,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CreateInvoiceResponse(){
+	 	public CreateInvoiceResponse()
+	 	{
 		}
 
 
@@ -4317,6 +4478,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class SendInvoiceRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -4354,7 +4521,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public SendInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID){
+	 	public SendInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 		}
@@ -4362,7 +4530,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public SendInvoiceRequest(){
+	 	public SendInvoiceRequest()
+	 	{
 		}
 
 
@@ -4389,6 +4558,12 @@ namespace PayPal.Invoice.Model
       *The response object for SendInvoice. 
       */
 	public partial class SendInvoiceResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -4461,7 +4636,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public SendInvoiceResponse(){
+	 	public SendInvoiceResponse()
+	 	{
 		}
 
 
@@ -4530,6 +4706,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class CreateAndSendInvoiceRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -4567,7 +4749,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public CreateAndSendInvoiceRequest(RequestEnvelope requestEnvelope, InvoiceType invoice){
+	 	public CreateAndSendInvoiceRequest(RequestEnvelope requestEnvelope, InvoiceType invoice)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoice = invoice;
 		}
@@ -4575,7 +4758,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CreateAndSendInvoiceRequest(){
+	 	public CreateAndSendInvoiceRequest()
+	 	{
 		}
 
 
@@ -4603,6 +4787,12 @@ namespace PayPal.Invoice.Model
       *The response object for CreateAndSendInvoice. 
       */
 	public partial class CreateAndSendInvoiceResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -4709,7 +4899,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CreateAndSendInvoiceResponse(){
+	 	public CreateAndSendInvoiceResponse()
+	 	{
 		}
 
 
@@ -4790,6 +4981,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class UpdateInvoiceRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -4844,7 +5041,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public UpdateInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID, InvoiceType invoice){
+	 	public UpdateInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID, InvoiceType invoice)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 			this.invoice = invoice;
@@ -4853,7 +5051,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public UpdateInvoiceRequest(){
+	 	public UpdateInvoiceRequest()
+	 	{
 		}
 
 
@@ -4885,6 +5084,12 @@ namespace PayPal.Invoice.Model
       *The response object for UpdateInvoice. 
       */
 	public partial class UpdateInvoiceResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -4991,7 +5196,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public UpdateInvoiceResponse(){
+	 	public UpdateInvoiceResponse()
+	 	{
 		}
 
 
@@ -5072,6 +5278,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class GetInvoiceDetailsRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -5109,7 +5321,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public GetInvoiceDetailsRequest(RequestEnvelope requestEnvelope, string invoiceID){
+	 	public GetInvoiceDetailsRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 		}
@@ -5117,7 +5330,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public GetInvoiceDetailsRequest(){
+	 	public GetInvoiceDetailsRequest()
+	 	{
 		}
 
 
@@ -5144,6 +5358,12 @@ namespace PayPal.Invoice.Model
       *The response object for CreateInvoice. 
       */
 	public partial class GetInvoiceDetailsResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -5267,7 +5487,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public GetInvoiceDetailsResponse(){
+	 	public GetInvoiceDetailsResponse()
+	 	{
 		}
 
 
@@ -5353,6 +5574,12 @@ namespace PayPal.Invoice.Model
       *The request object for CancelInvoice. 
       */
 	public partial class CancelInvoiceRequest	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -5442,14 +5669,16 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public CancelInvoiceRequest(RequestEnvelope requestEnvelope){
+	 	public CancelInvoiceRequest(RequestEnvelope requestEnvelope)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 		}
 
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CancelInvoiceRequest(){
+	 	public CancelInvoiceRequest()
+	 	{
 		}
 
 
@@ -5488,6 +5717,12 @@ namespace PayPal.Invoice.Model
       *The response object for CancelInvoice. 
       */
 	public partial class CancelInvoiceResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -5577,7 +5812,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public CancelInvoiceResponse(){
+	 	public CancelInvoiceResponse()
+	 	{
 		}
 
 
@@ -5651,6 +5887,12 @@ namespace PayPal.Invoice.Model
       *The request object for SearchInvoices. 
       */
 	public partial class SearchInvoicesRequest	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -5740,7 +5982,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public SearchInvoicesRequest(RequestEnvelope requestEnvelope, string merchantEmail, SearchParametersType parameters, int? page, int? pageSize){
+	 	public SearchInvoicesRequest(RequestEnvelope requestEnvelope, string merchantEmail, SearchParametersType parameters, int? page, int? pageSize)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.merchantEmail = merchantEmail;
 			this.parameters = parameters;
@@ -5751,7 +5994,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public SearchInvoicesRequest(){
+	 	public SearchInvoicesRequest()
+	 	{
 		}
 
 
@@ -5791,6 +6035,12 @@ namespace PayPal.Invoice.Model
       *The response object for SearchInvoices. 
       */
 	public partial class SearchInvoicesResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -5914,7 +6164,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public SearchInvoicesResponse(){
+	 	public SearchInvoicesResponse()
+	 	{
 		}
 
 
@@ -6001,6 +6252,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class MarkInvoiceAsPaidRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -6055,7 +6312,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public MarkInvoiceAsPaidRequest(RequestEnvelope requestEnvelope, string invoiceID, OtherPaymentDetailsType payment){
+	 	public MarkInvoiceAsPaidRequest(RequestEnvelope requestEnvelope, string invoiceID, OtherPaymentDetailsType payment)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 			this.payment = payment;
@@ -6064,7 +6322,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsPaidRequest(){
+	 	public MarkInvoiceAsPaidRequest()
+	 	{
 		}
 
 
@@ -6096,6 +6355,12 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsPaid. 
       */
 	public partial class MarkInvoiceAsPaidResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -6185,7 +6450,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsPaidResponse(){
+	 	public MarkInvoiceAsPaidResponse()
+	 	{
 		}
 
 
@@ -6260,6 +6526,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class MarkInvoiceAsRefundedRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -6314,7 +6586,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public MarkInvoiceAsRefundedRequest(RequestEnvelope requestEnvelope, string invoiceID, OtherPaymentRefundDetailsType refundDetail){
+	 	public MarkInvoiceAsRefundedRequest(RequestEnvelope requestEnvelope, string invoiceID, OtherPaymentRefundDetailsType refundDetail)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 			this.refundDetail = refundDetail;
@@ -6323,7 +6596,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsRefundedRequest(){
+	 	public MarkInvoiceAsRefundedRequest()
+	 	{
 		}
 
 
@@ -6355,6 +6629,12 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsRefunded. 
       */
 	public partial class MarkInvoiceAsRefundedResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -6444,7 +6724,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsRefundedResponse(){
+	 	public MarkInvoiceAsRefundedResponse()
+	 	{
 		}
 
 
@@ -6519,6 +6800,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class MarkInvoiceAsUnpaidRequest	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -6556,7 +6843,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Constructor with arguments
 	 	  */
-	 	public MarkInvoiceAsUnpaidRequest(RequestEnvelope requestEnvelope, string invoiceID){
+	 	public MarkInvoiceAsUnpaidRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	{
 			this.requestEnvelope = requestEnvelope;
 			this.invoiceID = invoiceID;
 		}
@@ -6564,7 +6852,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsUnpaidRequest(){
+	 	public MarkInvoiceAsUnpaidRequest()
+	 	{
 		}
 
 
@@ -6591,6 +6880,12 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsUnpaid. 
       */
 	public partial class MarkInvoiceAsUnpaidResponse	{
+
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
 
 		/**
           *
@@ -6680,7 +6975,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public MarkInvoiceAsUnpaidResponse(){
+	 	public MarkInvoiceAsUnpaidResponse()
+	 	{
 		}
 
 
@@ -6755,6 +7051,12 @@ namespace PayPal.Invoice.Model
       */
 	public partial class PaymentRefundDetailsType	{
 
+		// Namespace for the type
+		private const string NameSpace = "com.paypal.svcs.types.pt";
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
 		/**
           *
 		  */
@@ -6809,7 +7111,8 @@ namespace PayPal.Invoice.Model
 		/**
 	 	  * Default Constructor
 	 	  */
-	 	public PaymentRefundDetailsType(){
+	 	public PaymentRefundDetailsType()
+	 	{
 		}
 
 

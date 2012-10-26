@@ -3,29 +3,40 @@ using PayPal;
 using PayPal.Authentication;
 using PayPal.Util;
 using PayPal.Manager;
+using PayPal.NVP;
 using PayPal.Invoice.Model;
 
-namespace PayPal.Invoice {
-	public partial class InvoiceService : BasePayPalService {
+namespace PayPal.Invoice 
+{
+	public partial class InvoiceService : BasePayPalService 
+	{
 
 		// Service Version
-		private static string ServiceVersion = "1.6.0";
+		private const string ServiceVersion = "1.6.0";
 
 		// Service Name
-		private static string ServiceName = "Invoice";
+		private const string ServiceName = "Invoice";
+		
+		//SDK Name
+		private const string SDKName = "sdkname";
+	
+		//SDK Version
+		private const string SDKVersion = "sdkversion";
 
-		public InvoiceService() : base(ServiceName, ServiceVersion)
-		{
-		}
+		public InvoiceService() {}
 
 		/**	
           *AUTO_GENERATED
 	 	  */
 	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest createInvoiceRequest, string apiUserName)
 	 	{
-			string response = Call("CreateInvoice", createInvoiceRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(createInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CreateInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return CreateInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return CreateInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -34,7 +45,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest createInvoiceRequest)
 	 	{
-	 		return CreateInvoice(createInvoiceRequest, null);
+	 		return CreateInvoice(createInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateInvoiceResponse CreateInvoice(CreateInvoiceRequest createInvoiceRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(createInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CreateInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return CreateInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -42,9 +68,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest sendInvoiceRequest, string apiUserName)
 	 	{
-			string response = Call("SendInvoice", sendInvoiceRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(sendInvoiceRequest.ToNVPString(string.Empty), ServiceName, "SendInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return SendInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return SendInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -53,7 +83,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest sendInvoiceRequest)
 	 	{
-	 		return SendInvoice(sendInvoiceRequest, null);
+	 		return SendInvoice(sendInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public SendInvoiceResponse SendInvoice(SendInvoiceRequest sendInvoiceRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(sendInvoiceRequest.ToNVPString(string.Empty), ServiceName, "SendInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return SendInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -61,9 +106,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest createAndSendInvoiceRequest, string apiUserName)
 	 	{
-			string response = Call("CreateAndSendInvoice", createAndSendInvoiceRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(createAndSendInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CreateAndSendInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return CreateAndSendInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return CreateAndSendInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -72,7 +121,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest createAndSendInvoiceRequest)
 	 	{
-	 		return CreateAndSendInvoice(createAndSendInvoiceRequest, null);
+	 		return CreateAndSendInvoice(createAndSendInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public CreateAndSendInvoiceResponse CreateAndSendInvoice(CreateAndSendInvoiceRequest createAndSendInvoiceRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(createAndSendInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CreateAndSendInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return CreateAndSendInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -80,9 +144,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest updateInvoiceRequest, string apiUserName)
 	 	{
-			string response = Call("UpdateInvoice", updateInvoiceRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(updateInvoiceRequest.ToNVPString(string.Empty), ServiceName, "UpdateInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return UpdateInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return UpdateInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -91,7 +159,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest updateInvoiceRequest)
 	 	{
-	 		return UpdateInvoice(updateInvoiceRequest, null);
+	 		return UpdateInvoice(updateInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public UpdateInvoiceResponse UpdateInvoice(UpdateInvoiceRequest updateInvoiceRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(updateInvoiceRequest.ToNVPString(string.Empty), ServiceName, "UpdateInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return UpdateInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -99,9 +182,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest getInvoiceDetailsRequest, string apiUserName)
 	 	{
-			string response = Call("GetInvoiceDetails", getInvoiceDetailsRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(getInvoiceDetailsRequest.ToNVPString(string.Empty), ServiceName, "GetInvoiceDetails", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return GetInvoiceDetailsResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return GetInvoiceDetailsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -110,7 +197,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest getInvoiceDetailsRequest)
 	 	{
-	 		return GetInvoiceDetails(getInvoiceDetailsRequest, null);
+	 		return GetInvoiceDetails(getInvoiceDetailsRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public GetInvoiceDetailsResponse GetInvoiceDetails(GetInvoiceDetailsRequest getInvoiceDetailsRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(getInvoiceDetailsRequest.ToNVPString(string.Empty), ServiceName, "GetInvoiceDetails", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return GetInvoiceDetailsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -118,9 +220,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest cancelInvoiceRequest, string apiUserName)
 	 	{
-			string response = Call("CancelInvoice", cancelInvoiceRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(cancelInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CancelInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return CancelInvoiceResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return CancelInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -129,7 +235,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest cancelInvoiceRequest)
 	 	{
-	 		return CancelInvoice(cancelInvoiceRequest, null);
+	 		return CancelInvoice(cancelInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public CancelInvoiceResponse CancelInvoice(CancelInvoiceRequest cancelInvoiceRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(cancelInvoiceRequest.ToNVPString(string.Empty), ServiceName, "CancelInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return CancelInvoiceResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -137,9 +258,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest searchInvoicesRequest, string apiUserName)
 	 	{
-			string response = Call("SearchInvoices", searchInvoicesRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(searchInvoicesRequest.ToNVPString(string.Empty), ServiceName, "SearchInvoices", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return SearchInvoicesResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return SearchInvoicesResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -148,7 +273,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest searchInvoicesRequest)
 	 	{
-	 		return SearchInvoices(searchInvoicesRequest, null);
+	 		return SearchInvoices(searchInvoicesRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public SearchInvoicesResponse SearchInvoices(SearchInvoicesRequest searchInvoicesRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(searchInvoicesRequest.ToNVPString(string.Empty), ServiceName, "SearchInvoices", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return SearchInvoicesResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -156,9 +296,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest markInvoiceAsPaidRequest, string apiUserName)
 	 	{
-			string response = Call("MarkInvoiceAsPaid", markInvoiceAsPaidRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsPaidRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsPaid", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsPaidResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return MarkInvoiceAsPaidResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -167,7 +311,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest markInvoiceAsPaidRequest)
 	 	{
-	 		return MarkInvoiceAsPaid(markInvoiceAsPaidRequest, null);
+	 		return MarkInvoiceAsPaid(markInvoiceAsPaidRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsPaidResponse MarkInvoiceAsPaid(MarkInvoiceAsPaidRequest markInvoiceAsPaidRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsPaidRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsPaid", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return MarkInvoiceAsPaidResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -175,9 +334,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest markInvoiceAsUnpaidRequest, string apiUserName)
 	 	{
-			string response = Call("MarkInvoiceAsUnpaid", markInvoiceAsUnpaidRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsUnpaidRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsUnpaid", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsUnpaidResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return MarkInvoiceAsUnpaidResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -186,7 +349,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest markInvoiceAsUnpaidRequest)
 	 	{
-	 		return MarkInvoiceAsUnpaid(markInvoiceAsUnpaidRequest, null);
+	 		return MarkInvoiceAsUnpaid(markInvoiceAsUnpaidRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsUnpaidResponse MarkInvoiceAsUnpaid(MarkInvoiceAsUnpaidRequest markInvoiceAsUnpaidRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsUnpaidRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsUnpaid", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return MarkInvoiceAsUnpaidResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 
 		/**	
@@ -194,9 +372,13 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest markInvoiceAsRefundedRequest, string apiUserName)
 	 	{
-			string response = Call("MarkInvoiceAsRefunded", markInvoiceAsRefundedRequest.ToNVPString(""), apiUserName);
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsRefundedRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsRefunded", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
-			return MarkInvoiceAsRefundedResponse.CreateInstance(util.ParseNVPString(response), "", -1);
+			return MarkInvoiceAsRefundedResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
 			
 	 	}
 	 
@@ -205,7 +387,22 @@ namespace PayPal.Invoice {
 	 	  */
 	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest markInvoiceAsRefundedRequest)
 	 	{
-	 		return MarkInvoiceAsRefunded(markInvoiceAsRefundedRequest, null);
+	 		return MarkInvoiceAsRefunded(markInvoiceAsRefundedRequest,(string) null);
+	 	}
+	 	
+	 	/**	
+          *AUTO_GENERATED
+	 	  */
+	 	public MarkInvoiceAsRefundedResponse MarkInvoiceAsRefunded(MarkInvoiceAsRefundedRequest markInvoiceAsRefundedRequest, ICredential credential)
+	 	{
+	 		IAPICallPreHandler apiCallPreHandler = null;
+			apiCallPreHandler = new PlatformAPICallPreHandler(markInvoiceAsRefundedRequest.ToNVPString(string.Empty), ServiceName, "MarkInvoiceAsRefunded", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			string response = Call(apiCallPreHandler);
+			NVPUtil util = new NVPUtil();
+			return MarkInvoiceAsRefundedResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
+			
 	 	}
 	}
 }
