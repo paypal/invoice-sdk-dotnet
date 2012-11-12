@@ -5704,7 +5704,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.sendCopyToMerchant != null)
 			{
-					sb.Append(prefix).Append("sendCopyToMerchant").Append("=").Append(this.sendCopyToMerchant).Append("&");
+					sb.Append(prefix).Append("sendCopyToMerchant").Append("=").Append(this.sendCopyToMerchant.ToString().ToLower()).Append("&");
 			}
 			return sb.ToString();
 		}
