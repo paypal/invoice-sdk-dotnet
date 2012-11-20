@@ -48,6 +48,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Message.cs" />
     <Compile Include="cancelinvoice.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>cancelinvoice.aspx</DependentUpon>
@@ -127,6 +128,13 @@
     <Compile Include="sendinvoice.aspx.designer.cs">
       <DependentUpon>sendinvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ShowError.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ShowError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowError.aspx.designer.cs">
+      <DependentUpon>ShowError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="updateinvoice.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>updateinvoice.aspx</DependentUpon>
@@ -161,12 +169,16 @@
   <ItemGroup>
     <Content Include="lib\PayPal_Core_SDK.dll" />
     <Content Include="SanityTest\Web.development.config" />
+    <Content Include="ShowError.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PayPal_Invoicing_SDK\PayPal_Invoicing_SDK.csproj">
       <Project>{1F5FF00B-CE0F-40B8-9BC4-7B5ED2087266}</Project>
       <Name>PayPal_Invoicing_SDK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />

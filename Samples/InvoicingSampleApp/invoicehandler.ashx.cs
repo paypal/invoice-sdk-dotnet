@@ -24,7 +24,7 @@ namespace InvoicingSampleApp
         {
             context.Response.ContentType = "text/html";
 
-            String strCall = context.Request.Params["InvoiceBtn"];
+            string strCall = context.Request.Params["InvoiceBtn"];
 
             if(strCall.Equals("CreateInvoice")) 
             {
@@ -104,16 +104,16 @@ namespace InvoicingSampleApp
         private void CreateAndSendInvoice(HttpContext context)
         {
 
-            String merchantEmail = context.Request.Params["merchantEmail"];
-            String currencyCode = context.Request.Params["currencyCode"];
-            String payerEmail = context.Request.Params["payerEmail"];
-            String paymentTerms = context.Request.Params["paymentTerms"];
-            String item_name1 = context.Request.Params["item_name1"];
-            String item_quantity1 = context.Request.Params["item_quantity1"];
-            String item_unitPrice1 = context.Request.Params["item_unitPrice1"];
-            String item_name2 = context.Request.Params["item_name2"];
-            String item_quantity2 = context.Request.Params["item_quantity2"];
-            String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
+            string merchantEmail = context.Request.Params["merchantEmail"];
+            string currencyCode = context.Request.Params["currencyCode"];
+            string payerEmail = context.Request.Params["payerEmail"];
+            string paymentTerms = context.Request.Params["paymentTerms"];
+            string item_name1 = context.Request.Params["item_name1"];
+            string item_quantity1 = context.Request.Params["item_quantity1"];
+            string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+            string item_name2 = context.Request.Params["item_name2"];
+            string item_quantity2 = context.Request.Params["item_quantity2"];
+            string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateAndSendInvoiceRequest cr = new CreateAndSendInvoiceRequest();
             cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
@@ -164,7 +164,7 @@ namespace InvoicingSampleApp
         private void SendInvoice(HttpContext context)
         {
 
-            String invoiceId = context.Request.Params["invoiceId"];
+            string invoiceId = context.Request.Params["invoiceId"];
             
             SendInvoiceRequest sr = new SendInvoiceRequest();
             sr.invoiceID = invoiceId;
@@ -196,17 +196,16 @@ namespace InvoicingSampleApp
 
         private void CreateInvoice(HttpContext context)
         {
-
-            String merchantEmail = context.Request.Params["merchantEmail"];
-            String currencyCode = context.Request.Params["currencyCode"];
-            String payerEmail = context.Request.Params["payerEmail"];
-            String paymentTerms = context.Request.Params["paymentTerms"];
-            String item_name1 = context.Request.Params["item_name1"];
-            String item_quantity1 = context.Request.Params["item_quantity1"];
-            String item_unitPrice1 = context.Request.Params["item_unitPrice1"];
-            String item_name2 = context.Request.Params["item_name2"];
-            String item_quantity2 = context.Request.Params["item_quantity2"];
-            String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
+            string merchantEmail = context.Request.Params["merchantEmail"];
+            string currencyCode = context.Request.Params["currencyCode"];
+            string payerEmail = context.Request.Params["payerEmail"];
+            string paymentTerms = context.Request.Params["paymentTerms"];
+            string item_name1 = context.Request.Params["item_name1"];
+            string item_quantity1 = context.Request.Params["item_quantity1"];
+            string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+            string item_name2 = context.Request.Params["item_name2"];
+            string item_quantity2 = context.Request.Params["item_quantity2"];
+            string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateInvoiceRequest cr = new CreateInvoiceRequest();
             cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
@@ -258,7 +257,7 @@ namespace InvoicingSampleApp
         private void GetInvoiceDetails(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
+            string invoiceId = context.Request.Params["invoiceId"];
             GetInvoiceDetailsRequest request =
                 new GetInvoiceDetailsRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
@@ -303,10 +302,10 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsPaid(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
-            String note = context.Request.Params["note"];
-            String paymentDate = context.Request.Params["paymentDate"];
-            String paymentMethod = context.Request.Params["paymentMethod"];
+            string invoiceId = context.Request.Params["invoiceId"];
+            string note = context.Request.Params["note"];
+            string paymentDate = context.Request.Params["paymentDate"];
+            string paymentMethod = context.Request.Params["paymentMethod"];
             
             OtherPaymentDetailsType paymentDetails = new OtherPaymentDetailsType();
             if (note != "")
@@ -360,7 +359,7 @@ namespace InvoicingSampleApp
         private void CancelInvoice(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
+            string invoiceId = context.Request.Params["invoiceId"];
             CancelInvoiceRequest request = new CancelInvoiceRequest();
             request.invoiceID = invoiceId;
 
@@ -399,18 +398,18 @@ namespace InvoicingSampleApp
         private void UpdateInvoice(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
-            String merchantEmail = context.Request.Params["merchantEmail"];
-            String payerEmail = context.Request.Params["payerEmail"];
+            string invoiceId = context.Request.Params["invoiceId"];
+            string merchantEmail = context.Request.Params["merchantEmail"];
+            string payerEmail = context.Request.Params["payerEmail"];
             PaymentTermsType paymentTerms = (PaymentTermsType) Enum.Parse( 
                     typeof(PaymentTermsType), context.Request.Params["paymentTerms"]);
-            String item_name1 = context.Request.Params["item_name1"];
-            String item_quantity1 = context.Request.Params["item_quantity1"];
-            String item_unitPrice1 = context.Request.Params["item_unitPrice1"];
-            String item_name2 = context.Request.Params["item_name2"];
-            String item_quantity2 = context.Request.Params["item_quantity2"];
-            String item_unitPrice2 = context.Request.Params["item_unitPrice2"];
-            String currencyCode = context.Request.Params["currencyCode"];
+            string item_name1 = context.Request.Params["item_name1"];
+            string item_quantity1 = context.Request.Params["item_quantity1"];
+            string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+            string item_name2 = context.Request.Params["item_name2"];
+            string item_quantity2 = context.Request.Params["item_quantity2"];
+            string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
+            string currencyCode = context.Request.Params["currencyCode"];
 
             InvoiceItemListType itemList = new InvoiceItemListType();
             itemList.item = new List<InvoiceItemType>();
@@ -462,7 +461,7 @@ namespace InvoicingSampleApp
         private void SearchInvoices(HttpContext context)
         {
             // Collect input params            
-            String merchantEmail = context.Request.Params["merchantEmail"];
+            string merchantEmail = context.Request.Params["merchantEmail"];
             int page = Int32.Parse(context.Request.Params["page"]);
             int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
             SearchParametersType searchParams = new SearchParametersType();
@@ -596,9 +595,9 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsRefunded(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
-            String refundNote = context.Request.Params["refundNote"];
-            String refundDate = context.Request.Params["refundDate"];
+            string invoiceId = context.Request.Params["invoiceId"];
+            string refundNote = context.Request.Params["refundNote"];
+            string refundDate = context.Request.Params["refundDate"];
 
             OtherPaymentRefundDetailsType refundDetails = new OtherPaymentRefundDetailsType();
             if (refundNote != "")
@@ -642,7 +641,7 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsUnpaid(HttpContext context)
         {
             // Collect input params
-            String invoiceId = context.Request.Params["invoiceId"];
+            string invoiceId = context.Request.Params["invoiceId"];
             MarkInvoiceAsUnpaidRequest request =
                 new MarkInvoiceAsUnpaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
@@ -681,7 +680,7 @@ namespace InvoicingSampleApp
             // Restrict permissioning scope to "INVOICING"
             // This will allow the API caller to invoke any invoicing related API
             // on behalf of the permission granter
-            String requestperm = "INVOICING";
+            string requestperm = "INVOICING";
             PayPal.Permissions.Model.RequestPermissionsRequest rp = new PayPal.Permissions.Model.RequestPermissionsRequest();           
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
@@ -718,9 +717,9 @@ namespace InvoicingSampleApp
 
         private void GetAccessToken(HttpContext context)
         {
-            String token = context.Request.Params["txtrequest_token"];
-            String verifier = context.Request.Params["txtverification_code"];
-            String source = context.Request.Params["source"];
+            string token = context.Request.Params["txtrequest_token"];
+            string verifier = context.Request.Params["txtverification_code"];
+            string source = context.Request.Params["source"];
 
             PayPal.Permissions.Model.GetAccessTokenRequest gat = 
                 new PayPal.Permissions.Model.GetAccessTokenRequest();
@@ -781,7 +780,7 @@ namespace InvoicingSampleApp
             context.Response.Write("<div class='note'>Consult response object and reference doc for complete list of response values.</div><table>");
             
             /*
-            foreach (KeyValuePair<String, String> entry in responseValues)
+            foreach (KeyValuePair<string, string> entry in responseValues)
             {
                 context.Response.Write("<tr><td class='label'>");
                 context.Response.Write(entry.Key);
@@ -792,7 +791,7 @@ namespace InvoicingSampleApp
             */
 
             //Selenium Test Case            
-            foreach (KeyValuePair<String, String> entry in responseValues)
+            foreach (KeyValuePair<string, string> entry in responseValues)
             {
 
                 context.Response.Write("<tr><td class='label'>");

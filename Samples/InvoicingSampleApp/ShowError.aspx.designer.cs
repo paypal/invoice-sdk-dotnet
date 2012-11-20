@@ -10,9 +10,10 @@
 
 namespace InvoicingSampleApp {
     
-    public partial class markinvoiceasunpaid {
-        protected System.Web.UI.HtmlControls.HtmlHead Head1;
-        protected System.Web.UI.HtmlControls.HtmlForm form2;
-        protected InvoicingSampleApp.WebUserControl1 permission;
+    public partial class ShowError {
+        protected System.Web.UI.HtmlControls.HtmlForm form1;
+        protected System.Web.UI.WebControls.LinkButton DetailLinkButton;
+        protected System.Web.UI.WebControls.Panel MessagePanel;
+        protected System.Web.UI.WebControls.TextBox MessageTextBox;
     }
 }

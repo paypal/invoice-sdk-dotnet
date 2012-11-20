@@ -17,7 +17,7 @@ namespace InvoicingSampleApp
     { 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //sdkVersion.Text = BaseConstants.SDK_VERSION;
+
         }
     }
 }
