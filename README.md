@@ -10,7 +10,7 @@ SDK Integration:
 
 *	Add 'PayPal_Invoicing_SDK.csproj' as 'Existing Project' to your solution
 
-*	In case of a higher version of Visual Studio, use the Visual Studio Convertion Wizard to target .NET Framework 2.0
+*	In case of a higher version of Visual Studio, use the Visual Studio Conversion Wizard to target .NET Framework 2.0
 
 *	Add reference to 'PayPal_Invoicing_SDK' project
 

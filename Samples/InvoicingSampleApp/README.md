@@ -7,7 +7,7 @@ Prerequisites:
 Overview
 --------
 
-The Invoicing Sample project is a API scratch pad application that allows you to play around
+The Invoicing Sample project is an API scratch pad application that allows you to play around
 with the Invoice APIs. This application is a handy complement to the API reference guides 
 available on x.com. All forms are provided with default values for the mandatory parameters for
 each API.
