@@ -1,4 +1,4 @@
-This repository contains .NET SDK and samples for Adaptive Accounts API.
+This repository contains .NET SDK and samples for Invoice API.
 
 Prerequisites:
 --------------
@@ -43,13 +43,12 @@ Please refer to the sample web.config file in 'InvoicingSampleApp' sample applic
 *	PayPal (Multiple) Accounts API credentials
 	•	apiUsername
 	•	apiPassword
-	•	apiSignature
 	•	applicationId
+	•	apiSignature
+	•	apiCertificate
+	•	privateKeyPassword
 
 Tools:
 ------
-*	log4net.dll - included in 'lib' folder in 'PayPal_Invoicing_SDK' project
+*	log4net.dll - included in 'lib' folder in 'PayPal_AdaptiveAccounts_SDK' project
 	log4net is a tool to help output log statements to a variety of output targets.
-	
-*	C#–ObjectDumper - included in 'InvoicingSampleApp' sample application
-	ObjectDumper.cs is a nifty little utility class that you can use to dump the data within an object (It will walk the object graph to a specified depth which you can then output to console or a textWriter).
