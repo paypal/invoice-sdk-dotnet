@@ -53,6 +53,7 @@
     <Content Include="lib\PayPal_Core_SDK.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="scripts\GenerateNDoc.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
