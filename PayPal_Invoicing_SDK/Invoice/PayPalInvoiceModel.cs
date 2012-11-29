@@ -48,9 +48,6 @@ namespace PayPal.Invoice.Model
       *
       */
 	public partial class BaseAddress	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -299,9 +296,6 @@ namespace PayPal.Invoice.Model
       *from the service operation. 
       */
 	public partial class ErrorData	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -538,9 +532,6 @@ namespace PayPal.Invoice.Model
       *
       */
 	public partial class ErrorParameter	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -631,9 +622,6 @@ namespace PayPal.Invoice.Model
       *specific error codes. 
       */
 	public partial class FaultMessage	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -733,9 +721,6 @@ namespace PayPal.Invoice.Model
       *the service. 
       */
 	public partial class RequestEnvelope	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -814,9 +799,6 @@ namespace PayPal.Invoice.Model
       *a service. 
       */
 	public partial class ResponseEnvelope	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1093,9 +1075,6 @@ namespace PayPal.Invoice.Model
       *invoicing system. 
       */
 	public partial class BusinessInfoType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1362,9 +1341,6 @@ namespace PayPal.Invoice.Model
       *invoice. 
       */
 	public partial class InvoiceItemType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1612,9 +1588,6 @@ namespace PayPal.Invoice.Model
       *A list of invoice items. 
       */
 	public partial class InvoiceItemListType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1712,9 +1685,6 @@ namespace PayPal.Invoice.Model
       *
       */
 	public partial class InvoiceType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2402,9 +2372,6 @@ namespace PayPal.Invoice.Model
       *dates. 
       */
 	public partial class InvoiceDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2770,9 +2737,6 @@ namespace PayPal.Invoice.Model
       *Details of the refund made against this invoice. 
       */
 	public partial class OtherPaymentRefundDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2875,9 +2839,6 @@ namespace PayPal.Invoice.Model
       *Details of the paypal refund made against this invoice. 
       */
 	public partial class PayPalPaymentRefundDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2944,9 +2905,6 @@ namespace PayPal.Invoice.Model
       *PayPal payment details about the invoice. 
       */
 	public partial class PayPalPaymentDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -3036,9 +2994,6 @@ namespace PayPal.Invoice.Model
       *Offline payment details about the invoice. 
       */
 	public partial class OtherPaymentDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -3169,9 +3124,6 @@ namespace PayPal.Invoice.Model
       *Payment details about the invoice. 
       */
 	public partial class PaymentDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -3284,9 +3236,6 @@ namespace PayPal.Invoice.Model
       *Determines an inclusive date range. 
       */
 	public partial class DateRangeType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -3355,9 +3304,6 @@ namespace PayPal.Invoice.Model
       *Search parameters criteria. 
       */
 	public partial class SearchParametersType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -3687,9 +3633,6 @@ namespace PayPal.Invoice.Model
       *Summary of invoice information. 
       */
 	public partial class InvoiceSummaryType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4124,9 +4067,6 @@ namespace PayPal.Invoice.Model
       *A list of invoice summaries. 
       */
 	public partial class InvoiceSummaryListType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4202,9 +4142,6 @@ namespace PayPal.Invoice.Model
       *The request object for CreateInvoice. 
       */
 	public partial class CreateInvoiceRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4284,9 +4221,6 @@ namespace PayPal.Invoice.Model
       *The response object for CreateInvoice. 
       */
 	public partial class CreateInvoiceResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4477,9 +4411,6 @@ namespace PayPal.Invoice.Model
       *The request object for SendInvoice. 
       */
 	public partial class SendInvoiceRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4558,9 +4489,6 @@ namespace PayPal.Invoice.Model
       *The response object for SendInvoice. 
       */
 	public partial class SendInvoiceResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4705,9 +4633,6 @@ namespace PayPal.Invoice.Model
       *The request object for CreateAndSendInvoice. 
       */
 	public partial class CreateAndSendInvoiceRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4787,9 +4712,6 @@ namespace PayPal.Invoice.Model
       *The response object for CreateAndSendInvoice. 
       */
 	public partial class CreateAndSendInvoiceResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -4980,9 +4902,6 @@ namespace PayPal.Invoice.Model
       *The request object for UpdateInvoice. 
       */
 	public partial class UpdateInvoiceRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5084,9 +5003,6 @@ namespace PayPal.Invoice.Model
       *The response object for UpdateInvoice. 
       */
 	public partial class UpdateInvoiceResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5277,9 +5193,6 @@ namespace PayPal.Invoice.Model
       *The request object for GetInvoiceDetails. 
       */
 	public partial class GetInvoiceDetailsRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5358,9 +5271,6 @@ namespace PayPal.Invoice.Model
       *The response object for CreateInvoice. 
       */
 	public partial class GetInvoiceDetailsResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5574,9 +5484,6 @@ namespace PayPal.Invoice.Model
       *The request object for CancelInvoice. 
       */
 	public partial class CancelInvoiceRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5717,9 +5624,6 @@ namespace PayPal.Invoice.Model
       *The response object for CancelInvoice. 
       */
 	public partial class CancelInvoiceResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -5887,9 +5791,6 @@ namespace PayPal.Invoice.Model
       *The request object for SearchInvoices. 
       */
 	public partial class SearchInvoicesRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6035,9 +5936,6 @@ namespace PayPal.Invoice.Model
       *The response object for SearchInvoices. 
       */
 	public partial class SearchInvoicesResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6251,9 +6149,6 @@ namespace PayPal.Invoice.Model
       *The request object for MarkInvoiceAsPaid. 
       */
 	public partial class MarkInvoiceAsPaidRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6355,9 +6250,6 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsPaid. 
       */
 	public partial class MarkInvoiceAsPaidResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6525,9 +6417,6 @@ namespace PayPal.Invoice.Model
       *The request object for MarkInvoiceAsRefunded. 
       */
 	public partial class MarkInvoiceAsRefundedRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6629,9 +6518,6 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsRefunded. 
       */
 	public partial class MarkInvoiceAsRefundedResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6799,9 +6685,6 @@ namespace PayPal.Invoice.Model
       *The request object for MarkInvoiceAsUnpaid. 
       */
 	public partial class MarkInvoiceAsUnpaidRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -6880,9 +6763,6 @@ namespace PayPal.Invoice.Model
       *The response object for MarkInvoiceAsUnpaid. 
       */
 	public partial class MarkInvoiceAsUnpaidResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -7050,9 +6930,6 @@ namespace PayPal.Invoice.Model
       *Payment refund details about the invoice.  
       */
 	public partial class PaymentRefundDetailsType	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.pt";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");

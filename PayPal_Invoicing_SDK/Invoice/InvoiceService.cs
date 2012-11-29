@@ -18,10 +18,10 @@ namespace PayPal.Invoice
 		private const string ServiceName = "Invoice";
 		
 		//SDK Name
-		private const string SDKName = "sdkname";
+		private const string SDKName = "invoice-dotnet-sdk";
 	
 		//SDK Version
-		private const string SDKVersion = "sdkversion";
+		private const string SDKVersion = "2.0.96";
 
 		public InvoiceService() {}
 
