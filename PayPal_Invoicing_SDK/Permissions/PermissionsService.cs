@@ -1,3 +1,4 @@
+using System;
 using System.Xml;
 using PayPal;
 using PayPal.Authentication;
@@ -31,9 +32,11 @@ namespace PayPal.Permissions
 	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest requestPermissionsRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(requestPermissionsRequest.ToNVPString(string.Empty), ServiceName, "RequestPermissions", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return RequestPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -54,9 +57,11 @@ namespace PayPal.Permissions
 	 	public RequestPermissionsResponse RequestPermissions(RequestPermissionsRequest requestPermissionsRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(requestPermissionsRequest.ToNVPString(string.Empty), ServiceName, "RequestPermissions", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return RequestPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -69,9 +74,11 @@ namespace PayPal.Permissions
 	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest getAccessTokenRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getAccessTokenRequest.ToNVPString(string.Empty), ServiceName, "GetAccessToken", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetAccessTokenResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -92,9 +99,11 @@ namespace PayPal.Permissions
 	 	public GetAccessTokenResponse GetAccessToken(GetAccessTokenRequest getAccessTokenRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getAccessTokenRequest.ToNVPString(string.Empty), ServiceName, "GetAccessToken", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetAccessTokenResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -107,9 +116,11 @@ namespace PayPal.Permissions
 	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest getPermissionsRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getPermissionsRequest.ToNVPString(string.Empty), ServiceName, "GetPermissions", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -130,9 +141,11 @@ namespace PayPal.Permissions
 	 	public GetPermissionsResponse GetPermissions(GetPermissionsRequest getPermissionsRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getPermissionsRequest.ToNVPString(string.Empty), ServiceName, "GetPermissions", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -145,9 +158,11 @@ namespace PayPal.Permissions
 	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest cancelPermissionsRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(cancelPermissionsRequest.ToNVPString(string.Empty), ServiceName, "CancelPermissions", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return CancelPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -168,9 +183,11 @@ namespace PayPal.Permissions
 	 	public CancelPermissionsResponse CancelPermissions(CancelPermissionsRequest cancelPermissionsRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(cancelPermissionsRequest.ToNVPString(string.Empty), ServiceName, "CancelPermissions", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return CancelPermissionsResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -183,9 +200,11 @@ namespace PayPal.Permissions
 	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest getBasicPersonalDataRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getBasicPersonalDataRequest.ToNVPString(string.Empty), ServiceName, "GetBasicPersonalData", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetBasicPersonalDataResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -206,9 +225,11 @@ namespace PayPal.Permissions
 	 	public GetBasicPersonalDataResponse GetBasicPersonalData(GetBasicPersonalDataRequest getBasicPersonalDataRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getBasicPersonalDataRequest.ToNVPString(string.Empty), ServiceName, "GetBasicPersonalData", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetBasicPersonalDataResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -221,9 +242,11 @@ namespace PayPal.Permissions
 	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest getAdvancedPersonalDataRequest, string apiUserName)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getAdvancedPersonalDataRequest.ToNVPString(string.Empty), ServiceName, "GetAdvancedPersonalData", apiUserName, getAccessToken(), getAccessTokenSecret());
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetAdvancedPersonalDataResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);
@@ -244,9 +267,11 @@ namespace PayPal.Permissions
 	 	public GetAdvancedPersonalDataResponse GetAdvancedPersonalData(GetAdvancedPersonalDataRequest getAdvancedPersonalDataRequest, ICredential credential)
 	 	{
 	 		IAPICallPreHandler apiCallPreHandler = null;
+	 		string portName = "Permissions";
 			apiCallPreHandler = new PlatformAPICallPreHandler(getAdvancedPersonalDataRequest.ToNVPString(string.Empty), ServiceName, "GetAdvancedPersonalData", credential);
 	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
 			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = portName;
 			string response = Call(apiCallPreHandler);
 			NVPUtil util = new NVPUtil();
 			return GetAdvancedPersonalDataResponse.CreateInstance(util.ParseNVPString(response), string.Empty, -1);

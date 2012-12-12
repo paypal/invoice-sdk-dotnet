@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PayPal Merchant SDK for .NET")]
+[assembly: AssemblyTitle("PayPal Invoice SDK for .NET")]
 [assembly: AssemblyCompany("eBay Inc.,")]
-[assembly: AssemblyProduct("PayPal_Invoicing_SDK")]
+[assembly: AssemblyProduct("PayPal_Invoice_SDK")]
 [assembly: AssemblyCopyright("Copyright © eBay Inc., 2009-2012")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

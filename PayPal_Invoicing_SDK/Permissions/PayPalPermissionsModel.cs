@@ -48,9 +48,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class ErrorData	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -287,9 +284,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class ErrorParameter	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -379,9 +373,6 @@ namespace PayPal.Permissions.Model
       *This is the sample message 
       */
 	public partial class ResponseEnvelope	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -518,9 +509,6 @@ namespace PayPal.Permissions.Model
       *the service. 
       */
 	public partial class RequestEnvelope	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -576,9 +564,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class FaultMessage	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.common";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -751,9 +736,6 @@ namespace PayPal.Permissions.Model
       *needed. 
       */
 	public partial class RequestPermissionsRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -856,9 +838,6 @@ namespace PayPal.Permissions.Model
       *Returns the temporary request token 
       */
 	public partial class RequestPermissionsResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -982,9 +961,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class GetAccessTokenRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1098,9 +1074,6 @@ namespace PayPal.Permissions.Model
       *account. 
       */
 	public partial class GetAccessTokenResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1278,9 +1251,6 @@ namespace PayPal.Permissions.Model
       *associated with a token. 
       */
 	public partial class GetPermissionsRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1358,9 +1328,6 @@ namespace PayPal.Permissions.Model
       *The list of permissions associated with the token. 
       */
 	public partial class GetPermissionsResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1492,9 +1459,6 @@ namespace PayPal.Permissions.Model
       *permissions associated with it. 
       */
 	public partial class CancelPermissionsRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1572,9 +1536,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class CancelPermissionsResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1673,9 +1634,6 @@ namespace PayPal.Permissions.Model
       *List of Personal Attributes to be sent as a request. 
       */
 	public partial class PersonalAttributeList	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1729,9 +1687,6 @@ namespace PayPal.Permissions.Model
       *requested and value being the data. 
       */
 	public partial class PersonalData	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1822,9 +1777,6 @@ namespace PayPal.Permissions.Model
       *GetPersonalData call. 
       */
 	public partial class PersonalDataList	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1903,9 +1855,6 @@ namespace PayPal.Permissions.Model
       *attributes and ignore others. 
       */
 	public partial class GetBasicPersonalDataRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -1987,9 +1936,6 @@ namespace PayPal.Permissions.Model
       *Advanced attributes. 
       */
 	public partial class GetAdvancedPersonalDataRequest	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2068,9 +2014,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class GetBasicPersonalDataResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
@@ -2192,9 +2135,6 @@ namespace PayPal.Permissions.Model
       *
       */
 	public partial class GetAdvancedPersonalDataResponse	{
-
-		// Namespace for the type
-		private const string NameSpace = "com.paypal.svcs.types.perm";
 		
 		// Default US culture info
 		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
