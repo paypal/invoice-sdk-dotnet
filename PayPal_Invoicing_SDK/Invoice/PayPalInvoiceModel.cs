@@ -780,7 +780,7 @@ namespace PayPal.Invoice.Model
 			StringBuilder sb = new StringBuilder();
 			if (this.detailLevel != null)
 			{
-					sb.Append(prefix).Append("detailLevel").Append("=").Append(EnumUtils.GetDescription(detailLevel));
+					sb.Append(prefix).Append("detailLevel").Append("=").Append(EnumUtils.GetDescription(this.detailLevel));
 					sb.Append("&");
 			}
 			if (this.errorLanguage != null)
@@ -2139,7 +2139,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.paymentTerms != null)
 			{
-					sb.Append(prefix).Append("paymentTerms").Append("=").Append(EnumUtils.GetDescription(paymentTerms));
+					sb.Append(prefix).Append("paymentTerms").Append("=").Append(EnumUtils.GetDescription(this.paymentTerms));
 					sb.Append("&");
 			}
 			if (this.discountPercent != null)
@@ -3062,7 +3062,7 @@ namespace PayPal.Invoice.Model
 			StringBuilder sb = new StringBuilder();
 			if (this.method != null)
 			{
-					sb.Append(prefix).Append("method").Append("=").Append(EnumUtils.GetDescription(method));
+					sb.Append(prefix).Append("method").Append("=").Append(EnumUtils.GetDescription(this.method));
 					sb.Append("&");
 			}
 			if (this.note != null)
@@ -3577,7 +3577,7 @@ namespace PayPal.Invoice.Model
 			{
 				if (this.status[i] != null)
 				{
-					sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.GetDescription(status[i]));
+					sb.Append(prefix).Append("status(").Append(i).Append(")=").Append(EnumUtils.GetDescription(this.status[i]));
 					sb.Append("&");
 				}
 			}
@@ -3599,7 +3599,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.origin != null)
 			{
-					sb.Append(prefix).Append("origin").Append("=").Append(EnumUtils.GetDescription(origin));
+					sb.Append(prefix).Append("origin").Append("=").Append(EnumUtils.GetDescription(this.origin));
 					sb.Append("&");
 			}
 			if (this.invoiceDate != null)

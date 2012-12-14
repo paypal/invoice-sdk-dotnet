@@ -19,10 +19,10 @@ namespace PayPal.Permissions
 		private const string ServiceName = "Permissions";
 		
 		//SDK Name
-		private const string SDKName = "sdkname";
+		private const string SDKName = "permissions-dotnet-sdk";
 	
 		//SDK Version
-		private const string SDKVersion = "sdkversion";
+		private const string SDKVersion = "2.1.96";
 
 		public PermissionsService() {}
 
