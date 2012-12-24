@@ -44,10 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\PayPal_Core_SDK.dll" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
+    <Content Include="lib\PayPal_Core_SDK.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Packages\" />
