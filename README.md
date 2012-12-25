@@ -1,21 +1,20 @@
-This repository contains .NET SDK and samples for PayPal Invoice API.
+The repository contains the PayPal Invoice SDK C#.NET Class Library Application and the InvoiceSampleApp Sample ASP.NET C# Web Application.
 
-Prerequisites:
---------------
-*	Visual Studio 2005 or higher
 
-SDK Integration:
-----------------
-*	Create a new ASP.NET Web Application with appropriate web application and solution name
+SDK Integration
+---------------
+*	Integrate the PayPal Invoice SDK with an ASP.NET Web Application
 
-*	Execute 'Invoice.bat' batch commands to ensure that the Invoice stubs are up-to-date 
-	[Note: Also ensure that the path to 'devenv.com' in 'Invoice.bat' file is correct as per Visual Studio installation]
-	
-*	Add reference to 'PayPal_Invoicing_SDK.dll'
+*	Use NuGet to install the 'PayPal_Invoice_SDK' package 
 
-*	Add reference to 'PayPal_Core_SDK.dll'
+*	The NuGet package installs the dependencies to the solution and automatically updates the project
 
-*	Namespaces to be used
+*	Dependent library references:
+	•	'PayPal_Invoicing_SDK.dll'
+	•	'PayPal_Core_SDK.dll'	
+	•	'log4net.dll'
+
+*	Namespaces:
 	•	PayPal
 	•	PayPal.Invoice
 	•	PayPal.Invoice.Model
@@ -23,31 +22,18 @@ SDK Integration:
 	•	PayPal.Permissions.Model
 	•	PayPal.Util
 	•	PayPal.Exception
- 
-Web.config:
------------
-Please refer to the sample web.config file in 'InvoicingSampleApp' sample application to configure the following
- 
-*	Configuration Sections
-	•	paypal
-	•	log4net
 
-*	PayPal Settings
-	•	endpoint
-	•	connectionTimeout
-	•	requestRetries
-	•	IPAddress
-	•	sandboxEmailAddress
+	
+Help
+----
+*	Invoice.bat - Automation script that builds the PayPal Invoice SDK C#.NET Class Library Application in release mode and copies the built dlls to the lib folder in the InvoiceSampleApp Sample ASP.NET C# Web Application
 
-*	PayPal (Multiple) Accounts API credentials
-	•	apiUsername
-	•	apiPassword
-	•	applicationId
-	•	apiSignature
-	•	apiCertificate
-	•	privateKeyPassword
+*	Changelog.txt - Release Notes
 
-Tools:
-------
-*	log4net.dll - included in 'lib' folder in 'PayPal_AdaptiveAccounts_SDK' project
-	log4net is a tool to help output log statements to a variety of output targets.
+*	DotNetSDK.SandcastleGUI - Tool to create the documentation of the PayPal Invoice SDK
+
+*	LICENSE.txt - PayPal, Inc. SDK License
+
+*	Installing NuGet in Visual Studio 2010 and 2012.pdf - Guide to Install NuGet in Visual Studio 2010 and 2012
+
+*	Integrating NuGet with Visual Studio 2005 and 2008.pdf - Guide to Integrate NuGet with Visual Studio 2005 and 2008
