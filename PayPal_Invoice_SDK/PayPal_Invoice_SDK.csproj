@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PayPal</RootNamespace>
-    <AssemblyName>PayPal_Invoicing_SDK</AssemblyName>
+    <AssemblyName>PayPal_Invoice_SDK</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

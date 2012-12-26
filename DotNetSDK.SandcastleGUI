@@ -1,6 +1,6 @@
 Copyright=Copyright © eBay Inc., 2009-2012.
 ProductName=PayPal_Invoicing_SDK
-AssemblyDir=C:\Users\lvairamani\Desktop\svn\SDKAutomation\scripts\invoice-sdk-dotnet\PayPal_Invoicing_SDK/bin/Release
+AssemblyDir=C:\Users\lvairamani\Desktop\svn\SDKAutomation\scripts\invoice-sdk-dotnet\PayPal_Invoice_SDK/bin/Release
 OutputDir=C:\Users\lvairamani\Desktop\svn\SDKAutomation\scripts\invoice-sdk-dotnet\docs
 DocDir=
 Namespaces=PayPal.Invoice
