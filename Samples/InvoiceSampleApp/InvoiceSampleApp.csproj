@@ -30,10 +30,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
-    <Reference Include="PayPal_Core_SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="PayPal_Invoice_SDK, Version=2.1.96.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\PayPal_Invoice_SDK.dll</HintPath>
+    <Reference Include="PayPalCoreSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PayPalInvoiceSDK, Version=2.1.96.0, Culture=neutral, processorArchitecture=MSIL">
+      <Aliases>InvoiceAlias</Aliases>
+    </Reference>
+    <Reference Include="PayPalPermissionsSDK, Version=2.1.96.0, Culture=neutral, processorArchitecture=MSIL">
+      <Aliases>PermissionsAlias</Aliases>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -171,8 +173,9 @@
     <Content Include="permissions.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\PayPal_Core_SDK.dll" />
-    <Content Include="lib\PayPal_Invoicing_SDK.dll" />
+    <Content Include="lib\PayPalCoreSDK.dll" />
+    <Content Include="lib\PayPalInvoiceSDK.dll" />
+    <Content Include="lib\PayPalPermissionsSDK.dll" />
     <Content Include="SanityTest\Web.development.config" />
     <Content Include="ShowError.aspx" />
   </ItemGroup>

@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>PayPal Invoicing SDK Samples Home</title>
+    <title>PayPal Invoice SDK Samples Home</title>
     <link rel="stylesheet" href="sdk.css" type="text/css" />
 
     <script type="text/javascript" src="sdk.js"></script>
@@ -11,7 +11,7 @@
 </head>
 <body>
     <h4>
-        PayPal Invoicing SDK Samples Home</h4>
+        PayPal Invoice SDK Samples Home</h4>
     <form id="form1" runat="server">
         <div>
             <ul>

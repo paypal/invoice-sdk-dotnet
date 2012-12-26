@@ -10,9 +10,40 @@
 
 namespace InvoicingSampleApp {
     
+    
+    /// <summary>
+    /// markinvoiceasrefunded class.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated class.
+    /// </remarks>
     public partial class markinvoiceasrefunded {
-        protected System.Web.UI.HtmlControls.HtmlHead Head1;
-        protected System.Web.UI.HtmlControls.HtmlForm form2;
-        protected InvoicingSampleApp.WebUserControl1 permission;
+        
+        /// <summary>
+        /// Head1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
+        /// form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        
+        /// <summary>
+        /// permission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::InvoicingSampleApp.WebUserControl1 permission;
     }
 }

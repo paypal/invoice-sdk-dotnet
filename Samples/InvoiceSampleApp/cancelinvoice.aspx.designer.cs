@@ -10,8 +10,31 @@
 
 namespace InvoicingSampleApp {
     
+    
+    /// <summary>
+    /// cancelinvoice class.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated class.
+    /// </remarks>
     public partial class cancelinvoice {
-        protected System.Web.UI.HtmlControls.HtmlForm form2;
-        protected InvoicingSampleApp.WebUserControl1 permission;
+        
+        /// <summary>
+        /// form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        
+        /// <summary>
+        /// permission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::InvoicingSampleApp.WebUserControl1 permission;
     }
 }

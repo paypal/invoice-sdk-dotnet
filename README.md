@@ -10,9 +10,10 @@ SDK Integration
 *	The NuGet package installs the dependencies to the solution and automatically updates the project
 
 *	Dependent library references:
-	•	'PayPal_Invoice_SDK.dll'
-	•	'PayPal_Core_SDK.dll'	
 	•	'log4net.dll'
+	•	'PayPalCoreSDK.dll'	
+	•	'PayPalInvoiceSDK.dll'
+	•	'PayPalPermissionsSDK.dll'
 
 *	Namespaces:
 	•	PayPal
@@ -23,6 +24,9 @@ SDK Integration
 	•	PayPal.Util
 	•	PayPal.Exception
 
+*	Aliases:
+	•	extern alias InvoiceAlias
+	•	extern alias PermissionsAlias
 	
 Help
 ----

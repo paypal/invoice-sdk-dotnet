@@ -1,14 +1,15 @@
-﻿using System;
+﻿extern alias InvoiceAlias;
+extern alias PermissionsAlias;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
-
 using PayPal;
 using PayPal.Authentication;
 using PayPal.Exception;
-using PayPal.Invoice;
-using PayPal.Invoice.Model;
 using PayPal.Util;
+using InvoiceAlias.PayPal.Invoice;
+using InvoiceAlias.PayPal.Invoice.Model;
 
 namespace InvoicingSampleApp
 {
@@ -116,7 +117,7 @@ namespace InvoicingSampleApp
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateAndSendInvoiceRequest cr = new CreateAndSendInvoiceRequest();
-            cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
+            cr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
 
             cr.invoice = new InvoiceType();
             cr.invoice.currencyCode = currencyCode;
@@ -168,7 +169,7 @@ namespace InvoicingSampleApp
             
             SendInvoiceRequest sr = new SendInvoiceRequest();
             sr.invoiceID = invoiceId;
-            sr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
+            sr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
 
             InvoiceService service;
             SendInvoiceResponse sir = null;
@@ -208,7 +209,7 @@ namespace InvoicingSampleApp
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             CreateInvoiceRequest cr = new CreateInvoiceRequest();
-            cr.requestEnvelope = new RequestEnvelope(ERROR_LANGUAGE);
+            cr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
 
 
             cr.invoice = new InvoiceType();
@@ -259,7 +260,7 @@ namespace InvoicingSampleApp
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
             GetInvoiceDetailsRequest request =
-                new GetInvoiceDetailsRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+                new GetInvoiceDetailsRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
             // Create service object and make the API call
             InvoiceService service;
@@ -322,7 +323,7 @@ namespace InvoicingSampleApp
                     (PaymentMethodsType) Enum.Parse(typeof(PaymentMethodsType), paymentMethod);
             }
             MarkInvoiceAsPaidRequest request =
-                new MarkInvoiceAsPaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
+                new MarkInvoiceAsPaidRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
 
             // Create service object and make the API call
             
@@ -424,7 +425,7 @@ namespace InvoicingSampleApp
             InvoiceType invoice = new InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
             UpdateInvoiceRequest request = new UpdateInvoiceRequest(
-                new RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
+                new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
 
             // Create service object and make the API call
             InvoiceService service;
@@ -466,7 +467,7 @@ namespace InvoicingSampleApp
             int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
             SearchParametersType searchParams = new SearchParametersType();
             SearchInvoicesRequest request = new SearchInvoicesRequest(
-                new RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
+                new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
             if (context.Request.Params["email"] != "")
             {
                 searchParams.email = context.Request.Params["email"];
@@ -606,7 +607,7 @@ namespace InvoicingSampleApp
                 refundDetails.date = refundDate;
 
             MarkInvoiceAsRefundedRequest request =
-                new MarkInvoiceAsRefundedRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
+                new MarkInvoiceAsRefundedRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
 
             // Create service object and make the API call
             InvoiceService service;
@@ -643,7 +644,7 @@ namespace InvoicingSampleApp
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
             MarkInvoiceAsUnpaidRequest request =
-                new MarkInvoiceAsUnpaidRequest(new RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+                new MarkInvoiceAsUnpaidRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
             // Create service object and make the API call
             InvoiceService service;
@@ -681,19 +682,19 @@ namespace InvoicingSampleApp
             // This will allow the API caller to invoke any invoicing related API
             // on behalf of the permission granter
             string requestperm = "INVOICING";
-            PayPal.Permissions.Model.RequestPermissionsRequest rp = new PayPal.Permissions.Model.RequestPermissionsRequest();           
+            PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsRequest rp = new PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsRequest();           
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
             string returnURL = url + "/GetAccessToken.aspx?source=" 
                 + context.Request.UrlReferrer.LocalPath;
-            rp.callback = returnURL;            
-            PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
+            rp.callback = returnURL;
+            PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
 
             try
             {
-                PayPal.Permissions.PermissionsService service = new PayPal.Permissions.PermissionsService();                
+                PermissionsAlias.PayPal.Permissions.PermissionsService service = new PermissionsAlias.PayPal.Permissions.PermissionsService();                
                 rpr = service.RequestPermissions(rp);
 
 
@@ -721,16 +722,16 @@ namespace InvoicingSampleApp
             string verifier = context.Request.Params["txtverification_code"];
             string source = context.Request.Params["source"];
 
-            PayPal.Permissions.Model.GetAccessTokenRequest gat = 
-                new PayPal.Permissions.Model.GetAccessTokenRequest();
+            PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenRequest gat =
+                new PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenRequest();
             gat.token = token;
             gat.verifier = verifier;
-            gat.requestEnvelope = new PayPal.Permissions.Model.RequestEnvelope(ERROR_LANGUAGE);
-            PayPal.Permissions.Model.GetAccessTokenResponse gats = null;
+            gat.requestEnvelope = new PermissionsAlias.PayPal.Permissions.Model.RequestEnvelope(ERROR_LANGUAGE);
+            PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenResponse gats = null;
 
             try
             {
-                PayPal.Permissions.PermissionsService service = new PayPal.Permissions.PermissionsService();
+                PermissionsAlias.PayPal.Permissions.PermissionsService service = new PermissionsAlias.PayPal.Permissions.PermissionsService();
                 gats = service.GetAccessToken(gat);
                 context.Response.Redirect( source + "?token=" + gats.token + "&tokensecret="+gats.tokenSecret);       
             }
@@ -753,7 +754,7 @@ namespace InvoicingSampleApp
         /// <param name="errorMessages"></param>
         /// <param name="redirectUrl"></param>
         private void displayResponse(HttpContext context, string apiName, Dictionary<string, string> responseValues,
-            string requestPayload, string responsePayload, List<ErrorData> errorMessages, string redirectUrl)
+            string requestPayload, string responsePayload, List<InvoiceAlias.PayPal.Invoice.Model.ErrorData> errorMessages, string redirectUrl)
         {
 
             context.Response.Write("<html><head><title>");
@@ -764,7 +765,7 @@ namespace InvoicingSampleApp
             {
                 context.Response.Write("<div class='section_header'>Error messages</div>");
                 context.Response.Write("<div class='note'>Investigate the response object for further error information</div><ul>");
-                foreach (ErrorData error in errorMessages)
+                foreach ( InvoiceAlias.PayPal.Invoice.Model.ErrorData error in errorMessages)
                 {
                     context.Response.Write("<li>" + error.message + "</li>");
                 }

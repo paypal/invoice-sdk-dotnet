@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PayPal</RootNamespace>
-    <AssemblyName>PayPal_Invoice_SDK</AssemblyName>
+    <AssemblyName>PayPalInvoiceSDK</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +28,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PayPal_Core_SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PayPalCoreSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -39,15 +39,13 @@
   <ItemGroup>
     <Compile Include="Invoice\InvoiceService.cs" />
     <Compile Include="Invoice\PayPalInvoiceModel.cs" />
-    <Compile Include="Permissions\PayPalPermissionsModel.cs" />
-    <Compile Include="Permissions\PermissionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\PayPal_Core_SDK.dll" />
+    <Content Include="lib\PayPalCoreSDK.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Packages\" />
