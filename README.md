@@ -5,7 +5,7 @@ SDK Integration
 ---------------
 *	Integrate the PayPal Invoice SDK with an ASP.NET Web Application
 
-*	Use NuGet to install the 'PayPal_Invoice_SDK' package 
+*	Use NuGet to install the 'PayPalInvoiceSDK' package 
 
 *	The NuGet package installs the dependencies to the solution and automatically updates the project
 

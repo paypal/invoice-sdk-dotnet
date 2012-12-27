@@ -4,7 +4,7 @@ The PayPal Invoice SDK C#.NET Class Library project contains the PayPal Invoice 
 Prerequisites
 -------------
 *	Visual Studio 2005 or higher
-*	NuGet.exe 2.2
+*	NuGet 2.2
 *	.NET Framework 4.0
 
 
@@ -51,20 +51,21 @@ And click OK
 Go to Menu --> Tools --> Library Package Manage --> Package Manager Console
 Select NuGet official package source from the Package source dropdown box in the Package Manager Console
 Go to Solution Explorer and note the existing references
-Enter at PM> Install-Package PayPal_Core_SDK
+Enter at PM> Install-Package PayPalCoreSDK
+
 On enter key-press, the output window should display:
 
 Attempting to resolve dependency 'log4net (= 1.2.10)'.
 Successfully installed 'log4net 1.2.10'.
-You are downloading PayPal_Core_SDK from PayPal, the license agreement to which is available at https://github.com/paypal/sdk-core-dotnet/blob/master/LICENSE.txt. Check the package for additional dependencies, which may come with their own license agreement(s). Your use of the package and dependencies constitutes your acceptance of their license agreements. If you do not accept the license agreement(s), then delete the relevant components from your device.
-Successfully installed 'PayPal_Core_SDK 1.0.0'.
-Successfully added 'log4net 1.2.10' to PayPal_Core_SDK.
-Successfully added 'PayPal_Core_SDK 1.0.0' to PayPal_Core_SDK.
+You are downloading PayPalCoreSDK from PayPal, the license agreement to which is available at https://github.com/paypal/sdk-core-dotnet/blob/master/LICENSE.txt. Check the package for additional dependencies, which may come with their own license agreement(s). Your use of the package and dependencies constitutes your acceptance of their license agreements. If you do not accept the license agreement(s), then delete the relevant components from your device.
+Successfully installed 'PayPalCoreSDK 1.0.0'.
+Successfully added 'log4net 1.2.10' to PayPalCoreSDK.
+Successfully added 'PayPalCoreSDK 1.0.0' to PayPalCoreSDK.
 
 After successful installation, note that the new references get added automatically
 
 Also, go to Menu --> Tools --> Library Package Manager, select Manage NuGet Packages for Solution…
-On Manage NuGet Packages, search for 'PayPal_Core_SDK' to get the details
+On Manage NuGet Packages, search for 'PayPalCoreSDK' to get the details
 	
 
 NuGet - Integrating NuGet with Visual Studio 2005 and 2008
@@ -139,20 +140,20 @@ Click the NuGet Toolbar Install Package
 Clicking on the NuGet Toolbar Install Package will pop up for NuGet Install Arguments and Command Line
 Example NuGet Install:
 Enter Arguments: 
-install PayPal_Core_SDK -excludeversion -outputDirectory .\Packages
+install PayPalCoreSDK -excludeversion -outputDirectory .\Packages
 
 On clicking OK, the output window should display:
 
-Attempting to resolve dependency 'PayPal_Core_SDK'.
+Attempting to resolve dependency 'PayPalCoreSDK'.
 Attempting to resolve dependency 'log4net (ò 1.2.10)'.
 Successfully installed 'log4net 1.2.10'.
-Successfully installed 'PayPal_Core_SDK 1.0.0'.
+Successfully installed 'PayPalCoreSDK 1.0.0'.
 
 Menu View --> Output (Ctrl+Alt+O)
 
-The 'PayPal_Core_SDK' Package including the dependencies will be downloaded to the 'Packages' folder root directory of the Solution (.sln) file.
+The 'PayPalCoreSDK' Package including the dependencies will be downloaded to the 'Packages' folder root directory of the Solution (.sln) file.
 
-Select 'Packages' folder and click 'Refresh' in the Solution Explorer
+Select 'Packages' folder by clicking it and then click 'Show All Files' in the Solution Explorer
 Note: If 'Packages' folder was not included in the Solution Explorer, click 'Show All Files' before clicking 'Refresh'
 Add the references to the dependent files downloaded to 'Packages' folder:
 
