@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPal_Invoice_SDK", "PayPal_Invoice_SDK.csproj", "{1F5FF00B-CE0F-40B8-9BC4-7B5ED2087266}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPalInvoiceSDK", "PayPalInvoiceSDK.csproj", "{1F5FF00B-CE0F-40B8-9BC4-7B5ED2087266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

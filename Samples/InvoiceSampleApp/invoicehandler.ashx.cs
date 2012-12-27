@@ -1,5 +1,5 @@
-﻿extern alias InvoiceAlias;
-extern alias PermissionsAlias;
+﻿extern alias InvoiceAlias; //Right-click PayPalInvoiceSDK in References (of InvoiceSampleApp) and click Properties to set the Aliases - Rename global as InvoiceAlias
+extern alias PermissionsAlias; //Right-click PayPalPermissionsSDK in References (of InvoiceSampleApp) and click Properties to set the Aliases - Rename global as PermissionsAlias
 using System;
 using System.Collections.Generic;
 using System.Configuration;
