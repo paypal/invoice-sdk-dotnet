@@ -1,6 +1,4 @@
-﻿extern alias InvoiceAlias; //Right-click PayPalInvoiceSDK in References (of InvoiceSampleApp) and click Properties to set the Aliases - Rename global as InvoiceAlias
-extern alias PermissionsAlias; //Right-click PayPalPermissionsSDK in References (of InvoiceSampleApp) and click Properties to set the Aliases - Rename global as PermissionsAlias
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
@@ -8,8 +6,10 @@ using PayPal;
 using PayPal.Authentication;
 using PayPal.Exception;
 using PayPal.Util;
-using InvoiceAlias.PayPal.Invoice;
-using InvoiceAlias.PayPal.Invoice.Model;
+using InvoiceAlias = PayPal.Invoice;
+using InvoiceModelAlias = PayPal.Invoice.Model;
+using PermissionsAlias = PayPal.Permissions;
+using PermissionsModelAlias = PayPal.Permissions.Model;
 
 namespace InvoicingSampleApp
 {
@@ -86,9 +86,9 @@ namespace InvoicingSampleApp
             }
         }
 
-        private InvoiceService getService(HttpContext context)
+        private InvoiceAlias.InvoiceService getService(HttpContext context)
         {
-            InvoiceService service = new InvoiceService();
+            InvoiceAlias.InvoiceService service = new InvoiceAlias.InvoiceService();
             if (context.Request.Params["authentication"] != null)
             {
                 service.setAccessToken(context.Request.Params["accessToken"]);
@@ -116,29 +116,29 @@ namespace InvoicingSampleApp
             string item_quantity2 = context.Request.Params["item_quantity2"];
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
-            CreateAndSendInvoiceRequest cr = new CreateAndSendInvoiceRequest();
-            cr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
+            InvoiceModelAlias.CreateAndSendInvoiceRequest cr = new InvoiceModelAlias.CreateAndSendInvoiceRequest();
+            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
 
-            cr.invoice = new InvoiceType();
+            cr.invoice = new InvoiceModelAlias.InvoiceType();
             cr.invoice.currencyCode = currencyCode;
             cr.invoice.merchantEmail = merchantEmail;
             cr.invoice.payerEmail = payerEmail;
-            cr.invoice.paymentTerms = PaymentTermsType.DUEONRECEIPT;            
+            cr.invoice.paymentTerms = InvoiceModelAlias.PaymentTermsType.DUEONRECEIPT;
 
-           
-            cr.invoice.itemList = new InvoiceItemListType();
-            cr.invoice.itemList.item = new List<InvoiceItemType>();
-            cr.invoice.itemList.item.Add(new InvoiceItemType(
+
+            cr.invoice.itemList = new InvoiceModelAlias.InvoiceItemListType();
+            cr.invoice.itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
+            cr.invoice.itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name1,
                         decimal.Parse(item_quantity1),
                         decimal.Parse(item_unitPrice1)));
-            cr.invoice.itemList.item.Add(new InvoiceItemType(
+            cr.invoice.itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name2,
                         decimal.Parse(item_quantity2),
                         decimal.Parse(item_unitPrice2)));
 
-            InvoiceService service;
-            CreateAndSendInvoiceResponse cir = null;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.CreateAndSendInvoiceResponse cir = null;
             try
             {
                 service = getService(context);
@@ -166,13 +166,13 @@ namespace InvoicingSampleApp
         {
 
             string invoiceId = context.Request.Params["invoiceId"];
-            
-            SendInvoiceRequest sr = new SendInvoiceRequest();
-            sr.invoiceID = invoiceId;
-            sr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
 
-            InvoiceService service;
-            SendInvoiceResponse sir = null;
+            InvoiceModelAlias.SendInvoiceRequest sr = new InvoiceModelAlias.SendInvoiceRequest();
+            sr.invoiceID = invoiceId;
+            sr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.SendInvoiceResponse sir = null;
 
             try
             {
@@ -208,26 +208,26 @@ namespace InvoicingSampleApp
             string item_quantity2 = context.Request.Params["item_quantity2"];
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
-            CreateInvoiceRequest cr = new CreateInvoiceRequest();
-            cr.requestEnvelope = new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE);
+            InvoiceModelAlias.CreateInvoiceRequest cr = new InvoiceModelAlias.CreateInvoiceRequest();
+            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
 
 
-            cr.invoice = new InvoiceType();
+            cr.invoice = new InvoiceModelAlias.InvoiceType();
             cr.invoice.currencyCode = currencyCode;
             cr.invoice.merchantEmail = merchantEmail;
             cr.invoice.payerEmail = payerEmail;
-            cr.invoice.paymentTerms = (PaymentTermsType) 
-                Enum.Parse( typeof(PaymentTermsType), paymentTerms);
+            cr.invoice.paymentTerms = (InvoiceModelAlias.PaymentTermsType)
+                Enum.Parse(typeof(InvoiceModelAlias.PaymentTermsType), paymentTerms);
 
-            cr.invoice.itemList = new InvoiceItemListType();
-            cr.invoice.itemList.item = new List<InvoiceItemType>();
+            cr.invoice.itemList = new InvoiceModelAlias.InvoiceItemListType();
+            cr.invoice.itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
             cr.invoice.itemList.item.Add(
-                new InvoiceItemType(item_name1, decimal.Parse(item_quantity1), decimal.Parse(item_unitPrice1)));
+                new InvoiceModelAlias.InvoiceItemType(item_name1, decimal.Parse(item_quantity1), decimal.Parse(item_unitPrice1)));
             cr.invoice.itemList.item.Add(
-                new InvoiceItemType(item_name2, decimal.Parse(item_quantity2), decimal.Parse(item_unitPrice2)));
+                new InvoiceModelAlias.InvoiceItemType(item_name2, decimal.Parse(item_quantity2), decimal.Parse(item_unitPrice2)));
 
-            InvoiceService service = null;
-            CreateInvoiceResponse cir = null;
+            InvoiceAlias.InvoiceService service = null;
+            InvoiceModelAlias.CreateInvoiceResponse cir = null;
             try
             {
                 service = getService(context);
@@ -259,12 +259,12 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
-            GetInvoiceDetailsRequest request =
-                new GetInvoiceDetailsRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+            InvoiceModelAlias.GetInvoiceDetailsRequest request =
+                new InvoiceModelAlias.GetInvoiceDetailsRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
             // Create service object and make the API call
-            InvoiceService service;
-            GetInvoiceDetailsResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.GetInvoiceDetailsResponse response;
             try
             {
                 service = getService(context);
@@ -307,8 +307,8 @@ namespace InvoicingSampleApp
             string note = context.Request.Params["note"];
             string paymentDate = context.Request.Params["paymentDate"];
             string paymentMethod = context.Request.Params["paymentMethod"];
-            
-            OtherPaymentDetailsType paymentDetails = new OtherPaymentDetailsType();
+
+            InvoiceModelAlias.OtherPaymentDetailsType paymentDetails = new InvoiceModelAlias.OtherPaymentDetailsType();
             if (note != "")
             {
                 paymentDetails.note = note;
@@ -319,16 +319,16 @@ namespace InvoicingSampleApp
             }
             if(paymentMethod != "") 
             {
-                paymentDetails.method = 
-                    (PaymentMethodsType) Enum.Parse(typeof(PaymentMethodsType), paymentMethod);
+                paymentDetails.method =
+                    (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
             }
-            MarkInvoiceAsPaidRequest request =
-                new MarkInvoiceAsPaidRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
+            InvoiceModelAlias.MarkInvoiceAsPaidRequest request =
+                new InvoiceModelAlias.MarkInvoiceAsPaidRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
 
             // Create service object and make the API call
-            
-            MarkInvoiceAsPaidResponse response;
-            InvoiceService service;
+
+            InvoiceModelAlias.MarkInvoiceAsPaidResponse response;
+            InvoiceAlias.InvoiceService service;
             try
             {
                 service = getService(context);
@@ -361,12 +361,12 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
-            CancelInvoiceRequest request = new CancelInvoiceRequest();
+            InvoiceModelAlias.CancelInvoiceRequest request = new InvoiceModelAlias.CancelInvoiceRequest();
             request.invoiceID = invoiceId;
 
             // Create service object and make the API call
-            InvoiceService service;
-            CancelInvoiceResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.CancelInvoiceResponse response;
 
             try
             {
@@ -402,8 +402,8 @@ namespace InvoicingSampleApp
             string invoiceId = context.Request.Params["invoiceId"];
             string merchantEmail = context.Request.Params["merchantEmail"];
             string payerEmail = context.Request.Params["payerEmail"];
-            PaymentTermsType paymentTerms = (PaymentTermsType) Enum.Parse( 
-                    typeof(PaymentTermsType), context.Request.Params["paymentTerms"]);
+            InvoiceModelAlias.PaymentTermsType paymentTerms = (InvoiceModelAlias.PaymentTermsType)Enum.Parse(
+                    typeof(InvoiceModelAlias.PaymentTermsType), context.Request.Params["paymentTerms"]);
             string item_name1 = context.Request.Params["item_name1"];
             string item_quantity1 = context.Request.Params["item_quantity1"];
             string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
@@ -412,24 +412,24 @@ namespace InvoicingSampleApp
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
             string currencyCode = context.Request.Params["currencyCode"];
 
-            InvoiceItemListType itemList = new InvoiceItemListType();
-            itemList.item = new List<InvoiceItemType>();
-            itemList.item.Add(new InvoiceItemType(
+            InvoiceModelAlias.InvoiceItemListType itemList = new InvoiceModelAlias.InvoiceItemListType();
+            itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
+            itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name1,
                         decimal.Parse(item_quantity1),
                         decimal.Parse(item_unitPrice1)));
-            itemList.item.Add(new InvoiceItemType(
+            itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name2,
                         decimal.Parse(item_quantity2),
-                        decimal.Parse(item_unitPrice2)));            
-            InvoiceType invoice = new InvoiceType(merchantEmail, payerEmail, itemList, 
+                        decimal.Parse(item_unitPrice2)));
+            InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
-            UpdateInvoiceRequest request = new UpdateInvoiceRequest(
-                new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
+            InvoiceModelAlias.UpdateInvoiceRequest request = new InvoiceModelAlias.UpdateInvoiceRequest(
+                new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
 
             // Create service object and make the API call
-            InvoiceService service;
-            UpdateInvoiceResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.UpdateInvoiceResponse response;
 
             try
             {
@@ -465,9 +465,9 @@ namespace InvoicingSampleApp
             string merchantEmail = context.Request.Params["merchantEmail"];
             int page = Int32.Parse(context.Request.Params["page"]);
             int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
-            SearchParametersType searchParams = new SearchParametersType();
-            SearchInvoicesRequest request = new SearchInvoicesRequest(
-                new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
+            InvoiceModelAlias.SearchParametersType searchParams = new InvoiceModelAlias.SearchParametersType();
+            InvoiceModelAlias.SearchInvoicesRequest request = new InvoiceModelAlias.SearchInvoicesRequest(
+                new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
             if (context.Request.Params["email"] != "")
             {
                 searchParams.email = context.Request.Params["email"];
@@ -488,19 +488,19 @@ namespace InvoicingSampleApp
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
-                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status0"]));
+                    (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status0"]));
             }
             if (context.Request.Params["status1"] != "")
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
-                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status1"]));
+                    (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status1"]));
             }
             if (context.Request.Params["status2"] != "")
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
-                    (StatusType)Enum.Parse(typeof(StatusType), context.Request.Params["status2"]));
+                    (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status2"]));
             }
             if (context.Request.Params["lowerAmount"] != "")
             {
@@ -520,41 +520,41 @@ namespace InvoicingSampleApp
             }
             if (context.Request.Params["origin"] != "")
             {
-                searchParams.origin = (OriginType)
-                     Enum.Parse( typeof(OriginType),  context.Request.Params["origin"]);
+                searchParams.origin = (InvoiceModelAlias.OriginType)
+                     Enum.Parse(typeof(InvoiceModelAlias.OriginType), context.Request.Params["origin"]);
             }
             if (context.Request.Params["invoiceDateStart"] != "" || context.Request.Params["invoiceDateEnd"] != "")
             {
-                DateRangeType dateRange = new DateRangeType();
+                InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
                 dateRange.startDate = context.Request.Params["invoiceDateStart"];
                 dateRange.endDate = context.Request.Params["invoiceDateEnd"];
                 searchParams.invoiceDate = dateRange;
             }
             if (context.Request.Params["dueDateStart"] != "" || context.Request.Params["dueDateEnd"] != "")
             {
-                DateRangeType dateRange = new DateRangeType();
+                InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
                 dateRange.startDate = context.Request.Params["dueDateStart"];
                 dateRange.endDate = context.Request.Params["dueDateEnd"];
                 searchParams.dueDate = dateRange;
             }
             if (context.Request.Params["paymentDateStart"] != "" || context.Request.Params["paymentDateEnd"] != "")
             {
-                DateRangeType dateRange = new DateRangeType();
+                InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
                 dateRange.startDate = context.Request.Params["paymentDateStart"];
                 dateRange.endDate = context.Request.Params["paymentDateEnd"];
                 searchParams.paymentDate = dateRange;
             }
             if (context.Request.Params["creationDateStart"] != "" || context.Request.Params["creationDateEnd"] != "")
             {
-                DateRangeType dateRange = new DateRangeType();
+                InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
                 dateRange.startDate = context.Request.Params["creationDateStart"];
                 dateRange.endDate = context.Request.Params["creationDateEnd"];
                 searchParams.creationDate = dateRange;
             }            
 
             // Create service object and make the API call
-            InvoiceService service;
-            SearchInvoicesResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.SearchInvoicesResponse response;
 
             try
             {
@@ -578,7 +578,7 @@ namespace InvoicingSampleApp
             if (response.invoiceList != null && response.invoiceList.invoice != null)
             {
                 int idx = 0;
-                foreach (InvoiceSummaryType invoice in response.invoiceList.invoice)
+                foreach (InvoiceModelAlias.InvoiceSummaryType invoice in response.invoiceList.invoice)
                 {
                     keyResponseParams.Add(idx + " invoice Id", invoice.invoiceID);
                     keyResponseParams.Add(idx + " invoice status", invoice.status.ToString());
@@ -600,18 +600,18 @@ namespace InvoicingSampleApp
             string refundNote = context.Request.Params["refundNote"];
             string refundDate = context.Request.Params["refundDate"];
 
-            OtherPaymentRefundDetailsType refundDetails = new OtherPaymentRefundDetailsType();
+            InvoiceModelAlias.OtherPaymentRefundDetailsType refundDetails = new InvoiceModelAlias.OtherPaymentRefundDetailsType();
             if (refundNote != "")
                 refundDetails.note = refundNote;
             if (refundDate != "")
                 refundDetails.date = refundDate;
 
-            MarkInvoiceAsRefundedRequest request =
-                new MarkInvoiceAsRefundedRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
+            InvoiceModelAlias.MarkInvoiceAsRefundedRequest request =
+                new InvoiceModelAlias.MarkInvoiceAsRefundedRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
 
             // Create service object and make the API call
-            InvoiceService service;
-            MarkInvoiceAsRefundedResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.MarkInvoiceAsRefundedResponse response;
 
             try
             {
@@ -643,12 +643,12 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
-            MarkInvoiceAsUnpaidRequest request =
-                new MarkInvoiceAsUnpaidRequest(new InvoiceAlias.PayPal.Invoice.Model.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+            InvoiceModelAlias.MarkInvoiceAsUnpaidRequest request =
+                new InvoiceModelAlias.MarkInvoiceAsUnpaidRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
 
             // Create service object and make the API call
-            InvoiceService service;
-            MarkInvoiceAsUnpaidResponse response;
+            InvoiceAlias.InvoiceService service;
+            InvoiceModelAlias.MarkInvoiceAsUnpaidResponse response;
 
             try {
                 service = getService(context);
@@ -682,7 +682,7 @@ namespace InvoicingSampleApp
             // This will allow the API caller to invoke any invoicing related API
             // on behalf of the permission granter
             string requestperm = "INVOICING";
-            PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsRequest rp = new PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsRequest();           
+            PermissionsModelAlias.RequestPermissionsRequest rp = new PermissionsModelAlias.RequestPermissionsRequest();           
             rp.scope = new List<string>();            
             rp.scope.Add(requestperm);
 
@@ -690,11 +690,11 @@ namespace InvoicingSampleApp
             string returnURL = url + "/GetAccessToken.aspx?source=" 
                 + context.Request.UrlReferrer.LocalPath;
             rp.callback = returnURL;
-            PermissionsAlias.PayPal.Permissions.Model.RequestPermissionsResponse rpr = null;
+            PermissionsModelAlias.RequestPermissionsResponse rpr = null;
 
             try
             {
-                PermissionsAlias.PayPal.Permissions.PermissionsService service = new PermissionsAlias.PayPal.Permissions.PermissionsService();                
+                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService();                
                 rpr = service.RequestPermissions(rp);
 
 
@@ -722,16 +722,16 @@ namespace InvoicingSampleApp
             string verifier = context.Request.Params["txtverification_code"];
             string source = context.Request.Params["source"];
 
-            PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenRequest gat =
-                new PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenRequest();
+            PermissionsModelAlias.GetAccessTokenRequest gat =
+                new PermissionsModelAlias.GetAccessTokenRequest();
             gat.token = token;
             gat.verifier = verifier;
-            gat.requestEnvelope = new PermissionsAlias.PayPal.Permissions.Model.RequestEnvelope(ERROR_LANGUAGE);
-            PermissionsAlias.PayPal.Permissions.Model.GetAccessTokenResponse gats = null;
+            gat.requestEnvelope = new PermissionsModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+            PermissionsModelAlias.GetAccessTokenResponse gats = null;
 
             try
             {
-                PermissionsAlias.PayPal.Permissions.PermissionsService service = new PermissionsAlias.PayPal.Permissions.PermissionsService();
+                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService();
                 gats = service.GetAccessToken(gat);
                 context.Response.Redirect( source + "?token=" + gats.token + "&tokensecret="+gats.tokenSecret);       
             }
@@ -754,7 +754,7 @@ namespace InvoicingSampleApp
         /// <param name="errorMessages"></param>
         /// <param name="redirectUrl"></param>
         private void displayResponse(HttpContext context, string apiName, Dictionary<string, string> responseValues,
-            string requestPayload, string responsePayload, List<InvoiceAlias.PayPal.Invoice.Model.ErrorData> errorMessages, string redirectUrl)
+            string requestPayload, string responsePayload, List<InvoiceModelAlias.ErrorData> errorMessages, string redirectUrl)
         {
 
             context.Response.Write("<html><head><title>");
@@ -765,7 +765,7 @@ namespace InvoicingSampleApp
             {
                 context.Response.Write("<div class='section_header'>Error messages</div>");
                 context.Response.Write("<div class='note'>Investigate the response object for further error information</div><ul>");
-                foreach ( InvoiceAlias.PayPal.Invoice.Model.ErrorData error in errorMessages)
+                foreach ( InvoiceModelAlias.ErrorData error in errorMessages)
                 {
                     context.Response.Write("<li>" + error.message + "</li>");
                 }
