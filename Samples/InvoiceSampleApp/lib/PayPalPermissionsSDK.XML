@@ -1,0 +1,855 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayPalPermissionsSDK</name>
+    </assembly>
+    <members>
+        <member name="T:PayPal.Permissions.Model.EnumUtils">
+            <summary>
+            Utility class for Enums with descriptions
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.EnumUtils.GetDescription(System.Enum)">
+            <summary>
+            Get description for a give enum value
+            </summary>	
+        </member>
+        <member name="M:PayPal.Permissions.Model.EnumUtils.GetValue(System.String,System.Type)">
+            <summary>
+            Convert a string to an enum object
+            </summary>	
+        </member>
+        <member name="T:PayPal.Permissions.Model.ErrorData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.errorIdField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.domainField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.subdomainField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.severityField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.categoryField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.messageField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.exceptionIdField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorData.parameterField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ErrorData.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ErrorData.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new ErrorData object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.ErrorParameter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorParameter.nameField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ErrorParameter.valueField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ErrorParameter.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ErrorParameter.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new ErrorParameter object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.ResponseEnvelope">
+            <summary>
+            This is the sample message 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ResponseEnvelope.timestampField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ResponseEnvelope.ackField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ResponseEnvelope.correlationIdField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.ResponseEnvelope.buildField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ResponseEnvelope.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.ResponseEnvelope.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new ResponseEnvelope object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.RequestEnvelope">
+            <summary>
+            This specifies the list of parameters with every request to
+            the service. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestEnvelope.errorLanguageField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestEnvelope.#ctor(System.String)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestEnvelope.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.FaultMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.FaultMessage.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.FaultMessage.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.FaultMessage.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.FaultMessage.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new FaultMessage object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.ErrorSeverity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.ErrorCategory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.AckCode">
+            <summary>
+            AckCodeType This code identifies the
+             acknowledgment code types that could be used to
+             communicate the status of processing a (request)
+             message to an application. This code would be
+             used as part of a response message that contains
+             an application level acknowledgment element.
+             
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.PersonalAttribute">
+            <summary>
+            Enumeration for Personal Attributes of a user.
+             
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.RequestPermissionsRequest">
+            <summary>
+            Describes the request for permissions over an account.
+            Primary element is "scope", which lists the permissions
+            needed. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsRequest.scopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsRequest.callbackField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestPermissionsRequest.#ctor(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestPermissionsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.RequestPermissionsResponse">
+            <summary>
+            Returns the temporary request token 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsResponse.tokenField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.RequestPermissionsResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestPermissionsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.RequestPermissionsResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new RequestPermissionsResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetAccessTokenRequest">
+            <summary>
+            The request use to retrieve a permanent access token. The
+            client can either send the token and verifier, or a subject.
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenRequest.tokenField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenRequest.verifierField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenRequest.subjectAliasField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAccessTokenRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetAccessTokenResponse">
+            <summary>
+            Permanent access token and token secret that can be used to
+            make requests for protected resources owned by another
+            account. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenResponse.scopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenResponse.tokenField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenResponse.tokenSecretField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAccessTokenResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAccessTokenResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAccessTokenResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new GetAccessTokenResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetPermissionsRequest">
+            <summary>
+            Request to retrieve the approved list of permissions
+            associated with a token. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetPermissionsRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetPermissionsRequest.tokenField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetPermissionsRequest.#ctor(System.String)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetPermissionsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetPermissionsResponse">
+            <summary>
+            The list of permissions associated with the token. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetPermissionsResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetPermissionsResponse.scopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetPermissionsResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetPermissionsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetPermissionsResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new GetPermissionsResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.CancelPermissionsRequest">
+            <summary>
+            Request to invalidate an access token and revoke the
+            permissions associated with it. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.CancelPermissionsRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.CancelPermissionsRequest.tokenField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.CancelPermissionsRequest.#ctor(System.String)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.CancelPermissionsRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.CancelPermissionsResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.CancelPermissionsResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.CancelPermissionsResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.CancelPermissionsResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.CancelPermissionsResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new CancelPermissionsResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.PersonalAttributeList">
+            <summary>
+            List of Personal Attributes to be sent as a request. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.PersonalAttributeList.attributeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.PersonalAttributeList.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.PersonalData">
+            <summary>
+            A property of User Identity data , represented as a
+            Name-value pair with Name being the PersonalAttribute
+            requested and value being the data. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.PersonalData.personalDataKeyField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.PersonalData.personalDataValueField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.PersonalData.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.PersonalData.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new PersonalData object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.PersonalDataList">
+            <summary>
+            Set of personal data which forms the response of
+            GetPersonalData call. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.PersonalDataList.personalDataField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.PersonalDataList.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.PersonalDataList.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new PersonalDataList object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetBasicPersonalDataRequest">
+            <summary>
+            Request to retrieve basic personal data.Accepts
+            PersonalAttributeList as request and responds with
+            PersonalDataList. This call will accept only 'Basic'
+            attributes and ignore others. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetBasicPersonalDataRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetBasicPersonalDataRequest.attributeListField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetBasicPersonalDataRequest.#ctor(PayPal.Permissions.Model.PersonalAttributeList)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetBasicPersonalDataRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetAdvancedPersonalDataRequest">
+            <summary>
+            Request to retrieve personal data.Accepts
+            PersonalAttributeList as request and responds with
+            PersonalDataList. This call will accept both 'Basic' and
+            Advanced attributes. 
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAdvancedPersonalDataRequest.requestEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAdvancedPersonalDataRequest.attributeListField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAdvancedPersonalDataRequest.#ctor(PayPal.Permissions.Model.PersonalAttributeList)">
+            <summary>
+            Constructor with arguments
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAdvancedPersonalDataRequest.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetBasicPersonalDataResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetBasicPersonalDataResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetBasicPersonalDataResponse.responseField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetBasicPersonalDataResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetBasicPersonalDataResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetBasicPersonalDataResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new GetBasicPersonalDataResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="T:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse.responseEnvelopeField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse.responseField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse.errorField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.Model.GetAdvancedPersonalDataResponse.CreateInstance(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Int32)">
+            <summary>
+            Factory method for creating new object instances. For use by the de-serialization classes only.
+            </summary>
+            <param name="map">NVP map as returned by an API call</param>
+            <param name="prefix">NVP prefix for this class in the response</param>
+            <param name="index">For array elements, index of this element in the response</param>
+            <returns>
+            A new GetAdvancedPersonalDataResponse object created from the passed in NVP map
+            </returns>
+        </member>
+        <member name="F:PayPal.Permissions.PermissionsService.ServiceVersion">
+            <summary>
+            Service Version
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.PermissionsService.ServiceName">
+            <summary>
+            Service Name
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.PermissionsService.SDKName">
+            <summary>
+            SDK Name
+            </summary>
+        </member>
+        <member name="F:PayPal.Permissions.PermissionsService.SDKVersion">
+            <summary>
+            SDK Version
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.#ctor">
+            <summary>
+            Default constructor for loading configuration from *.Config file
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            constructor for passing in a dynamic configuration object
+            </summary>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.RequestPermissions(PayPal.Permissions.Model.RequestPermissionsRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="requestPermissionsRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.RequestPermissions(PayPal.Permissions.Model.RequestPermissionsRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="requestPermissionsRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.RequestPermissions(PayPal.Permissions.Model.RequestPermissionsRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="requestPermissionsRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAccessToken(PayPal.Permissions.Model.GetAccessTokenRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="getAccessTokenRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAccessToken(PayPal.Permissions.Model.GetAccessTokenRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="getAccessTokenRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAccessToken(PayPal.Permissions.Model.GetAccessTokenRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="getAccessTokenRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetPermissions(PayPal.Permissions.Model.GetPermissionsRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="getPermissionsRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetPermissions(PayPal.Permissions.Model.GetPermissionsRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="getPermissionsRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetPermissions(PayPal.Permissions.Model.GetPermissionsRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="getPermissionsRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.CancelPermissions(PayPal.Permissions.Model.CancelPermissionsRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="cancelPermissionsRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.CancelPermissions(PayPal.Permissions.Model.CancelPermissionsRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="cancelPermissionsRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.CancelPermissions(PayPal.Permissions.Model.CancelPermissionsRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="cancelPermissionsRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetBasicPersonalData(PayPal.Permissions.Model.GetBasicPersonalDataRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="getBasicPersonalDataRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetBasicPersonalData(PayPal.Permissions.Model.GetBasicPersonalDataRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="getBasicPersonalDataRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetBasicPersonalData(PayPal.Permissions.Model.GetBasicPersonalDataRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="getBasicPersonalDataRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAdvancedPersonalData(PayPal.Permissions.Model.GetAdvancedPersonalDataRequest,System.String)">
+             <summary>
+             
+             </summary>
+            <param name="getAdvancedPersonalDataRequest"></param>
+            <param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAdvancedPersonalData(PayPal.Permissions.Model.GetAdvancedPersonalDataRequest)">
+             <summary> 
+             
+             </summary>
+            <param name="getAdvancedPersonalDataRequest"></param>
+        </member>
+        <member name="M:PayPal.Permissions.PermissionsService.GetAdvancedPersonalData(PayPal.Permissions.Model.GetAdvancedPersonalDataRequest,PayPal.Authentication.ICredential)">
+             <summary>
+             
+             </summary>
+            <param name="getAdvancedPersonalDataRequest"></param>
+            <param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+        </member>
+    </members>
+</doc>
