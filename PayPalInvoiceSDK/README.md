@@ -26,7 +26,7 @@ The PayPal Invoice API enables you to create and manage invoices. The PayPal Inv
    To use the SDK in your application, you must
    
    * Get the PayPalInvoiceSDK dll via NuGet or from the download bundle and add references to the PayPalInvoiceSDK and PayPalCoreSDK libraries.
-   * Additionally, if you want to use third party permissioning in your app, add a reference to the PayPalPermissionsSDL library.
+   * Additionally, if you want to use third party permissioning in your app, add a reference to the PayPalPermissionsSDK library.
    * Configure your app as detailed in the configuration section.
    
 ## SDK Configuration
