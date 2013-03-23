@@ -117,7 +117,8 @@ namespace InvoicingSampleApp
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             InvoiceModelAlias.CreateAndSendInvoiceRequest cr = new InvoiceModelAlias.CreateAndSendInvoiceRequest();
-            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+            cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             cr.invoice = new InvoiceModelAlias.InvoiceType();
             cr.invoice.currencyCode = currencyCode;
@@ -169,7 +170,8 @@ namespace InvoicingSampleApp
 
             InvoiceModelAlias.SendInvoiceRequest sr = new InvoiceModelAlias.SendInvoiceRequest();
             sr.invoiceID = invoiceId;
-            sr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+            sr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+            sr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.SendInvoiceResponse sir = null;
@@ -209,7 +211,8 @@ namespace InvoicingSampleApp
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             InvoiceModelAlias.CreateInvoiceRequest cr = new InvoiceModelAlias.CreateInvoiceRequest();
-            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+            cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+            cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
 
             cr.invoice = new InvoiceModelAlias.InvoiceType();
@@ -259,8 +262,10 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.GetInvoiceDetailsRequest request =
-                new InvoiceModelAlias.GetInvoiceDetailsRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+                new InvoiceModelAlias.GetInvoiceDetailsRequest(env, invoiceId);
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
@@ -322,8 +327,10 @@ namespace InvoicingSampleApp
                 paymentDetails.method =
                     (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
             }
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsPaidRequest request =
-                new InvoiceModelAlias.MarkInvoiceAsPaidRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, paymentDetails);
+                new InvoiceModelAlias.MarkInvoiceAsPaidRequest(env, invoiceId, paymentDetails);
 
             // Create service object and make the API call
 
@@ -424,8 +431,10 @@ namespace InvoicingSampleApp
                         decimal.Parse(item_unitPrice2)));
             InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.UpdateInvoiceRequest request = new InvoiceModelAlias.UpdateInvoiceRequest(
-                new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, invoice);
+               env, invoiceId, invoice);
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
@@ -466,8 +475,10 @@ namespace InvoicingSampleApp
             int page = Int32.Parse(context.Request.Params["page"]);
             int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
             InvoiceModelAlias.SearchParametersType searchParams = new InvoiceModelAlias.SearchParametersType();
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.SearchInvoicesRequest request = new InvoiceModelAlias.SearchInvoicesRequest(
-                new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), merchantEmail, searchParams, page, pageSize);
+                env, merchantEmail, searchParams, page, pageSize);
             if (context.Request.Params["email"] != "")
             {
                 searchParams.email = context.Request.Params["email"];
@@ -606,8 +617,10 @@ namespace InvoicingSampleApp
             if (refundDate != "")
                 refundDetails.date = refundDate;
 
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsRefundedRequest request =
-                new InvoiceModelAlias.MarkInvoiceAsRefundedRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId, refundDetails);
+                new InvoiceModelAlias.MarkInvoiceAsRefundedRequest(env, invoiceId, refundDetails);
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
@@ -643,8 +656,10 @@ namespace InvoicingSampleApp
         {
             // Collect input params
             string invoiceId = context.Request.Params["invoiceId"];
+            InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+            env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsUnpaidRequest request =
-                new InvoiceModelAlias.MarkInvoiceAsUnpaidRequest(new InvoiceModelAlias.RequestEnvelope(ERROR_LANGUAGE), invoiceId);
+                new InvoiceModelAlias.MarkInvoiceAsUnpaidRequest(env, invoiceId);
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
@@ -726,7 +741,8 @@ namespace InvoicingSampleApp
                 new PermissionsModelAlias.GetAccessTokenRequest();
             gat.token = token;
             gat.verifier = verifier;
-            gat.requestEnvelope = new PermissionsModelAlias.RequestEnvelope(ERROR_LANGUAGE);
+            gat.requestEnvelope = new PermissionsModelAlias.RequestEnvelope();
+            gat.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
             PermissionsModelAlias.GetAccessTokenResponse gats = null;
 
             try
