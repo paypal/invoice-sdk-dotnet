@@ -801,14 +801,6 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
-		/// Constructor with arguments
-	 	/// </summary>
-	 	public RequestEnvelope(string errorLanguage)
-	 	{
-			this.errorLanguage = errorLanguage;
-		}
-
-		/// <summary>
 		/// Default Constructor
 	 	/// </summary>
 	 	public RequestEnvelope()
@@ -2003,6 +1995,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string receiptDetailsField;
+		public string receiptDetails
+		{
+			get
+			{
+				return this.receiptDetailsField;
+			}
+			set
+			{
+				this.receiptDetailsField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private BusinessInfoType billingInfoField;
 		public BusinessInfoType billingInfo
 		{
@@ -2235,6 +2244,10 @@ namespace PayPal.Invoice.Model
 			{
 					sb.Append(prefix).Append("merchantMemo").Append("=").Append(HttpUtility.UrlEncode(this.merchantMemo, BaseConstants.ENCODING_FORMAT)).Append("&");
 			}
+			if (this.receiptDetails != null)
+			{
+					sb.Append(prefix).Append("receiptDetails").Append("=").Append(HttpUtility.UrlEncode(this.receiptDetails, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
 			if (this.billingInfo != null)
 			{
 					string newPrefix = prefix + "billingInfo" + ".";
@@ -2386,6 +2399,12 @@ namespace PayPal.Invoice.Model
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.merchantMemo = map[key];
+			}
+			key = prefix + "receiptDetails";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.receiptDetails = map[key];
 			}
 			BusinessInfoType billingInfo =  BusinessInfoType.CreateInstance(map, prefix + "billingInfo", -1);
 			if (billingInfo != null)
@@ -7265,6 +7284,190 @@ namespace PayPal.Invoice.Model
 				paymentRefundDetailsType.otherPayment = otherPayment;
 			}
 			return paymentRefundDetailsType;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// The request object for DeleteInvoice. 
+    /// </summary>
+	public partial class DeleteInvoiceRequest	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private RequestEnvelope requestEnvelopeField;
+		public RequestEnvelope requestEnvelope
+		{
+			get
+			{
+				return this.requestEnvelopeField;
+			}
+			set
+			{
+				this.requestEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceIDField;
+		public string invoiceID
+		{
+			get
+			{
+				return this.invoiceIDField;
+			}
+			set
+			{
+				this.invoiceIDField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Constructor with arguments
+	 	/// </summary>
+	 	public DeleteInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	{
+			this.requestEnvelope = requestEnvelope;
+			this.invoiceID = invoiceID;
+		}
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public DeleteInvoiceRequest()
+	 	{
+		}
+
+
+		public string ToNVPString(string prefix)
+		{
+			StringBuilder sb = new StringBuilder();
+			if (this.requestEnvelope != null)
+			{
+					string newPrefix = prefix + "requestEnvelope" + ".";
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
+			}
+			if (this.invoiceID != null)
+			{
+					sb.Append(prefix).Append("invoiceID").Append("=").Append(HttpUtility.UrlEncode(this.invoiceID, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			return sb.ToString();
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// The response object for DeleteInvoice. 
+    /// </summary>
+	public partial class DeleteInvoiceResponse	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private ResponseEnvelope responseEnvelopeField;
+		public ResponseEnvelope responseEnvelope
+		{
+			get
+			{
+				return this.responseEnvelopeField;
+			}
+			set
+			{
+				this.responseEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<ErrorData> errorField = new List<ErrorData>();
+		public List<ErrorData> error
+		{
+			get
+			{
+				return this.errorField;
+			}
+			set
+			{
+				this.errorField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public DeleteInvoiceResponse()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new DeleteInvoiceResponse object created from the passed in NVP map
+	 	/// </returns>
+		public static DeleteInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			DeleteInvoiceResponse deleteInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				deleteInvoiceResponse = (deleteInvoiceResponse == null) ? new DeleteInvoiceResponse() : deleteInvoiceResponse;
+				deleteInvoiceResponse.responseEnvelope = responseEnvelope;
+			}
+			i = 0;
+			while(true)
+			{
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
+				if (error != null)
+				{
+					deleteInvoiceResponse = (deleteInvoiceResponse == null) ? new DeleteInvoiceResponse() : deleteInvoiceResponse;
+					deleteInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return deleteInvoiceResponse;
 		}
 	}
 

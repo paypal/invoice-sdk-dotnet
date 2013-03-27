@@ -16,7 +16,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// Service Version
 		/// </summary>
-		private const string ServiceVersion = "1.6.0";
+		private const string ServiceVersion = "1.8.0";
 
 		/// <summary>
 		/// Service Name
@@ -31,7 +31,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// SDK Version
 		/// </summary>
-		private const string SDKVersion = "2.1.96";
+		private const string SDKVersion = "2.2.100";
 
 		/// <summary>
 		/// Default constructor for loading configuration from *.Config file
@@ -481,6 +481,50 @@ namespace PayPal.Invoice
 
 			NVPUtil util = new NVPUtil();
 			return MarkInvoiceAsRefundedResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+
+		/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="deleteInvoiceRequest"></param>
+		///<param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+	 	public DeleteInvoiceResponse DeleteInvoice(DeleteInvoiceRequest deleteInvoiceRequest, string apiUserName)
+	 	{	 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, deleteInvoiceRequest.ToNVPString(string.Empty), ServiceName, "DeleteInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+			
+			NVPUtil util = new NVPUtil();
+			return DeleteInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+	 
+	 	/// <summary> 
+		/// 
+	 	/// </summary>
+		///<param name="deleteInvoiceRequest"></param>
+	 	
+	 	public DeleteInvoiceResponse DeleteInvoice(DeleteInvoiceRequest deleteInvoiceRequest)
+	 	{
+	 		return DeleteInvoice(deleteInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="deleteInvoiceRequest"></param>
+		///<param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+	 	public DeleteInvoiceResponse DeleteInvoice(DeleteInvoiceRequest deleteInvoiceRequest, ICredential credential)
+	 	{	 			 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, deleteInvoiceRequest.ToNVPString(string.Empty), ServiceName, "DeleteInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+
+			NVPUtil util = new NVPUtil();
+			return DeleteInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
 			
 	 	}
 	}
