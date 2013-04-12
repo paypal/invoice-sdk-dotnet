@@ -142,6 +142,9 @@ namespace InvoicingSampleApp
 
             InvoiceModelAlias.CreateAndSendInvoiceRequest cr = new InvoiceModelAlias.CreateAndSendInvoiceRequest();
             cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             cr.invoice = new InvoiceModelAlias.InvoiceType();
@@ -215,6 +218,9 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.SendInvoiceRequest sr = new InvoiceModelAlias.SendInvoiceRequest();
             sr.invoiceID = invoiceId;
             sr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             sr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             InvoiceAlias.InvoiceService service;
@@ -297,6 +303,9 @@ namespace InvoicingSampleApp
 
             InvoiceModelAlias.CreateInvoiceRequest cr = new InvoiceModelAlias.CreateInvoiceRequest();
             cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
 
@@ -369,6 +378,9 @@ namespace InvoicingSampleApp
             // (Required) ID of the invoice to retrieve. 
             string invoiceId = context.Request.Params["invoiceId"];
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.GetInvoiceDetailsRequest request =
                 new InvoiceModelAlias.GetInvoiceDetailsRequest(env, invoiceId);
@@ -469,6 +481,9 @@ namespace InvoicingSampleApp
                     (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
             }
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsPaidRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsPaidRequest(env, invoiceId, paymentDetails);
@@ -638,6 +653,9 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.UpdateInvoiceRequest request = new InvoiceModelAlias.UpdateInvoiceRequest(
                env, invoiceId, invoice);
@@ -709,6 +727,9 @@ namespace InvoicingSampleApp
 
             InvoiceModelAlias.SearchParametersType searchParams = new InvoiceModelAlias.SearchParametersType();
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.SearchInvoicesRequest request = new InvoiceModelAlias.SearchInvoicesRequest(
                 env, merchantEmail, searchParams, page, pageSize);
@@ -863,10 +884,28 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues.
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // Number of invoices that matched the request. 
             keyResponseParams.Add("invoice count", response.count.ToString());
+
+            // True if another page of invoice summary results exists.
             keyResponseParams.Add("hasNextPage", response.hasNextPage.ToString());
+
+            // True if a previous page of the invoice summary results exists. 
             keyResponseParams.Add("hasPreviousPage", response.hasPreviousPage.ToString());
 
             if (response.invoiceList != null && response.invoiceList.invoice != null)
@@ -907,6 +946,9 @@ namespace InvoicingSampleApp
                 refundDetails.date = refundDate;
 
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsRefundedRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsRefundedRequest(env, invoiceId, refundDetails);
@@ -962,8 +1004,12 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsUnpaid(HttpContext context)
         {
             // Collect input params
+            // (Required) ID of the invoice to mark as unpaid. 
             string invoiceId = context.Request.Params["invoiceId"];
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsUnpaidRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsUnpaidRequest(env, invoiceId);
@@ -984,10 +1030,28 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues.
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // ID of the invoice marked as unpaid. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            // Number of the invoice marked as unpaid. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsUnpaid", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null);
@@ -1005,12 +1069,41 @@ namespace InvoicingSampleApp
             // on behalf of the permission granter
             string requestperm = "INVOICING";
             PermissionsModelAlias.RequestPermissionsRequest rp = new PermissionsModelAlias.RequestPermissionsRequest();           
-            rp.scope = new List<string>();            
+            rp.scope = new List<string>();
+             //(Required) At least 1 of the following permission categories:
+             //   EXPRESS_CHECKOUT - Express Checkout
+             //   DIRECT_PAYMENT - Direct payment by debit or credit card
+             //   SETTLEMENT_CONSOLIDATION - Settlement consolidation
+             //   SETTLEMENT_REPORTING - Settlement reporting
+             //   AUTH_CAPTURE - Payment authorization and capture
+             //   MOBILE_CHECKOUT - Mobile checkout
+             //   BILLING_AGREEMENT - Billing agreements
+             //   REFERENCE_TRANSACTION - Reference transactions
+             //   AIR_TRAVEL - Express Checkout for UTAP
+             //   MASS_PAY - Mass pay
+             //   TRANSACTION_DETAILS - Transaction details
+             //   TRANSACTION_SEARCH - Transaction search
+             //   RECURRING_PAYMENTS - Recurring payments
+             //   ACCOUNT_BALANCE - Account balance
+             //   ENCRYPTED_WEBSITE_PAYMENTS - Encrypted website payments
+             //   REFUND - Refunds
+             //   NON_REFERENCED_CREDIT - Non-referenced credit
+             //   BUTTON_MANAGER - Button Manager
+             //   MANAGE_PENDING_TRANSACTION_STATUS includes ManagePendingTransactionStatus
+             //   RECURRING_PAYMENT_REPORT - Reporting for recurring payments
+             //   EXTENDED_PRO_PROCESSING_REPORT - Extended Pro processing
+             //   EXCEPTION_PROCESSING_REPORT - Exception processing
+             //   ACCOUNT_MANAGEMENT_PERMISSION - Account Management Permission (MAM)
+             //   ACCESS_BASIC_PERSONAL_DATA - User attributes
+             //   ACCESS_ADVANCED_PERSONAL_DATA - User attributes
+             //   INVOICING - Invoicing
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
-            string returnURL = url + "/GetAccessToken.aspx?source=" 
-                + context.Request.UrlReferrer.LocalPath;
+            string returnURL = url + "/GetAccessToken.aspx?source=" + context.Request.UrlReferrer.LocalPath;
+
+            //(Required) Your callback function that specifies actions to take after the account 
+            // holder grants or denies the request. 
             rp.callback = returnURL;
             PermissionsModelAlias.RequestPermissionsResponse rpr = null;
 
@@ -1040,7 +1133,10 @@ namespace InvoicingSampleApp
 
         private void GetAccessToken(HttpContext context)
         {
+            // (Required) The request token from the response to RequestPermissions. 
             string token = context.Request.Params["txtrequest_token"];
+
+            // (Required) The verification code returned in the redirect from PayPal to the return URL. 
             string verifier = context.Request.Params["txtverification_code"];
             string source = context.Request.Params["source"];
 
@@ -1049,6 +1145,9 @@ namespace InvoicingSampleApp
             gat.token = token;
             gat.verifier = verifier;
             gat.requestEnvelope = new PermissionsModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             gat.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
             PermissionsModelAlias.GetAccessTokenResponse gats = null;
 
