@@ -1842,6 +1842,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private bool? taxCalculatedAfterDiscountField;
+		public bool? taxCalculatedAfterDiscount
+		{
+			get
+			{
+				return this.taxCalculatedAfterDiscountField;
+			}
+			set
+			{
+				this.taxCalculatedAfterDiscountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string currencyCodeField;
 		public string currencyCode
 		{
@@ -2207,6 +2224,10 @@ namespace PayPal.Invoice.Model
 					string newPrefix = prefix + "itemList" + ".";
 					sb.Append(this.itemListField.ToNVPString(newPrefix));
 			}
+			if (this.taxCalculatedAfterDiscount != null)
+			{
+					sb.Append(prefix).Append("taxCalculatedAfterDiscount").Append("=").Append(this.taxCalculatedAfterDiscount.ToString().ToLower()).Append("&");
+			}
 			if (this.currencyCode != null)
 			{
 					sb.Append(prefix).Append("currencyCode").Append("=").Append(HttpUtility.UrlEncode(this.currencyCode, BaseConstants.ENCODING_FORMAT)).Append("&");
@@ -2345,6 +2366,12 @@ namespace PayPal.Invoice.Model
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.itemList = itemList;
+			}
+			key = prefix + "taxCalculatedAfterDiscount";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.taxCalculatedAfterDiscount = System.Convert.ToBoolean(map[key]);
 			}
 			key = prefix + "currencyCode";
 			if (map.ContainsKey(key))
