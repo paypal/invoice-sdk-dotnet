@@ -104,20 +104,47 @@ namespace InvoicingSampleApp
 
         private void CreateAndSendInvoice(HttpContext context)
         {
-
+            // (Required) Merchant email address. 
             string merchantEmail = context.Request.Params["merchantEmail"];
+
+            // (Required) Currency used for all invoice item amounts and totals. 
             string currencyCode = context.Request.Params["currencyCode"];
+
+            // (Required) Payer email address. 
             string payerEmail = context.Request.Params["payerEmail"];
+
+            // (Required) Terms by which the invoice payment is due. It is one of the following values:
+            //  DueOnReceipt – Payment is due when the payer receives the invoice.
+            //  DueOnDateSpecified – Payment is due on the date specified in the invoice.
+            //  Net10 – Payment is due 10 days from the invoice date.
+            //  Net15 – Payment is due 15 days from the invoice date.
+            //  Net30 – Payment is due 30 days from the invoice date.
+            //  Net45 – Payment is due 45 days from the invoice date.
             string paymentTerms = context.Request.Params["paymentTerms"];
+
+            //(Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name1 = context.Request.Params["item_name1"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity1 = context.Request.Params["item_quantity1"];
+
+            // (Required) Price of the item, in the currency specified by the invoice. 
             string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+
+            //(Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name2 = context.Request.Params["item_name2"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity2 = context.Request.Params["item_quantity2"];
+
+            // (Required) Price of the item, in the currency specified by the invoice. 
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             InvoiceModelAlias.CreateAndSendInvoiceRequest cr = new InvoiceModelAlias.CreateAndSendInvoiceRequest();
             cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             cr.invoice = new InvoiceModelAlias.InvoiceType();
@@ -153,11 +180,31 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", cir.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", cir.responseEnvelope.correlationId);
+
+            // ID of the created invoice. 
             keyResponseParams.Add("invoiceId", cir.invoiceID);
+
+            // Number of the created invoice. 
             keyResponseParams.Add("invoiceNumber", cir.invoiceNumber);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
+
+            // The total amount of the invoice. 
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateAndSendInvoice", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), cir.error, null);
@@ -165,12 +212,15 @@ namespace InvoicingSampleApp
 
         private void SendInvoice(HttpContext context)
         {
-
+            // (Required) ID of the invoice to send. 
             string invoiceId = context.Request.Params["invoiceId"];
 
             InvoiceModelAlias.SendInvoiceRequest sr = new InvoiceModelAlias.SendInvoiceRequest();
             sr.invoiceID = invoiceId;
             sr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             sr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
             InvoiceAlias.InvoiceService service;
@@ -189,9 +239,25 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", sir.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", sir.responseEnvelope.correlationId);
-            keyResponseParams.Add("invoiceId", sir.invoiceID);            
+
+            // ID of the created invoice. 
+            keyResponseParams.Add("invoiceId", sir.invoiceID);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", sir.invoiceURL);
             displayResponse(context, "SendInvoice", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), sir.error, null);
@@ -199,19 +265,47 @@ namespace InvoicingSampleApp
 
         private void CreateInvoice(HttpContext context)
         {
+            // (Required) Merchant email address. 
             string merchantEmail = context.Request.Params["merchantEmail"];
+
+            // (Required) Currency used for all invoice item amounts and totals. 
             string currencyCode = context.Request.Params["currencyCode"];
+
+            //  Required) Payer email address. 
             string payerEmail = context.Request.Params["payerEmail"];
+
+            // (Required) Terms by which the invoice payment is due. It is one of the following values:
+            //DueOnReceipt – Payment is due when the payer receives the invoice.
+            //DueOnDateSpecified – Payment is due on the date specified in the invoice.
+            //Net10 – Payment is due 10 days from the invoice date.
+            //Net15 – Payment is due 15 days from the invoice date.
+            //Net30 – Payment is due 30 days from the invoice date.
+            //Net45 – Payment is due 45 days from the invoice date.
             string paymentTerms = context.Request.Params["paymentTerms"];
+
+            // (Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name1 = context.Request.Params["item_name1"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity1 = context.Request.Params["item_quantity1"];
+
+            // (Required) Price of the item, in the currency specified by the invoice. 
             string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+
+            // (Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name2 = context.Request.Params["item_name2"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity2 = context.Request.Params["item_quantity2"];
+
+            // (Required) Price of the item, in the currency specified by the invoice. 
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
 
             InvoiceModelAlias.CreateInvoiceRequest cr = new InvoiceModelAlias.CreateInvoiceRequest();
             cr.requestEnvelope = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             cr.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
 
 
@@ -244,11 +338,31 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", cir.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", cir.responseEnvelope.correlationId);
+
+            // ID of the created invoice. 
             keyResponseParams.Add("invoiceId", cir.invoiceID);
+
+            //Invoice number of the created invoice. 
             keyResponseParams.Add("invoiceNumber", cir.invoiceNumber);
+
+            //URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", cir.invoiceURL);
+
+            // The total amount of the invoice. 
             keyResponseParams.Add("totalAmount", cir.totalAmount.ToString());
             displayResponse(context, "CreateInvoice", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), cir.error, null);
@@ -261,8 +375,12 @@ namespace InvoicingSampleApp
         private void GetInvoiceDetails(HttpContext context)
         {
             // Collect input params
+            // (Required) ID of the invoice to retrieve. 
             string invoiceId = context.Request.Params["invoiceId"];
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.GetInvoiceDetailsRequest request =
                 new InvoiceModelAlias.GetInvoiceDetailsRequest(env, invoiceId);
@@ -283,13 +401,32 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
             if (response.invoice != null)
             {
+                // Date on which the invoice is enabled. 
                 keyResponseParams.Add("invoice date", response.invoice.invoiceDate);
+
+                //  Date on which the invoice payment is due. 
                 keyResponseParams.Add("due date", response.invoice.dueDate);
+
+                // Merchant email address. 
                 keyResponseParams.Add("merchant email", response.invoice.merchantEmail);
+
+                // Payer email address. 
                 keyResponseParams.Add("payer email", response.invoice.payerEmail);
             }
             if (response.invoiceDetails != null)
@@ -308,9 +445,25 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsPaid(HttpContext context)
         {
             // Collect input params
+            // (Required) ID of the invoice to mark as paid. 
             string invoiceId = context.Request.Params["invoiceId"];
+
+            // (Optional) Optional note associated with the payment. 
             string note = context.Request.Params["note"];
+
+            //  (Required) Date when the invoice was paid. 
             string paymentDate = context.Request.Params["paymentDate"];
+            
+            //(Optional) Method that can be used to mark an invoice as paid when the payer pays offline. 
+            // It is one of the following values:
+            //BankTransfer – Payment is made by a bank transfer.
+            //Cash – Payment is made in cash.
+            //Check – Payment is made by check.
+            //CreditCard – Payment is made by a credit card.
+            //DebitCard – Payment is made by a debit card.
+            //Other – Payment is made by a method not specified in this list.
+            //PayPal – Payment is made by PayPal.
+            //WireTransfer – Payment is made by a wire transfer.
             string paymentMethod = context.Request.Params["paymentMethod"];
 
             InvoiceModelAlias.OtherPaymentDetailsType paymentDetails = new InvoiceModelAlias.OtherPaymentDetailsType();
@@ -328,6 +481,9 @@ namespace InvoicingSampleApp
                     (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
             }
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsPaidRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsPaidRequest(env, invoiceId, paymentDetails);
@@ -349,10 +505,28 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
-            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);            
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
+            keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            //  ID of the invoice marked as paid. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            // Number of the invoice marked as paid. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsPaid", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null); 
@@ -367,6 +541,7 @@ namespace InvoicingSampleApp
         private void CancelInvoice(HttpContext context)
         {
             // Collect input params
+            // (Optional) ID of the invoice. 
             string invoiceId = context.Request.Params["invoiceId"];
             InvoiceModelAlias.CancelInvoiceRequest request = new InvoiceModelAlias.CancelInvoiceRequest();
             request.invoiceID = invoiceId;
@@ -387,11 +562,29 @@ namespace InvoicingSampleApp
             }
 
             // Display response values. 
-            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // ID of the invoice. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            // Number of the canceled invoice. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "CancelInvoice", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null); 
@@ -406,17 +599,45 @@ namespace InvoicingSampleApp
         private void UpdateInvoice(HttpContext context)
         {
             // Collect input params
+
+            // (Required) ID of the invoice to update. 
             string invoiceId = context.Request.Params["invoiceId"];
+
+            // (Required) Merchant email address. 
             string merchantEmail = context.Request.Params["merchantEmail"];
+
+            // (Required) Payer email address. 
             string payerEmail = context.Request.Params["payerEmail"];
+
+            // (Required) Terms by which the invoice payment is due. It is one of the following values:
+            // DueOnReceipt – Payment is due when the payer receives the invoice.
+            // DueOnDateSpecified – Payment is due on the date specified in the invoice.
+            // Net10 – Payment is due 10 days from the invoice date.
+            // Net15 – Payment is due 15 days from the invoice date.
+            // Net30 – Payment is due 30 days from the invoice date.
+            // Net45 – Payment is due 45 days from the invoice date.
             InvoiceModelAlias.PaymentTermsType paymentTerms = (InvoiceModelAlias.PaymentTermsType)Enum.Parse(
                     typeof(InvoiceModelAlias.PaymentTermsType), context.Request.Params["paymentTerms"]);
+
+            // (Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name1 = context.Request.Params["item_name1"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity1 = context.Request.Params["item_quantity1"];
+
+            // (Required) Price of the item, in the currency specified by the invoice. 
             string item_unitPrice1 = context.Request.Params["item_unitPrice1"];
+
+            // (Required) SKU or name of the item. Character length and limitations: 30 characters maximum 
             string item_name2 = context.Request.Params["item_name2"];
+
+            // (Required) Item count. Valid values are 0 to 10.000. 
             string item_quantity2 = context.Request.Params["item_quantity2"];
+
+            // (Required) Price of the item, in the currency specified by the invoice.
             string item_unitPrice2 = context.Request.Params["item_unitPrice2"];
+
+            // (Required) Currency used for all invoice item amounts and totals.
             string currencyCode = context.Request.Params["currencyCode"];
 
             InvoiceModelAlias.InvoiceItemListType itemList = new InvoiceModelAlias.InvoiceItemListType();
@@ -432,6 +653,9 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.UpdateInvoiceRequest request = new InvoiceModelAlias.UpdateInvoiceRequest(
                env, invoiceId, invoice);
@@ -452,12 +676,32 @@ namespace InvoicingSampleApp
             }
 
             // Display response values. 
-            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues. 
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // ID of the updated invoice. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            // Invoice number of the updated invoice. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // URL location where merchants view the updated invoice details.
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
+
+            // The total amount of the invoice. 
             keyResponseParams.Add("totalAmount", response.totalAmount.ToString());
             displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null); 
@@ -471,94 +715,154 @@ namespace InvoicingSampleApp
         private void SearchInvoices(HttpContext context)
         {
             // Collect input params            
+
+            // (Required) Email address of invoice creator. 
             string merchantEmail = context.Request.Params["merchantEmail"];
+
+            // (Required) Page number of result set, starting with 1. 
             int page = Int32.Parse(context.Request.Params["page"]);
+
+            // (Required) Number of results per page, between 1 and 100. 
             int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
+
             InvoiceModelAlias.SearchParametersType searchParams = new InvoiceModelAlias.SearchParametersType();
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.SearchInvoicesRequest request = new InvoiceModelAlias.SearchInvoicesRequest(
                 env, merchantEmail, searchParams, page, pageSize);
+
+            // (Optional) Email search string. 
             if (context.Request.Params["email"] != "")
             {
                 searchParams.email = context.Request.Params["email"];
             }
+
+            // (Optional) Recipient search string. 
             if (context.Request.Params["recipientName"] != "")
             {
                 searchParams.recipientName = context.Request.Params["recipientName"];
             }
+
+            // (Optional) Company search string. 
             if (context.Request.Params["businessName"] != "")
             {
                 searchParams.businessName = context.Request.Params["businessName"];
             }
+
+            // (Optional) Invoice number search string. 
             if (context.Request.Params["invoiceNumber"] != "")
             {
                 searchParams.invoiceNumber = context.Request.Params["invoiceNumber"];
             }
+
+            // (Optional) Invoice status search. 
             if (context.Request.Params["status0"] != "")
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
                     (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status0"]));
             }
+
+            // (Optional) Invoice status search. 
             if (context.Request.Params["status1"] != "")
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
                     (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status1"]));
             }
+
+            // (Optional) Invoice status search. 
             if (context.Request.Params["status2"] != "")
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
                     (InvoiceModelAlias.StatusType)Enum.Parse(typeof(InvoiceModelAlias.StatusType), context.Request.Params["status2"]));
             }
+
+            // (Optional) Invoice amount search. It specifies the smallest amount to be returned. 
+            // If you pass a value for this field, you must also pass a currencyCode value. 
             if (context.Request.Params["lowerAmount"] != "")
             {
                 searchParams.lowerAmount = decimal.Parse(context.Request.Params["lowerAmount"]);
             }
+
+            // (Optional) Invoice amount search. It specifies the largest amount to be returned. 
+            // If you pass a value for this field, you must also pass a currencyCode value. 
             if (context.Request.Params["upperAmount"] != "")
             {
                 searchParams.upperAmount = decimal.Parse(context.Request.Params["upperAmount"]);
             }
+
+            // (Optional) Invoice memo search string. 
             if (context.Request.Params["memo"] != "")
             {
                 searchParams.memo = context.Request.Params["memo"];
             }
+
+            // (Optional) Currency used for lower and upper amounts. 
+            // It is required when you specify lowerAmount or upperAmount. 
             if (context.Request.Params["currencyCode"] != "")
             {
                 searchParams.currencyCode = context.Request.Params["currencyCode"];
             }
+
+            // (Optional) Indicates whether the invoice was created by the website or by an API call. 
+            // It is one of the following values:
+            //  Web – The invoice was created on paypal.com.
+            //  API – The invoice was created by an Invoicing Service API call.
             if (context.Request.Params["origin"] != "")
             {
                 searchParams.origin = (InvoiceModelAlias.OriginType)
                      Enum.Parse(typeof(InvoiceModelAlias.OriginType), context.Request.Params["origin"]);
             }
+
+            // 
             if (context.Request.Params["invoiceDateStart"] != "" || context.Request.Params["invoiceDateEnd"] != "")
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
+
+                // (Optional) Start of the date range.
                 dateRange.startDate = context.Request.Params["invoiceDateStart"];
+
+                // Optional) End of the date range.
                 dateRange.endDate = context.Request.Params["invoiceDateEnd"];
                 searchParams.invoiceDate = dateRange;
             }
+
+
             if (context.Request.Params["dueDateStart"] != "" || context.Request.Params["dueDateEnd"] != "")
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
+
+                // (Optional) Start of the date range.
                 dateRange.startDate = context.Request.Params["dueDateStart"];
+
+                // Optional) End of the date range.
                 dateRange.endDate = context.Request.Params["dueDateEnd"];
                 searchParams.dueDate = dateRange;
             }
             if (context.Request.Params["paymentDateStart"] != "" || context.Request.Params["paymentDateEnd"] != "")
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
+
+                // (Optional) Start of the date range.
                 dateRange.startDate = context.Request.Params["paymentDateStart"];
+
+                // Optional) End of the date range.
                 dateRange.endDate = context.Request.Params["paymentDateEnd"];
                 searchParams.paymentDate = dateRange;
             }
             if (context.Request.Params["creationDateStart"] != "" || context.Request.Params["creationDateEnd"] != "")
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
+
+                // (Optional) Start of the date range.
                 dateRange.startDate = context.Request.Params["creationDateStart"];
+
+                // Optional) End of the date range.
                 dateRange.endDate = context.Request.Params["creationDateEnd"];
                 searchParams.creationDate = dateRange;
             }            
@@ -580,10 +884,28 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues.
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // Number of invoices that matched the request. 
             keyResponseParams.Add("invoice count", response.count.ToString());
+
+            // True if another page of invoice summary results exists.
             keyResponseParams.Add("hasNextPage", response.hasNextPage.ToString());
+
+            // True if a previous page of the invoice summary results exists. 
             keyResponseParams.Add("hasPreviousPage", response.hasPreviousPage.ToString());
 
             if (response.invoiceList != null && response.invoiceList.invoice != null)
@@ -607,8 +929,14 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsRefunded(HttpContext context)
         {
             // Collect input params
+
+            // (Required) ID of the invoice to mark as refunded. 
             string invoiceId = context.Request.Params["invoiceId"];
+
+            //  Optional note associated with the payment.
             string refundNote = context.Request.Params["refundNote"];
+
+            //(Required) Date when the invoice was paid
             string refundDate = context.Request.Params["refundDate"];
 
             InvoiceModelAlias.OtherPaymentRefundDetailsType refundDetails = new InvoiceModelAlias.OtherPaymentRefundDetailsType();
@@ -618,6 +946,9 @@ namespace InvoicingSampleApp
                 refundDetails.date = refundDate;
 
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsRefundedRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsRefundedRequest(env, invoiceId, refundDetails);
@@ -638,11 +969,29 @@ namespace InvoicingSampleApp
             }
 
             // Display response values. 
-            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();            
+            Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues.
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // (Required) ID of the invoice to mark as refunded. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            //  Number of the invoice marked as refunded. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // The URL of the details page of the invoice that was marked as refunded. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),  
                 service.getLastResponse(), response.error, null);            
@@ -655,8 +1004,12 @@ namespace InvoicingSampleApp
         private void MarkInvoiceAsUnpaid(HttpContext context)
         {
             // Collect input params
+            // (Required) ID of the invoice to mark as unpaid. 
             string invoiceId = context.Request.Params["invoiceId"];
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
             InvoiceModelAlias.MarkInvoiceAsUnpaidRequest request =
                 new InvoiceModelAlias.MarkInvoiceAsUnpaidRequest(env, invoiceId);
@@ -677,10 +1030,28 @@ namespace InvoicingSampleApp
 
             // Display response values. 
             Dictionary<string, string> keyResponseParams = new Dictionary<string, string>();
+
+            //Acknowledgement code. It is one of the following values:
+            //Success – The operation completed successfully.
+            //Failure – The operation failed.
+            //SuccessWithWarning – The operation completed successfully; however, there is a warning message.
+            //FailureWithWarning – The operation failed with a warning message.
             keyResponseParams.Add("API status", response.responseEnvelope.ack.ToString());
+
+            // Correlation identifier. It is a 13-character, 
+            // alphanumeric string (for example, db87c705a910e) that is used 
+            // only by PayPal Merchant Technical Support.
+            // Note: You must log and store this data for every response you receive. 
+            // PayPal Technical Support uses the information to assist with reported issues.
             keyResponseParams.Add("correlationId", response.responseEnvelope.correlationId);
+
+            // ID of the invoice marked as unpaid. 
             keyResponseParams.Add("invoiceId", response.invoiceID);
+
+            // Number of the invoice marked as unpaid. 
             keyResponseParams.Add("invoiceNumber", response.invoiceNumber);
+
+            // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsUnpaid", keyResponseParams, service.getLastRequest(),
                 service.getLastResponse(), response.error, null);
@@ -698,12 +1069,41 @@ namespace InvoicingSampleApp
             // on behalf of the permission granter
             string requestperm = "INVOICING";
             PermissionsModelAlias.RequestPermissionsRequest rp = new PermissionsModelAlias.RequestPermissionsRequest();           
-            rp.scope = new List<string>();            
+            rp.scope = new List<string>();
+             //(Required) At least 1 of the following permission categories:
+             //   EXPRESS_CHECKOUT - Express Checkout
+             //   DIRECT_PAYMENT - Direct payment by debit or credit card
+             //   SETTLEMENT_CONSOLIDATION - Settlement consolidation
+             //   SETTLEMENT_REPORTING - Settlement reporting
+             //   AUTH_CAPTURE - Payment authorization and capture
+             //   MOBILE_CHECKOUT - Mobile checkout
+             //   BILLING_AGREEMENT - Billing agreements
+             //   REFERENCE_TRANSACTION - Reference transactions
+             //   AIR_TRAVEL - Express Checkout for UTAP
+             //   MASS_PAY - Mass pay
+             //   TRANSACTION_DETAILS - Transaction details
+             //   TRANSACTION_SEARCH - Transaction search
+             //   RECURRING_PAYMENTS - Recurring payments
+             //   ACCOUNT_BALANCE - Account balance
+             //   ENCRYPTED_WEBSITE_PAYMENTS - Encrypted website payments
+             //   REFUND - Refunds
+             //   NON_REFERENCED_CREDIT - Non-referenced credit
+             //   BUTTON_MANAGER - Button Manager
+             //   MANAGE_PENDING_TRANSACTION_STATUS includes ManagePendingTransactionStatus
+             //   RECURRING_PAYMENT_REPORT - Reporting for recurring payments
+             //   EXTENDED_PRO_PROCESSING_REPORT - Extended Pro processing
+             //   EXCEPTION_PROCESSING_REPORT - Exception processing
+             //   ACCOUNT_MANAGEMENT_PERMISSION - Account Management Permission (MAM)
+             //   ACCESS_BASIC_PERSONAL_DATA - User attributes
+             //   ACCESS_ADVANCED_PERSONAL_DATA - User attributes
+             //   INVOICING - Invoicing
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
-            string returnURL = url + "/GetAccessToken.aspx?source=" 
-                + context.Request.UrlReferrer.LocalPath;
+            string returnURL = url + "/GetAccessToken.aspx?source=" + context.Request.UrlReferrer.LocalPath;
+
+            //(Required) Your callback function that specifies actions to take after the account 
+            // holder grants or denies the request. 
             rp.callback = returnURL;
             PermissionsModelAlias.RequestPermissionsResponse rpr = null;
 
@@ -733,7 +1133,10 @@ namespace InvoicingSampleApp
 
         private void GetAccessToken(HttpContext context)
         {
+            // (Required) The request token from the response to RequestPermissions. 
             string token = context.Request.Params["txtrequest_token"];
+
+            // (Required) The verification code returned in the redirect from PayPal to the return URL. 
             string verifier = context.Request.Params["txtverification_code"];
             string source = context.Request.Params["source"];
 
@@ -742,6 +1145,9 @@ namespace InvoicingSampleApp
             gat.token = token;
             gat.verifier = verifier;
             gat.requestEnvelope = new PermissionsModelAlias.RequestEnvelope();
+
+            // (Required) RFC 3066 language in which error messages are returned; 
+            // by default it is en_US, which is the only language currently supported.
             gat.requestEnvelope.errorLanguage = ERROR_LANGUAGE;
             PermissionsModelAlias.GetAccessTokenResponse gats = null;
 

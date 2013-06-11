@@ -1225,6 +1225,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string taxIdField;
+		public string taxId
+		{
+			get
+			{
+				return this.taxIdField;
+			}
+			set
+			{
+				this.taxIdField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string customValueField;
 		public string customValue
 		{
@@ -1290,6 +1307,10 @@ namespace PayPal.Invoice.Model
 			if (this.website != null)
 			{
 					sb.Append(prefix).Append("website").Append("=").Append(HttpUtility.UrlEncode(this.website, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.taxId != null)
+			{
+					sb.Append(prefix).Append("taxId").Append("=").Append(HttpUtility.UrlEncode(this.taxId, BaseConstants.ENCODING_FORMAT)).Append("&");
 			}
 			if (this.customValue != null)
 			{
@@ -1365,6 +1386,12 @@ namespace PayPal.Invoice.Model
 			{
 				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
 				businessInfoType.website = map[key];
+			}
+			key = prefix + "taxId";
+			if (map.ContainsKey(key))
+			{
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.taxId = map[key];
 			}
 			key = prefix + "customValue";
 			if (map.ContainsKey(key))
@@ -1961,6 +1988,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private bool? taxInclusiveField;
+		public bool? taxInclusive
+		{
+			get
+			{
+				return this.taxInclusiveField;
+			}
+			set
+			{
+				this.taxInclusiveField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string termsField;
 		public string terms
 		{
@@ -2253,6 +2297,10 @@ namespace PayPal.Invoice.Model
 			{
 					sb.Append(prefix).Append("discountAmount").Append("=").Append(Convert.ToString(this.discountAmount, DefaultCulture)).Append("&");
 			}
+			if (this.taxInclusive != null)
+			{
+					sb.Append(prefix).Append("taxInclusive").Append("=").Append(this.taxInclusive.ToString().ToLower()).Append("&");
+			}
 			if (this.terms != null)
 			{
 					sb.Append(prefix).Append("terms").Append("=").Append(HttpUtility.UrlEncode(this.terms, BaseConstants.ENCODING_FORMAT)).Append("&");
@@ -2408,6 +2456,12 @@ namespace PayPal.Invoice.Model
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.discountAmount = System.Convert.ToDecimal(map[key]);
+			}
+			key = prefix + "taxInclusive";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.taxInclusive = System.Convert.ToBoolean(map[key]);
 			}
 			key = prefix + "terms";
 			if (map.ContainsKey(key))

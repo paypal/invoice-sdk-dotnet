@@ -16,7 +16,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// Service Version
 		/// </summary>
-		private const string ServiceVersion = "1.8.0";
+		private const string ServiceVersion = "1.9.0";
 
 		/// <summary>
 		/// Service Name
@@ -31,7 +31,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// SDK Version
 		/// </summary>
-		private const string SDKVersion = "2.2.101";
+		private const string SDKVersion = "2.3.103";
 
 		/// <summary>
 		/// Default constructor for loading configuration from *.Config file
