@@ -62,6 +62,7 @@
     <Compile Include="cancelinvoice.aspx.designer.cs">
       <DependentUpon>cancelinvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Configuration.cs" />
     <Compile Include="createinvoice.aspx.cs">
       <DependentUpon>createinvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
