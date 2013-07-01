@@ -18,7 +18,6 @@ namespace InvoicingSampleApp
     /// </summary>
     public class InvoiceHandler : IHttpHandler
     {
-
         private static string ERROR_LANGUAGE = "en_US";
 
         public void ProcessRequest(HttpContext context)
@@ -75,7 +74,6 @@ namespace InvoicingSampleApp
             {
                 GetAccessToken(context);
             }
-
         }        
 
         public bool IsReusable
@@ -86,9 +84,16 @@ namespace InvoicingSampleApp
             }
         }
 
-        private InvoiceAlias.InvoiceService getService(HttpContext context)
+        private InvoiceAlias.InvoiceService GetService(HttpContext context)
         {
-            InvoiceAlias.InvoiceService service = new InvoiceAlias.InvoiceService();
+            // Configuration map containing signature credentials and other required configuration.
+            // For a full list of configuration parameters refer at 
+            // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+            Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+
+            // Creating service wrapper object to make an API call by loading configuration map.
+            InvoiceAlias.InvoiceService service = new InvoiceAlias.InvoiceService(configurationMap);
+
             if (context.Request.Params["authentication"] != null)
             {
                 service.setAccessToken(context.Request.Params["accessToken"]);
@@ -169,7 +174,7 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.CreateAndSendInvoiceResponse cir = null;
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 cir = service.CreateAndSendInvoice(cr);                
             }
             catch (System.Exception e)
@@ -228,7 +233,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 sir = service.SendInvoice(sr);
             }
             catch (System.Exception e)
@@ -327,7 +332,7 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.CreateInvoiceResponse cir = null;
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 cir = service.CreateInvoice(cr);                
             }
             catch (System.Exception e)
@@ -390,7 +395,7 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.GetInvoiceDetailsResponse response;
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.GetInvoiceDetails(request);
             }
             catch (Exception e)
@@ -467,15 +472,15 @@ namespace InvoicingSampleApp
             string paymentMethod = context.Request.Params["paymentMethod"];
 
             InvoiceModelAlias.OtherPaymentDetailsType paymentDetails = new InvoiceModelAlias.OtherPaymentDetailsType();
-            if (note != "")
+            if (note != string.Empty)
             {
                 paymentDetails.note = note;
             }
-            if (paymentDate != "")
+            if (paymentDate != string.Empty)
             {
                 paymentDetails.date = paymentDate;
             }
-            if(paymentMethod != "") 
+            if(paymentMethod != string.Empty) 
             {
                 paymentDetails.method =
                     (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
@@ -494,7 +499,7 @@ namespace InvoicingSampleApp
             InvoiceAlias.InvoiceService service;
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.MarkInvoiceAsPaid(request);
             }
             catch (Exception e)
@@ -552,7 +557,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.CancelInvoice(request);
             }
             catch (Exception e)
@@ -666,7 +671,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.UpdateInvoice(request);
             }
             catch (Exception e)
@@ -735,31 +740,31 @@ namespace InvoicingSampleApp
                 env, merchantEmail, searchParams, page, pageSize);
 
             // (Optional) Email search string. 
-            if (context.Request.Params["email"] != "")
+            if (context.Request.Params["email"] != string.Empty)
             {
                 searchParams.email = context.Request.Params["email"];
             }
 
             // (Optional) Recipient search string. 
-            if (context.Request.Params["recipientName"] != "")
+            if (context.Request.Params["recipientName"] != string.Empty)
             {
                 searchParams.recipientName = context.Request.Params["recipientName"];
             }
 
             // (Optional) Company search string. 
-            if (context.Request.Params["businessName"] != "")
+            if (context.Request.Params["businessName"] != string.Empty)
             {
                 searchParams.businessName = context.Request.Params["businessName"];
             }
 
             // (Optional) Invoice number search string. 
-            if (context.Request.Params["invoiceNumber"] != "")
+            if (context.Request.Params["invoiceNumber"] != string.Empty)
             {
                 searchParams.invoiceNumber = context.Request.Params["invoiceNumber"];
             }
 
             // (Optional) Invoice status search. 
-            if (context.Request.Params["status0"] != "")
+            if (context.Request.Params["status0"] != string.Empty)
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
@@ -767,7 +772,7 @@ namespace InvoicingSampleApp
             }
 
             // (Optional) Invoice status search. 
-            if (context.Request.Params["status1"] != "")
+            if (context.Request.Params["status1"] != string.Empty)
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
@@ -775,7 +780,7 @@ namespace InvoicingSampleApp
             }
 
             // (Optional) Invoice status search. 
-            if (context.Request.Params["status2"] != "")
+            if (context.Request.Params["status2"] != string.Empty)
             {
                 // You can add upto 10 status to do a 'OR' search on multiple status types
                 searchParams.status.Add(
@@ -784,27 +789,27 @@ namespace InvoicingSampleApp
 
             // (Optional) Invoice amount search. It specifies the smallest amount to be returned. 
             // If you pass a value for this field, you must also pass a currencyCode value. 
-            if (context.Request.Params["lowerAmount"] != "")
+            if (context.Request.Params["lowerAmount"] != string.Empty)
             {
                 searchParams.lowerAmount = decimal.Parse(context.Request.Params["lowerAmount"]);
             }
 
             // (Optional) Invoice amount search. It specifies the largest amount to be returned. 
             // If you pass a value for this field, you must also pass a currencyCode value. 
-            if (context.Request.Params["upperAmount"] != "")
+            if (context.Request.Params["upperAmount"] != string.Empty)
             {
                 searchParams.upperAmount = decimal.Parse(context.Request.Params["upperAmount"]);
             }
 
             // (Optional) Invoice memo search string. 
-            if (context.Request.Params["memo"] != "")
+            if (context.Request.Params["memo"] != string.Empty)
             {
                 searchParams.memo = context.Request.Params["memo"];
             }
 
             // (Optional) Currency used for lower and upper amounts. 
             // It is required when you specify lowerAmount or upperAmount. 
-            if (context.Request.Params["currencyCode"] != "")
+            if (context.Request.Params["currencyCode"] != string.Empty)
             {
                 searchParams.currencyCode = context.Request.Params["currencyCode"];
             }
@@ -813,14 +818,14 @@ namespace InvoicingSampleApp
             // It is one of the following values:
             //  Web – The invoice was created on paypal.com.
             //  API – The invoice was created by an Invoicing Service API call.
-            if (context.Request.Params["origin"] != "")
+            if (context.Request.Params["origin"] != string.Empty)
             {
                 searchParams.origin = (InvoiceModelAlias.OriginType)
                      Enum.Parse(typeof(InvoiceModelAlias.OriginType), context.Request.Params["origin"]);
             }
 
             // 
-            if (context.Request.Params["invoiceDateStart"] != "" || context.Request.Params["invoiceDateEnd"] != "")
+            if (context.Request.Params["invoiceDateStart"] != string.Empty || context.Request.Params["invoiceDateEnd"] != string.Empty)
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
 
@@ -833,7 +838,7 @@ namespace InvoicingSampleApp
             }
 
 
-            if (context.Request.Params["dueDateStart"] != "" || context.Request.Params["dueDateEnd"] != "")
+            if (context.Request.Params["dueDateStart"] != string.Empty || context.Request.Params["dueDateEnd"] != string.Empty)
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
 
@@ -844,7 +849,7 @@ namespace InvoicingSampleApp
                 dateRange.endDate = context.Request.Params["dueDateEnd"];
                 searchParams.dueDate = dateRange;
             }
-            if (context.Request.Params["paymentDateStart"] != "" || context.Request.Params["paymentDateEnd"] != "")
+            if (context.Request.Params["paymentDateStart"] != string.Empty || context.Request.Params["paymentDateEnd"] != string.Empty)
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
 
@@ -855,7 +860,7 @@ namespace InvoicingSampleApp
                 dateRange.endDate = context.Request.Params["paymentDateEnd"];
                 searchParams.paymentDate = dateRange;
             }
-            if (context.Request.Params["creationDateStart"] != "" || context.Request.Params["creationDateEnd"] != "")
+            if (context.Request.Params["creationDateStart"] != string.Empty || context.Request.Params["creationDateEnd"] != string.Empty)
             {
                 InvoiceModelAlias.DateRangeType dateRange = new InvoiceModelAlias.DateRangeType();
 
@@ -873,7 +878,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.SearchInvoices(request);
             }
             catch (Exception e)
@@ -940,9 +945,9 @@ namespace InvoicingSampleApp
             string refundDate = context.Request.Params["refundDate"];
 
             InvoiceModelAlias.OtherPaymentRefundDetailsType refundDetails = new InvoiceModelAlias.OtherPaymentRefundDetailsType();
-            if (refundNote != "")
+            if (refundNote != string.Empty)
                 refundDetails.note = refundNote;
-            if (refundDate != "")
+            if (refundDate != string.Empty)
                 refundDetails.date = refundDate;
 
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
@@ -959,7 +964,7 @@ namespace InvoicingSampleApp
 
             try
             {
-                service = getService(context);
+                service = GetService(context);
                 response = service.MarkInvoiceAsRefunded(request);
             }
             catch (Exception e)
@@ -1019,7 +1024,7 @@ namespace InvoicingSampleApp
             InvoiceModelAlias.MarkInvoiceAsUnpaidResponse response;
 
             try {
-                service = getService(context);
+                service = GetService(context);
                 response = service.MarkInvoiceAsUnpaid(request);
             }
             catch (Exception e)
@@ -1109,7 +1114,13 @@ namespace InvoicingSampleApp
 
             try
             {
-                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService();                
+                // Configuration map containing signature credentials and other required configuration.
+                // For a full list of configuration parameters refer at 
+                // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+                Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+
+                // Creating service wrapper object to make an API call by loading configuration map.
+                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);                
                 rpr = service.RequestPermissions(rp);
 
 
@@ -1153,7 +1164,13 @@ namespace InvoicingSampleApp
 
             try
             {
-                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService();
+                // Configuration map containing signature credentials and other required configuration.
+                // For a full list of configuration parameters refer at 
+                // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+                Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+
+                // Creating service wrapper object to make an API call by loading configuration map.
+                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);
                 gats = service.GetAccessToken(gat);
                 context.Response.Redirect( source + "?token=" + gats.token + "&tokensecret="+gats.tokenSecret);       
             }
