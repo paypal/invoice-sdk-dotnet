@@ -48,85 +48,86 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="createinvoice.aspx" />
-    <Content Include="Default.aspx" />
-    <Content Include="sendinvoice.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Message.cs" />
-    <Compile Include="cancelinvoice.aspx.cs">
+    <Compile Include="CancelInvoice.aspx.cs">
+      <DependentUpon>CancelInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>cancelinvoice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="cancelinvoice.aspx.designer.cs">
-      <DependentUpon>cancelinvoice.aspx</DependentUpon>
+    <Compile Include="CancelInvoice.aspx.designer.cs">
+      <DependentUpon>CancelInvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="Configuration.cs" />
-    <Compile Include="createinvoice.aspx.cs">
-      <DependentUpon>createinvoice.aspx</DependentUpon>
+    <Compile Include="CreateInvoice.aspx.cs">
+      <DependentUpon>CreateInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="createinvoice.aspx.designer.cs">
-      <DependentUpon>createinvoice.aspx</DependentUpon>
+    <Compile Include="CreateInvoice.aspx.designer.cs">
+      <DependentUpon>CreateInvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="getinvoicedetails.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>getinvoicedetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="getinvoicedetails.aspx.designer.cs">
-      <DependentUpon>getinvoicedetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="invoicehandler.ashx.cs">
-      <DependentUpon>invoicehandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceaspaid.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>markinvoiceaspaid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceaspaid.aspx.designer.cs">
-      <DependentUpon>markinvoiceaspaid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceasrefunded.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>markinvoiceasrefunded.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceasrefunded.aspx.designer.cs">
-      <DependentUpon>markinvoiceasrefunded.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceasunpaid.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>markinvoiceasunpaid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="markinvoiceasunpaid.aspx.designer.cs">
-      <DependentUpon>markinvoiceasunpaid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="objectdumper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetAccessToken.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>GetAccessToken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GetAccessToken.aspx.designer.cs">
       <DependentUpon>GetAccessToken.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SanityTest\DeserializationTestFilter.cs" />
-    <Compile Include="searchinvoices.aspx.cs">
+    <Compile Include="GetInvoiceDetails.aspx.cs">
+      <DependentUpon>GetInvoiceDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>searchinvoices.aspx</DependentUpon>
     </Compile>
-    <Compile Include="searchinvoices.aspx.designer.cs">
-      <DependentUpon>searchinvoices.aspx</DependentUpon>
+    <Compile Include="GetInvoiceDetails.aspx.designer.cs">
+      <DependentUpon>GetInvoiceDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceHandler.ashx.cs">
+      <DependentUpon>InvoiceHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="MarkInvoiceAsPaid.aspx.cs">
+      <DependentUpon>MarkInvoiceAsPaid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarkInvoiceAsPaid.aspx.designer.cs">
+      <DependentUpon>MarkInvoiceAsPaid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarkInvoiceAsRefunded.aspx.cs">
+      <DependentUpon>MarkInvoiceAsRefunded.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarkInvoiceAsRefunded.aspx.designer.cs">
+      <DependentUpon>MarkInvoiceAsRefunded.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MarkInvoiceAsUnpaid.aspx.cs">
+      <DependentUpon>MarkInvoiceAsUnpaid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MarkInvoiceAsUnpaid.aspx.designer.cs">
+      <DependentUpon>MarkInvoiceAsUnpaid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectDumper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestPermission.ascx.cs">
+      <DependentUpon>RequestPermission.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestPermission.ascx.designer.cs">
+      <DependentUpon>RequestPermission.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SanityTest\DeserializationTestFilter.cs" />
+    <Compile Include="SearchInvoices.aspx.cs">
+      <DependentUpon>SearchInvoices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="sendinvoice.aspx.cs">
       <DependentUpon>sendinvoice.aspx</DependentUpon>
@@ -136,55 +137,48 @@
       <DependentUpon>sendinvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="ShowError.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>ShowError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ShowError.aspx.designer.cs">
       <DependentUpon>ShowError.aspx</DependentUpon>
     </Compile>
-    <Compile Include="updateinvoice.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>updateinvoice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="updateinvoice.aspx.designer.cs">
-      <DependentUpon>updateinvoice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="permissions.ascx.cs">
-      <DependentUpon>permissions.ascx</DependentUpon>
+    <Compile Include="UpdateInvoice.aspx.cs">
+      <DependentUpon>UpdateInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="permissions.ascx.designer.cs">
-      <DependentUpon>permissions.ascx</DependentUpon>
+    <Compile Include="UpdateInvoice.aspx.designer.cs">
+      <DependentUpon>UpdateInvoice.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cancelinvoice.aspx" />
-    <Content Include="getinvoicedetails.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="invoicehandler.ashx" />
     <Content Include="lib\log4net.dll" />
-    <Content Include="markinvoiceaspaid.aspx" />
-    <Content Include="GetAccessToken.aspx" />
-    <Content Include="markinvoiceasrefunded.aspx" />
-    <Content Include="markinvoiceasunpaid.aspx" />
     <Content Include="sdk.css" />
     <Content Include="sdk.js" />
-    <Content Include="searchinvoices.aspx" />
-    <Content Include="updateinvoice.aspx" />
-    <Content Include="permissions.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CancelInvoice.aspx" />
+    <Content Include="CreateInvoice.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="GetAccessToken.aspx" />
+    <Content Include="GetInvoiceDetails.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="lib\PayPalCoreSDK.dll" />
     <Content Include="lib\PayPalInvoiceSDK.dll" />
     <Content Include="lib\PayPalPermissionsSDK.dll" />
+    <Content Include="MarkInvoiceAsPaid.aspx" />
+    <Content Include="MarkInvoiceAsRefunded.aspx" />
+    <Content Include="MarkInvoiceAsUnpaid.aspx" />
+    <Content Include="RequestPermission.ascx" />
     <Content Include="SanityTest\Web.development.config" />
+    <Content Include="SearchInvoices.aspx" />
+    <Content Include="sendinvoice.aspx" />
     <Content Include="ShowError.aspx" />
+    <Content Include="UpdateInvoice.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="InvoiceHandler.ashx" />
     <None Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Packages\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />
