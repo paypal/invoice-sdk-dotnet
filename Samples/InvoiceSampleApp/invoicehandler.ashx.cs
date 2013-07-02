@@ -163,12 +163,12 @@ namespace InvoicingSampleApp
             cr.invoice.itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
             cr.invoice.itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name1,
-                        decimal.Parse(item_quantity1),
-                        decimal.Parse(item_unitPrice1)));
+                        Convert.ToDecimal(item_quantity1),
+                        Convert.ToDecimal(item_unitPrice1)));
             cr.invoice.itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name2,
-                        decimal.Parse(item_quantity2),
-                        decimal.Parse(item_unitPrice2)));
+                        Convert.ToDecimal(item_quantity2),
+                        Convert.ToDecimal(item_unitPrice2)));
 
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.CreateAndSendInvoiceResponse cir = null;
@@ -324,9 +324,9 @@ namespace InvoicingSampleApp
             cr.invoice.itemList = new InvoiceModelAlias.InvoiceItemListType();
             cr.invoice.itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
             cr.invoice.itemList.item.Add(
-                new InvoiceModelAlias.InvoiceItemType(item_name1, decimal.Parse(item_quantity1), decimal.Parse(item_unitPrice1)));
+                new InvoiceModelAlias.InvoiceItemType(item_name1, Convert.ToDecimal(item_quantity1), Convert.ToDecimal(item_unitPrice1)));
             cr.invoice.itemList.item.Add(
-                new InvoiceModelAlias.InvoiceItemType(item_name2, decimal.Parse(item_quantity2), decimal.Parse(item_unitPrice2)));
+                new InvoiceModelAlias.InvoiceItemType(item_name2, Convert.ToDecimal(item_quantity2), Convert.ToDecimal(item_unitPrice2)));
 
             InvoiceAlias.InvoiceService service = null;
             InvoiceModelAlias.CreateInvoiceResponse cir = null;
@@ -649,12 +649,12 @@ namespace InvoicingSampleApp
             itemList.item = new List<InvoiceModelAlias.InvoiceItemType>();
             itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name1,
-                        decimal.Parse(item_quantity1),
-                        decimal.Parse(item_unitPrice1)));
+                        Convert.ToDecimal(item_quantity1),
+                        Convert.ToDecimal(item_unitPrice1)));
             itemList.item.Add(new InvoiceModelAlias.InvoiceItemType(
                         item_name2,
-                        decimal.Parse(item_quantity2),
-                        decimal.Parse(item_unitPrice2)));
+                        Convert.ToDecimal(item_quantity2),
+                        Convert.ToDecimal(item_unitPrice2)));
             InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
                 currencyCode, paymentTerms);
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
@@ -725,10 +725,10 @@ namespace InvoicingSampleApp
             string merchantEmail = context.Request.Params["merchantEmail"];
 
             // (Required) Page number of result set, starting with 1. 
-            int page = Int32.Parse(context.Request.Params["page"]);
+            int page = Convert.ToInt32(context.Request.Params["page"]);
 
             // (Required) Number of results per page, between 1 and 100. 
-            int pageSize = Int32.Parse(context.Request.Params["pageSize"]);
+            int pageSize = Convert.ToInt32(context.Request.Params["pageSize"]);
 
             InvoiceModelAlias.SearchParametersType searchParams = new InvoiceModelAlias.SearchParametersType();
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
@@ -791,14 +791,14 @@ namespace InvoicingSampleApp
             // If you pass a value for this field, you must also pass a currencyCode value. 
             if (context.Request.Params["lowerAmount"] != string.Empty)
             {
-                searchParams.lowerAmount = decimal.Parse(context.Request.Params["lowerAmount"]);
+                searchParams.lowerAmount = Convert.ToDecimal(context.Request.Params["lowerAmount"]);
             }
 
             // (Optional) Invoice amount search. It specifies the largest amount to be returned. 
             // If you pass a value for this field, you must also pass a currencyCode value. 
             if (context.Request.Params["upperAmount"] != string.Empty)
             {
-                searchParams.upperAmount = decimal.Parse(context.Request.Params["upperAmount"]);
+                searchParams.upperAmount = Convert.ToDecimal(context.Request.Params["upperAmount"]);
             }
 
             // (Optional) Invoice memo search string. 
