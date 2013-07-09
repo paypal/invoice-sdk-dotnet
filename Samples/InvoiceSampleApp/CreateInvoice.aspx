@@ -12,6 +12,7 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <h2>
         CreateInvoice API Sample Page</h2>
     <form id="form2" runat="server" action="InvoiceHandler.ashx">

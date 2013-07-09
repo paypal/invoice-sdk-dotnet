@@ -10,6 +10,7 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <h4>
         PayPal Invoice SDK Samples Home</h4>
     <form id="form1" runat="server">

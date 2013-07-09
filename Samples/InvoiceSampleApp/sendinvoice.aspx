@@ -11,6 +11,7 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <h2>
         SendInvoice API Sample page</h2>
     <div id="apidetails">
