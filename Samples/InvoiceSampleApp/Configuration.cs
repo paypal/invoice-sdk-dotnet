@@ -48,7 +48,6 @@ namespace InvoicingSampleApp
             configMap.Add("account2.privateKeyPassword", "password");
             configMap.Add("account2.applicationId", "APP-80W284485P519543T");
 
-
             // Sandbox Email Address
             configMap.Add("sandbox.EmailAddress", "pp.devtools@gmail.com");
 

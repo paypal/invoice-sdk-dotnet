@@ -182,7 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="InvoiceHandler.ashx" />
-    <None Include="README.md" />
     <Content Include="CancelInvoice.aspx" />
     <Content Include="CreateInvoice.aspx" />
     <Content Include="Default.aspx" />
