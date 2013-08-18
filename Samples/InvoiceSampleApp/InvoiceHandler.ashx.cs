@@ -85,7 +85,7 @@ namespace InvoicingSampleApp
             // Configuration map containing signature credentials and other required configuration.
             // For a full list of configuration parameters refer at 
             // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
-            Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+            Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
             // Creating service wrapper object to make an API call by loading configuration map.
             InvoiceAlias.InvoiceService service = new InvoiceAlias.InvoiceService(configurationMap);
@@ -1113,7 +1113,7 @@ namespace InvoicingSampleApp
                 // Configuration map containing signature credentials and other required configuration.
                 // For a full list of configuration parameters refer at 
                 // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
-                Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+                Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
                 // Creating service wrapper object to make an API call by loading configuration map.
                 PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);                
@@ -1163,7 +1163,7 @@ namespace InvoicingSampleApp
                 // Configuration map containing signature credentials and other required configuration.
                 // For a full list of configuration parameters refer at 
                 // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
-                Dictionary<string, string> configurationMap = Configuration.GetSignatureConfig();
+                Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
                 // Creating service wrapper object to make an API call by loading configuration map.
                 PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);
