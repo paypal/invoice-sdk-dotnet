@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
+using PayPal.Authentication;
 using InvoiceAlias = PayPal.Invoice;
 using InvoiceModelAlias = PayPal.Invoice.Model;
 using PermissionsAlias = PayPal.Permissions;
@@ -22,19 +23,19 @@ namespace InvoicingSampleApp
 
             string strCall = context.Request.Params["InvoiceBtn"];
 
-            if(strCall.Equals("CreateInvoice")) 
+            if (strCall.Equals("CreateInvoice"))
             {
                 CreateInvoice(context);
             }
-            else if(strCall.Equals("CreateAndSendInvoice")) 
+            else if (strCall.Equals("CreateAndSendInvoice"))
             {
                 CreateAndSendInvoice(context);
             }
-            else if(strCall.Equals("SendInvoice")) 
+            else if (strCall.Equals("SendInvoice"))
             {
                 SendInvoice(context);
             }
-            else if (strCall.Equals("GetInvoiceDetails")) 
+            else if (strCall.Equals("GetInvoiceDetails"))
             {
                 GetInvoiceDetails(context);
             }
@@ -65,12 +66,12 @@ namespace InvoicingSampleApp
             else if (strCall.Equals("RequestPermission"))
             {
                 RequestPermissions(context);
-            } 
-            else if(strCall.Equals("GetAccessToken")) 
+            }
+            else if (strCall.Equals("GetAccessToken"))
             {
                 GetAccessToken(context);
             }
-        }        
+        }
 
         public bool IsReusable
         {
@@ -83,25 +84,50 @@ namespace InvoicingSampleApp
         private InvoiceAlias.InvoiceService GetService(HttpContext context)
         {
             // Configuration map containing signature credentials and other required configuration.
-            // For a full list of configuration parameters refer at 
-            // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+            // For a full list of configuration parameters refer in wiki page 
+            // [https://github.com/paypal/sdk-core-dotnet/wiki/SDK-Configuration-Parameters]
             Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
             // Creating service wrapper object to make an API call by loading configuration map.
             InvoiceAlias.InvoiceService service = new InvoiceAlias.InvoiceService(configurationMap);
 
+
+            return service;
+        }
+
+        private SignatureCredential SetThirdPartyAuthorization(HttpContext context)
+        {
+            SignatureCredential cred = null;
             if (context.Request.Params["authentication"] != null)
             {
-                service.setAccessToken(context.Request.Params["accessToken"]);
-                service.setAccessTokenSecret(context.Request.Params["tokenSecret"]);
+                IThirdPartyAuthorization thirdPartyAuth = new TokenAuthorization(
+            context.Request.Params["accessToken"],
+            context.Request.Params["tokenSecret"]);
+
+                cred = new SignatureCredential("jb-us-seller_api1.paypal.com",
+                        "WX4WTU3S8MY44S7F",
+                        "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy");
+
+                cred.ApplicationID = "APP-80W284485P519543T";
+                cred.ThirdPartyAuthorization = thirdPartyAuth;
+
             }
             if (context.Request.Params["permission$authentication"] != null)
             {
-                service.setAccessToken(context.Request.Params["permission$accessToken"]);
-                service.setAccessTokenSecret(context.Request.Params["permission$tokenSecret"]);
+                IThirdPartyAuthorization thirdPartyAuth = new TokenAuthorization(
+                          context.Request.Params["permission$accessToken"],
+                          context.Request.Params["permission$tokenSecret"]);
+
+                cred = new SignatureCredential("jb-us-seller_api1.paypal.com",
+                        "WX4WTU3S8MY44S7F",
+                        "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy");
+
+                cred.ApplicationID = "APP-80W284485P519543T";
+                cred.ThirdPartyAuthorization = thirdPartyAuth;
             }
-            return service;
+            return cred;
         }
+
 
         private void CreateAndSendInvoice(HttpContext context)
         {
@@ -168,10 +194,19 @@ namespace InvoicingSampleApp
 
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.CreateAndSendInvoiceResponse cir = null;
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
+
             try
             {
                 service = GetService(context);
-                cir = service.CreateAndSendInvoice(cr);                
+                if (cred != null)
+                {
+                    cir = service.CreateAndSendInvoice(cr, cred);
+                }
+                else
+                {
+                    cir = service.CreateAndSendInvoice(cr);
+                }
             }
             catch (System.Exception e)
             {
@@ -226,11 +261,18 @@ namespace InvoicingSampleApp
 
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.SendInvoiceResponse sir = null;
-
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                sir = service.SendInvoice(sr);
+                if (cred != null)
+                {
+                    sir = service.SendInvoice(sr, cred);
+                }
+                else
+                {
+                    sir = service.SendInvoice(sr);
+                }
             }
             catch (System.Exception e)
             {
@@ -326,10 +368,18 @@ namespace InvoicingSampleApp
 
             InvoiceAlias.InvoiceService service = null;
             InvoiceModelAlias.CreateInvoiceResponse cir = null;
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                cir = service.CreateInvoice(cr);                
+                if (cred != null)
+                {
+                    cir = service.CreateInvoice(cr, cred);
+                }
+                else
+                {
+                    cir = service.CreateInvoice(cr);
+                }
             }
             catch (System.Exception e)
             {
@@ -389,10 +439,19 @@ namespace InvoicingSampleApp
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.GetInvoiceDetailsResponse response;
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.GetInvoiceDetails(request);
+                if (cred != null)
+                {
+                    response = service.GetInvoiceDetails(request, cred);
+                }
+                else
+                {
+                    response = service.GetInvoiceDetails(request);
+                }
+
             }
             catch (Exception e)
             {
@@ -454,7 +513,7 @@ namespace InvoicingSampleApp
 
             //  (Required) Date when the invoice was paid. 
             string paymentDate = context.Request.Params["paymentDate"];
-            
+
             //(Optional) Method that can be used to mark an invoice as paid when the payer pays offline. 
             // It is one of the following values:
             //BankTransfer – Payment is made by a bank transfer.
@@ -476,7 +535,7 @@ namespace InvoicingSampleApp
             {
                 paymentDetails.date = paymentDate;
             }
-            if(paymentMethod != string.Empty) 
+            if (paymentMethod != string.Empty)
             {
                 paymentDetails.method =
                     (InvoiceModelAlias.PaymentMethodsType)Enum.Parse(typeof(InvoiceModelAlias.PaymentMethodsType), paymentMethod);
@@ -493,10 +552,18 @@ namespace InvoicingSampleApp
 
             InvoiceModelAlias.MarkInvoiceAsPaidResponse response;
             InvoiceAlias.InvoiceService service;
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.MarkInvoiceAsPaid(request);
+                if (cred != null)
+                {
+                    response = service.MarkInvoiceAsPaid(request, cred);
+                }
+                else
+                {
+                    response = service.MarkInvoiceAsPaid(request);
+                }
             }
             catch (Exception e)
             {
@@ -530,7 +597,7 @@ namespace InvoicingSampleApp
             // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "MarkInvoiceAsPaid", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null);
 
         }
 
@@ -550,11 +617,18 @@ namespace InvoicingSampleApp
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.CancelInvoiceResponse response;
-
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.CancelInvoice(request);
+                if (cred != null)
+                {
+                    response = service.CancelInvoice(request, cred);
+                }
+                else
+                {
+                    response = service.CancelInvoice(request);
+                }
             }
             catch (Exception e)
             {
@@ -588,7 +662,7 @@ namespace InvoicingSampleApp
             // URL location where merchants view the invoice details. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
             displayResponse(context, "CancelInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null);
 
         }
 
@@ -651,7 +725,7 @@ namespace InvoicingSampleApp
                         item_name2,
                         Convert.ToDecimal(item_quantity2),
                         Convert.ToDecimal(item_unitPrice2)));
-            InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList, 
+            InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList,
                 currencyCode, paymentTerms);
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
 
@@ -664,11 +738,18 @@ namespace InvoicingSampleApp
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.UpdateInvoiceResponse response;
-
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.UpdateInvoice(request);
+                if (cred != null)
+                {
+                    response = service.UpdateInvoice(request, cred);
+                }
+                else
+                {
+                    response = service.UpdateInvoice(request);
+                }
             }
             catch (Exception e)
             {
@@ -705,7 +786,7 @@ namespace InvoicingSampleApp
             // The total amount of the invoice. 
             keyResponseParams.Add("totalAmount", response.totalAmount.ToString());
             displayResponse(context, "UpdateInvoice", keyResponseParams, service.getLastRequest(),
-                service.getLastResponse(), response.error, null); 
+                service.getLastResponse(), response.error, null);
         }
 
 
@@ -866,16 +947,23 @@ namespace InvoicingSampleApp
                 // Optional) End of the date range.
                 dateRange.endDate = context.Request.Params["creationDateEnd"];
                 searchParams.creationDate = dateRange;
-            }            
+            }
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.SearchInvoicesResponse response;
-
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.SearchInvoices(request);
+                if (cred != null)
+                {
+                    response = service.SearchInvoices(request, cred);
+                }
+                else
+                {
+                    response = service.SearchInvoices(request);
+                }
             }
             catch (Exception e)
             {
@@ -957,11 +1045,18 @@ namespace InvoicingSampleApp
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.MarkInvoiceAsRefundedResponse response;
-
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
             try
             {
                 service = GetService(context);
-                response = service.MarkInvoiceAsRefunded(request);
+                if (cred != null)
+                {
+                    response = service.MarkInvoiceAsRefunded(request, cred);
+                }
+                else
+                {
+                    response = service.MarkInvoiceAsRefunded(request);
+                }
             }
             catch (Exception e)
             {
@@ -994,8 +1089,8 @@ namespace InvoicingSampleApp
 
             // The URL of the details page of the invoice that was marked as refunded. 
             keyResponseParams.Add("invoiceUrl", response.invoiceURL);
-            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),  
-                service.getLastResponse(), response.error, null);            
+            displayResponse(context, "MarkInvoiceAsRefunded", keyResponseParams, service.getLastRequest(),
+                service.getLastResponse(), response.error, null);
         }
 
         /// <summary>
@@ -1018,10 +1113,18 @@ namespace InvoicingSampleApp
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;
             InvoiceModelAlias.MarkInvoiceAsUnpaidResponse response;
-
-            try {
+            SignatureCredential cred = SetThirdPartyAuthorization(context);
+            try
+            {
                 service = GetService(context);
-                response = service.MarkInvoiceAsUnpaid(request);
+                if (cred != null)
+                {
+                    response = service.MarkInvoiceAsUnpaid(request, cred);
+                }
+                else
+                {
+                    response = service.MarkInvoiceAsUnpaid(request);
+                }
             }
             catch (Exception e)
             {
@@ -1069,35 +1172,35 @@ namespace InvoicingSampleApp
             // This will allow the API caller to invoke any invoicing related API
             // on behalf of the permission granter
             string requestperm = "INVOICING";
-            PermissionsModelAlias.RequestPermissionsRequest rp = new PermissionsModelAlias.RequestPermissionsRequest();           
+            PermissionsModelAlias.RequestPermissionsRequest rp = new PermissionsModelAlias.RequestPermissionsRequest();
             rp.scope = new List<string>();
-             //(Required) At least 1 of the following permission categories:
-             //   EXPRESS_CHECKOUT - Express Checkout
-             //   DIRECT_PAYMENT - Direct payment by debit or credit card
-             //   SETTLEMENT_CONSOLIDATION - Settlement consolidation
-             //   SETTLEMENT_REPORTING - Settlement reporting
-             //   AUTH_CAPTURE - Payment authorization and capture
-             //   MOBILE_CHECKOUT - Mobile checkout
-             //   BILLING_AGREEMENT - Billing agreements
-             //   REFERENCE_TRANSACTION - Reference transactions
-             //   AIR_TRAVEL - Express Checkout for UTAP
-             //   MASS_PAY - Mass pay
-             //   TRANSACTION_DETAILS - Transaction details
-             //   TRANSACTION_SEARCH - Transaction search
-             //   RECURRING_PAYMENTS - Recurring payments
-             //   ACCOUNT_BALANCE - Account balance
-             //   ENCRYPTED_WEBSITE_PAYMENTS - Encrypted website payments
-             //   REFUND - Refunds
-             //   NON_REFERENCED_CREDIT - Non-referenced credit
-             //   BUTTON_MANAGER - Button Manager
-             //   MANAGE_PENDING_TRANSACTION_STATUS includes ManagePendingTransactionStatus
-             //   RECURRING_PAYMENT_REPORT - Reporting for recurring payments
-             //   EXTENDED_PRO_PROCESSING_REPORT - Extended Pro processing
-             //   EXCEPTION_PROCESSING_REPORT - Exception processing
-             //   ACCOUNT_MANAGEMENT_PERMISSION - Account Management Permission (MAM)
-             //   ACCESS_BASIC_PERSONAL_DATA - User attributes
-             //   ACCESS_ADVANCED_PERSONAL_DATA - User attributes
-             //   INVOICING - Invoicing
+            //(Required) At least 1 of the following permission categories:
+            //   EXPRESS_CHECKOUT - Express Checkout
+            //   DIRECT_PAYMENT - Direct payment by debit or credit card
+            //   SETTLEMENT_CONSOLIDATION - Settlement consolidation
+            //   SETTLEMENT_REPORTING - Settlement reporting
+            //   AUTH_CAPTURE - Payment authorization and capture
+            //   MOBILE_CHECKOUT - Mobile checkout
+            //   BILLING_AGREEMENT - Billing agreements
+            //   REFERENCE_TRANSACTION - Reference transactions
+            //   AIR_TRAVEL - Express Checkout for UTAP
+            //   MASS_PAY - Mass pay
+            //   TRANSACTION_DETAILS - Transaction details
+            //   TRANSACTION_SEARCH - Transaction search
+            //   RECURRING_PAYMENTS - Recurring payments
+            //   ACCOUNT_BALANCE - Account balance
+            //   ENCRYPTED_WEBSITE_PAYMENTS - Encrypted website payments
+            //   REFUND - Refunds
+            //   NON_REFERENCED_CREDIT - Non-referenced credit
+            //   BUTTON_MANAGER - Button Manager
+            //   MANAGE_PENDING_TRANSACTION_STATUS includes ManagePendingTransactionStatus
+            //   RECURRING_PAYMENT_REPORT - Reporting for recurring payments
+            //   EXTENDED_PRO_PROCESSING_REPORT - Extended Pro processing
+            //   EXCEPTION_PROCESSING_REPORT - Exception processing
+            //   ACCOUNT_MANAGEMENT_PERMISSION - Account Management Permission (MAM)
+            //   ACCESS_BASIC_PERSONAL_DATA - User attributes
+            //   ACCESS_ADVANCED_PERSONAL_DATA - User attributes
+            //   INVOICING - Invoicing
             rp.scope.Add(requestperm);
 
             string url = context.Request.Url.Scheme + "://" + context.Request.Url.Host + ":" + context.Request.Url.Port;
@@ -1111,12 +1214,12 @@ namespace InvoicingSampleApp
             try
             {
                 // Configuration map containing signature credentials and other required configuration.
-                // For a full list of configuration parameters refer at 
-                // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+                // For a full list of configuration parameters refer in wiki page 
+                // [https://github.com/paypal/sdk-core-dotnet/wiki/SDK-Configuration-Parameters]
                 Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
                 // Creating service wrapper object to make an API call by loading configuration map.
-                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);                
+                PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);
                 rpr = service.RequestPermissions(rp);
 
 
@@ -1128,8 +1231,8 @@ namespace InvoicingSampleApp
                 context.Response.Write(ret);
 
                 context.Response.Write("<html><body><textarea rows=30 cols=80>");
-                ObjectDumper.Write(rpr, 5, context.Response.Output);               
-                context.Response.Write("</textarea></body></html>");                
+                ObjectDumper.Write(rpr, 5, context.Response.Output);
+                context.Response.Write("</textarea></body></html>");
             }
             catch (System.Exception e)
             {
@@ -1161,14 +1264,14 @@ namespace InvoicingSampleApp
             try
             {
                 // Configuration map containing signature credentials and other required configuration.
-                // For a full list of configuration parameters refer at 
-                // [https://github.com/paypal/invoice-sdk-dotnet/wiki/SDK-Configuration-Parameters]
+                // For a full list of configuration parameters refer in wiki page 
+                // [https://github.com/paypal/sdk-core-dotnet/wiki/SDK-Configuration-Parameters]
                 Dictionary<string, string> configurationMap = Configuration.GetAcctAndConfig();
 
                 // Creating service wrapper object to make an API call by loading configuration map.
                 PermissionsAlias.PermissionsService service = new PermissionsAlias.PermissionsService(configurationMap);
                 gats = service.GetAccessToken(gat);
-                context.Response.Redirect( source + "?token=" + gats.token + "&tokensecret="+gats.tokenSecret);       
+                context.Response.Redirect(source + "?token=" + gats.token + "&tokensecret=" + gats.tokenSecret);
             }
             catch (System.Exception e)
             {
@@ -1200,7 +1303,7 @@ namespace InvoicingSampleApp
             {
                 context.Response.Write("<div class='section_header'>Error messages</div>");
                 context.Response.Write("<div class='note'>Investigate the response object for further error information</div><ul>");
-                foreach ( InvoiceModelAlias.ErrorData error in errorMessages)
+                foreach (InvoiceModelAlias.ErrorData error in errorMessages)
                 {
                     context.Response.Write("<li>" + error.message + "</li>");
                 }
@@ -1214,7 +1317,7 @@ namespace InvoicingSampleApp
             }
             context.Response.Write("<div class='section_header'>Key values from response</div>");
             context.Response.Write("<div class='note'>Consult response object and reference doc for complete list of response values.</div><table>");
-            
+
             /*
             foreach (KeyValuePair<string, string> entry in responseValues)
             {
@@ -1259,6 +1362,6 @@ namespace InvoicingSampleApp
             context.Response.Write(responsePayload);
             context.Response.Write("</textarea>");
             context.Response.Write("<br/><br/><a href='Default.aspx'>Home<a><br/><br/></body></html>");
-        }        
+        }
     }
 }

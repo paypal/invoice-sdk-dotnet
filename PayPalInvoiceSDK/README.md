@@ -67,6 +67,8 @@ The PayPal Invoice API enables you to create and manage invoices. The PayPal Inv
     InvoiceService service = new  InvoiceService(config);
     ```
 
+	You can refer full list of configuration parameters in [wiki](https://github.com/paypal/sdk-core-dotnet/wiki/SDK-Configuration-Parameters) page.
+	
 ## Links
 
    * [Installing NuGet in Visual Studio 2005 & 2008] (https://github.com/paypal/sdk-core-dotnet/wiki/Using-Nuget-in-Visual-Studio-2005-&-2008)
