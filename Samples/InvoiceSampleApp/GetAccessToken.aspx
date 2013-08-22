@@ -11,6 +11,7 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <div class="overview">
         Step 2) Invoke the GetAccessToken API to obtain a token and token secret that represents
         the granted third party permissions. The access token and secret returned by this

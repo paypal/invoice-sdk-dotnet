@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Codebehind="SendInvoice.aspx.cs" Inherits="InvoicingSampleApp.SendInvoice" %>
 
-<%@ Register TagPrefix="uc" TagName="Permissions" Src="permissions.ascx" %>
+<%@ Register TagPrefix="uc" TagName="ReqPermission" Src="RequestPermission.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -11,6 +11,7 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <h2>
         SendInvoice API Sample page</h2>
     <div id="apidetails">
@@ -22,7 +23,7 @@
                 InvoiceID * (Get Invoice ID via <a href='createinvoice.aspx'>CreateInvoice</a>)</div>
             <div class="param_value">
                 <input type="text" name="invoiceId" value="" /></div>
-            <uc:Permissions ID="permission" runat="server" />
+            <uc:ReqPermission ID="ReqPermission" runat="server" />
         </div>
         <div class="submit">
             <input type="submit" name="invoiceBtn" value="SendInvoice" />
