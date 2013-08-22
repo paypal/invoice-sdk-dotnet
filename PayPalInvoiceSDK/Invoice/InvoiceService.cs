@@ -16,7 +16,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// Service Version
 		/// </summary>
-		private const string ServiceVersion = "1.9.0";
+		private const string ServiceVersion = "1.10.0";
 
 		/// <summary>
 		/// Service Name
@@ -31,7 +31,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// SDK Version
 		/// </summary>
-		private const string SDKVersion = "2.3.103";
+		private const string SDKVersion = "2.4.106";
 
 		/// <summary>
 		/// Default constructor for loading configuration from *.Config file
@@ -129,6 +129,50 @@ namespace PayPal.Invoice
 
 			NVPUtil util = new NVPUtil();
 			return SendInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+
+		/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="remindInvoiceRequest"></param>
+		///<param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+	 	public RemindInvoiceResponse RemindInvoice(RemindInvoiceRequest remindInvoiceRequest, string apiUserName)
+	 	{	 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, remindInvoiceRequest.ToNVPString(string.Empty), ServiceName, "RemindInvoice", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+			
+			NVPUtil util = new NVPUtil();
+			return RemindInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+	 
+	 	/// <summary> 
+		/// 
+	 	/// </summary>
+		///<param name="remindInvoiceRequest"></param>
+	 	
+	 	public RemindInvoiceResponse RemindInvoice(RemindInvoiceRequest remindInvoiceRequest)
+	 	{
+	 		return RemindInvoice(remindInvoiceRequest,(string) null);
+	 	}
+	 	
+	 	/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="remindInvoiceRequest"></param>
+		///<param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+	 	public RemindInvoiceResponse RemindInvoice(RemindInvoiceRequest remindInvoiceRequest, ICredential credential)
+	 	{	 			 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, remindInvoiceRequest.ToNVPString(string.Empty), ServiceName, "RemindInvoice", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+
+			NVPUtil util = new NVPUtil();
+			return RemindInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
 			
 	 	}
 

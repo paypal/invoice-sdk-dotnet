@@ -726,7 +726,8 @@ namespace InvoicingSampleApp
                         Convert.ToDecimal(item_quantity2),
                         Convert.ToDecimal(item_unitPrice2)));
             InvoiceModelAlias.InvoiceType invoice = new InvoiceModelAlias.InvoiceType(merchantEmail, payerEmail, itemList,
-                currencyCode, paymentTerms);
+                currencyCode);
+            invoice.paymentTerms = paymentTerms;
             InvoiceModelAlias.RequestEnvelope env = new InvoiceModelAlias.RequestEnvelope();
 
             // (Required) RFC 3066 language in which error messages are returned; 
