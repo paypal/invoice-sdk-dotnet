@@ -10,24 +10,24 @@
 namespace InvoicingSampleApp {
     
     
-    public partial class SendInvoice {
+    public partial class CreateInvoice {
         
         /// <summary>
-        /// form1 control.
+        /// form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
         
         /// <summary>
-        /// ReqPermission control.
+        /// permission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::InvoicingSampleApp.WebUserControlRequestPermission ReqPermission;
+        protected global::InvoicingSampleApp.WebUserControlRequestPermission permission;
     }
 }

@@ -10,21 +10,22 @@
 
 </head>
 <body>
+	<img src="https://devtools-paypal.com/image/bdg_payments_by_pp_2line.png" alt="PAYMENTS BY PayPal" />
     <h4>
         PayPal Invoice SDK Samples Home</h4>
     <form id="form1" runat="server">
         <div>
             <ul>
-                <li><a href="createinvoice.aspx">Create Invoice</a> </li>
-                <li><a href="sendinvoice.aspx">Send Invoice</a></li>
-                <li><a href="createinvoice.aspx">Create and Send Invoice</a></li>
-                <li><a href="updateinvoice.aspx">Update Invoice</a></li>
-                <li><a href="getinvoicedetails.aspx">Get Invoice Details</a></li>
-                <li><a href="cancelinvoice.aspx">Cancel Invoice</a></li>
-                <li><a href="searchinvoices.aspx">Search Invoices</a></li>
-                <li><a href="markinvoiceaspaid.aspx">Mark Invoice As Paid</a></li>
-                <li><a href="markinvoiceasunpaid.aspx">Mark Invoice As Unpaid</a></li>
-                <li><a href="markinvoiceasrefunded.aspx">Mark Invoice As Refunded</a></li>
+                <li><a href="CreateInvoice.aspx">Create Invoice</a> </li>
+                <li><a href="SendInvoice.aspx">Send Invoice</a></li>
+                <li><a href="CreateInvoice.aspx">Create and Send Invoice</a></li>
+                <li><a href="UpdateInvoice.aspx">Update Invoice</a></li>
+                <li><a href="GetInvoiceDetails.aspx">Get Invoice Details</a></li>
+                <li><a href="CancelInvoice.aspx">Cancel Invoice</a></li>
+                <li><a href="SearchInvoices.aspx">Search Invoices</a></li>
+                <li><a href="MarkInvoiceAsPaid.aspx">Mark Invoice As Paid</a></li>
+                <li><a href="MarkInvoiceAsUnpaid.aspx">Mark Invoice As Unpaid</a></li>
+                <li><a href="MarkInvoiceAsRefunded.aspx">Mark Invoice As Refunded</a></li>
             </ul>
         </div>
     </form>
