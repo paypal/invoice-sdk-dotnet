@@ -1035,6 +1035,7 @@ namespace PayPal.Invoice.Model
 	/// </summary>
     [Serializable]
 	public enum PaymentTermsType {
+		[Description("NoDueDate")]NODUEDATE,	
 		[Description("DueOnReceipt")]DUEONRECEIPT,	
 		[Description("DueOnDateSpecified")]DUEONDATESPECIFIED,	
 		[Description("Net10")]NET1,	
@@ -2226,13 +2227,12 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// Constructor with arguments
 	 	/// </summary>
-	 	public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode, PaymentTermsType? paymentTerms)
+	 	public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode)
 	 	{
 			this.merchantEmail = merchantEmail;
 			this.payerEmail = payerEmail;
 			this.itemList = itemList;
 			this.currencyCode = currencyCode;
-			this.paymentTerms = paymentTerms;
 		}
 
 		/// <summary>
@@ -4884,6 +4884,278 @@ namespace PayPal.Invoice.Model
 				}
 			}
 			return sendInvoiceResponse;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// The request object for RemindInvoice. 
+    /// </summary>
+	public partial class RemindInvoiceRequest	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private RequestEnvelope requestEnvelopeField;
+		public RequestEnvelope requestEnvelope
+		{
+			get
+			{
+				return this.requestEnvelopeField;
+			}
+			set
+			{
+				this.requestEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceIDField;
+		public string invoiceID
+		{
+			get
+			{
+				return this.invoiceIDField;
+			}
+			set
+			{
+				this.invoiceIDField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string subjectField;
+		public string subject
+		{
+			get
+			{
+				return this.subjectField;
+			}
+			set
+			{
+				this.subjectField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string noteForPayerField;
+		public string noteForPayer
+		{
+			get
+			{
+				return this.noteForPayerField;
+			}
+			set
+			{
+				this.noteForPayerField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Constructor with arguments
+	 	/// </summary>
+	 	public RemindInvoiceRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	{
+			this.requestEnvelope = requestEnvelope;
+			this.invoiceID = invoiceID;
+		}
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public RemindInvoiceRequest()
+	 	{
+		}
+
+
+		public string ToNVPString(string prefix)
+		{
+			StringBuilder sb = new StringBuilder();
+			if (this.requestEnvelope != null)
+			{
+					string newPrefix = prefix + "requestEnvelope" + ".";
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
+			}
+			if (this.invoiceID != null)
+			{
+					sb.Append(prefix).Append("invoiceID").Append("=").Append(HttpUtility.UrlEncode(this.invoiceID, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.subject != null)
+			{
+					sb.Append(prefix).Append("subject").Append("=").Append(HttpUtility.UrlEncode(this.subject, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.noteForPayer != null)
+			{
+					sb.Append(prefix).Append("noteForPayer").Append("=").Append(HttpUtility.UrlEncode(this.noteForPayer, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			return sb.ToString();
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// The response object for RemindInvoice. 
+    /// </summary>
+	public partial class RemindInvoiceResponse	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private ResponseEnvelope responseEnvelopeField;
+		public ResponseEnvelope responseEnvelope
+		{
+			get
+			{
+				return this.responseEnvelopeField;
+			}
+			set
+			{
+				this.responseEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceIDField;
+		public string invoiceID
+		{
+			get
+			{
+				return this.invoiceIDField;
+			}
+			set
+			{
+				this.invoiceIDField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceURLField;
+		public string invoiceURL
+		{
+			get
+			{
+				return this.invoiceURLField;
+			}
+			set
+			{
+				this.invoiceURLField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<ErrorData> errorField = new List<ErrorData>();
+		public List<ErrorData> error
+		{
+			get
+			{
+				return this.errorField;
+			}
+			set
+			{
+				this.errorField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public RemindInvoiceResponse()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new RemindInvoiceResponse object created from the passed in NVP map
+	 	/// </returns>
+		public static RemindInvoiceResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			RemindInvoiceResponse remindInvoiceResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				remindInvoiceResponse = (remindInvoiceResponse == null) ? new RemindInvoiceResponse() : remindInvoiceResponse;
+				remindInvoiceResponse.responseEnvelope = responseEnvelope;
+			}
+			key = prefix + "invoiceID";
+			if (map.ContainsKey(key))
+			{
+				remindInvoiceResponse = (remindInvoiceResponse == null) ? new RemindInvoiceResponse() : remindInvoiceResponse;
+				remindInvoiceResponse.invoiceID = map[key];
+			}
+			key = prefix + "invoiceURL";
+			if (map.ContainsKey(key))
+			{
+				remindInvoiceResponse = (remindInvoiceResponse == null) ? new RemindInvoiceResponse() : remindInvoiceResponse;
+				remindInvoiceResponse.invoiceURL = map[key];
+			}
+			i = 0;
+			while(true)
+			{
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
+				if (error != null)
+				{
+					remindInvoiceResponse = (remindInvoiceResponse == null) ? new RemindInvoiceResponse() : remindInvoiceResponse;
+					remindInvoiceResponse.error.Add(error);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return remindInvoiceResponse;
 		}
 	}
 
