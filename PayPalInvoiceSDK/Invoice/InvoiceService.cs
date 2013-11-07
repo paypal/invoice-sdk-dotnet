@@ -16,7 +16,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// Service Version
 		/// </summary>
-		private const string ServiceVersion = "1.10.0";
+		private const string ServiceVersion = "1.12.0";
 
 		/// <summary>
 		/// Service Name
@@ -31,7 +31,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// SDK Version
 		/// </summary>
-		private const string SDKVersion = "2.4.106";
+		private const string SDKVersion = "2.5.109";
 
 		/// <summary>
 		/// Default constructor for loading configuration from *.Config file
@@ -173,6 +173,50 @@ namespace PayPal.Invoice
 
 			NVPUtil util = new NVPUtil();
 			return RemindInvoiceResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+
+		/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="generateInvoiceNumberRequest"></param>
+		///<param name="apiUserName">API Username that you want to authenticate this call against. This username and the corresponding 3-token/certificate credentials must be available in Web.Config/App.Config</param>
+	 	public GenerateInvoiceNumberResponse GenerateInvoiceNumber(GenerateInvoiceNumberRequest generateInvoiceNumberRequest, string apiUserName)
+	 	{	 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, generateInvoiceNumberRequest.ToNVPString(string.Empty), ServiceName, "GenerateInvoiceNumber", apiUserName, getAccessToken(), getAccessTokenSecret());
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+			
+			NVPUtil util = new NVPUtil();
+			return GenerateInvoiceNumberResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
+			
+	 	}
+	 
+	 	/// <summary> 
+		/// 
+	 	/// </summary>
+		///<param name="generateInvoiceNumberRequest"></param>
+	 	
+	 	public GenerateInvoiceNumberResponse GenerateInvoiceNumber(GenerateInvoiceNumberRequest generateInvoiceNumberRequest)
+	 	{
+	 		return GenerateInvoiceNumber(generateInvoiceNumberRequest,(string) null);
+	 	}
+	 	
+	 	/// <summary>
+		/// 
+	 	/// </summary>
+		///<param name="generateInvoiceNumberRequest"></param>
+		///<param name="credential">An explicit ICredential object that you want to authenticate this call against</param> 
+	 	public GenerateInvoiceNumberResponse GenerateInvoiceNumber(GenerateInvoiceNumberRequest generateInvoiceNumberRequest, ICredential credential)
+	 	{	 			 		
+			IAPICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(this.config, generateInvoiceNumberRequest.ToNVPString(string.Empty), ServiceName, "GenerateInvoiceNumber", credential);
+	   	 	((PlatformAPICallPreHandler) apiCallPreHandler).SDKName = SDKName;
+			((PlatformAPICallPreHandler) apiCallPreHandler).SDKVersion = SDKVersion;
+			((PlatformAPICallPreHandler) apiCallPreHandler).PortName = "Invoice";
+
+			NVPUtil util = new NVPUtil();
+			return GenerateInvoiceNumberResponse.CreateInstance(util.ParseNVPString(Call(apiCallPreHandler)), string.Empty, -1);
 			
 	 	}
 

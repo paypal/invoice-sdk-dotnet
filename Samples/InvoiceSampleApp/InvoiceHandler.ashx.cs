@@ -108,7 +108,7 @@ namespace InvoicingSampleApp
                         "WX4WTU3S8MY44S7F",
                         "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy");
 
-                cred.ApplicationID = "APP-80W284485P519543T";
+                cred.ApplicationId = "APP-80W284485P519543T";
                 cred.ThirdPartyAuthorization = thirdPartyAuth;
 
             }
@@ -122,7 +122,7 @@ namespace InvoicingSampleApp
                         "WX4WTU3S8MY44S7F",
                         "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy");
 
-                cred.ApplicationID = "APP-80W284485P519543T";
+                cred.ApplicationId = "APP-80W284485P519543T";
                 cred.ThirdPartyAuthorization = thirdPartyAuth;
             }
             return cred;

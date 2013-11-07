@@ -320,8 +320,8 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		private int? errorIdField;
-		public int? errorId
+		private long? errorIdField;
+		public long? errorId
 		{
 			get
 			{
@@ -493,7 +493,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				errorData = (errorData == null) ? new ErrorData() : errorData;
-				errorData.errorId = System.Convert.ToInt32(map[key]);
+				errorData.errorId = System.Convert.ToInt64(map[key], DefaultCulture);
 			}
 			key = prefix + "domain";
 			if (map.ContainsKey(key))
@@ -1226,6 +1226,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string languageField;
+		public string language
+		{
+			get
+			{
+				return this.languageField;
+			}
+			set
+			{
+				this.languageField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string taxIdField;
 		public string taxId
 		{
@@ -1309,6 +1326,10 @@ namespace PayPal.Invoice.Model
 			{
 					sb.Append(prefix).Append("website").Append("=").Append(HttpUtility.UrlEncode(this.website, BaseConstants.ENCODING_FORMAT)).Append("&");
 			}
+			if (this.language != null)
+			{
+					sb.Append(prefix).Append("language").Append("=").Append(HttpUtility.UrlEncode(this.language, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
 			if (this.taxId != null)
 			{
 					sb.Append(prefix).Append("taxId").Append("=").Append(HttpUtility.UrlEncode(this.taxId, BaseConstants.ENCODING_FORMAT)).Append("&");
@@ -1387,6 +1408,12 @@ namespace PayPal.Invoice.Model
 			{
 				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
 				businessInfoType.website = map[key];
+			}
+			key = prefix + "language";
+			if (map.ContainsKey(key))
+			{
+				businessInfoType = (businessInfoType == null) ? new BusinessInfoType() : businessInfoType;
+				businessInfoType.language = map[key];
 			}
 			key = prefix + "taxId";
 			if (map.ContainsKey(key))
@@ -1510,6 +1537,40 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private decimal? discountPercentField;
+		public decimal? discountPercent
+		{
+			get
+			{
+				return this.discountPercentField;
+			}
+			set
+			{
+				this.discountPercentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? discountAmountField;
+		public decimal? discountAmount
+		{
+			get
+			{
+				return this.discountAmountField;
+			}
+			set
+			{
+				this.discountAmountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string taxNameField;
 		public string taxName
 		{
@@ -1537,6 +1598,40 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.taxRateField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? taxAmountField;
+		public decimal? taxAmount
+		{
+			get
+			{
+				return this.taxAmountField;
+			}
+			set
+			{
+				this.taxAmountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string imageUrlField;
+		public string imageUrl
+		{
+			get
+			{
+				return this.imageUrlField;
+			}
+			set
+			{
+				this.imageUrlField = value;
 			}
 		}
 		
@@ -1582,6 +1677,14 @@ namespace PayPal.Invoice.Model
 			{
 					sb.Append(prefix).Append("unitPrice").Append("=").Append(Convert.ToString(this.unitPrice, DefaultCulture)).Append("&");
 			}
+			if (this.discountPercent != null)
+			{
+					sb.Append(prefix).Append("discountPercent").Append("=").Append(Convert.ToString(this.discountPercent, DefaultCulture)).Append("&");
+			}
+			if (this.discountAmount != null)
+			{
+					sb.Append(prefix).Append("discountAmount").Append("=").Append(Convert.ToString(this.discountAmount, DefaultCulture)).Append("&");
+			}
 			if (this.taxName != null)
 			{
 					sb.Append(prefix).Append("taxName").Append("=").Append(HttpUtility.UrlEncode(this.taxName, BaseConstants.ENCODING_FORMAT)).Append("&");
@@ -1589,6 +1692,14 @@ namespace PayPal.Invoice.Model
 			if (this.taxRate != null)
 			{
 					sb.Append(prefix).Append("taxRate").Append("=").Append(Convert.ToString(this.taxRate, DefaultCulture)).Append("&");
+			}
+			if (this.taxAmount != null)
+			{
+					sb.Append(prefix).Append("taxAmount").Append("=").Append(Convert.ToString(this.taxAmount, DefaultCulture)).Append("&");
+			}
+			if (this.imageUrl != null)
+			{
+					sb.Append(prefix).Append("imageUrl").Append("=").Append(HttpUtility.UrlEncode(this.imageUrl, BaseConstants.ENCODING_FORMAT)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -1642,13 +1753,25 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
-				invoiceItemType.quantity = System.Convert.ToDecimal(map[key]);
+				invoiceItemType.quantity = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "unitPrice";
 			if (map.ContainsKey(key))
 			{
 				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
-				invoiceItemType.unitPrice = System.Convert.ToDecimal(map[key]);
+				invoiceItemType.unitPrice = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "discountPercent";
+			if (map.ContainsKey(key))
+			{
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.discountPercent = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "discountAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.discountAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "taxName";
 			if (map.ContainsKey(key))
@@ -1660,7 +1783,19 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
-				invoiceItemType.taxRate = System.Convert.ToDecimal(map[key]);
+				invoiceItemType.taxRate = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "taxAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.taxAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "imageUrl";
+			if (map.ContainsKey(key))
+			{
+				invoiceItemType = (invoiceItemType == null) ? new InvoiceItemType() : invoiceItemType;
+				invoiceItemType.imageUrl = map[key];
 			}
 			return invoiceItemType;
 		}
@@ -1989,6 +2124,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private decimal? totalItemDiscountAmountField;
+		public decimal? totalItemDiscountAmount
+		{
+			get
+			{
+				return this.totalItemDiscountAmountField;
+			}
+			set
+			{
+				this.totalItemDiscountAmountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private bool? taxInclusiveField;
 		public bool? taxInclusive
 		{
@@ -2159,6 +2311,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private decimal? shippingTaxAmountField;
+		public decimal? shippingTaxAmount
+		{
+			get
+			{
+				return this.shippingTaxAmountField;
+			}
+			set
+			{
+				this.shippingTaxAmountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string logoUrlField;
 		public string logoUrl
 		{
@@ -2270,7 +2439,7 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.taxCalculatedAfterDiscount != null)
 			{
-					sb.Append(prefix).Append("taxCalculatedAfterDiscount").Append("=").Append(this.taxCalculatedAfterDiscount.ToString().ToLower()).Append("&");
+					sb.Append(prefix).Append("taxCalculatedAfterDiscount").Append("=").Append(Convert.ToString(this.taxCalculatedAfterDiscount, DefaultCulture)).Append("&");
 			}
 			if (this.currencyCode != null)
 			{
@@ -2297,9 +2466,13 @@ namespace PayPal.Invoice.Model
 			{
 					sb.Append(prefix).Append("discountAmount").Append("=").Append(Convert.ToString(this.discountAmount, DefaultCulture)).Append("&");
 			}
+			if (this.totalItemDiscountAmount != null)
+			{
+					sb.Append(prefix).Append("totalItemDiscountAmount").Append("=").Append(Convert.ToString(this.totalItemDiscountAmount, DefaultCulture)).Append("&");
+			}
 			if (this.taxInclusive != null)
 			{
-					sb.Append(prefix).Append("taxInclusive").Append("=").Append(this.taxInclusive.ToString().ToLower()).Append("&");
+					sb.Append(prefix).Append("taxInclusive").Append("=").Append(Convert.ToString(this.taxInclusive, DefaultCulture)).Append("&");
 			}
 			if (this.terms != null)
 			{
@@ -2338,6 +2511,10 @@ namespace PayPal.Invoice.Model
 			if (this.shippingTaxRate != null)
 			{
 					sb.Append(prefix).Append("shippingTaxRate").Append("=").Append(Convert.ToString(this.shippingTaxRate, DefaultCulture)).Append("&");
+			}
+			if (this.shippingTaxAmount != null)
+			{
+					sb.Append(prefix).Append("shippingTaxAmount").Append("=").Append(Convert.ToString(this.shippingTaxAmount, DefaultCulture)).Append("&");
 			}
 			if (this.logoUrl != null)
 			{
@@ -2419,7 +2596,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.taxCalculatedAfterDiscount = System.Convert.ToBoolean(map[key]);
+				invoiceType.taxCalculatedAfterDiscount = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			key = prefix + "currencyCode";
 			if (map.ContainsKey(key))
@@ -2449,19 +2626,25 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.discountPercent = System.Convert.ToDecimal(map[key]);
+				invoiceType.discountPercent = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "discountAmount";
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.discountAmount = System.Convert.ToDecimal(map[key]);
+				invoiceType.discountAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "totalItemDiscountAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.totalItemDiscountAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "taxInclusive";
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.taxInclusive = System.Convert.ToBoolean(map[key]);
+				invoiceType.taxInclusive = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			key = prefix + "terms";
 			if (map.ContainsKey(key))
@@ -2503,7 +2686,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.shippingAmount = System.Convert.ToDecimal(map[key]);
+				invoiceType.shippingAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "shippingTaxName";
 			if (map.ContainsKey(key))
@@ -2515,7 +2698,13 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.shippingTaxRate = System.Convert.ToDecimal(map[key]);
+				invoiceType.shippingTaxRate = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "shippingTaxAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.shippingTaxAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "logoUrl";
 			if (map.ContainsKey(key))
@@ -2539,7 +2728,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
-				invoiceType.customAmountValue = System.Convert.ToDecimal(map[key]);
+				invoiceType.customAmountValue = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			return invoiceType;
 		}
@@ -2570,6 +2759,23 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.statusField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? totalDiscountAmountField;
+		public decimal? totalDiscountAmount
+		{
+			get
+			{
+				return this.totalDiscountAmountField;
+			}
+			set
+			{
+				this.totalDiscountAmountField = value;
 			}
 		}
 		
@@ -2837,11 +3043,17 @@ namespace PayPal.Invoice.Model
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
 				invoiceDetailsType.status = (StatusType)EnumUtils.GetValue(map[key],typeof(StatusType));
 			}
+			key = prefix + "totalDiscountAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.totalDiscountAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
 			key = prefix + "totalAmount";
 			if (map.ContainsKey(key))
 			{
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
-				invoiceDetailsType.totalAmount = System.Convert.ToDecimal(map[key]);
+				invoiceDetailsType.totalAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "origin";
 			if (map.ContainsKey(key))
@@ -3440,7 +3652,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
-				paymentDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
+				paymentDetailsType.viaPayPal = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			PayPalPaymentDetailsType paypalPayment =  PayPalPaymentDetailsType.CreateInstance(map, prefix + "paypalPayment", -1);
 			if (paypalPayment != null)
@@ -4255,7 +4467,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				invoiceSummaryType = (invoiceSummaryType == null) ? new InvoiceSummaryType() : invoiceSummaryType;
-				invoiceSummaryType.totalAmount = System.Convert.ToDecimal(map[key]);
+				invoiceSummaryType.totalAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
 			}
 			key = prefix + "currencyCode";
 			if (map.ContainsKey(key))
@@ -4541,8 +4753,8 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		private int? totalAmountField;
-		public int? totalAmount
+		private long? totalAmountField;
+		public long? totalAmount
 		{
 			get
 			{
@@ -4636,7 +4848,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
-				createInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
+				createInvoiceResponse.totalAmount = System.Convert.ToInt64(map[key], DefaultCulture);
 			}
 			i = 0;
 			while(true)
@@ -5163,6 +5375,191 @@ namespace PayPal.Invoice.Model
 
 
 	/// <summary>
+	/// The request object for GenerateInvoiceNumber. 
+    /// </summary>
+	public partial class GenerateInvoiceNumberRequest	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private RequestEnvelope requestEnvelopeField;
+		public RequestEnvelope requestEnvelope
+		{
+			get
+			{
+				return this.requestEnvelopeField;
+			}
+			set
+			{
+				this.requestEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Constructor with arguments
+	 	/// </summary>
+	 	public GenerateInvoiceNumberRequest(RequestEnvelope requestEnvelope)
+	 	{
+			this.requestEnvelope = requestEnvelope;
+		}
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public GenerateInvoiceNumberRequest()
+	 	{
+		}
+
+
+		public string ToNVPString(string prefix)
+		{
+			StringBuilder sb = new StringBuilder();
+			if (this.requestEnvelope != null)
+			{
+					string newPrefix = prefix + "requestEnvelope" + ".";
+					sb.Append(this.requestEnvelopeField.ToNVPString(newPrefix));
+			}
+			return sb.ToString();
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// The response object for GenerateInvoiceNumber. 
+    /// </summary>
+	public partial class GenerateInvoiceNumberResponse	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private ResponseEnvelope responseEnvelopeField;
+		public ResponseEnvelope responseEnvelope
+		{
+			get
+			{
+				return this.responseEnvelopeField;
+			}
+			set
+			{
+				this.responseEnvelopeField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceNumberField;
+		public string invoiceNumber
+		{
+			get
+			{
+				return this.invoiceNumberField;
+			}
+			set
+			{
+				this.invoiceNumberField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<ErrorData> errorField = new List<ErrorData>();
+		public List<ErrorData> error
+		{
+			get
+			{
+				return this.errorField;
+			}
+			set
+			{
+				this.errorField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public GenerateInvoiceNumberResponse()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new GenerateInvoiceNumberResponse object created from the passed in NVP map
+	 	/// </returns>
+		public static GenerateInvoiceNumberResponse CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			GenerateInvoiceNumberResponse generateInvoiceNumberResponse = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			ResponseEnvelope responseEnvelope =  ResponseEnvelope.CreateInstance(map, prefix + "responseEnvelope", -1);
+			if (responseEnvelope != null)
+			{
+				generateInvoiceNumberResponse = (generateInvoiceNumberResponse == null) ? new GenerateInvoiceNumberResponse() : generateInvoiceNumberResponse;
+				generateInvoiceNumberResponse.responseEnvelope = responseEnvelope;
+			}
+			key = prefix + "invoiceNumber";
+			if (map.ContainsKey(key))
+			{
+				generateInvoiceNumberResponse = (generateInvoiceNumberResponse == null) ? new GenerateInvoiceNumberResponse() : generateInvoiceNumberResponse;
+				generateInvoiceNumberResponse.invoiceNumber = map[key];
+			}
+			i = 0;
+			while(true)
+			{
+				ErrorData error =  ErrorData.CreateInstance(map, prefix + "error", i);
+				if (error != null)
+				{
+					generateInvoiceNumberResponse = (generateInvoiceNumberResponse == null) ? new GenerateInvoiceNumberResponse() : generateInvoiceNumberResponse;
+					generateInvoiceNumberResponse.error.Add(error);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return generateInvoiceNumberResponse;
+		}
+	}
+
+
+
+
+	/// <summary>
 	/// The request object for CreateAndSendInvoice. 
     /// </summary>
 	public partial class CreateAndSendInvoiceRequest	{
@@ -5320,8 +5717,8 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		private int? totalAmountField;
-		public int? totalAmount
+		private long? totalAmountField;
+		public long? totalAmount
 		{
 			get
 			{
@@ -5415,7 +5812,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
-				createAndSendInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
+				createAndSendInvoiceResponse.totalAmount = System.Convert.ToInt64(map[key], DefaultCulture);
 			}
 			i = 0;
 			while(true)
@@ -5619,8 +6016,8 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		private int? totalAmountField;
-		public int? totalAmount
+		private long? totalAmountField;
+		public long? totalAmount
 		{
 			get
 			{
@@ -5714,7 +6111,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				updateInvoiceResponse = (updateInvoiceResponse == null) ? new UpdateInvoiceResponse() : updateInvoiceResponse;
-				updateInvoiceResponse.totalAmount = System.Convert.ToInt32(map[key]);
+				updateInvoiceResponse.totalAmount = System.Convert.ToInt64(map[key], DefaultCulture);
 			}
 			i = 0;
 			while(true)
@@ -6131,6 +6528,23 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private bool? sendPayerNotificationField;
+		public bool? sendPayerNotification
+		{
+			get
+			{
+				return this.sendPayerNotificationField;
+			}
+			set
+			{
+				this.sendPayerNotificationField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Constructor with arguments
 	 	/// </summary>
 	 	public CancelInvoiceRequest(RequestEnvelope requestEnvelope)
@@ -6168,7 +6582,11 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.sendCopyToMerchant != null)
 			{
-					sb.Append(prefix).Append("sendCopyToMerchant").Append("=").Append(this.sendCopyToMerchant.ToString().ToLower()).Append("&");
+					sb.Append(prefix).Append("sendCopyToMerchant").Append("=").Append(Convert.ToString(this.sendCopyToMerchant, DefaultCulture)).Append("&");
+			}
+			if (this.sendPayerNotification != null)
+			{
+					sb.Append(prefix).Append("sendPayerNotification").Append("=").Append(Convert.ToString(this.sendPayerNotification, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -6484,11 +6902,11 @@ namespace PayPal.Invoice.Model
 			}
 			if (this.page != null)
 			{
-					sb.Append(prefix).Append("page").Append("=").Append(this.page).Append("&");
+					sb.Append(prefix).Append("page").Append("=").Append(Convert.ToString(this.page, DefaultCulture)).Append("&");
 			}
 			if (this.pageSize != null)
 			{
-					sb.Append(prefix).Append("pageSize").Append("=").Append(this.pageSize).Append("&");
+					sb.Append(prefix).Append("pageSize").Append("=").Append(Convert.ToString(this.pageSize, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -6670,7 +7088,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
-				searchInvoicesResponse.count = System.Convert.ToInt32(map[key]);
+				searchInvoicesResponse.count = System.Convert.ToInt32(map[key], DefaultCulture);
 			}
 			InvoiceSummaryListType invoiceList =  InvoiceSummaryListType.CreateInstance(map, prefix + "invoiceList", -1);
 			if (invoiceList != null)
@@ -6682,19 +7100,19 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
-				searchInvoicesResponse.page = System.Convert.ToInt32(map[key]);
+				searchInvoicesResponse.page = System.Convert.ToInt32(map[key], DefaultCulture);
 			}
 			key = prefix + "hasNextPage";
 			if (map.ContainsKey(key))
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
-				searchInvoicesResponse.hasNextPage = System.Convert.ToBoolean(map[key]);
+				searchInvoicesResponse.hasNextPage = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			key = prefix + "hasPreviousPage";
 			if (map.ContainsKey(key))
 			{
 				searchInvoicesResponse = (searchInvoicesResponse == null) ? new SearchInvoicesResponse() : searchInvoicesResponse;
-				searchInvoicesResponse.hasPreviousPage = System.Convert.ToBoolean(map[key]);
+				searchInvoicesResponse.hasPreviousPage = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			i = 0;
 			while(true)
@@ -7622,7 +8040,7 @@ namespace PayPal.Invoice.Model
 			if (map.ContainsKey(key))
 			{
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
-				paymentRefundDetailsType.viaPayPal = System.Convert.ToBoolean(map[key]);
+				paymentRefundDetailsType.viaPayPal = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			PayPalPaymentRefundDetailsType paypalPayment =  PayPalPaymentRefundDetailsType.CreateInstance(map, prefix + "paypalPayment", -1);
 			if (paypalPayment != null)
