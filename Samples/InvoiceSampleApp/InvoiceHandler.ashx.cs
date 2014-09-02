@@ -433,8 +433,8 @@ namespace InvoicingSampleApp
             // (Required) RFC 3066 language in which error messages are returned; 
             // by default it is en_US, which is the only language currently supported.
             env.errorLanguage = ERROR_LANGUAGE;
-            InvoiceModelAlias.GetInvoiceDetailsRequest request =
-                new InvoiceModelAlias.GetInvoiceDetailsRequest(env, invoiceId);
+            InvoiceModelAlias.GetInvoiceDetailsRequest request = new InvoiceModelAlias.GetInvoiceDetailsRequest(env);
+            request.invoiceID = invoiceId;
 
             // Create service object and make the API call
             InvoiceAlias.InvoiceService service;

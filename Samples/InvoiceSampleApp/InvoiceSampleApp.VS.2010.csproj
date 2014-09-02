@@ -40,8 +40,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
-    <Reference Include="PayPalCoreSDK, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="PayPalInvoiceSDK, Version=2.5.109.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="PayPalCoreSDK, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalInvoiceSDK, Version=2.6.117.0, Culture=neutral, processorArchitecture=MSIL">
       <Aliases>global</Aliases>
     </Reference>
     <Reference Include="PayPalPermissionsSDK, Version=2.4.109.0, Culture=neutral, processorArchitecture=MSIL">

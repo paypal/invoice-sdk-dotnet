@@ -1068,6 +1068,20 @@ namespace PayPal.Invoice.Model
 
 
 	/// <summary>
+	/// Specifies the payment transaction type.
+	///                     
+	/// </summary>
+    [Serializable]
+	public enum PaymentTransactionType {
+		[Description("Authorization")]AUTHORIZATION,	
+		[Description("Capture")]CAPTURE,	
+		[Description("Sale")]SALE	
+	}
+
+
+
+
+	/// <summary>
 	/// Specifies the invoice status.
 	///  
 	/// </summary>
@@ -1080,7 +1094,9 @@ namespace PayPal.Invoice.Model
 		[Description("Canceled")]CANCELED,	
 		[Description("Refunded")]REFUNDED,	
 		[Description("PartiallyRefunded")]PARTIALLYREFUNDED,	
-		[Description("MarkedAsRefunded")]MARKEDASREFUNDED	
+		[Description("MarkedAsRefunded")]MARKEDASREFUNDED,	
+		[Description("PaymentPending")]PAYMENTPENDING,	
+		[Description("PartiallyPaid")]PARTIALLYPAID	
 	}
 
 
@@ -2394,6 +2410,23 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private bool? allowPartialPaymentsField;
+		public bool? allowPartialPayments
+		{
+			get
+			{
+				return this.allowPartialPaymentsField;
+			}
+			set
+			{
+				this.allowPartialPaymentsField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Constructor with arguments
 	 	/// </summary>
 	 	public InvoiceType(string merchantEmail, string payerEmail, InvoiceItemListType itemList, string currencyCode)
@@ -2531,6 +2564,10 @@ namespace PayPal.Invoice.Model
 			if (this.customAmountValue != null)
 			{
 					sb.Append(prefix).Append("customAmountValue").Append("=").Append(Convert.ToString(this.customAmountValue, DefaultCulture)).Append("&");
+			}
+			if (this.allowPartialPayments != null)
+			{
+					sb.Append(prefix).Append("allowPartialPayments").Append("=").Append(Convert.ToString(this.allowPartialPayments, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -2729,6 +2766,12 @@ namespace PayPal.Invoice.Model
 			{
 				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
 				invoiceType.customAmountValue = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "allowPartialPayments";
+			if (map.ContainsKey(key))
+			{
+				invoiceType = (invoiceType == null) ? new InvoiceType() : invoiceType;
+				invoiceType.allowPartialPayments = System.Convert.ToBoolean(map[key], DefaultCulture);
 			}
 			return invoiceType;
 		}
@@ -3002,6 +3045,23 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? adjustmentAmountField;
+		public decimal? adjustmentAmount
+		{
+			get
+			{
+				return this.adjustmentAmountField;
+			}
+			set
+			{
+				this.adjustmentAmountField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Default Constructor
 	 	/// </summary>
 	 	public InvoiceDetailsType()
@@ -3127,7 +3187,96 @@ namespace PayPal.Invoice.Model
 				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
 				invoiceDetailsType.paidDate = map[key];
 			}
+			key = prefix + "adjustmentAmount";
+			if (map.ContainsKey(key))
+			{
+				invoiceDetailsType = (invoiceDetailsType == null) ? new InvoiceDetailsType() : invoiceDetailsType;
+				invoiceDetailsType.adjustmentAmount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
 			return invoiceDetailsType;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// A list of paypal paymentss. 
+    /// </summary>
+	public partial class PayPalPaymentDetailsListType	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<PayPalPaymentDetailsType> paymentField = new List<PayPalPaymentDetailsType>();
+		public List<PayPalPaymentDetailsType> payment
+		{
+			get
+			{
+				return this.paymentField;
+			}
+			set
+			{
+				this.paymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public PayPalPaymentDetailsListType()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new PayPalPaymentDetailsListType object created from the passed in NVP map
+	 	/// </returns>
+		public static PayPalPaymentDetailsListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			PayPalPaymentDetailsListType payPalPaymentDetailsListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				PayPalPaymentDetailsType payment =  PayPalPaymentDetailsType.CreateInstance(map, prefix + "payment", i);
+				if (payment != null)
+				{
+					payPalPaymentDetailsListType = (payPalPaymentDetailsListType == null) ? new PayPalPaymentDetailsListType() : payPalPaymentDetailsListType;
+					payPalPaymentDetailsListType.payment.Add(payment);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return payPalPaymentDetailsListType;
 		}
 	}
 
@@ -3177,6 +3326,23 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? amountField;
+		public decimal? amount
+		{
+			get
+			{
+				return this.amountField;
+			}
+			set
+			{
+				this.amountField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Default Constructor
 	 	/// </summary>
 	 	public OtherPaymentRefundDetailsType()
@@ -3194,6 +3360,10 @@ namespace PayPal.Invoice.Model
 			if (this.date != null)
 			{
 					sb.Append(prefix).Append("date").Append("=").Append(HttpUtility.UrlEncode(this.date, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.amount != null)
+			{
+					sb.Append(prefix).Append("amount").Append("=").Append(Convert.ToString(this.amount, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -3237,7 +3407,96 @@ namespace PayPal.Invoice.Model
 				otherPaymentRefundDetailsType = (otherPaymentRefundDetailsType == null) ? new OtherPaymentRefundDetailsType() : otherPaymentRefundDetailsType;
 				otherPaymentRefundDetailsType.date = map[key];
 			}
+			key = prefix + "amount";
+			if (map.ContainsKey(key))
+			{
+				otherPaymentRefundDetailsType = (otherPaymentRefundDetailsType == null) ? new OtherPaymentRefundDetailsType() : otherPaymentRefundDetailsType;
+				otherPaymentRefundDetailsType.amount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
 			return otherPaymentRefundDetailsType;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// A list of other paymentss. 
+    /// </summary>
+	public partial class OtherPaymentRefundDetailsListType	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<OtherPaymentRefundDetailsType> paymentField = new List<OtherPaymentRefundDetailsType>();
+		public List<OtherPaymentRefundDetailsType> payment
+		{
+			get
+			{
+				return this.paymentField;
+			}
+			set
+			{
+				this.paymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public OtherPaymentRefundDetailsListType()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new OtherPaymentRefundDetailsListType object created from the passed in NVP map
+	 	/// </returns>
+		public static OtherPaymentRefundDetailsListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			OtherPaymentRefundDetailsListType otherPaymentRefundDetailsListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				OtherPaymentRefundDetailsType payment =  OtherPaymentRefundDetailsType.CreateInstance(map, prefix + "payment", i);
+				if (payment != null)
+				{
+					otherPaymentRefundDetailsListType = (otherPaymentRefundDetailsListType == null) ? new OtherPaymentRefundDetailsListType() : otherPaymentRefundDetailsListType;
+					otherPaymentRefundDetailsListType.payment.Add(payment);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return otherPaymentRefundDetailsListType;
 		}
 	}
 
@@ -3255,6 +3514,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string transactionIDField;
+		public string transactionID
+		{
+			get
+			{
+				return this.transactionIDField;
+			}
+			set
+			{
+				this.transactionIDField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private string dateField;
 		public string date
 		{
@@ -3265,6 +3541,23 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.dateField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? amountField;
+		public decimal? amount
+		{
+			get
+			{
+				return this.amountField;
+			}
+			set
+			{
+				this.amountField = value;
 			}
 		}
 		
@@ -3305,13 +3598,108 @@ namespace PayPal.Invoice.Model
 					prefix = prefix + ".";
 				}
 			}
+			key = prefix + "transactionID";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentRefundDetailsType = (payPalPaymentRefundDetailsType == null) ? new PayPalPaymentRefundDetailsType() : payPalPaymentRefundDetailsType;
+				payPalPaymentRefundDetailsType.transactionID = map[key];
+			}
 			key = prefix + "date";
 			if (map.ContainsKey(key))
 			{
 				payPalPaymentRefundDetailsType = (payPalPaymentRefundDetailsType == null) ? new PayPalPaymentRefundDetailsType() : payPalPaymentRefundDetailsType;
 				payPalPaymentRefundDetailsType.date = map[key];
 			}
+			key = prefix + "amount";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentRefundDetailsType = (payPalPaymentRefundDetailsType == null) ? new PayPalPaymentRefundDetailsType() : payPalPaymentRefundDetailsType;
+				payPalPaymentRefundDetailsType.amount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
 			return payPalPaymentRefundDetailsType;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// A list of other paymentss. 
+    /// </summary>
+	public partial class PayPalPaymentRefundDetailsListType	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<PayPalPaymentRefundDetailsType> paymentField = new List<PayPalPaymentRefundDetailsType>();
+		public List<PayPalPaymentRefundDetailsType> payment
+		{
+			get
+			{
+				return this.paymentField;
+			}
+			set
+			{
+				this.paymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public PayPalPaymentRefundDetailsListType()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new PayPalPaymentRefundDetailsListType object created from the passed in NVP map
+	 	/// </returns>
+		public static PayPalPaymentRefundDetailsListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			PayPalPaymentRefundDetailsListType payPalPaymentRefundDetailsListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				PayPalPaymentRefundDetailsType payment =  PayPalPaymentRefundDetailsType.CreateInstance(map, prefix + "payment", i);
+				if (payment != null)
+				{
+					payPalPaymentRefundDetailsListType = (payPalPaymentRefundDetailsListType == null) ? new PayPalPaymentRefundDetailsListType() : payPalPaymentRefundDetailsListType;
+					payPalPaymentRefundDetailsListType.payment.Add(payment);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return payPalPaymentRefundDetailsListType;
 		}
 	}
 
@@ -3356,6 +3744,40 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.dateField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? amountField;
+		public decimal? amount
+		{
+			get
+			{
+				return this.amountField;
+			}
+			set
+			{
+				this.amountField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private PaymentTransactionType? transactionTypeField;
+		public PaymentTransactionType? transactionType
+		{
+			get
+			{
+				return this.transactionTypeField;
+			}
+			set
+			{
+				this.transactionTypeField = value;
 			}
 		}
 		
@@ -3407,6 +3829,18 @@ namespace PayPal.Invoice.Model
 			{
 				payPalPaymentDetailsType = (payPalPaymentDetailsType == null) ? new PayPalPaymentDetailsType() : payPalPaymentDetailsType;
 				payPalPaymentDetailsType.date = map[key];
+			}
+			key = prefix + "amount";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentDetailsType = (payPalPaymentDetailsType == null) ? new PayPalPaymentDetailsType() : payPalPaymentDetailsType;
+				payPalPaymentDetailsType.amount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
+			key = prefix + "transactionType";
+			if (map.ContainsKey(key))
+			{
+				payPalPaymentDetailsType = (payPalPaymentDetailsType == null) ? new PayPalPaymentDetailsType() : payPalPaymentDetailsType;
+				payPalPaymentDetailsType.transactionType = (PaymentTransactionType)EnumUtils.GetValue(map[key],typeof(PaymentTransactionType));
 			}
 			return payPalPaymentDetailsType;
 		}
@@ -3475,6 +3909,23 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private decimal? amountField;
+		public decimal? amount
+		{
+			get
+			{
+				return this.amountField;
+			}
+			set
+			{
+				this.amountField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Default Constructor
 	 	/// </summary>
 	 	public OtherPaymentDetailsType()
@@ -3497,6 +3948,10 @@ namespace PayPal.Invoice.Model
 			if (this.date != null)
 			{
 					sb.Append(prefix).Append("date").Append("=").Append(HttpUtility.UrlEncode(this.date, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.amount != null)
+			{
+					sb.Append(prefix).Append("amount").Append("=").Append(Convert.ToString(this.amount, DefaultCulture)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -3546,7 +4001,96 @@ namespace PayPal.Invoice.Model
 				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
 				otherPaymentDetailsType.date = map[key];
 			}
+			key = prefix + "amount";
+			if (map.ContainsKey(key))
+			{
+				otherPaymentDetailsType = (otherPaymentDetailsType == null) ? new OtherPaymentDetailsType() : otherPaymentDetailsType;
+				otherPaymentDetailsType.amount = System.Convert.ToDecimal(map[key], DefaultCulture);
+			}
 			return otherPaymentDetailsType;
+		}
+	}
+
+
+
+
+	/// <summary>
+	/// A list of other paymentss. 
+    /// </summary>
+	public partial class OtherPaymentDetailsListType	{
+		
+		// Default US culture info
+		private static CultureInfo DefaultCulture = new CultureInfo("en-US");
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private List<OtherPaymentDetailsType> paymentField = new List<OtherPaymentDetailsType>();
+		public List<OtherPaymentDetailsType> payment
+		{
+			get
+			{
+				return this.paymentField;
+			}
+			set
+			{
+				this.paymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// Default Constructor
+	 	/// </summary>
+	 	public OtherPaymentDetailsListType()
+	 	{
+		}
+
+
+		/// <summary>
+		/// Factory method for creating new object instances. For use by the de-serialization classes only.
+	 	/// </summary>
+	 	/// <param name="map">NVP map as returned by an API call</param>
+	 	/// <param name="prefix">NVP prefix for this class in the response</param>
+	 	/// <param name="index">For array elements, index of this element in the response</param>
+	 	/// <returns>
+	 	/// A new OtherPaymentDetailsListType object created from the passed in NVP map
+	 	/// </returns>
+		public static OtherPaymentDetailsListType CreateInstance(Dictionary<string, string> map, string prefix, int index)
+		{
+			OtherPaymentDetailsListType otherPaymentDetailsListType = null;
+			string key;
+			int i = 0;
+			if(index != -1)
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + "(" + index + ").";
+				}
+			} 
+			else
+			{
+				if (prefix.Length > 0 && !prefix.EndsWith("."))
+				{
+					prefix = prefix + ".";
+				}
+			}
+			i = 0;
+			while(true)
+			{
+				OtherPaymentDetailsType payment =  OtherPaymentDetailsType.CreateInstance(map, prefix + "payment", i);
+				if (payment != null)
+				{
+					otherPaymentDetailsListType = (otherPaymentDetailsListType == null) ? new OtherPaymentDetailsListType() : otherPaymentDetailsListType;
+					otherPaymentDetailsListType.payment.Add(payment);
+					i++;
+				} 
+				else
+				{
+					break;
+				}
+			}
+			return otherPaymentDetailsListType;
 		}
 	}
 
@@ -3598,6 +4142,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private PayPalPaymentDetailsListType paypalPaymentsField;
+		public PayPalPaymentDetailsListType paypalPayments
+		{
+			get
+			{
+				return this.paypalPaymentsField;
+			}
+			set
+			{
+				this.paypalPaymentsField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private OtherPaymentDetailsType otherPaymentField;
 		public OtherPaymentDetailsType otherPayment
 		{
@@ -3608,6 +4169,23 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.otherPaymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private OtherPaymentDetailsListType otherPaymentsField;
+		public OtherPaymentDetailsListType otherPayments
+		{
+			get
+			{
+				return this.otherPaymentsField;
+			}
+			set
+			{
+				this.otherPaymentsField = value;
 			}
 		}
 		
@@ -3660,11 +4238,23 @@ namespace PayPal.Invoice.Model
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
 				paymentDetailsType.paypalPayment = paypalPayment;
 			}
+			PayPalPaymentDetailsListType paypalPayments =  PayPalPaymentDetailsListType.CreateInstance(map, prefix + "paypalPayments", -1);
+			if (paypalPayments != null)
+			{
+				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
+				paymentDetailsType.paypalPayments = paypalPayments;
+			}
 			OtherPaymentDetailsType otherPayment =  OtherPaymentDetailsType.CreateInstance(map, prefix + "otherPayment", -1);
 			if (otherPayment != null)
 			{
 				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
 				paymentDetailsType.otherPayment = otherPayment;
+			}
+			OtherPaymentDetailsListType otherPayments =  OtherPaymentDetailsListType.CreateInstance(map, prefix + "otherPayments", -1);
+			if (otherPayments != null)
+			{
+				paymentDetailsType = (paymentDetailsType == null) ? new PaymentDetailsType() : paymentDetailsType;
+				paymentDetailsType.otherPayments = otherPayments;
 			}
 			return paymentDetailsType;
 		}
@@ -4753,6 +5343,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string payerViewURLField;
+		public string payerViewURL
+		{
+			get
+			{
+				return this.payerViewURLField;
+			}
+			set
+			{
+				this.payerViewURLField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private long? totalAmountField;
 		public long? totalAmount
 		{
@@ -4843,6 +5450,12 @@ namespace PayPal.Invoice.Model
 			{
 				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
 				createInvoiceResponse.invoiceURL = map[key];
+			}
+			key = prefix + "payerViewURL";
+			if (map.ContainsKey(key))
+			{
+				createInvoiceResponse = (createInvoiceResponse == null) ? new CreateInvoiceResponse() : createInvoiceResponse;
+				createInvoiceResponse.payerViewURL = map[key];
 			}
 			key = prefix + "totalAmount";
 			if (map.ContainsKey(key))
@@ -5012,6 +5625,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string payerViewURLField;
+		public string payerViewURL
+		{
+			get
+			{
+				return this.payerViewURLField;
+			}
+			set
+			{
+				this.payerViewURLField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
 		{
@@ -5079,6 +5709,12 @@ namespace PayPal.Invoice.Model
 			{
 				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
 				sendInvoiceResponse.invoiceURL = map[key];
+			}
+			key = prefix + "payerViewURL";
+			if (map.ContainsKey(key))
+			{
+				sendInvoiceResponse = (sendInvoiceResponse == null) ? new SendInvoiceResponse() : sendInvoiceResponse;
+				sendInvoiceResponse.payerViewURL = map[key];
 			}
 			i = 0;
 			while(true)
@@ -5717,6 +6353,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string payerViewURLField;
+		public string payerViewURL
+		{
+			get
+			{
+				return this.payerViewURLField;
+			}
+			set
+			{
+				this.payerViewURLField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private long? totalAmountField;
 		public long? totalAmount
 		{
@@ -5807,6 +6460,12 @@ namespace PayPal.Invoice.Model
 			{
 				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
 				createAndSendInvoiceResponse.invoiceURL = map[key];
+			}
+			key = prefix + "payerViewURL";
+			if (map.ContainsKey(key))
+			{
+				createAndSendInvoiceResponse = (createAndSendInvoiceResponse == null) ? new CreateAndSendInvoiceResponse() : createAndSendInvoiceResponse;
+				createAndSendInvoiceResponse.payerViewURL = map[key];
 			}
 			key = prefix + "totalAmount";
 			if (map.ContainsKey(key))
@@ -6178,12 +6837,28 @@ namespace PayPal.Invoice.Model
 		
 
 		/// <summary>
+		/// 
+		/// </summary>
+		private string invoiceNumberField;
+		public string invoiceNumber
+		{
+			get
+			{
+				return this.invoiceNumberField;
+			}
+			set
+			{
+				this.invoiceNumberField = value;
+			}
+		}
+		
+
+		/// <summary>
 		/// Constructor with arguments
 	 	/// </summary>
-	 	public GetInvoiceDetailsRequest(RequestEnvelope requestEnvelope, string invoiceID)
+	 	public GetInvoiceDetailsRequest(RequestEnvelope requestEnvelope)
 	 	{
 			this.requestEnvelope = requestEnvelope;
-			this.invoiceID = invoiceID;
 		}
 
 		/// <summary>
@@ -6205,6 +6880,10 @@ namespace PayPal.Invoice.Model
 			if (this.invoiceID != null)
 			{
 					sb.Append(prefix).Append("invoiceID").Append("=").Append(HttpUtility.UrlEncode(this.invoiceID, BaseConstants.ENCODING_FORMAT)).Append("&");
+			}
+			if (this.invoiceNumber != null)
+			{
+					sb.Append(prefix).Append("invoiceNumber").Append("=").Append(HttpUtility.UrlEncode(this.invoiceNumber, BaseConstants.ENCODING_FORMAT)).Append("&");
 			}
 			return sb.ToString();
 		}
@@ -6326,6 +7005,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private string payerViewURLField;
+		public string payerViewURL
+		{
+			get
+			{
+				return this.payerViewURLField;
+			}
+			set
+			{
+				this.payerViewURLField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error
 		{
@@ -6411,6 +7107,12 @@ namespace PayPal.Invoice.Model
 			{
 				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
 				getInvoiceDetailsResponse.invoiceURL = map[key];
+			}
+			key = prefix + "payerViewURL";
+			if (map.ContainsKey(key))
+			{
+				getInvoiceDetailsResponse = (getInvoiceDetailsResponse == null) ? new GetInvoiceDetailsResponse() : getInvoiceDetailsResponse;
+				getInvoiceDetailsResponse.payerViewURL = map[key];
 			}
 			i = 0;
 			while(true)
@@ -7986,6 +8688,23 @@ namespace PayPal.Invoice.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		private PayPalPaymentRefundDetailsListType paypalPaymentsField;
+		public PayPalPaymentRefundDetailsListType paypalPayments
+		{
+			get
+			{
+				return this.paypalPaymentsField;
+			}
+			set
+			{
+				this.paypalPaymentsField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
 		private OtherPaymentRefundDetailsType otherPaymentField;
 		public OtherPaymentRefundDetailsType otherPayment
 		{
@@ -7996,6 +8715,23 @@ namespace PayPal.Invoice.Model
 			set
 			{
 				this.otherPaymentField = value;
+			}
+		}
+		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private OtherPaymentRefundDetailsListType otherPaymentsField;
+		public OtherPaymentRefundDetailsListType otherPayments
+		{
+			get
+			{
+				return this.otherPaymentsField;
+			}
+			set
+			{
+				this.otherPaymentsField = value;
 			}
 		}
 		
@@ -8048,11 +8784,23 @@ namespace PayPal.Invoice.Model
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
 				paymentRefundDetailsType.paypalPayment = paypalPayment;
 			}
+			PayPalPaymentRefundDetailsListType paypalPayments =  PayPalPaymentRefundDetailsListType.CreateInstance(map, prefix + "paypalPayments", -1);
+			if (paypalPayments != null)
+			{
+				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
+				paymentRefundDetailsType.paypalPayments = paypalPayments;
+			}
 			OtherPaymentRefundDetailsType otherPayment =  OtherPaymentRefundDetailsType.CreateInstance(map, prefix + "otherPayment", -1);
 			if (otherPayment != null)
 			{
 				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
 				paymentRefundDetailsType.otherPayment = otherPayment;
+			}
+			OtherPaymentRefundDetailsListType otherPayments =  OtherPaymentRefundDetailsListType.CreateInstance(map, prefix + "otherPayments", -1);
+			if (otherPayments != null)
+			{
+				paymentRefundDetailsType = (paymentRefundDetailsType == null) ? new PaymentRefundDetailsType() : paymentRefundDetailsType;
+				paymentRefundDetailsType.otherPayments = otherPayments;
 			}
 			return paymentRefundDetailsType;
 		}
