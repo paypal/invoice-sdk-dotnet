@@ -1,3 +1,9 @@
+Version 2.7.117 - September 10, 2014
+ 
+	- NuGet dependency fix
+	
+You can see source code of this release in github under https://github.com/paypal/invoice-sdk-dotnet/tree/v2.7.117.
+--------------------------------------------------------------------------------------------------
 Version 2.6.117 - September 02, 2014
  
 	- Updated stubs for 117 release

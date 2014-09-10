@@ -31,7 +31,7 @@ namespace PayPal.Invoice
 		/// <summary>
 		/// SDK Version
 		/// </summary>
-		private const string SDKVersion = "2.6.117";
+		private const string SDKVersion = "2.7.117";
 
 		/// <summary>
 		/// Default constructor for loading configuration from *.Config file
