@@ -45,16 +45,25 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
-    <Reference Include="PayPalCoreSDK, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK, Version=1.6.0.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\PayPalCoreSDK.dll</HintPath>
     </Reference>
-    <Reference Include="PayPalInvoiceSDK, Version=2.6.117.0, Culture=neutral, processorArchitecture=MSIL">
-      <Aliases>global</Aliases>
+    <Reference Include="PayPalInvoiceSDK, Version=2.8.117.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PayPalInvoiceSDK.dll</HintPath>
     </Reference>
-    <Reference Include="PayPalPermissionsSDK, Version=2.4.109.0, Culture=neutral, processorArchitecture=MSIL">
-      <Aliases>global</Aliases>
+    <Reference Include="PayPalPermissionsSDK, Version=2.6.109.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\PayPalPermissionsSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -183,7 +192,6 @@
     <Content Include="GetInvoiceDetails.aspx" />
     <Content Include="Global.asax" />
     <Content Include="InvoiceHandler.ashx" />
-    <Content Include="lib\log4net.dll" />
     <Content Include="MarkInvoiceAsPaid.aspx" />
     <Content Include="GetAccessToken.aspx" />
     <Content Include="MarkInvoiceAsRefunded.aspx" />
@@ -196,9 +204,6 @@
     <Content Include="RequestPermission.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\PayPalCoreSDK.dll" />
-    <Content Include="lib\PayPalInvoiceSDK.dll" />
-    <Content Include="lib\PayPalPermissionsSDK.dll" />
     <Content Include="SanityTest\Web.development.config" />
     <Content Include="ShowError.aspx" />
   </ItemGroup>
