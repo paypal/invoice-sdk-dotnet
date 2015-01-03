@@ -1,10 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Xml;
-using PayPal;
 using PayPal.Authentication;
 using PayPal.Util;
-using PayPal.Manager;
 using PayPal.NVP;
 using PayPal.Invoice.Model;
 
@@ -12,11 +8,6 @@ namespace PayPal.Invoice
 {
 	public partial class InvoiceService : BasePayPalService 
 	{
-
-		/// <summary>
-		/// Service Version
-		/// </summary>
-		private const string ServiceVersion = "1.12.0";
 
 		/// <summary>
 		/// Service Name
