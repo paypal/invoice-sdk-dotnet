@@ -3,15 +3,11 @@
  * AUTO_GENERATED_CODE 
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Web;
-using System.Xml;
-using PayPal.Util;
 
 namespace PayPal.Invoice.Model
 {
