@@ -1,3 +1,9 @@
+#### This Classic SDK is not actively supported and will be deprecated in the future. For full support on new integrations, please use the [PayPal .NET SDK](https://github.com/paypal/PayPal-NET-SDK)
+
+---
+
+# PayPal Invoice Classic SDK for .NET
+
 The repository contains the PayPal Invoice SDK C#.NET Class Library Application and the InvoiceSampleApp Sample ASP.NET C# Web Application.
 
 
@@ -10,23 +16,23 @@ SDK Integration
 *	The NuGet package installs the dependencies to the solution and automatically updates the project
 
 *	Dependent library references:
-	•	'log4net.dll'
-	•	'PayPalCoreSDK.dll'	
-	•	'PayPalInvoiceSDK.dll'
-	•	'PayPalPermissionsSDK.dll'
+	â€¢	'log4net.dll'
+	â€¢	'PayPalCoreSDK.dll'	
+	â€¢	'PayPalInvoiceSDK.dll'
+	â€¢	'PayPalPermissionsSDK.dll'
 
 *	Namespaces:
-	•	PayPal
-	•	PayPal.Invoice
-	•	PayPal.Invoice.Model
-	•	PayPal.Permissions
-	•	PayPal.Permissions.Model
-	•	PayPal.Util
-	•	PayPal.Exception
+	â€¢	PayPal
+	â€¢	PayPal.Invoice
+	â€¢	PayPal.Invoice.Model
+	â€¢	PayPal.Permissions
+	â€¢	PayPal.Permissions.Model
+	â€¢	PayPal.Util
+	â€¢	PayPal.Exception
 
 *	Aliases:
-	•	extern alias InvoiceAlias
-	•	extern alias PermissionsAlias
+	â€¢	extern alias InvoiceAlias
+	â€¢	extern alias PermissionsAlias
 	
 Help
 ----
