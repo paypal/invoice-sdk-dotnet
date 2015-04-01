@@ -7,8 +7,8 @@
 The repository contains the PayPal Invoice SDK C#.NET Class Library Application and the InvoiceSampleApp Sample ASP.NET C# Web Application.
 
 
-SDK Integration
----------------
+## SDK Integration
+
 *	Integrate the PayPal Invoice SDK with an ASP.NET Web Application
 
 *	Use NuGet to install the 'PayPalInvoiceSDK' package 
@@ -34,8 +34,12 @@ SDK Integration
 	•	extern alias InvoiceAlias
 	•	extern alias PermissionsAlias
 	
-Help
-----
+## Using Classic SDKs and PayPal .NET SDK
+
+[See here](https://github.com/paypal/merchant-sdk-dotnet#using-classic-sdks-and-paypal-net-sdk) for instructions on how to use this SDK along with the [PayPal .NET SDK](https://github.com/paypal/PayPal-NET-SDK).
+
+## Help
+
 *	Invoice.bat - Automation script that builds the PayPal Invoice SDK C#.NET Class Library Application in release mode and copies the built dlls to the lib folder in the InvoiceSampleApp Sample ASP.NET C# Web Application
 
 *	Changelog.txt - Release Notes
