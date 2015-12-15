@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("PayPal Invoice SDK for .NET")]
 [assembly: AssemblyCompany("PayPal")]
-[assembly: AssemblyProduct("PayPal_Invoice_SDK")]
-[assembly: AssemblyCopyright("Copyright © 2009-2014 PayPal")]
+[assembly: AssemblyProduct("PayPalInvoiceSDK")]
+[assembly: AssemblyCopyright("Copyright © 2009-2015 PayPal")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -27,5 +27,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.9.117.0")]
-[assembly: AssemblyFileVersion("2.9.117.0")]
+[assembly: AssemblyVersion("2.10.117.0")]
+[assembly: AssemblyFileVersion("2.10.117.0")]
