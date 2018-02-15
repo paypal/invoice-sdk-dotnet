@@ -9,6 +9,9 @@
 
 The repository contains the PayPal Invoice SDK C#.NET Class Library Application and the InvoiceSampleApp Sample ASP.NET C# Web Application.
 
+## Support
+
+> Please contact [PayPal Technical Support](https://developer.paypal.com/support/) for any live or account issues.
 
 ## SDK Integration
 
